@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
+import { SiginComponent } from './sigin/sigin.component';
+import { SigupComponent } from './sigup/sigup.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SiginComponent, SigupComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class LoginModule { }

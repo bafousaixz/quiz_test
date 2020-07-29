@@ -1,1 +1,59 @@
-<p>login works!</p>
+<div class="body">
+  <div style="z-index: 100; padding: 20px;" class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Login</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div  style="z-index: 100; font-family: Poppins-Regular, sans-serif; height: 500px;" class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <form class="login100-form validate-form">
+          <div *ngIf="check1 === true">
+            <app-sigin></app-sigin>
+          </div>
+  
+          <div *ngIf="check2 === true">
+              <app-sigup></app-sigup>
+            </div>
+         
+  
+  
+          <div  class="w-full text-center p-t-27 p-b-239">
+            <span class="txt1">
+              <!-- Forgot -->
+            </span>
+  
+            <a href="#" class="txt2">
+              <!-- User name / password? -->
+            </a>
+          </div>
+  
+          <div *ngIf="check1 == true" id="view" class="w-full text-center">
+            <button (click)="kt2()"  class="txt3">
+              Sign Up
+            </button>
+          </div>
+  
+          <div *ngIf="check2 == true" id="view" class="w-full text-center">
+              <button  (click)="kt1()" class="txt3">
+                Sign In
+              </button>
+            </div>
+        </form>
+  
+  
+        <div *ngIf="check1 == true" class="login100-more" style="background-image: url('../../../assets/login3.jpg');"></div>
+        <div *ngIf="check2 == true" class="login100-more" style="background-image: url('../../../assets/login2.jpg');"></div>
+  
+      </div>
+    </div>
+  
+  </div >
+</div>
