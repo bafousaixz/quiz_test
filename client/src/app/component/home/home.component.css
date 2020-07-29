@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
+
+.top{
+    background: url("banner.jpg");
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh);
+    position: relative;
+}
+
+label img{
+    width: 20%;
+    margin-left: 100px;
+}
+
+div ul{
+    float: right;
+    margin-right: 10%;
+}
+
+div ul li{
+    display: inline-block;
+    line-height: 130px;
+    margin: 0 5px;
+}
+div ul li a{
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 13px;
+    border-radius: 5%;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a:hover{
+    /* background: #70a1ff; */
+    transition: .5s;
+}
+
+.checkbtn{
+    font-size: 20px;
+    float: left;
+    color: white;
+    line-height: 80px;
+    margin-left: 30px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+@media (max-width: 1100px){
+    label img{
+        width: 20%;
+    }
+    div ul li{
+        line-height: 80px;
+    }
+    div ul li a{
+        font-size: 13px;
+        
+    }
+}
+
+@media (max-width: 720px){
+    label img{
+        width: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+   
+    }
+    img{
+        vertical-align: middle;
+    }
+
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgba(52, 73, 94,0.5);
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    div ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    div ul li a{font-size: 20px;}
+    #check:checked ~ ul{
+        left: 0;
+    }
+    #check:checked  ~ .note h1{
+        visibility: hidden;
+    }
+
+   
+}
+
+.note{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: rgba(236, 240, 241,0.3); */
+}
+
+.note h1{
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3vh;
+    text-align: center;
+}
+
+
