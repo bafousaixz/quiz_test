@@ -15,8 +15,8 @@ export class UsersService {
   ) { }
 
 
-  signup(user : User): Observable<User[]>{
-    return this.http.post<User[]>(this.url, user)
+  signup(user : User): Observable<User>{
+    return this.http.post<User>(this.url, user)
   }
 
   

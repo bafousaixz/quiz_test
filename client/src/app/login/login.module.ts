@@ -5,14 +5,15 @@ import { SiginComponent } from './sigin/sigin.component';
 import { SigupComponent } from './sigup/sigup.component';
 import { UsersService } from './users.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [LoginComponent, SiginComponent, SigupComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [

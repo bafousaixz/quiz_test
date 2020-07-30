@@ -1,6 +1,6 @@
 export class User{
-  firstname: string;
-  lastname: string;
+  First_Name: string;
+  Last_Name: string;
   username:string;
-  password:string;
+  hash:string;
 }

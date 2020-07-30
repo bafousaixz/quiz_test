@@ -23,11 +23,10 @@ export class SigupComponent implements OnInit {
 
   signup(){
     let signup : User = {
-      firstname: this.firstname,
-      lastname : this.lastname,
+      First_Name: this.firstname,
+      Last_Name : this.lastname,
       username: this.username,
-      password: this.password,
-
+      hash: this.password,
     };
     if(this.firstname == null || this.lastname == null || this.username == null || this. password == null ){
       alert("Please don't input null")
