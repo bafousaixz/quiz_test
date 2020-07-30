@@ -12,17 +12,11 @@ export class UsersService {
 
   constructor(
     private http: HttpClient
-    
   ) { }
 
 
   signup(user : User): Observable<User[]>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    }
-    return this.http.post<User[]>(this.url, user, httpOptions)
+    return this.http.post<User[]>(this.url, user)
   }
 
   

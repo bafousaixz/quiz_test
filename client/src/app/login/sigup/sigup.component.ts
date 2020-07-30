@@ -15,7 +15,7 @@ export class SigupComponent implements OnInit {
   public password: string;
 
   constructor(
-   //public userService: UsersService,
+   public userService: UsersService,
   ) { }
 
   ngOnInit(): void {
