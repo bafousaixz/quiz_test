@@ -33,6 +33,7 @@ export class SigupComponent implements OnInit {
     }
     else{
       this.userService.signup(signup).subscribe(data =>{
+        console.log()
         alert("Add success")
        });
     }
