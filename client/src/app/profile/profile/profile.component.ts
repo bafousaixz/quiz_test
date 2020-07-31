@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   public user: User;
 
   public username: string
+  public hash: string
+  public 
   
   constructor(
     private userService: UsersService
@@ -26,7 +28,6 @@ export class ProfileComponent implements OnInit {
     if(this.token != null ){
       this.userService.getUser().subscribe(data=>{
         this.user = data;
-        console.log(typeof(this.user.First_Name))
        })
     }
   }

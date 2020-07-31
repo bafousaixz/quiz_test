@@ -12,29 +12,41 @@ Mongoose.connect(url, {
 
 
 const UserModel = new Schema({
-  username: { 
-      type: String, 
-      unique: true, 
-      required: true },
+    username: { 
+         type: String, 
+         unique: true, 
+         required: true },
+        
+    hash: { 
+        type: String, 
+        required: true },
 
-  hash: { 
-      type: String, 
-      required: true },
+    First_Name: { 
+        type: String, 
+       required: true },
+  
+    Last_Name: { 
+       type: String, 
+       required: true },
 
-  First_Name: { 
-      type: String, 
-      required: true },
+    Email: { 
+        type: String, 
+        required: false },
 
-  Last_Name: { 
-      type: String, 
-      required: true },
+    Tel: { 
+        type: String, 
+        required: false },
 
-  tokens: [{
-    token: {
+    Image: { 
+        type: String, 
+        required: false },
+
+    tokens: [{
+       token: {
         type: String,
         required: true
-    }
-}]
+        }
+    }]
 });
 
 
@@ -74,6 +86,6 @@ UserModel.statics.findByCredentials = async (username, hash) => {
 }
   
 
-users = Mongoose.model("users", UserModel)
+users = Mongoose.model("userss", UserModel)
 
 module.exports = users;

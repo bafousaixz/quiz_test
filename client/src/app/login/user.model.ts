@@ -3,4 +3,7 @@ export class User{
   Last_Name: string;
   username:string;
   hash:string;
+  Email: string;
+  Tel:string;
+  Image:string;
 }

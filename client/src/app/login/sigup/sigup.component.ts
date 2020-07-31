@@ -13,6 +13,9 @@ export class SigupComponent implements OnInit {
   public lastname: string;
   public username: string;
   public password: string;
+  public email: string ;
+  public tel: string ;
+  public image: string ;
 
   constructor(
    public userService: UsersService,
@@ -28,6 +31,9 @@ export class SigupComponent implements OnInit {
       Last_Name : this.lastname,
       username: this.username,
       hash: this.password,
+      Email: this.email,
+      Tel: this.tel,
+      Image: this.image
     };
     if(this.firstname == null || this.lastname == null || this.username == null || this. password == null ){
       alert("Please don't input null")

@@ -33,6 +33,7 @@ router.post('/users', async (req, res) => {
       const token = await user.generateAuthToken()
       res.status(201).send({ user, token })
   } catch (error) {
+      console.log(error)
       res.status(400).send(error)
   }
 })
@@ -55,18 +56,21 @@ router.post('/users/login', async(req, res) => {
 
 router.get('/users/me', auth, async(req, res) => {
   // View logged in user profile
+  console.log(req.user)
   res.send(req.user)
 })
 
-// router.put('/users/me',auth, async(req, res)=>{
-//   try{
-//     const user =  req.Model.body;
-//     const result = await user.save();
-//     res.send(result)
-//   } catch (error){
-//     res.status(400).send(error)
-//   }
-// })
+router.put('/users/me',auth, async(req, res)=>{
+  try{
+    const u = req.user
+    u.set(req.body)
+    const result = await u.save();
+    res.send(result)
+  } catch (error){
+    console.log(error)
+    res.status(400).send(error)
+  }
+})
 
 
 router.post('/users/me/logout', auth, async (req, res) => {

@@ -5,7 +5,6 @@ import { Signin } from './signin.model'
 import { Observable, of } from 'rxjs';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -33,12 +32,19 @@ export class UsersService {
      headers: new HttpHeaders({
         "Authorization":  token
      })
-   };
+    };
+    
     console.log(token)
     return this.http.get<any>(this.get, httpOptions)
+  }
+
+  // editProfile(user: User): Observable<User>{
+  //   return this.http.put<User>(this.get, user, httpOptions)
+  // }
+
   }
 
 
 
   
-}
+
