@@ -5,7 +5,7 @@ var auth = require('../middleware/auth')
 
 
 // Get all users
-router.get('/users', async (req, res) => {
+router.get('/list', async (req, res) => {
   try {
       const user = await Model.find().exec();
       res.send(user);
@@ -15,7 +15,7 @@ router.get('/users', async (req, res) => {
 })
   
 //Get a user
-router.get('/users/:id', async (req, res) => {
+router.get('/list/:id', async (req, res) => {
   try{
     const userID = await Model.findById(req.params.id).exec()
     res.send(userID);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { UsersService } from '../users.service';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-sigup',
   templateUrl: './sigup.component.html',
@@ -16,6 +16,7 @@ export class SigupComponent implements OnInit {
 
   constructor(
    public userService: UsersService,
+   public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,11 +34,10 @@ export class SigupComponent implements OnInit {
     }
     else{
       this.userService.signup(signup).subscribe(data =>{
-        console.log()
-        alert("Add success")
+        window.localStorage.setItem('token', data['token'])
+        this.router.navigate(['/']);
        });
     }
-    
   }
 
 }

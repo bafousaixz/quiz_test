@@ -3,9 +3,22 @@
     <label for="check" class="check-btn">
         <i class="fas fa-bars"></i>
     </label>
-   <!-- <label class="logo"><img src="logo3.png"/></label> -->
-   <a class="login" routerLink="/login">Login</a>
-   <!-- <a class="login" style="background: none; border: none;" href="#">Hello Yone </a> -->
+
+
+   <a *ngIf="!username" class="login" routerLink="/login">Login</a>
+
+   <div style="background: none; border: none;" *ngIf="username" class="dropdown login">
+        <button style="background: none; border: none; outline: 0 !important;"  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Hello {{username}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Profile</a>
+        <button (click)="logout()" class="dropdown-item">Logout</button>
+        </div>
+    </div>
+
+    
+   <!-- <a *ngIf="username" class="login" style="background: none; border: none;" href="#">Hello {{username}} </a> -->
     <ul>
         <li><a href="#">Nani</a></li>
         <li><a href="#">Nani</a></li>

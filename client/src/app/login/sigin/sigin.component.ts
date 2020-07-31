@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Signin } from '../signin.model';
 import { UsersService } from '../users.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sigin',
@@ -15,6 +15,7 @@ export class SiginComponent implements OnInit {
 
   constructor(
     private service: UsersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,8 +32,7 @@ export class SiginComponent implements OnInit {
     else{
       this.service.signin(signin).subscribe(data =>{
         window.localStorage.setItem('token', data['token'])
-        console.log(data['token']);
-        alert("success")
+        this.router.navigate(['/']);
        });
     }
     
