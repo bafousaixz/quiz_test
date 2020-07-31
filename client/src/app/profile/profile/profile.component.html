@@ -1,0 +1,104 @@
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <img style="border: 10px solid #ecf0f1; border-radius: 50%; width: 200px;"  src="../../../assets/avatar.jpg">
+                    <!-- <img style="border: 10px solid #ecf0f1; border-radius: 50%;" *ngIf="imageSrc" src="{{imageSrc}}">  -->
+                    <h3>ten user</h3>
+                    <h6 class="m-t-2">Upload a different photo</h6>
+                    <label style="width: 30%;"  class="custom-file">
+                        <input type="file" id="file" class="custom-file-input"  > 
+                        <span class="custom-file-control">Choose file</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="height: 900px;" class="container">
+    <div class="row m-y-2">
+        <div>
+            <ul style="margin-bottom: 40px;"  class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content p-b-3">
+                <div class="tab-pane active " id="profile">
+                    <h4 class="m-y-2">User Profile</h4>
+                    <div class="row">
+                        <div style="width: 400px;" class="col-md-6">
+                            <h6>Full Name</h6>
+                            <p>
+                               {{user.First_Name}} {{user.Last_Name}}
+                            </p>
+                            <h6>Email</h6>
+                            <p>
+                                <!-- {{user.email}} -->
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Tel</h6>
+                           1234567
+                            <hr>
+
+                        </div>
+                       
+                    </div>
+            
+                </div>
+    
+                <div class="tab-pane" id="edit">
+                    <h4 class="m-y-2">Edit Profile</h4>
+                    <form role="form">
+                      
+                        <div class="form-group row">
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label"> User name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" name ="username" readonly [(ngModel)]="username" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">First Name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="first-name" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Last Name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text"  name ="last-name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" name ="email" >
+                            </div>
+                        </div>
+                    
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                            
+                                <input type="button" class="btn btn-primary"  value="Save Changes">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 pull-lg-8 text-xs-center">
+            <!-- <img src="assets/fox1.jpg"> -->
+        </div> 
+    </div>
+</div>
+<hr>

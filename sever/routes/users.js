@@ -58,6 +58,16 @@ router.get('/users/me', auth, async(req, res) => {
   res.send(req.user)
 })
 
+// router.put('/users/me',auth, async(req, res)=>{
+//   try{
+//     const user =  req.Model.body;
+//     const result = await user.save();
+//     res.send(result)
+//   } catch (error){
+//     res.status(400).send(error)
+//   }
+// })
+
 
 router.post('/users/me/logout', auth, async (req, res) => {
   // Log user out of the application

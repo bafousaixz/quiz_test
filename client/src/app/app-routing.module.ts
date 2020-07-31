@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { ErrorComponent } from './component/error/error.component';
-
+import { ProfileComponent } from './profile/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -17,10 +17,15 @@ const routes: Routes = [
   },
 
   {
+    path: 'profile',
+    component: ProfileComponent
+  },
+
+  {
     path: '**', 
     component: ErrorComponent
   },
-  
+
 ];
 
 @NgModule({
