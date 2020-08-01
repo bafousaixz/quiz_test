@@ -15,7 +15,7 @@ export class SigupComponent implements OnInit {
   public password: string;
   public email: string ;
   public tel: string ;
-  public image: string ;
+  public image: string = "https://res.cloudinary.com/heymarketer/image/upload/dpr_auto,w_auto,f_auto,q_auto:good/v1553089040/Testimonials/undraw_profile_pic_ic5t.svg";
 
   constructor(
    public userService: UsersService,

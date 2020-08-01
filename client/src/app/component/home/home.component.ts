@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public username:string;
+  public avatar:string;
   public token = localStorage.getItem("token")
   
   constructor(
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   get(){
     if(this.token != null){
       this.userService.getUser().subscribe(data=>{
+        this.avatar = data.Image
         this.username = data.Last_Name
        })
     }

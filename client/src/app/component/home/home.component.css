@@ -59,6 +59,7 @@ div ul li a{
 }
 
 a:hover{
+    /* background: #70a1ff; */
     transition: .5s;
 }
 
