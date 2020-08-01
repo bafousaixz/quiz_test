@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public check1 : boolean = true;
-  public check2 : boolean = false;
+  public signin : boolean = true;
+  public signup : boolean = false;
 
   ngOnInit(): void {
   }
@@ -20,13 +20,11 @@ export class LoginComponent implements OnInit {
 
 
  kt1(){
-   this.check1 = true;
-   this.check2 = false;
-   console.log(this.check1)
+   this.signin = true;
+   this.signup = false;
  }
  kt2(){
-   this.check1 = false;
-   this.check2 = true;
-   console.log(this.check1)
+   this.signin = false;
+   this.signup = true;
  }
 }

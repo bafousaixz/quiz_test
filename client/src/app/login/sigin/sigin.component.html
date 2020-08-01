@@ -1,4 +1,4 @@
-<span style= "font-family: Poppins-Regular, sans-serif; width: 150%; margin-top: -200px;" class="login100-form-title p-b-34">
+<!-- <span style= "font-family: Poppins-Regular, sans-serif; width: 150%; margin-top: -200px;" class="login100-form-title p-b-34">
     Account Login
 </span>
   
@@ -16,4 +16,33 @@
     <button  (click)="signin()" class="login100-form-btn"  >
      <a  tyle="color: #fff;"> Sign in</a>
     </button>
+</div> -->
+
+<h2 style="text-align: center; font-weight: bold;" class="title">Sign in</h2>
+<div class="input-field">
+  <i class="fas fa-user"></i>
+  <input type="text" placeholder="Username" [(ngModel)]="username" />
+</div>
+<div class="input-field">
+  <i class="fas fa-lock"></i>
+  <input type="password" placeholder="Password" [(ngModel)]="password" />
+</div>
+<div style=" display: flex; justify-content: center;">
+  <input type="submit" value="Login" class="btn solid" (click)="signin()" />
+</div>
+
+<p class="social-text">Or Sign in with social platforms</p>
+<div class="social-media">
+  <a href="#" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="#" class="social-icon">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="#" class="social-icon">
+    <i class="fab fa-google"></i>
+  </a>
+  <a href="#" class="social-icon">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
 </div>
