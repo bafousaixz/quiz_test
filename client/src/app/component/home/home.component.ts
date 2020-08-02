@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.get();
     // console.log(this.username)
   }

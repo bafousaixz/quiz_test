@@ -1,16 +1,17 @@
 <!-- bradcam_area  -->
-<div class="bradcam_area bradcam_bg_1">
+<div *ngIf="user" class="bradcam_area bradcam_bg_1">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="bradcam_text text-center">
-                    <img style="border: 10px solid #ecf0f1; border-radius: 50%; width: 200px;"  src="{{user.Image}}">
-                    <!-- <img style="border: 10px solid #ecf0f1; border-radius: 50%;" *ngIf="imageSrc" src="{{imageSrc}}">  -->
-                    <h3>ten user</h3>
+                    <!-- <img style="border: 10px solid #ecf0f1; border-radius: 50%; width: 200px;"  src="{{user.Image}}"> -->
+                    <img style="width: 200px; margin-top: 200px;" src="{{avatar}}" alt="" id="img">
+                    <h3>{{user.username}}</h3>
                     <h6 class="m-t-2">Upload a different photo</h6>
                     <label style="width: 30%;"  class="custom-file">
-                        <input type="file" id="file" class="custom-file-input"  > 
+                        <input  (change)="onUploadChange($event)" type="file" id="file" class="custom-file-input"  > 
                         <span class="custom-file-control">Choose file</span>
+                        <button (click)="edit()" type="button"> upload</button>
                     </label>
                 </div>
             </div>
@@ -31,7 +32,7 @@
                 </li>
             </ul>
             <div class="tab-content p-b-3">
-                <div class="tab-pane active " id="profile">
+                <div *ngIf="user" class="tab-pane active " id="profile">
                     <h4 class="m-y-2">User Profile</h4>
                     <div class="row">
                         <div *ngIf="user" style="width: 400px;" class="col-md-6">
@@ -41,12 +42,12 @@
                             </p>
                             <h6>Email</h6>
                             <p>
-                                <!-- {{user.Email}} -->
+                                {{user.Email}}
                             </p>
                         </div>
                         <div class="col-md-6">
                             <h6>Tel</h6>
-                                <!-- {{user.Tel}} -->
+                                {{user.Tel}}
                             <hr>
 
                         </div>
@@ -68,26 +69,26 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">First Name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="first-name" >
+                                <input class="form-control" type="first-name" name="firstname" [(ngModel)]="firstname" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Last Name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text"  name ="last-name">
+                                <input class="form-control" type="text"  name ="lastname" [(ngModel)]="lastname" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="email" >
+                                <input class="form-control" type="text" value="" name ="email" [(ngModel)]= "email" >
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Tel</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="email" >
+                                <input class="form-control" type="text" value="" name ="tel" [(ngModel)]="tel" >
                             </div>
                         </div>
                     
@@ -96,7 +97,7 @@
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                             
-                                <input type="button" class="btn btn-primary"  value="Save Changes">
+                                <input (click)="edit()" type="button" class="btn btn-primary"  value="Save Changes">
                             </div>
                         </div>
                     </form>

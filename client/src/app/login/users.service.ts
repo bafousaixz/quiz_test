@@ -4,6 +4,12 @@ import { User } from './user.model.js';
 import { Signin } from './signin.model'
 import { Observable, of } from 'rxjs';
 
+const token = localStorage.getItem("token")
+const httpOptions = {
+ headers: new HttpHeaders({
+    "Authorization":  token
+ })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -27,20 +33,12 @@ export class UsersService {
   }
 
   getUser():Observable<any>{
-    const token = localStorage.getItem("token")
-    const httpOptions = {
-     headers: new HttpHeaders({
-        "Authorization":  token
-     })
-    };
-    
-    console.log(token)
     return this.http.get<any>(this.get, httpOptions)
   }
 
-  // editProfile(user: User): Observable<User>{
-  //   return this.http.put<User>(this.get, user, httpOptions)
-  // }
+  editProfile(user: User): Observable<User>{
+    return this.http.put<User>(this.get, user, httpOptions)
+  }
 
   }
 
