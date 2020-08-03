@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     text-transform: none;
@@ -9,9 +8,7 @@
     list-style: none;
 }
 
-
-
-.top{
+.top {
     background: url("../../../assets/banner2.jpg");
     background-size: cover;
     background-position: center;
@@ -19,22 +16,23 @@
     position: relative;
 }
 
-label img{
+label img {
     width: 20%;
     margin-left: 100px;
 }
 
-div ul{
+div ul {
     float: right;
     margin-right: 10%;
 }
 
-div ul li{
+div ul li {
     display: inline-block;
     line-height: 130px;
     margin: 0 5px;
 }
-div ul li a{
+
+div ul li a {
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -44,7 +42,7 @@ div ul li a{
     font-family: 'Montserrat', sans-serif;
 }
 
-.login{
+.login {
     color: white;
     font-size: 13px;
     font-weight: bold;
@@ -54,16 +52,76 @@ div ul li a{
     padding: 10px 25px;
     margin: 10px 50px 0px -30px;
     border: 1px solid blue;
-    background-color: rgba(153, 128, 250,1.0);
+    background-color: rgba(153, 128, 250, 1.0);
     border-radius: 5px;
 }
 
-a:hover{
+a:hover {
     /* background: #70a1ff; */
     transition: .5s;
 }
 
-.check-btn{
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.check-btn {
     font-size: 20px;
     float: left;
     color: white;
@@ -72,86 +130,81 @@ a:hover{
     cursor: pointer;
     display: none;
 }
-#check{
+
+#check {
     display: none;
 }
 
-@media (max-width: 1100px){
-    label img{
+@media (max-width: 1100px) {
+    label img {
         width: 20%;
     }
-    div ul li{
+    div ul li {
         line-height: 80px;
     }
-    div ul li a{
+    div ul li a {
         font-size: 13px;
     }
-    .login{
+    .login {
         font-size: 13px;
         padding: 8px 16px;
     }
 }
 
-@media (max-width: 720px){
-    label img{
+@media (max-width: 720px) {
+    label img {
         width: 200px;
         display: block;
         margin-left: auto;
         margin-right: auto;
-   
     }
-    img{
+    img {
         vertical-align: middle;
     }
-
-    .check-btn{
+    .check-btn {
         display: block;
     }
-    ul{
+    ul {
         position: fixed;
         width: 100%;
         height: 100vh;
-        background: rgba(52, 73, 94,0.5);
+        background: rgba(52, 73, 94, 0.5);
         top: 80px;
         left: -100%;
         text-align: center;
         transition: all .5s;
     }
-    div ul li{
+    div ul li {
         display: block;
         margin: 50px 0;
         line-height: 30px;
     }
-    .login{
+    .login {
         font-size: 10px;
         padding: 6px 13px;
     }
-
-    
-    div ul li a{font-size: 20px;}
-    #check:checked ~ ul{
+    div ul li a {
+        font-size: 20px;
+    }
+    #check:checked~ul {
         left: 0;
     }
-    #check:checked  ~ .note h1{
+    #check:checked~.note h1 {
         visibility: hidden;
     }
-
-   
 }
 
-.note{
+.note {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.note h1{
+.note h1 {
     color: #fff;
     text-transform: uppercase;
     font-family: 'Archivo Black', sans-serif;
     font-size: 3vh;
     text-align: center;
 }
-
-

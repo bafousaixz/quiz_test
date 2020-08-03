@@ -5,16 +5,17 @@
     </label>
 
 
-   <a *ngIf="!username" class="login" routerLink="/login">Login</a>
+    <a *ngIf="!username" class="login" routerLink="/login">Login</a>
 
-   <div style="background: none; border: none;" *ngIf="username" class="dropdown login">
-    <img style="width: 25px;" src="{{avatar}}" />
-        <button style="background: none; border: none; outline: 0 !important;"  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+    <div style="background: none; border: none;" *ngIf="username" class="dropdown login">
+        <img style="width: 25px; height: 25px; border-radius: 50%;" src="{{avatar}}" />
+        <button style="background: none; border: none; outline: 0; color: #ffffff;">
           Hello {{username}}
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" routerLink="/profile" >Profile</a>
-        <button (click)="logout()" class="dropdown-item">Logout</button>
+        <div class="dropdown-content">
+            <a class="dropdown-item" routerLink="/profile">Profile</a>
+            <a (click)="logout()" class="dropdown-item" routerLink="/">Logout</a>
         </div>
     </div>
 
@@ -23,10 +24,9 @@
         <li><a href="#">Nani</a></li>
         <li><a href="#">Nani</a></li>
     </ul>
-    
-    
+
+
     <div class="note">
         <h1>Test Online</h1>
     </div>
-</div> 
-
+</div>

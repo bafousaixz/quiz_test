@@ -5,7 +5,7 @@
                 <img *ngIf="!image" src="{{avatar}}" alt="no image">
                 <img *ngIf="image" src="{{image}}" alt="no image">
                 <div class="change">
-                    <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg"  > 
+                    <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
                     <i class="fas fa-camera"></i>
                     <button *ngIf="image" (click)="onUpload()" type="button">Save image</button>
                 </div>
@@ -16,7 +16,7 @@
     <div class="bottom">
         <div class="control">
             <button [ngClass]="{ 'event1' : profile1 == true}" class="button" (click)="profile()" type="button"><i class="fas fa-id-badge"></i> Profile</button>
-            <button [ngClass]="{ 'event1' : profile1 == false}" class="button"  (click)="edit()" type="button"><i class="fas fa-user-edit"></i> Edit</button>
+            <button [ngClass]="{ 'event1' : profile1 == false}" class="button" (click)="edit()" type="button"><i class="fas fa-user-edit"></i> Edit</button>
             <div class="banner"></div>
 
         </div>
@@ -36,51 +36,31 @@
                 </div>
             </div>
 
-            <div *ngIf="profile1 == false" class="row">
-               <form novalidate [formGroup]="profileUser" (ngSubmit)="onUpload()">
-                    <div class="col-md-4">
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label"> User name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" name ="username" readonly formControlName="username" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">First Name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="first-name" name="firstname" formControlName="firstname" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Last Name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text"  name ="lastname" formControlName="lastname" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Email</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="email" formControlName="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Tel</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="tel" formControlName="tel" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <button type="submit" >save</button>
-                            </div>
-                        </div>
+            <div *ngIf="profile1 == false">
+                <form class="form1" novalidate [formGroup]="profileUser" (ngSubmit)="onUpload()">
+                    <div class="col-md-5">
+                        First Name:
+                        <input class="form-control" type="text" name="username" formControlName="firstname">
                     </div>
-               </form>
+                    <div class="col-md-5">
+                        Last Name:
+                        <input class="form-control" type="first-name" name="firstname" formControlName="lastname">
+                    </div>
+                    <div class="col-md-5">
+                        Email:
+                        <input class="form-control" type="text" name="username" formControlName="email">
+                    </div>
+                    <div class="col-md-5">
+                        Tel:
+                        <input class="form-control" type="text" name="username" formControlName="tel">
+                    </div>
+                    <div class="col-md4">
+                        <button type="submit">save</button>
+                    </div>
+                </form>
             </div>
 
-            <img  src="../../../assets/profile2.svg" alt="no image">
+            <img src="../../../assets/profile2.svg" alt="no image">
         </div>
     </div>
 </div>
-
