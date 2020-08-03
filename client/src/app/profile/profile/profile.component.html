@@ -1,112 +1,86 @@
-<!-- bradcam_area  -->
-<div *ngIf="user" class="bradcam_area bradcam_bg_1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="bradcam_text text-center">
-                    <!-- <img style="border: 10px solid #ecf0f1; border-radius: 50%; width: 200px;"  src="{{user.Image}}"> -->
-                    <img style="width: 200px; margin-top: 200px;" src="{{avatar}}" alt="" id="img">
-                    <h3>{{user.username}}</h3>
-                    <h6 class="m-t-2">Upload a different photo</h6>
-                    <label style="width: 30%;"  class="custom-file">
-                        <input  (change)="onUploadChange($event)" type="file" id="file" class="custom-file-input"  > 
-                        <span class="custom-file-control">Choose file</span>
-                        <button (click)="edit()" type="button"> upload</button>
-                    </label>
+<div *ngIf="user" class="container1">
+    <div class="top">
+        <div class="bia">
+            <div class="avatar">
+                <img *ngIf="!image" src="{{avatar}}" alt="no image">
+                <img *ngIf="image" src="{{image}}" alt="no image">
+                <div class="change">
+                    <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg"  > 
+                    <i class="fas fa-camera"></i>
+                    <button *ngIf="image" (click)="onUpload()" type="button">Save image</button>
                 </div>
             </div>
+            <h3> {{user.First_Name}} {{user.Last_Name}}</h3>
         </div>
     </div>
-</div>
+    <div class="bottom">
+        <div class="control">
+            <button [ngClass]="{ 'event1' : profile1 == true}" class="button" (click)="profile()" type="button"><i class="fas fa-id-badge"></i> Profile</button>
+            <button [ngClass]="{ 'event1' : profile1 == false}" class="button"  (click)="edit()" type="button"><i class="fas fa-user-edit"></i> Edit</button>
+            <div class="banner"></div>
 
-
-<div style="height: 900px;" class="container">
-    <div class="row m-y-2">
-        <div>
-            <ul style="margin-bottom: 40px;"  class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li>
-            </ul>
-            <div class="tab-content p-b-3">
-                <div *ngIf="user" class="tab-pane active " id="profile">
-                    <h4 class="m-y-2">User Profile</h4>
-                    <div class="row">
-                        <div *ngIf="user" style="width: 400px;" class="col-md-6">
-                            <h6>Full Name</h6>
-                            <p>
-                               {{user.First_Name}} {{user.Last_Name}}
-                            </p>
-                            <h6>Email</h6>
-                            <p>
-                                {{user.Email}}
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Tel</h6>
-                                {{user.Tel}}
-                            <hr>
-
-                        </div>
-                       
-                    </div>
-            
+        </div>
+        <div class="select">
+            <div *ngIf="profile1 == true" class="row">
+                <div class="col-md-4">
+                    <h6>User Name: </h6>
+                    <p>{{user.username}}</p>
+                    <h6>Full Name: </h6>
+                    <p>{{user.First_Name}} {{user.Last_Name}}</p>
                 </div>
-    
-                <div class="tab-pane" id="edit">
-                    <h4 class="m-y-2">Edit Profile</h4>
-                    <form role="form">
-                      
+                <div class="col-md-4">
+                    <h6>Email: </h6>
+                    <p>{{user.Email}}</p>
+                    <h6>Tel: </h6>
+                    <p>{{user.Tel}}</p>
+                </div>
+            </div>
+
+            <div *ngIf="profile1 == false" class="row">
+               <form novalidate [formGroup]="profileUser" (ngSubmit)="onUpload()">
+                    <div class="col-md-4">
                         <div class="form-group row">
                             <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label"> User name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" name ="username" readonly [(ngModel)]="username" >
+                                <input class="form-control" type="text" name ="username" readonly formControlName="username" >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">First Name</label>
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">First Name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="first-name" name="firstname" [(ngModel)]="firstname" >
+                                <input class="form-control" type="first-name" name="firstname" formControlName="firstname" >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Last Name</label>
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Last Name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text"  name ="lastname" [(ngModel)]="lastname" >
+                                <input class="form-control" type="text"  name ="lastname" formControlName="lastname" >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="email" [(ngModel)]= "email" >
+                                <input class="form-control" type="text" value="" name ="email" formControlName="email">
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Tel</label>
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label">Tel</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" name ="tel" [(ngModel)]="tel" >
+                                <input class="form-control" type="text" value="" name ="tel" formControlName="tel" >
                             </div>
                         </div>
-                    
-
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <label style="width: 200px;" class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                            
-                                <input (click)="edit()" type="button" class="btn btn-primary"  value="Save Changes">
+                                <button type="submit" >save</button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+               </form>
             </div>
+
+            <img  src="../../../assets/profile2.svg" alt="no image">
         </div>
-        <div class="col-lg-4 pull-lg-8 text-xs-center">
-            <!-- <img src="assets/fox1.jpg"> -->
-        </div> 
     </div>
 </div>
-<hr>
+
