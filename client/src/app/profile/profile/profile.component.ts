@@ -18,6 +18,10 @@ export class ProfileComponent implements OnInit {
 
   public username: string
   public password: string
+  public firstname: string
+  public lastname: string
+  public email: string 
+  public tel: string
   public image: string
   public avatar: string
 
@@ -40,7 +44,6 @@ export class ProfileComponent implements OnInit {
   
     if (file) {
       const reader = new FileReader();
-  
       reader.onload = this.handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
@@ -50,7 +53,6 @@ export class ProfileComponent implements OnInit {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result)
   }
-
 
   get(){
     if(this.token != null ){
@@ -64,22 +66,22 @@ export class ProfileComponent implements OnInit {
 
   initForm(){
     this.profileUser = this.fb.group({
-      'firstname': '' ,
-      'lastname' : '',
-      'username' : '',
-      'email' : '',
-      'tel' : '',
+      firstname : '' ,
+      lastname : '',
+      username : '',
+      email: '',
+      tel : '',
     });
   }
 
   onUpload(){
     let profile : User = {
-      First_Name: this.profileUser.value.firstname,
-      Last_Name : this.profileUser.value.lastname,
+      First_Name: this.firstname,
+      Last_Name : this.lastname,
       username: this.username,
       hash: this.password,
-      Email: this.profileUser.value.email,
-      Tel: this.profileUser.value.tel,
+      Email: this.email,
+      Tel: this.tel,
       Image: this.image
     };
     console.log(profile)

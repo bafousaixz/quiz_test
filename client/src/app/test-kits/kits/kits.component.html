@@ -1,0 +1,22 @@
+<div style="background: burlywood; width: 100%; height: 20vh;"> header
+</div>
+<div class="mid">
+    <div class="content">
+        <div *ngIf="resource" class="flexbox">
+            <a *ngFor="let r of resource" href="#" class="box">
+                {{r.name}}
+            </a>
+            <a class="box">
+                <label (click)="up()" for="check" class="check-btn">
+                   +
+                </label>
+
+            </a>
+
+        </div>
+
+        <div class="popup">
+            <i class="far fa-window-close"></i> *ngIf="popup"
+        </div>
+    </div>
+</div>

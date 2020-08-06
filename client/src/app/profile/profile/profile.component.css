@@ -102,7 +102,7 @@
 
 .bottom {
     width: 100%;
-    height: 50vh;
+    height: 55vh;
     margin-top: 100px;
     overflow: hidden;
 }
@@ -131,17 +131,20 @@
     border: none;
     outline: none;
     font-weight: bold;
+    transform: .5s;
 }
 
 .event1 {
-    border-bottom: 5px solid #fbc531;
-    transform: .5s;
+    border: 5px solid #fbc531;
+    background: #fbc531;
+    color: #ffffff;
 }
 
 .select {
     width: 75%;
     height: 60vh;
     float: right;
+    /* border-left: 5px solid #fbc531; */
 }
 
 .select img {
@@ -164,7 +167,7 @@
 }
 
 .form1 {
-    margin-left: 50px;
+    margin-left: 100px;
 }
 
 .form1 button {
