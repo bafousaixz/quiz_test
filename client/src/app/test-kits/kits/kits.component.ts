@@ -9,8 +9,12 @@ import { resourceModel } from '../resource.model';
   styleUrls: ['./kits.component.css']
 })
 export class KitsComponent implements OnInit {
+  public popup: string;
+
+
   public resource: resourceModel;
-  public popup: string
+  public name: string;
+ 
   constructor(
     private service: TestsService,
   ) { }
@@ -18,15 +22,38 @@ export class KitsComponent implements OnInit {
   ngOnInit(): void {
     this.get();
   }
-  up(){
-    this.popup = 'oke'
-  }
-
+ 
   get(){
     this.service.getReource().subscribe(data =>{
       console.log(data)
       this.resource = data
     })
+  }
+
+  post(){
+    let rs: resourceModel = {
+      name: this.name
+    }
+    this.service.postResource(rs).subscribe();
+    if(this.name != null){
+      this.get()
+      this.cancer()
+    }
+    else alert("null")
+  }
+
+
+
+
+
+
+
+
+  up(){
+    this.popup = 'oke'
+  }
+  cancer(){
+    this.popup =''
   }
 
 }

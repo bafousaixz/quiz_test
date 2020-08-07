@@ -73,21 +73,6 @@
     top: 0;
 }
 
-.check-btn {
-    font-size: 20px;
-    cursor: pointer;
-    display: block;
-    font-size: 300%;
-}
-
-#check {
-    display: none;
-}
-
-#check:checked~.popup h1 {
-    left: 0;
-}
-
 .popup {
     position: absolute;
     padding: 20vh 0vh;
@@ -98,4 +83,39 @@
     z-index: 999;
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+}
+
+.popup h1 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.popup button {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background: #A3CB38;
+    color: #ffffff;
+}
+
+.cancer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+}
+
+.save {
+    border-radius: 5px;
+    padding: 10px 10%;
+}
+
+.popup input {
+    width: 60%;
+    outline: none;
+    margin-bottom: 10px;
+    padding: 7px 14px;
 }

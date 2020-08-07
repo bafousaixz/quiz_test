@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KitsComponent } from './kits/kits.component';
 import { TestsService } from './tests.service'
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,6 +10,7 @@ import { TestsService } from './tests.service'
   ],
   imports: [
     CommonModule,
+    FormsModule
   ],
   providers:[
     TestsService,

@@ -14,4 +14,8 @@ export class TestsService {
   getReource(): Observable<any>{
     return this.http.get<any>(this.url)
   }
+
+  postResource(resource: resourceModel): Observable<any>{
+    return this.http.post<any>(this.url, resource)
+  } 
 }

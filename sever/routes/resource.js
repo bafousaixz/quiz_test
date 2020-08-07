@@ -8,7 +8,16 @@ router.get('/resource', async(req, res) => {
         const result = await resource.find().exec();
         res.send(result);
     } catch (error) {
-        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
+router.post('/resource', async(req, res) => {
+    try {
+        let rs = new resource(req.body)
+        let result = await rs.save();
+        res.send(result);
+    } catch (error) {
         res.status(400).send(error)
     }
 })

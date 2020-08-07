@@ -3,20 +3,15 @@
 <div class="mid">
     <div class="content">
         <div *ngIf="resource" class="flexbox">
-            <a *ngFor="let r of resource" href="#" class="box">
-                {{r.name}}
-            </a>
-            <a class="box">
-                <label (click)="up()" for="check" class="check-btn">
-                   +
-                </label>
-
-            </a>
-
+            <a *ngFor="let r of resource" href="#" class="box">{{r.name}}</a>
+            <a style="font-size: 300%;" (click)="up()" class="box">+</a>
         </div>
 
-        <div class="popup">
-            <i class="far fa-window-close"></i> *ngIf="popup"
+        <div *ngIf="popup" class="popup">
+            <h1>Add Test Resource</h1>
+            <button (click)="cancer()" class="cancer">-</button>
+            <input [(ngModel)]="name" type="text" name="resource" placeholder="Test Resource"><br>
+            <button (click)="post()" class="save" type="submit">Save</button>
         </div>
     </div>
 </div>
