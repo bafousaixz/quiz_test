@@ -12,6 +12,16 @@ router.get('/resource', async(req, res) => {
     }
 })
 
+router.get("/resource/:id", async(req, res) => {
+    try {
+        var user = await resource.findById(req.params.id).exec();
+        res.send(user);
+
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 router.post('/resource', async(req, res) => {
     try {
         let rs = new resource(req.body)
