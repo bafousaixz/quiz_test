@@ -3,7 +3,7 @@
 <div class="mid">
     <div class="content">
         <div *ngIf="resource" class="flexbox">
-            <a *ngFor="let r of resource" href="#" class="box">{{r.name}}</a>
+            <a *ngFor="let r of resource" href="/test-kits/{{r._id}}" class="box">{{r.name}}</a>
             <a style="font-size: 300%;" (click)="up()" class="box">+</a>
         </div>
 

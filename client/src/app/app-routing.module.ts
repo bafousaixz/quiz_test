@@ -5,6 +5,7 @@ import { HomeComponent } from './component/home/home.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { KitsComponent } from './test-kits/kits/kits.component';
+import { QuestionsComponent } from './test-kits/questions/questions.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'test-kits',
     component: KitsComponent
+  },
+
+  {
+    path: 'test-kits/:id',
+    component: QuestionsComponent
   },
 
   {
