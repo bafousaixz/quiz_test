@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
-import { KitsComponent } from './test-kits/kits/kits.component';
+import { ResourcesComponent } from './test-kits/resources/resources.component';
 import { QuestionsComponent } from './test-kits/questions/questions.component';
 
 const routes: Routes = [
@@ -24,12 +24,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'test-kits',
-    component: KitsComponent
+    path: 'test-resources',
+    component: ResourcesComponent
   },
 
   {
-    path: 'test-kits/:id',
+    path: 'test-resources/:id',
     component: QuestionsComponent
   },
 

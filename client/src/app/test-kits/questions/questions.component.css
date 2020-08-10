@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-questions {
+    background: url("../../../assets/question.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 30px;
+}
+
+.top-questions h1 {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 70px;
+}
+
+.mid {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.mid h1 {
+    border-bottom: 1px solid springgreen;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container-question {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.question {
+    align-items: center;
+    width: 80%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    height: auto;
+    margin: 1% 10%;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    margin: 0 auto;
+}
+
+.center {
+    width: 800%;
+    height: 300px;
+    background: #000;
+}

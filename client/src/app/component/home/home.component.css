@@ -12,7 +12,7 @@
     background: url("../../../assets/banner2.jpg");
     background-size: cover;
     background-position: center;
-    height: calc(20vh);
+    height: calc(100vh);
     position: relative;
 }
 

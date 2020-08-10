@@ -1,17 +1,44 @@
 import { Component } from '@angular/core';
-// import { Router } from '@angular/router';
+import { UsersService } from './login/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css' , './component/home/home.component.css']
 })
 export class AppComponent {
   title = 'client';
-
+  public username:string;
+  public avatar:string;
+  public token = localStorage.getItem("token")
+  
   constructor(
-    // private router :Router
+    public userService: UsersService,
+    public router: Router
   ) { 
+   
+  }
+
+  ngOnInit(): void {
+
+    this.get();
+    // console.log(this.username)
+  }
+
+  get(){
+    if(this.token != null){
+      this.userService.getUser().subscribe(data=>{
+        this.avatar = data.Image
+        this.username = data.Last_Name
+       })
+    }
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.username = "";
+    this.router.navigate(['/']);
   }
 
 }

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TestsService } from '../tests.service';
 import { resourceModel } from '../resource.model';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-kits',
-  templateUrl: './kits.component.html',
-  styleUrls: ['./kits.component.css']
+  selector: 'app-resources',
+  templateUrl: './resources.component.html',
+  styleUrls: ['./resources.component.css']
 })
-export class KitsComponent implements OnInit {
+export class ResourcesComponent implements OnInit {
+
   public popup: string;
-
-
   public resource: resourceModel;
   public name: string;
  
@@ -25,7 +24,6 @@ export class KitsComponent implements OnInit {
  
   get(){
     this.service.getReource().subscribe(data =>{
-      console.log(data)
       this.resource = data
     })
   }

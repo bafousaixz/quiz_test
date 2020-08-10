@@ -1,2 +1,18 @@
-<p>questions works!</p>
-{{id}}
+<div class="top-questions">
+    <h1>Questions</h1>
+</div>
+
+<div *ngIf="resource" class="mid">
+    <h1>Bộ câu hỏi: {{resource.name}}</h1>
+    <div class="container-question">
+        <div *ngFor="let q of question " class="question">
+            <h4>{{q.content}}</h4>
+            <img src="{{q.image}}">
+        </div>
+
+        <button class="btn" (click)="add()">Add</button>
+        <div *ngIf="add_answer" class="center">
+        </div>
+
+    </div>
+</div>
