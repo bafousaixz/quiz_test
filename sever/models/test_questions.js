@@ -17,7 +17,6 @@ const Question = new Schema({
     },
     image: {
         type: String,
-        unique: false,
         required: false
     },
     resource_id: {

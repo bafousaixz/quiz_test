@@ -3,15 +3,24 @@
 </div>
 
 <div *ngIf="resource" class="mid">
-    <h1>Bộ câu hỏi: {{resource.name}}</h1>
+    <h1>{{resource.name}}</h1>
     <div class="container-question">
-        <div *ngFor="let q of question " class="question">
-            <h4>{{q.content}}</h4>
-            <img src="{{q.image}}">
+        <div *ngFor="let q of question | filter: id " class="question">
+            <div class="content">
+                <h4>{{q.content}}</h4>
+                <img src="{{q.image}}">
+            </div>
         </div>
 
-        <button class="btn" (click)="add()">Add</button>
-        <div *ngIf="add_answer" class="center">
+        <button class="btn" (click)="add()">Add questions</button>
+        <div class="center">
+            <h2>Content:</h2>
+            <div class="content-questions">
+                <input name="content" type="text" class="ct" [(ngModel)]="content">
+                <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
+                <img style="height: auto;" src="{{image}}" alt="no image">
+                <button (click)="postQuestion()" class="btn"> Save</button>
+            </div>
         </div>
 
     </div>

@@ -18,6 +18,7 @@ router.post('/questions', async(req, res) => {
         let result = await rs.save();
         res.send(result);
     } catch (error) {
+        console.log(error)
         res.status(400).send(error)
     }
 })

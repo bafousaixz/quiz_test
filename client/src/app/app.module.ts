@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './profile/profile.module'
 import { LoginModule } from './login/login.module';
 import { TestKitsModule } from  './test-kits/test-kits.module';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -25,7 +25,7 @@ import { UsersService } from 'src/app/login/users.service';
     LoginModule,
     ProfileModule,
     TestKitsModule,
-    Ng2SearchPipeModule,
+   
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

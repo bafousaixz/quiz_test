@@ -7,11 +7,13 @@ import { TestsService } from './tests.service'
 import { FormsModule } from '@angular/forms';
 import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     QuestionsComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
