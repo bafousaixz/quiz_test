@@ -4,22 +4,23 @@ var Schema = Mongoose.Schema;
 
 //connect DB
 var url = 'mongodb://localhost:27017/mydb';
-Mongoose.connect(url, {
+db = Mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
 })
 
+
 const Question = new Schema({
-    content: {
+    Content: {
         type: String,
         unique: true,
         required: true
     },
-    image: {
+    Img: {
         type: String,
-        required: false
+        required: false,
     },
-    resource_id: {
+    Resource_id: {
         type: String,
         require: true
     }

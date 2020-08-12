@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result)
+    console.log(this.image)
   }
 
   get(){

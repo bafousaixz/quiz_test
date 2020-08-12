@@ -3,23 +3,54 @@
 </div>
 
 <div *ngIf="resource" class="mid">
-    <h1>{{resource.name}}</h1>
-    <div class="container-question">
-        <div *ngFor="let q of question | filter: id " class="question">
-            <div class="content">
-                <h4>{{q.content}}</h4>
-                <img src="{{q.image}}">
-            </div>
+
+    <div id="center">
+        <button (click)="cancer_add()" class="btn-question" style="float: right;">cancer</button>
+        <h2>Add question:</h2>
+        <div class="content-questions">
+            <input name="content" type="text" class="ct" [(ngModel)]="content">
+            <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
+            <img style="margin-left: 50px;" src="{{image}}" alt="">
+            <button *ngIf="content" (click)="postQuestion()" class="btn aaa"> Save</button>
+        </div>
+    </div>
+
+    <div id="resource-zone">
+        <img src="https://cdn.bongdaplus.vn/Assets/Media/2020/07/08/66/yasuo0.jpg" alt="">
+        <h1>{{resource.name}}</h1>
+    </div>
+
+    <div class="question-zone">
+        <div id="add-question">
+            <button (click)="add()" *ngIf="!add_answer" class="btn-question">add</button>
         </div>
 
-        <button class="btn" (click)="add()">Add questions</button>
-        <div class="center">
-            <h2>Content:</h2>
-            <div class="content-questions">
-                <input name="content" type="text" class="ct" [(ngModel)]="content">
-                <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
-                <img style="height: auto;" src="{{image}}" alt="no image">
-                <button (click)="postQuestion()" class="btn"> Save</button>
+        <div class="container-question">
+            <div *ngFor="let q of question | filter: id " class="question">
+                <div class="content">
+                    <div class="right-zone">
+                        <button (click)="showAnswer(q._id)" class="btn-question">edit</button>
+                        <button (click)="deleteQuestion(q._id)" class="btn-question">remove</button>
+                        <h5 style="margin: 5px;">Level: ez</h5>
+                    </div>
+                    <p style="margin-bottom: 20px;">{{q.Content}}</p>
+                    <img src="{{q.Img}}">
+
+                    <div *ngIf=" viewAnswer === q._id" style="height: auto; width: 100%">
+                        <input type="text" name="content" [(ngModel)]="q.Content">
+                        <img src="{{q.Img}}">
+                        <ul>
+                            <li>answer 1</li>
+                            <li>answer 2</li>
+                            <li>answer 3</li>
+                        </ul>
+                        <div>
+                            <button (click)="showAnswer(q._id)" class="btn-question">save</button>
+                            <button (click)="cancer()" class="btn-question">cancer</button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
 

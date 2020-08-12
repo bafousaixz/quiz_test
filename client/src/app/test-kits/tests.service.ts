@@ -32,4 +32,10 @@ export class TestsService {
   postQuestion(question: questionModel): Observable<any>{
     return this.http.post<any>(this.url_question, question)
   }
+
+  deleteQuestion(id: string): Observable<any>{
+    return this.http.delete<any>(this.url_question+ id)  
+  }
+  
+
 }
