@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TestsService } from '../tests.service';
-import { resourceModel } from '../resource.model';
+import { ResourceService } from '../_service/resource.service'
+import { resourceModel } from '../_model/resource.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class ResourcesComponent implements OnInit {
   public name: string;
  
   constructor(
-    private service: TestsService,
+    private service: ResourceService,
   ) { }
 
   ngOnInit(): void {

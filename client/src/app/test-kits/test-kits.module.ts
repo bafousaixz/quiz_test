@@ -3,26 +3,27 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 
-import { TestsService } from './tests.service'
+import { ResourceService } from './_service/resource.service'
 import { FormsModule } from '@angular/forms';
 import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { FilterPipe } from './filter.pipe';
+import { AnswersComponent } from './answers/answers.component';
 
 @NgModule({
   declarations: [
     QuestionsComponent,
     ResourcesComponent,
-    FilterPipe
+    FilterPipe,
+    AnswersComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-
   ],
   providers:[
-    TestsService,
+    ResourceService,
   ]
 })
 export class TestKitsModule { }

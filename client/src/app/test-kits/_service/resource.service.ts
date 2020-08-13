@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { resourceModel } from './resource.model';
-import { questionModel } from './question.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+
+import { resourceModel } from '../_model/resource.model';
+
 @Injectable({
   providedIn: 'root'
 })
-export class TestsService {
+export class ResourceService {
   url = "http://localhost:3000/resource/"
-  url_question = "http://localhost:3000/questions/"
+
   constructor(
     private http: HttpClient
   ) { }
@@ -25,17 +26,6 @@ export class TestsService {
     return this.http.post<any>(this.url, resource)
   } 
 
-  getQuestion(): Observable<any>{
-    return this.http.get<any>(this.url_question)
-  }
 
-  postQuestion(question: questionModel): Observable<any>{
-    return this.http.post<any>(this.url_question, question)
-  }
-
-  deleteQuestion(id: string): Observable<any>{
-    return this.http.delete<any>(this.url_question+ id)  
-  }
-  
 
 }

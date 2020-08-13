@@ -50,10 +50,10 @@
     margin: 2% 10%;
     padding: 20px;
     transition: 1s;
-    z-index: 1;
+    z-index: 2;
     background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
 }
 
 .content-questions {
@@ -117,9 +117,8 @@ img {
     height: auto;
     top: 22vh;
     min-height: 50px;
-    background-color: #A3CB38;
+    background-color: #ffffff;
     z-index: 1;
-    transform: -10s;
 }
 
 .btn-question {
@@ -150,6 +149,12 @@ img {
     min-height: 100px;
     margin: 1% 5%;
     overflow: hidden;
+}
+
+#edit {
+    height: auto;
+    width: 100%;
+    transition: 1s;
 }
 
 .content {

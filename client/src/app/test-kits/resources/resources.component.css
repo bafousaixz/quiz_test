@@ -40,6 +40,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: stretch;
+    gap: 20px;
 }
 
 .box {

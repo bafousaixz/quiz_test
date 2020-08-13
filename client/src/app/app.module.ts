@@ -12,6 +12,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { UsersService } from 'src/app/login/users.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +26,10 @@ import { UsersService } from 'src/app/login/users.service';
     LoginModule,
     ProfileModule,
     TestKitsModule,
-   
   ],
-  providers: [UsersService],
+  providers: [
+    UsersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

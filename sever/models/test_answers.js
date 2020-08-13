@@ -10,22 +10,22 @@ db = Mongoose.connect(url, {
 })
 
 
-const Question = new Schema({
+const Answer = new Schema({
     Content: {
         type: String,
         unique: true,
         required: true
     },
-    Img: {
-        type: String,
-        required: false,
+    Right: {
+        type: Boolean,
+        required: true,
     },
-    Resource_id: {
+    Question_id: {
         type: String,
         require: true
     }
 });
 
-questions = Mongoose.model("questions", Question)
+answers = Mongoose.model("answers", Answer)
 
-module.exports = questions;
+module.exports = answers;

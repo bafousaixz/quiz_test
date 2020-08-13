@@ -1,0 +1,10 @@
+<div class="answer">
+    <ul *ngFor="let a of answer | filter: id">
+        <li>
+            <input type="checkbox" [(ngModel)]="a.Right" [ngModelOptions]="{standalone: true}"> {{a.Content}}
+        </li>
+
+    </ul>
+    <input type="text" [(ngModel)]="content" class="add_ws">
+    <button (click)="postAnswer()" class="btn">add</button>
+</div>

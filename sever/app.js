@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var resourceRouter = require('./routes/resource');
 var questionRouter = require('./routes/questions');
+var answerRouter = require('./routes/answers');
 
 var app = express();
 
@@ -37,7 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', resourceRouter);
-app.use('/', questionRouter)
+app.use('/', questionRouter);
+app.use('/', answerRouter);
 
 
 

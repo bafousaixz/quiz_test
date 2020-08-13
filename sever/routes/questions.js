@@ -14,7 +14,19 @@ router.get('/questions', async(req, res) => {
 
 router.post('/questions', async(req, res) => {
     try {
-        let rs = new questions(req.body)
+        let rs = new questions(req.body);
+        let result = await rs.save();
+        res.send(result);
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
+router.put('/questions/:id', async(req, res) => {
+    try {
+        let rs = await questions.findById(req.params.id).exec();
+        rs.set(req.body);
         let result = await rs.save();
         res.send(result);
     } catch (error) {
