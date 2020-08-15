@@ -21,7 +21,11 @@ export class AnswerService {
     }
 
     putAnswer(answer: answerModel): Observable<any>{
-      return this.http.put<any>(`${this.url} ${answer._id}`, answer)
+      return this.http.put<any>(`${this.url}${answer._id}`, answer)
+    }
+
+    deleteAnswer(id: string): Observable<any>{
+      return this.http.delete<any>(this.url + id)
     }
 
 }

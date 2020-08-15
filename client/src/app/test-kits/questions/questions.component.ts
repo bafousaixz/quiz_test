@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
 
-import { ResourceService } from  '../_service/resource.service';
 import { QuestionService } from '../_service/question.service';
-import { resourceModel } from '../_model/resource.model';
 import { questionModel } from '../_model/question.model';
 
 @Component({
@@ -21,27 +19,16 @@ export class QuestionsComponent implements OnInit {
   public image: string;
   public content: string;
   public id = this.route.snapshot.paramMap.get('id');
-  public resource: resourceModel;
-  public question: questionModel;
+  public question: questionModel[];
+  public qs: questionModel;
 
   constructor(
-    public resourceService: ResourceService,
     public questionService: QuestionService,
     public route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-  
-    this.getResource();
-    this.getQuestion();
-
-  }
-
-  getResource(){
-    const id = this.route.snapshot.paramMap.get('id');
-    this.resourceService.getReourceId(id).subscribe(data =>{
-      this.resource = data
-    })
+    this.getQuestion()
   }
   
   getQuestion(){
@@ -58,28 +45,39 @@ export class QuestionsComponent implements OnInit {
       Resource_id: this.id
     }
     this.questionService.postQuestion(q).subscribe()
-    window.location.reload();
+    this.getQuestion();
+    this. cancer_add();
   }
 
   putQuestion(){
     let q: questionModel = {
       _id: this.id_question,
-      Content: this.question.Content,
-      Img: this.image,
+      Content: this.qs.Content,
+      Img: this.qs.Img,
       Resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe()
-    window.location.reload()
+    this.questionService.putQuestion(q).subscribe(data=>{
+      const index = this.update(this.qs._id);
+      this.qs[index] = data;
+    })
+    this.cancer();
   }
 
   deleteQuestion(id: string){
-    if(confirm("Sure?")){
-      this.questionService.deleteQuestion(id).subscribe()
-      window.location.reload()
-    }
-    else{
-      alert("ERROR")
-    }
+    this.questionService.deleteQuestion(id).subscribe(data=>{
+      this.getQuestion();
+    })
+  }
+
+//update value
+  update(id: string) {
+    let result = 0;
+    this.question.forEach((q, index) =>{
+      if(q._id == id){
+        result = index;
+      }
+    })
+    return result;
   }
 
 
@@ -103,23 +101,21 @@ export class QuestionsComponent implements OnInit {
     let left = document.getElementById("resource-zone").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       btn.position = "fixed";
-      btn.top = "0";
-      btn.backgroundColor="#A3CB38";
+      btn.top = "-2px";
       left.position = "fixed";
-      left.top = "-2vh";
+      left.top = "0";
     } else {
       btn.position = "absolute";
-      btn.top = "22vh";
-      btn.backgroundColor="#ffffff"
+      btn.top = "20vh";
       left.position = "absolute";
       left.top = "22vh";
     }
   } 
 
   //Handle UI
-  showAnswer(id: string, q: questionModel){
-    this.id_question = id;
-    this.question = q;
+  showAnswer(q: questionModel){
+    this.qs = q;
+    this.id_question=this.qs._id
   }
 
   add(){

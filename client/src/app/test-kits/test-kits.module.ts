@@ -9,13 +9,15 @@ import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { FilterPipe } from './filter.pipe';
 import { AnswersComponent } from './answers/answers.component';
+import { ResourceComponent } from './questions/resource/resource.component';
 
 @NgModule({
   declarations: [
     QuestionsComponent,
     ResourcesComponent,
     FilterPipe,
-    AnswersComponent
+    AnswersComponent,
+    ResourceComponent
   ],
   imports: [
     CommonModule,

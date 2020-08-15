@@ -40,6 +40,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: stretch;
+    /* grid-template-columns: 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px; */
     gap: 20px;
 }
 

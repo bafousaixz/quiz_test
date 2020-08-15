@@ -16,14 +16,10 @@ export class AppComponent {
   constructor(
     public userService: UsersService,
     public router: Router
-  ) { 
-   
-  }
+  ) {}
 
   ngOnInit(): void {
-
     this.get();
-    // console.log(this.username)
   }
 
   get(){

@@ -1,9 +1,24 @@
+.answer {
+    margin: 5%;
+}
+
 li {
     list-style: none;
     margin-left: 20px;
 }
 
 .add_ws {
-    margin-left: 7%;
+    margin-left: 60px;
     margin-bottom: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid springgreen;
+}
+
+.cont {
+    border: none;
+    outline: none;
+    width: auto;
+    min-width: 50x;
+    transition: 1s;
 }

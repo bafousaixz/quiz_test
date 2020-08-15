@@ -13,7 +13,6 @@ db = Mongoose.connect(url, {
 const Answer = new Schema({
     Content: {
         type: String,
-        unique: true,
         required: true
     },
     Right: {

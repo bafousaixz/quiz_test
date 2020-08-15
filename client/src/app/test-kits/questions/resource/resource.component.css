@@ -1,0 +1,11 @@
+img {
+    margin-bottom: 20px;
+    max-height: 100px;
+    max-width: 80%;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

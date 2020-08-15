@@ -1,55 +1,55 @@
-<div class="top-questions">
-    <h1>Questions</h1>
-</div>
+<div style="  background: #f5f6fa; height: auto;">
+    <div class="top-questions">
+        <h1>Questions</h1>
+    </div>
 
-<div *ngIf="resource" class="mid">
-
-    <div id="center">
-        <button (click)="cancer_add()" class="btn-question" style="float: right;">cancer</button>
-        <h2>Add question:</h2>
-        <div class="content-questions">
-            <textarea name="content" type="text" class="ct" [(ngModel)]="content"></textarea>
-            <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
-            <img style="margin-left: 50px;" src="{{image}}" alt="">
-            <button *ngIf="content" (click)="postQuestion()" class="btn aaa"> Save</button>
+    <div class="mid">
+        <div id="center">
+            <button (click)="cancer_add()" class="btn-question" style="float: right;">cancer</button>
+            <h2>Add question:</h2>
+            <div class="content-questions">
+                <textarea name="content" type="text" class="ct" [(ngModel)]="content"></textarea>
+                <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
+                <img style="margin-left: 5%;" src="{{image}}" alt="">
+                <button (click)="postQuestion()" class="aaa"> Save</button>
+            </div>
         </div>
-    </div>
-
-    <div id="resource-zone">
-        <img src="https://cdn.bongdaplus.vn/Assets/Media/2020/07/08/66/yasuo0.jpg" alt="">
-        <h1>{{resource.name}}</h1>
-    </div>
-
-    <div class="question-zone">
         <div id="add-question">
-            <button (click)="add()" *ngIf="!add_answer" class="btn-question">add</button>
+            <h3 (click)="add()" *ngIf="!add_answer" class="menu">+ Add</h3>
         </div>
 
-        <div class="container-question">
-            <div *ngFor="let q of question | filter: id " class="question">
-                <div class="content">
-                    <div *ngIf=" id_question !== q._id">
-                        <div class="right-zone">
-                            <button (click)="showAnswer(q._id, q)" class="btn-question">edit</button>
-                            <button (click)="deleteQuestion(q._id)" class="btn-question">remove</button>
-                            <h5 style="margin: 5px;">Level: ez</h5>
-                        </div>
-                        <p style="margin-bottom: 20px;">{{q.Content}}</p>
-                        <img src="{{q.Img}}">
-                    </div>
+        <div id="resource-zone">
+            <app-resource></app-resource>
+        </div>
 
-                    <div *ngIf="id_question === q._id" id="edit">
-                        <textarea type="text" name="content" [(ngModel)]="q.Content" style="outline: none;"></textarea><br>
-                        <img src="{{q.Img}}">
-                        <app-answers [id]="id_question"></app-answers>
-                        <div>
-                            <button (click)="putQuestion()" class="btn-question">save</button>
-                            <button (click)="cancer()" class="btn-question">cancer</button>
+        <div class="question-zone">
+            <div class="container-question">
+                <div *ngFor="let q of question | filter: id " class="question">
+                    <div class="content">
+                        <div *ngIf=" id_question !== q._id">
+                            <div class="right-zone">
+                                <button (click)="showAnswer(q)" class="btn-question">Edit</button>
+                                <button (click)="deleteQuestion(q._id)" class="btn-question">Remove</button>
+                                <h5 style="margin: 5px;">Level: ez</h5>
+                            </div>
+                            <p style="margin-bottom: 20px;">{{q.Content}}</p>
+                            <img src="{{q.Img}}">
+                        </div>
+                        <!-- *ngIf="id_question === q._id" -->
+                        <div *ngIf="id_question === q._id" id="edit">
+                            <textarea type="text" name="content" [(ngModel)]="q.Content" class="ct"></textarea><br>
+                            <img src="{{q.Img}}" style="margin-left: 5%;">
+                            <hr>
+                            <app-answers [id]="id_question"></app-answers>
+                            <div>
+                                <button (click)="putQuestion()" class="btn-question">Save</button>
+                                <button (click)="cancer()" class="btn-question">Cancer</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>

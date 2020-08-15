@@ -10,7 +10,8 @@ import { AnswerService } from '../_service/answer.service';
   styleUrls: ['./answers.component.css']
 })
 export class AnswersComponent implements OnInit {
-  public answer: answerModel
+  public answer: answerModel[]
+  public ans: answerModel
   public content: string
   public right: boolean = false
   public _id: string
@@ -38,18 +39,24 @@ export class AnswersComponent implements OnInit {
       Right : this.right,
       Question_id : this.id
     }
-    console.log(as)
     this.answerService.postAnswer(as).subscribe()
   }
   
 
-  putAnswer(){
+  putAnswer(a: answerModel){
     const as : answerModel = {
-      _id: this._id,
-      Content : this.content,
-      Right : this.right,
+      _id: a._id,
+      Content : a.Content,
+      Right : a.Right,
       Question_id : this.id
     }
+    this.answerService.putAnswer(as).subscribe()
   }
+
+  deleteAnswer(id: string){
+    this.answerService.deleteAnswer(id).subscribe()
+    this.getAnswer()
+  }
+
 
 }
