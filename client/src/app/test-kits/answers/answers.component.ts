@@ -40,6 +40,8 @@ export class AnswersComponent implements OnInit {
       Question_id : this.id
     }
     this.answerService.postAnswer(as).subscribe()
+    this.content=""
+    this.getAnswer()
   }
   
 
@@ -50,7 +52,7 @@ export class AnswersComponent implements OnInit {
       Right : a.Right,
       Question_id : this.id
     }
-    this.answerService.putAnswer(as).subscribe()
+    this.answerService.putAnswer(as).subscribe() 
   }
 
   deleteAnswer(id: string){

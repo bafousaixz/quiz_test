@@ -1,4 +1,4 @@
-img {
+.avatar-resource {
     margin-bottom: 20px;
     max-height: 100px;
     max-width: 80%;
@@ -8,4 +8,11 @@ h1 {
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.img {
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }

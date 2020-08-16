@@ -4,8 +4,16 @@
         <li>
             <input type="checkbox" (change)="putAnswer(a)" [(ngModel)]="a.Right" [ngModelOptions]="{standalone: true}">
             <input type="text" (input)="putAnswer(a)" [(ngModel)]="a.Content" class="cont">
-            <button (click)="deleteAnswer(a._id)" style="border: none; outline: none;">Delete</button>
+            <button (click)="deleteAnswer(a._id)" class="btn-answer">Delete</button>
         </li>
     </ul>
-    <input type="text" (change)="postAnswer()" [(ngModel)]="content" class="add_ws">
+    <ul>
+        <li>
+            <input type="checkbox" [(ngModel)]="right" [ngModelOptions]="{standalone: true}">
+            <input type="text" [(ngModel)]="content" class="add_ws">
+            <button (click)="postAnswer()" class="btn-answer"> Save </button>
+        </li>
+
+    </ul>
+
 </div>

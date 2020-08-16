@@ -9,7 +9,10 @@
             <h2>Add question:</h2>
             <div class="content-questions">
                 <textarea name="content" type="text" class="ct" [(ngModel)]="content"></textarea>
-                <input *ngIf="!image" (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
+                <div *ngIf="!image" class="input-image">
+                    <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
+                    <p>+</p>
+                </div>
                 <img style="margin-left: 5%;" src="{{image}}" alt="">
                 <button (click)="postQuestion()" class="aaa"> Save</button>
             </div>
@@ -38,12 +41,16 @@
                         <!-- *ngIf="id_question === q._id" -->
                         <div *ngIf="id_question === q._id" id="edit">
                             <textarea type="text" name="content" [(ngModel)]="q.Content" class="ct"></textarea><br>
-                            <img src="{{q.Img}}" style="margin-left: 5%;">
+                            <div class="image-question">
+                                <img *ngIf="q.Img" src="{{q.Img}}">
+                                <h4 *ngIf="!q.Img">+</h4>
+                                <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
+                            </div>
                             <hr>
-                            <app-answers [id]="id_question"></app-answers>
+                            <app-answers [id]="id_question "></app-answers>
                             <div>
-                                <button (click)="putQuestion()" class="btn-question">Save</button>
-                                <button (click)="cancer()" class="btn-question">Cancer</button>
+                                <button (click)="putQuestion() " class="btn-question " style="margin-left: 5%; ">Save</button>
+                                <!-- <button (click)="cancer() " class="btn-question ">Cancer</button> -->
                             </div>
                         </div>
                     </div>

@@ -57,9 +57,11 @@ export class QuestionsComponent implements OnInit {
       Resource_id: this.id
     }
     this.questionService.putQuestion(q).subscribe(data=>{
-      const index = this.update(this.qs._id);
+      const index = this.update(this.qs._id); 
       this.qs[index] = data;
+      console.log(data)
     })
+    this.image="";
     this.cancer();
   }
 
@@ -77,7 +79,7 @@ export class QuestionsComponent implements OnInit {
         result = index;
       }
     })
-    return result;
+    return result-1;
   }
 
 
@@ -93,6 +95,7 @@ export class QuestionsComponent implements OnInit {
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result)
+    this.qs.Img = 'data:image/png;base64,' + btoa(e.target.result)
   }
 
 //Scroll
@@ -124,6 +127,7 @@ export class QuestionsComponent implements OnInit {
   }
   cancer_add(){
     this.add_answer=""
+    this.image=""
     document.getElementById("center").style.top="-50%"
   }
   cancer(){

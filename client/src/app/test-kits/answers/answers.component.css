@@ -8,7 +8,7 @@ li {
 }
 
 .add_ws {
-    margin-left: 60px;
+    margin-left: 20px;
     margin-bottom: 30px;
     border: none;
     outline: none;
@@ -16,9 +16,22 @@ li {
 }
 
 .cont {
+    margin-left: 20px;
     border: none;
     outline: none;
     width: auto;
+    height: auto;
     min-width: 50x;
     transition: 1s;
+}
+
+.btn-answer {
+    border: none;
+    outline: none;
+    width: 80px;
+    cursor: pointer;
+}
+
+li::first-letter {
+    text-transform: uppercase;
 }
