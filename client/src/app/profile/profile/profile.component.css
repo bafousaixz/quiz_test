@@ -30,7 +30,7 @@
     width: 200px;
     height: 200px;
     margin-right: 20px;
-    border: 5px solid #C4E538;
+    border: 5px solid rgba(15, 188, 249, 1.0);
     border-radius: 50%;
     z-index: -1000;
 }
@@ -73,7 +73,7 @@
     color: #ffffff;
     font-weight: bold;
     font-size: 200%;
-    border-bottom: 2px solid #C4E538;
+    border-bottom: 2px solid rgba(15, 188, 249, 1.0);
 }
 
 @media (max-height: 700px) {
@@ -110,9 +110,9 @@
 .banner {
     width: 2000px;
     height: 1000px;
-    border: 1px solid #fbc531;
+    border: 1px solid rgba(15, 188, 249, 1.0);
     border-radius: 50%;
-    background: #fbc531;
+    background: rgba(15, 188, 249, 1.0);
     margin-left: -1500px;
 }
 
@@ -135,8 +135,8 @@
 }
 
 .event1 {
-    border: 5px solid #fbc531;
-    background: #fbc531;
+    border: 5px solid rgba(15, 188, 249, 1.0);
+    background: rgba(15, 188, 249, 1.0);
     color: #ffffff;
 }
 

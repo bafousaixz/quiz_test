@@ -26,6 +26,12 @@ export class ResourceService {
     return this.http.post<any>(this.url, resource)
   } 
 
+  putResource(resource: resourceModel): Observable<any>{
+    return this.http.put<any>(`${this.url}${resource._id}`, resource)
+  }
 
+  deleteResource(id: string): Observable<any>{
+    return this.http.delete<any>(this.url + id)
+  }
 
 }

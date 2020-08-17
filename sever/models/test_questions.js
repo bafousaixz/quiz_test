@@ -20,10 +20,15 @@ const Question = new Schema({
         type: String,
         required: false,
     },
+    Level: {
+        type: String,
+        required: false,
+    },
     Resource_id: {
         type: String,
-        require: true
+        require: true,
     }
+
 });
 
 questions = Mongoose.model("questions", Question)

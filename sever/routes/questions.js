@@ -25,9 +25,9 @@ router.post('/questions', async(req, res) => {
 
 router.put('/questions/:id', async(req, res) => {
     try {
-        let rs = await questions.findById(req.params.id).exec();
+        const rs = await questions.findById(req.params.id).exec();
         rs.set(req.body);
-        let result = await rs.save();
+        const result = await rs.save();
         res.send(result);
     } catch (error) {
         console.log(error)
@@ -37,7 +37,7 @@ router.put('/questions/:id', async(req, res) => {
 
 router.delete("/questions/:id", async(req, res) => {
     try {
-        var result = await questions.deleteOne({ _id: req.params.id }).exec();
+        const result = await questions.deleteOne({ _id: req.params.id }).exec();
         res.send(result);
 
     } catch (error) {

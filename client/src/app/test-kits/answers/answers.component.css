@@ -1,28 +1,15 @@
 .answer {
-    margin: 5%;
-}
-
-li {
-    list-style: none;
-    margin-left: 20px;
-}
-
-.add_ws {
-    margin-left: 20px;
-    margin-bottom: 30px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid springgreen;
+    margin-top: 20px;
+    font-size: 15px;
 }
 
 .cont {
-    margin-left: 20px;
     border: none;
     outline: none;
-    width: auto;
+    width: 100%;
     height: auto;
     min-width: 50x;
-    transition: 1s;
+    background: none;
 }
 
 .btn-answer {
@@ -30,8 +17,35 @@ li {
     outline: none;
     width: 80px;
     cursor: pointer;
+    background: rgba(15, 188, 249, 1.0);
+    color: #ffffff;
 }
 
-li::first-letter {
-    text-transform: uppercase;
+.btn-answer1 {
+    border: 1px solid rgba(15, 188, 249, 1.0);
+    border-radius: 5px;
+    background: none;
+    outline: none;
+    width: 50px;
+    cursor: pointer;
+}
+
+h5 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }

@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public signin : boolean = true;
-  public signup : boolean = false;
+  signin : boolean = true;
+  signup : boolean = false;
 
   ngOnInit(): void {
   }

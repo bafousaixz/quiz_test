@@ -10,9 +10,12 @@ import { Router } from '@angular/router';
 })
 export class ResourcesComponent implements OnInit {
 
-  public popup: string;
-  public resource: resourceModel;
-  public name: string;
+  popup: string;
+  resource: resourceModel;
+  name: string;
+  image: string;
+  content: string;
+  _id: string;
  
   constructor(
     private service: ResourceService,
@@ -30,7 +33,10 @@ export class ResourcesComponent implements OnInit {
 
   post(){
     let rs: resourceModel = {
-      name: this.name
+      _id: this._id,
+      Name: this.name,
+      Image: this.image,
+      Content: this.content
     }
     this.service.postResource(rs).subscribe();
     if(this.name != null){
@@ -42,10 +48,7 @@ export class ResourcesComponent implements OnInit {
 
 
 
-
-
-
-
+  
 
   up(){
     this.popup = 'oke'

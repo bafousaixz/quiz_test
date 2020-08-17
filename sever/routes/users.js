@@ -56,7 +56,7 @@ router.post('/users/login', async(req, res) => {
 
 router.get('/users/me', auth, async(req, res) => {
     // View logged in user profile
-    console.log(req.user)
+    // console.log(req.user)
     res.send(req.user)
 })
 

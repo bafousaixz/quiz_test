@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public username:string;
-  public avatar:string;
-  public token = localStorage.getItem("token")
+  username:string;
+  avatar:string;
+  token = localStorage.getItem("token")
   
   constructor(
     public userService: UsersService,

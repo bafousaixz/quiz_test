@@ -1,19 +1,33 @@
 <div class="answer">
-    <h5>Answer</h5>
-    <ul *ngFor="let a of answer | filter: id">
-        <li>
-            <input type="checkbox" (change)="putAnswer(a)" [(ngModel)]="a.Right" [ngModelOptions]="{standalone: true}">
-            <input type="text" (input)="putAnswer(a)" [(ngModel)]="a.Content" class="cont">
-            <button (click)="deleteAnswer(a._id)" class="btn-answer">Delete</button>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            <input type="checkbox" [(ngModel)]="right" [ngModelOptions]="{standalone: true}">
-            <input type="text" [(ngModel)]="content" class="add_ws">
-            <button (click)="postAnswer()" class="btn-answer"> Save </button>
-        </li>
-
-    </ul>
-
+    <h5>Answer:</h5>
+    <table>
+        <tr>
+            <th style="width: 100px;">Status</th>
+            <th>Content</th>
+            <th style="width: 80px;">Event</th>
+        </tr>
+        <tr *ngFor="let a of answer | filter: id">
+            <td style="width: 100px;">
+                <button (click)="putAnswer(a)" class="btn-answer1" type="button">{{a.Right}}</button>
+            </td>
+            <td>
+                <input type="text" (input)="putAnswer(a)" [(ngModel)]="a.Content" class="cont">
+            </td>
+            <td style="width: 80px;">
+                <button (click)="deleteAnswer(a._id)" class="btn-answer">Delete</button>
+            </td>
+        </tr>
+        <hr>
+        <tr>
+            <td style="width: 100px;">
+                <button (click)="add_right()" class="btn-answer1" type="button">{{r}}</button>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="content" class="cont" style="border-bottom: 1px solid rgba(15, 188, 249, 1.0);">
+            </td>
+            <td style="width: 80px;">
+                <button (click)="postAnswer()" class="btn-answer"> Save </button>
+            </td>
+        </tr>
+    </table>
 </div>

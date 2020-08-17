@@ -11,13 +11,21 @@ Mongoose.connect(url, {
 })
 
 const Resoure = new Schema({
-    name: {
+    Name: {
         type: String,
         unique: true,
         required: true
     },
+    Image: {
+        type: String,
+        required: false
+    },
+    Content: {
+        type: String,
+        required: false
+    }
 });
 
-resource = Mongoose.model("Test_resource", Resoure)
+resource = Mongoose.model("resource", Resoure)
 
 module.exports = resource;

@@ -1,5 +1,13 @@
-<div *ngIf="resource" style="margin: 5%; position: relative; height: 80vh;">
-    <img src="https://cdn.bongdaplus.vn/Assets/Media/2020/07/08/66/yasuo0.jpg" alt="" class="avatar-resource">
-    <h1>{{resource.name}}</h1>
-    <img src="../../../../assets/resource.svg" class="img">
+<div *ngIf="resource" style="margin: 5%; position: relative; height: 80vh; font-size: 15px;">
+    <div class="image-resource">
+        <img *ngIf="resource.Image && !image" src="{{resource.Image}}" class="avatar-resource">
+        <img *ngIf="image" src="{{image}}" class="avatar-resource">
+        <h4 *ngIf="!resource.Image && !image" class="avatar-resource">+</h4>
+        <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg .svg" class="input-img">
+    </div>
+
+    <input type="text" [(ngModel)]="resource.Name" class="name-resource">
+    <textarea [(ngModel)]="resource.Content"></textarea>
+    <button (click)="putResource()">Save</button>
+    <button (click)="deleteResource(resource._id)">Delete</button>
 </div>

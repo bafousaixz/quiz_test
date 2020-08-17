@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class SiginComponent implements OnInit {
 
-  public username: string
-  public password: string
+  username: string
+  password: string
 
   constructor(
     private service: UsersService,

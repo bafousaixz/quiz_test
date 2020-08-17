@@ -13,20 +13,20 @@ export class ProfileComponent implements OnInit {
 
   profileUser: FormGroup;
 
-  public token = localStorage.getItem('token')
-  public user: User;
+  token = localStorage.getItem('token')
+  user: User;
 
-  public username: string
-  public password: string
-  public firstname: string
-  public lastname: string
-  public email: string 
-  public tel: string
-  public image: string
-  public avatar: string
+  username: string
+  password: string
+  firstname: string
+  lastname: string
+  email: string 
+  tel: string
+  image: string
+  avatar: string
 
-  public profile1: boolean = true
-  public base64textString = [];
+  profile1: boolean = true
+  base64textString = [];
   constructor(
     private userService: UsersService,
     private http: HttpClient,

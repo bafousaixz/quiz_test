@@ -1,0 +1,47 @@
+[33mcommit 5f3d3d84c9b6f4e71b279a49df3faaf6079bc345[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Mon Aug 17 00:01:46 2020 +0700
+
+    edit UI
+
+[33mcommit 4207ccb3aecccf599ab401ce872425d5eafd4fd6[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Sun Aug 16 01:27:06 2020 +0700
+
+    update, edit answer
+
+[33mcommit 5f229df0e3f18ca561b3dfd9235509cf84cd5695[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Thu Aug 13 23:31:58 2020 +0700
+
+    create answers #1
+
+[33mcommit 98b54ea844c7cd4b0baaff47a32da734c7853ced[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Wed Aug 12 23:48:54 2020 +0700
+
+    edit UI question page #1
+
+[33mcommit d107280afffadd500b9134b26ca55e0fb3da0d71[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Tue Aug 11 16:18:08 2020 +0700
+
+    fix question page #2
+
+[33mcommit 67f67b46ff582163adfb953297449bdaab7b87d2[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Mon Aug 10 17:06:13 2020 +0700
+
+    create page question #1
+
+[33mcommit 26b2d9865dd3063c9588e7fd9309a851fdb18c0f[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Sun Aug 9 20:28:05 2020 +0700
+
+    crate page questions
+
+[33mcommit 3e860dced974c9dbba509165671921c7ea86c466[m
+Author: bafousaixz <dongthoigian31313@gmail.com>
+Date:   Sun Aug 9 20:22:43 2020 +0700
+
+    create API questions

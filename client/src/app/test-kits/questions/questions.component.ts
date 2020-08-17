@@ -11,16 +11,17 @@ import { questionModel } from '../_model/question.model';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-  public add_answer: string;
-  public id_question: string;
-  public base64textString = [];
+  add_answer: string;
+  id_question: string;
+  base64textString = [];
 
-  public _id: string;
-  public image: string;
-  public content: string;
-  public id = this.route.snapshot.paramMap.get('id');
-  public question: questionModel[];
-  public qs: questionModel;
+  _id: string;
+  image: string;
+  content: string;
+  level: string;
+  id = this.route.snapshot.paramMap.get('id');
+  question: questionModel[];
+  qs: questionModel;
 
   constructor(
     public questionService: QuestionService,
@@ -42,6 +43,7 @@ export class QuestionsComponent implements OnInit {
       _id: this._id,
       Content: this.content,
       Img: this.image,
+      Level: this.level,
       Resource_id: this.id
     }
     this.questionService.postQuestion(q).subscribe()
@@ -53,15 +55,14 @@ export class QuestionsComponent implements OnInit {
     let q: questionModel = {
       _id: this.id_question,
       Content: this.qs.Content,
-      Img: this.qs.Img,
+      Img: this.qs.Img ,
+      Level: this.qs.Level,
       Resource_id: this.id
     }
     this.questionService.putQuestion(q).subscribe(data=>{
       const index = this.update(this.qs._id); 
       this.qs[index] = data;
-      console.log(data)
     })
-    this.image="";
     this.cancer();
   }
 
@@ -94,8 +95,8 @@ export class QuestionsComponent implements OnInit {
   }
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
-    this.image = 'data:image/png;base64,' + btoa(e.target.result)
-    this.qs.Img = 'data:image/png;base64,' + btoa(e.target.result)
+    this.image = 'data:image/png;base64,' + btoa(e.target.result);
+    this.qs.Img= 'data:image/png;base64,' + btoa(e.target.result);
   }
 
 //Scroll
@@ -104,12 +105,11 @@ export class QuestionsComponent implements OnInit {
     let left = document.getElementById("resource-zone").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       btn.position = "fixed";
-      btn.top = "-2px";
+      btn.top = "0vh";
       left.position = "fixed";
-      left.top = "0";
+      left.top = "1vh";
     } else {
       btn.position = "absolute";
-      btn.top = "20vh";
       left.position = "absolute";
       left.top = "22vh";
     }
@@ -119,13 +119,17 @@ export class QuestionsComponent implements OnInit {
   showAnswer(q: questionModel){
     this.qs = q;
     this.id_question=this.qs._id
+    this.image=""
   }
 
   add(){
+    this.id_question=""
+    this.image=""
     this.add_answer="1"
     document.getElementById("center").style.top="50%"
   }
   cancer_add(){
+    this.content=""
     this.add_answer=""
     this.image=""
     document.getElementById("center").style.top="-50%"
