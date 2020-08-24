@@ -14,6 +14,15 @@ var answerRouter = require('./routes/answers');
 
 var app = express();
 
+
+//connect DB
+var url = 'mongodb://localhost:27017/mydb';
+db = Mongoose.connect(url, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+})
+
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");

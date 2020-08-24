@@ -15,6 +15,8 @@ export class QuestionsComponent implements OnInit {
   id_question: string;
   base64textString = [];
 
+  p: number = 1;
+
   _id: string;
   image: string;
   content: string;
@@ -102,16 +104,11 @@ export class QuestionsComponent implements OnInit {
 //Scroll
   @HostListener('window:scroll', ['$event']) onScrollEvent(){
     let btn = document.getElementById("add-question").style;
-    let left = document.getElementById("resource-zone").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       btn.position = "fixed";
       btn.top = "0vh";
-      left.position = "fixed";
-      left.top = "1vh";
     } else {
       btn.position = "absolute";
-      left.position = "absolute";
-      left.top = "22vh";
     }
   } 
 
@@ -137,5 +134,7 @@ export class QuestionsComponent implements OnInit {
   cancer(){
     this.id_question=""
   }
+
+
 
 }

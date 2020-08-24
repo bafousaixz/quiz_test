@@ -1,11 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
 .top-resource {
     background: url("../../../assets/resource.jpeg");
     background-size: cover;
@@ -46,6 +40,7 @@
 }
 
 .box {
+    font-family: 'Quicksand', sans-serif;
     position: relative;
     width: 200px;
     height: 200px;
@@ -66,6 +61,26 @@
 }
 
 .box:hover {
+    color: #ffffff;
+}
+
+.box_add {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+    transition: all .5s;
+    background: rgba(15, 188, 249, 1.0);
+}
+
+.box_add i {
     color: #ffffff;
 }
 

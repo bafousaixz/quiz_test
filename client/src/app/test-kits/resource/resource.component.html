@@ -1,0 +1,42 @@
+<div style="  background: #f5f6fa; height: auto; font-family: 'Quicksand', sans-serif;">
+    <div class="top-questions">
+        <!-- <h1>Questions</h1> -->
+    </div>
+
+    <div class="mid">
+
+        <div id="resource-zone">
+            <div *ngIf="resource" style="margin: 5%; position: relative; height: 80vh; font-size: 15px;">
+                <div class="image-resource">
+                    <img *ngIf="resource.Image && !image" src="{{resource.Image}}" class="avatar-resource">
+                    <img *ngIf="image" src="{{image}}" class="avatar-resource">
+                    <h4 *ngIf="!resource.Image && !image" class="avatar-resource">+</h4>
+                    <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg .svg" class="input-img">
+                </div>
+
+                <input type="text" [(ngModel)]="resource.Name" class="name-resource">
+                <textarea [(ngModel)]="resource.Content"></textarea>
+                <!-- <button (click)="putResource()">Save</button>
+                <button (click)="deleteResource(resource._id)">Delete</button> -->
+
+                <button (click)="showListquestion()">List questions</button>
+                <button (click)="showCreatetest()">Create Test</button>
+                <button (click)="showListtest()">List Test</button>
+
+            </div>
+        </div>
+
+        <div class="right-zone">
+            <div *ngIf="list_question">
+                <app-questions></app-questions>
+            </div>
+            <div *ngIf="create_test">
+                <app-create-test></app-create-test>
+            </div>
+            <div *ngIf="list_test">
+                <app-list-test></app-list-test>
+            </div>
+        </div>
+
+    </div>
+</div>

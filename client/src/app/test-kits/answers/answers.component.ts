@@ -38,7 +38,7 @@ export class AnswersComponent implements OnInit {
       _id: this._id,
       Content : this.content,
       Right : this.r,
-      Question_id : this.id
+      question_id : this.id
     }
     this.answerService.postAnswer(as).subscribe()
     this.content=""
@@ -58,7 +58,7 @@ export class AnswersComponent implements OnInit {
       _id: a._id,
       Content : a.Content,
       Right : a.Right,
-      Question_id : this.id
+      question_id : this.id
     }
     this.answerService.putAnswer(as).subscribe() 
     console.log(as)

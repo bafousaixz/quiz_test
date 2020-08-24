@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.container-test {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-top: -10px;
+}
+
+.test {
+    align-items: center;
+    width: 98%;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    height: auto;
+    margin: 1%;
+    overflow: hidden;
+}
+
+.content {
+    margin: 10px;
+}
+
+.btn-test {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 13px;
+    background: rgba(15, 188, 249, 1.0);
+    box-shadow: 0px 5px 5px rgba(15, 188, 249, 0.5);
+    color: #ffffff;
+    right: 0;
+    padding: 5px;
+    width: 80px;
+    display: block;
+    margin: 10px;
+    transition: .3s;
+}
+
+.btn-test:hover {
+    box-shadow: 0px 5px 5px #ffffff;
+    cursor: pointer;
+}
+
+p {
+    font-size: 15px;
+}
+
+textarea {
+    font-size: 15px;
+    width: 100%;
+    margin: 0% 0% 1% 0%;
+    height: auto;
+    padding: 5px;
+    min-height: 100px;
+    border: 1px solid #f2f2f2;
+    outline: none;
+    word-break: break-all
+}
+
+.a {
+    position: relative;
+    height: 100px;
+}
+
+.b {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.c {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+input {
+    width: 50px;
+    border: 1px solid #f2f2f2;
+    outline: none;
+}
+
+.alert1 {
+    margin-left: 20px;
+    width: 500px;
+    height: 35px;
+    background: #fff3cd;
+    color: #856404;
+    line-height: 35px;
+    padding: 5px 10px;
+}

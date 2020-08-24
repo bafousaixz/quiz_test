@@ -6,7 +6,7 @@
     <div class="content">
         <div *ngIf="resource" class="flexbox">
             <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.Name}}</a>
-            <a style="font-size: 300%;" (click)="up()" class="box">+</a>
+            <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
         </div>
 
         <div *ngIf="popup" class="popup">

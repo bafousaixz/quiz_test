@@ -1,0 +1,46 @@
+<div style="font-family: 'Quicksand', sans-serif;">
+    <div class="container-test">
+        <div class="test">
+            <div class="content">
+                <div class="right-zone">
+                    <button (click)="Edit()" class="btn-test">Edit</button>
+                    <button class="btn-test">Remove</button>
+                </div>
+                <p>Name: </p>
+                <p>Amout: </p>
+
+                <!-- edit -->
+                <div *ngIf="qs">
+                    <textarea type="text" name="content" class="ct"></textarea><br>
+                    <hr>
+                    <div style="display: block; margin-left: 45%; margin-top: 20px;">
+                        <button class="btn-test">Save</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="test">
+            <div class="content">
+                <div class="right-zone">
+                    <button class="btn-test">Edit</button>
+                    <button class="btn-test">Remove</button>
+                </div>
+                <p>Name: </p>
+                <p>Amout: </p>
+            </div>
+        </div>
+
+        <div class="test">
+            <div class="content">
+                <div class="right-zone">
+                    <button class="btn-test">Edit</button>
+                    <button class="btn-test">Remove</button>
+                </div>
+                <p>Name: </p>
+                <p>Amout: </p>
+            </div>
+        </div>
+    </div>
+</div>

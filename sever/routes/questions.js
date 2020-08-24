@@ -1,15 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var questions = require('../models/test_questions')
+var answers = require('../models/test_answers')
 
-/* GET home page. */
 router.get('/questions', async(req, res) => {
-    try {
-        const result = await questions.find().exec();
-        res.send(result);
-    } catch (error) {
-        res.status(400).send(error)
-    }
+    questions.aggregate([{
+        $lookup: {
+            from: answers.collection.name,
+            localField: '_id',
+            foreignField: 'question_id',
+            as: 'answerList',
+        }
+    }]).exec((err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result);
+        }
+    });
 })
 
 router.post('/questions', async(req, res) => {

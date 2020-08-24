@@ -15,7 +15,8 @@
 .btn-answer {
     border: none;
     outline: none;
-    width: 80px;
+    border-radius: 5px;
+    width: 50px;
     cursor: pointer;
     background: rgba(15, 188, 249, 1.0);
     color: #ffffff;
@@ -31,8 +32,9 @@
 }
 
 h5 {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
+    text-align: center;
 }
 
 table {

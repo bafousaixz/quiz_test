@@ -2,14 +2,6 @@ const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
 
-//connect DB
-var url = 'mongodb://localhost:27017/mydb';
-db = Mongoose.connect(url, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-})
-
-
 const Question = new Schema({
     Content: {
         type: String,
@@ -27,8 +19,7 @@ const Question = new Schema({
     Resource_id: {
         type: String,
         require: true,
-    }
-
+    },
 });
 
 questions = Mongoose.model("questions", Question)

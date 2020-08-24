@@ -5,7 +5,7 @@ import { HomeComponent } from './component/home/home.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { ResourcesComponent } from './test-kits/resources/resources.component';
-import { QuestionsComponent } from './test-kits/questions/questions.component';
+import { ResourceComponent } from './test-kits/resource/resource.component';
 
 const routes: Routes = [
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
 
   {
     path: 'test-resources/:id',
-    component: QuestionsComponent
+    component: ResourceComponent
   },
 
   {
