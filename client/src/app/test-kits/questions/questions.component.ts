@@ -106,8 +106,9 @@ export class QuestionsComponent implements OnInit {
     let btn = document.getElementById("add-question").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       btn.position = "fixed";
-      btn.top = "0vh";
+      btn.paddingRight="30%"
     } else {
+      btn.paddingRight="0"
       btn.position = "absolute";
     }
   } 
@@ -123,7 +124,7 @@ export class QuestionsComponent implements OnInit {
     this.id_question=""
     this.image=""
     this.add_answer="1"
-    document.getElementById("center").style.top="50%"
+    document.getElementById("center").style.top="30%"
   }
   cancer_add(){
     this.content=""

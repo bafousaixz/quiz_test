@@ -47,13 +47,13 @@ p {
     font-size: 15px;
 }
 
-textarea {
+.name-test {
     font-size: 15px;
     width: 100%;
     margin: 0% 0% 1% 0%;
     height: auto;
     padding: 5px;
-    min-height: 100px;
+    /* min-height: 100px; */
     border: 1px solid #f2f2f2;
     outline: none;
     word-break: break-all
@@ -90,4 +90,33 @@ input {
     color: #856404;
     line-height: 35px;
     padding: 5px 10px;
+}
+
+#pupup-done {
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    margin: 2% 10%;
+    padding: 20px;
+    z-index: 5;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+    text-align: center;
+    opacity: 0;
+}
+
+#pupup-done p {
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#pupup-done i {
+    font-size: 80px;
+    color: rgba(15, 188, 249, 0.5);
+    cursor: pointer;
 }

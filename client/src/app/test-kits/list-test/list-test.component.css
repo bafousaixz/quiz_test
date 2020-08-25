@@ -40,7 +40,7 @@
     margin: 5px;
     right: 0;
     padding: 5px;
-    width: 80px;
+    width: 50px;
     display: inline-block;
     transition: .3s;
 }
@@ -65,46 +65,4 @@ p {
     height: auto;
     width: 100%;
     transition: 1s;
-}
-
-.ct {
-    font-size: 15px;
-    width: 100%;
-    margin: 2% 0%;
-    height: auto;
-    padding: 5px;
-    min-height: 150px;
-    border: 1px solid #f2f2f2;
-    outline: none;
-    word-break: break-all
-}
-
-p::first-letter {
-    text-transform: uppercase;
-}
-
-.image-test {
-    position: relative;
-}
-
-.image-test input {
-    height: 100px;
-    width: 300px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-}
-
-.image-test h4 {
-    border: 1px dotted rgba(15, 188, 249, 1.0);
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    font-size: 30px;
-    padding-left: 35px;
-    cursor: pointer;
-    z-index: 0;
-    margin-bottom: 10px;
 }

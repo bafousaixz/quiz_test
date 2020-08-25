@@ -2,7 +2,7 @@ const Mongoose = require('mongoose');
 var Schema = Mongoose.Schema;
 
 const Tests = new Schema({
-    Name: {
+    name: {
         type: String,
         unique: true,
         required: true
@@ -11,14 +11,10 @@ const Tests = new Schema({
         type: Number,
         required: true
     },
-    question_id: {
-        type: String,
-        required: true
-    },
-    answer_id: [{
-        type: String,
-        required: true
-    }]
+    result: {
+        type: Array
+    }
+
 });
 
 tests = Mongoose.model("tests", Tests)

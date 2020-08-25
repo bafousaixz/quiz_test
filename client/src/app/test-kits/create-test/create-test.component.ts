@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Options } from 'ng5-slider';
+import { Router } from '@angular/router'
 
-
+import { TestService } from '../_service/test.service';
+import { testModel } from '../_model/test.model';
 @Component({
   selector: 'app-create-test',
   templateUrl: './create-test.component.html',
@@ -10,6 +12,8 @@ import { Options } from 'ng5-slider';
 export class CreateTestComponent implements OnInit {
   set: number ;
   amount: number;
+  name: string;
+  result: [];
   high: number = 0;
   easy: number = 0;
   easy_options: Options = {
@@ -33,15 +37,36 @@ export class CreateTestComponent implements OnInit {
     };
 
   
-  constructor() {
+  
+  constructor(
+    private testService: TestService,
+    private router: Router,
+  ) {
    }
 
   ngOnInit(): void {
-    console.log(this.amount)
+  
   }
+
+  createTest(){
+    let test: testModel ={
+      name: this.name,
+      amount: this.amount,
+      // result: this.result
+    }
+    if(name !== null && this.amount !=null){
+      this.testService.postTest(test).subscribe();
+      document.getElementById("pupup-done").style.opacity="1"
+    }
+    else{
+      alert('error')
+    }
+  }
+
+
  
   setting(){
-    if(this.amount==0 || this.amount == null){
+    if(this.amount <= 0 || this.amount == null){
       this.set = 1
     }
     else{
@@ -50,6 +75,9 @@ export class CreateTestComponent implements OnInit {
     console.log(this.set)
     this.easy_options.ceil = this.amount;
     this.medium_options.ceil = this.amount;
+  }
+  reload(){
+    window.location.reload()
   }
 
 }

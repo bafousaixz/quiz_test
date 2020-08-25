@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var resourceRouter = require('./routes/resource');
 var questionRouter = require('./routes/questions');
 var answerRouter = require('./routes/answers');
+var testRouter = require('./routes/tests');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use('/', usersRouter);
 app.use('/', resourceRouter);
 app.use('/', questionRouter);
 app.use('/', answerRouter);
+app.use('/', testRouter);
 
 
 

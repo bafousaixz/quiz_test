@@ -3,9 +3,9 @@
         <div class="test">
             <div class="content">
                 <p>Name: </p>
-                <textarea></textarea>
+                <input [(ngModel)]="name" type="text" name="test" class="name-test">
                 <p style="display: inline;">Amount: </p>
-                <input type="text" name="amount" [(ngModel)]="amount">
+                <input [(ngModel)]="amount" type="number" name="amount">
                 <span *ngIf="set ===1" class="alert1">
                     <b>Warning!</b> Please enter the question number greater than 0
                 </span>
@@ -25,7 +25,11 @@
                 </div>
 
             </div>
-            <button class="btn-test" style="margin: 10px auto;">Save</button>
+            <button (click)="createTest()" class="btn-test" style="margin: 10px auto;">Generate</button>
         </div>
+    </div>
+    <div id="pupup-done">
+        <p>Generate successfully!</p>
+        <i (click)="reload()" class="fas fa-check-circle"></i>
     </div>
 </div>
