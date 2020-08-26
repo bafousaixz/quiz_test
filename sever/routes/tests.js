@@ -14,7 +14,7 @@ router.get('/tests', async(req, res) => {
 })
 
 router.post('/tests', async(req, res) => {
-    const { name, amount } = req.body
+    const { name, amount, resource_id } = req.body
     console.log(amount)
     questions.aggregate([{
             $lookup: {
@@ -34,7 +34,7 @@ router.post('/tests', async(req, res) => {
             console.log(err)
             res.status(400).send(err)
         } else {
-            const rs = new tests({ name, amount, result });
+            const rs = new tests({ name, amount, resource_id, result });
             await rs.save();
             res.send(rs);
         }

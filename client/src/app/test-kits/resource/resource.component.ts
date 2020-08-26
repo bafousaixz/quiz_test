@@ -12,8 +12,8 @@ import { resourceModel } from '../_model/resource.model';
   styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit {
-  list_question: boolean = true;
-  list_test: boolean = false;
+  list_question: boolean = false;
+  list_test: boolean = true;
   create_test: boolean= false;
 
   base64textString = [];

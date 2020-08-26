@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
@@ -8,10 +9,13 @@ import { testModel } from '../_model/test.model';
   styleUrls: ['./list-test.component.css']
 })
 export class ListTestComponent implements OnInit {
+  
   qs: string;
+  id = this.route.snapshot.paramMap.get('id');
   tests: testModel[];
   constructor(
     private testService: TestService,
+    public route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {

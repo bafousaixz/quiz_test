@@ -45,6 +45,8 @@
 
 p {
     font-size: 15px;
+    color: #778ca3;
+    font-weight: bold;
 }
 
 .name-test {
@@ -62,6 +64,9 @@ p {
 .a {
     position: relative;
     height: 100px;
+    width: 750px;
+    display: flex;
+    margin: 0 auto;
 }
 
 .b {
@@ -95,7 +100,7 @@ input {
 #pupup-done {
     position: fixed;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 220px;
     height: 220px;

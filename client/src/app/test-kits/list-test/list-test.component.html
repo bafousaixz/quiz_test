@@ -1,24 +1,12 @@
-<div style="font-family: 'Quicksand', sans-serif;">
+<div style="font-family: 'Quicksand', sans-serif;" *ngIf="tests">
     <div class="container-test">
-        <div *ngFor="let test of tests" class="test">
+        <div *ngFor="let test of tests | filter: id" class="test">
+            <button (click)="deleteTest(test._id)" class="btn-test"><i class="fas fa-trash-alt"></i></button>
             <div class="content">
-                <div class="right-zone">
-                    <!-- <button (click)="Edit()" class="btn-test">Edit</button> -->
-                    <button (click)="deleteTest(test._id)" class="btn-test"><i class="fas fa-trash-alt"></i></button>
-                </div>
-                <p style="text-transform: uppercase;">{{test.name}} </p>
-                <p>{{test.amount}} question </p>
-
-                <!-- edit -->
-                <!-- <div *ngIf="qs">
-                    <textarea type="text" name="content" class="ct"></textarea><br>
-                    <hr>
-                    <div style="display: block; margin-left: 45%; margin-top: 20px;">
-                        <button class="btn-test">Save</button>
-                    </div>
-                </div> -->
+                <p class="test-name"> {{test.name}} </p>
+                <p style="font-style: italic;">{{test.amount}} question </p>
             </div>
-
+            <button class="btn-start ">Exam start</button>
         </div>
     </div>
 </div>

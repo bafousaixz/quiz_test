@@ -11,6 +11,10 @@ const Tests = new Schema({
         type: Number,
         required: true
     },
+    resource_id: {
+        type: String,
+        require: true,
+    },
     result: {
         type: Array
     }

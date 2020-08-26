@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
@@ -10,9 +11,12 @@ import { testModel } from '../_model/test.model';
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent implements OnInit {
+  @Input() name_resource: string; 
   set: number ;
   amount: number;
   name: string;
+  
+  resource_id = this.route.snapshot.paramMap.get('id');
   result: [];
   high: number = 0;
   easy: number = 0;
@@ -41,6 +45,7 @@ export class CreateTestComponent implements OnInit {
   constructor(
     private testService: TestService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {
    }
 
@@ -49,9 +54,11 @@ export class CreateTestComponent implements OnInit {
   }
 
   createTest(){
+    const name_test: string = this.name_resource + "- " + this.name
     let test: testModel ={
-      name: this.name,
+      name: name_test,
       amount: this.amount,
+      resource_id: this.resource_id
       // result: this.result
     }
     if(name !== null && this.amount !=null){
