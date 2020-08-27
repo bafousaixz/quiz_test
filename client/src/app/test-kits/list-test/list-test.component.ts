@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TestService } from '../_service/test.service';
@@ -9,7 +9,8 @@ import { testModel } from '../_model/test.model';
   styleUrls: ['./list-test.component.css']
 })
 export class ListTestComponent implements OnInit {
-  
+  @Input() name_resource: string; 
+
   qs: string;
   id = this.route.snapshot.paramMap.get('id');
   tests: testModel[];
@@ -36,6 +37,14 @@ export class ListTestComponent implements OnInit {
 
   Edit(){
     this.qs = "1"
+  }
+
+  add(){
+    document.getElementById("add-test").style.height="400px"
+  }
+  handle(e){
+    document.getElementById("add-test").style.height=e
+    this.getTests()
   }
 
 

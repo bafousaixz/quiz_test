@@ -28,7 +28,12 @@ router.post('/tests', async(req, res) => {
             $sample: {
                 size: amount
             }
-        }
+        },
+        {
+            $match: {
+                Level: "Medium",
+            }
+        },
     ]).exec(async(err, result) => {
         if (err) {
             console.log(err)

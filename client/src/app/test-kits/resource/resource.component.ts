@@ -12,9 +12,7 @@ import { resourceModel } from '../_model/resource.model';
   styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit {
-  list_question: boolean = false;
-  list_test: boolean = true;
-  create_test: boolean= false;
+  check: boolean = true;
 
   base64textString = [];
   image: string;
@@ -81,18 +79,9 @@ export class ResourceComponent implements OnInit {
   } 
 
   showListquestion(){
-    this.list_question = true;
-    this.list_test = false;
-    this.create_test = false;
+    this.check= true;
   }
   showListtest(){
-    this.list_question = false;
-    this.list_test = true;
-    this.create_test = false;
-  }
-  showCreatetest(){
-    this.list_question = false;
-    this.list_test = false;
-    this.create_test = true;
+    this.check = false;
   }
 }

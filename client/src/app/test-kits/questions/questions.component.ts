@@ -14,13 +14,13 @@ export class QuestionsComponent implements OnInit {
   add_answer: string;
   id_question: string;
   base64textString = [];
-
+  cates =[ "Easy", "Medium", "High"]
   p: number = 1;
 
   _id: string;
   image: string;
   content: string;
-  level: string;
+  level: string = "Easy";
   id = this.route.snapshot.paramMap.get('id');
   question: questionModel[];
   qs: questionModel;
@@ -103,17 +103,26 @@ export class QuestionsComponent implements OnInit {
 
 //Scroll
   @HostListener('window:scroll', ['$event']) onScrollEvent(){
-    let btn = document.getElementById("add-question").style;
+   
+    let a = document.getElementById("set-scroll").style;
+    let b = document.getElementById("add-question").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      btn.position = "fixed";
-      btn.paddingRight="30%"
+      a.position = "fixed";
+      a.paddingRight="30%";
+      b.width="91%";
     } else {
-      btn.paddingRight="0"
-      btn.position = "absolute";
+      a.paddingRight="0";
+      a.position = "relative";
+      b.width="98%";
     }
   } 
 
   //Handle UI
+  selectLevel(e){
+    this.level = e.target.value;
+    console.log(this.level)
+  }
+
   showAnswer(q: questionModel){
     this.qs = q;
     this.id_question=this.qs._id
@@ -124,13 +133,13 @@ export class QuestionsComponent implements OnInit {
     this.id_question=""
     this.image=""
     this.add_answer="1"
-    document.getElementById("center").style.top="30%"
+    document.getElementById("add-question").style.height="530px"
   }
   cancer_add(){
     this.content=""
     this.add_answer=""
     this.image=""
-    document.getElementById("center").style.top="-50%"
+    document.getElementById("add-question").style.height="50px"
   }
   cancer(){
     this.id_question=""

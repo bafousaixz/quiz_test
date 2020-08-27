@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="mid">
+    <div class="mid" *ngIf="resource">
 
         <div id="resource-zone">
             <div class="custom-shape-divider-top-1598372428">
@@ -30,22 +30,19 @@
                 <!-- <button (click)="putResource()">Save</button>
                 <button (click)="deleteResource(resource._id)">Delete</button> -->
 
-                <button (click)="showListquestion()" [ngClass]="{ 'target-btn' : list_question == true}">List questions</button>
-                <button (click)="showCreatetest()" [ngClass]="{ 'target-btn' : create_test == true}">Create Test</button>
-                <button (click)="showListtest()" [ngClass]="{ 'target-btn' : list_test == true}">List Test</button>
+                <button (click)="showListquestion()" [ngClass]="{ 'target-btn' : check == true}">Questions</button>
+                <button (click)="showListtest()" [ngClass]="{ 'target-btn' : check == false}">Tests</button>
 
             </div>
         </div>
 
         <div class="right-zone">
-            <div *ngIf="list_question">
+            <div *ngIf="check">
                 <app-questions></app-questions>
             </div>
-            <div *ngIf="create_test">
-                <app-create-test [name_resource]="resource.Name"></app-create-test>
-            </div>
-            <div *ngIf="list_test">
-                <app-list-test></app-list-test>
+
+            <div *ngIf="!check">
+                <app-list-test [name_resource]="resource.Name"></app-list-test>
             </div>
         </div>
 

@@ -1,35 +1,25 @@
 <div style="font-family: 'Quicksand', sans-serif;">
     <div class="container-test">
         <div class="test">
-            <div class="content">
+            <div style="margin: 10px;">
                 <p>Name: </p>
                 <input [(ngModel)]="name" type="text" name="test" class="name-test">
                 <p style="display: inline;">Amount: </p>
-                <input [(ngModel)]="amount" type="number" name="amount">
+                <input (input)="setNewCeil(amount)" [(ngModel)]="amount" type="number" name="amount">
                 <span *ngIf="set ===1" class="alert1">
                     <b>Warning!</b> Please enter the question number greater than 0
                 </span>
-                <button (click)="setting()" class="btn-test" style="margin-left: 0;">Setting</button>
-                <div *ngIf="set === 2" style="margin: 20px auto;">
+                <div *ngIf="amount" style="margin: 20px auto;">
                     <div class="a">
-                        <div class="b">
-                            <ng5-slider [(value)]="easy" [options]="easy_options" style="width: 750px;"></ng5-slider>
-                        </div>
-                        <div class="c">
-                            <ng5-slider [(value)]="medium" [options]="medium_options" style="width: 750px;"></ng5-slider>
-                        </div>
+                        <ng5-slider [(value)]="min" [(highValue)]="max" [options]="options"></ng5-slider>
                     </div>
-                    <p>Easy: <span style="color: #2AE02A;"> {{easy}} </span> </p>
-                    <p>Medium: <span style="color: #9980FA;">{{medium}}</span></p>
-                    <p>High: <span>{{amount - easy - medium}}</span></p>
+                    <p>Easy: <span style="color: red;"> {{min}} </span> </p>
+                    <p>Medium: <span style="color: #9980FA;">{{max - min}}</span></p>
+                    <p>High: <span style="color: #10ac84;">{{amount- max}}</span></p>
                 </div>
 
             </div>
             <button (click)="createTest()" class="btn-test" style="margin: 10px auto;">Generate</button>
         </div>
-    </div>
-    <div id="pupup-done">
-        <p>Generate successfully!</p>
-        <i (click)="reload()" class="fas fa-check-circle"></i>
     </div>
 </div>
