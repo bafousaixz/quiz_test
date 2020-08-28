@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import 'rxjs/add/operator/delay'
 
 import { testModel } from '../_model/test.model';
 @Injectable({
@@ -14,7 +15,7 @@ export class TestService {
   ) { }
 
   getTest(): Observable<any>{
-    return this.http.get<any>(this.url)
+    return this.http.get<any>(this.url).delay(250)
   }
 
   postTest(test: testModel): Observable<any>{

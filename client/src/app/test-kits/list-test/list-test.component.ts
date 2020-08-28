@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
@@ -26,6 +27,7 @@ export class ListTestComponent implements OnInit {
   getTests(){
     this.testService.getTest().subscribe(data=>{
       this.tests = data;
+      console.log(this.tests)
     })
   }
 
@@ -40,12 +42,26 @@ export class ListTestComponent implements OnInit {
   }
 
   add(){
-    document.getElementById("add-test").style.height="400px"
+    document.getElementById("add-test1").style.height="450px"
   }
   handle(e){
-    document.getElementById("add-test").style.height=e
+    document.getElementById("add-test1").style.height=e
     this.getTests()
   }
+
+  @HostListener('window:scroll', ['$event']) onScrollEvent(){
+    let a = document.getElementById("set-scroll").style;
+    let b = document.getElementById("add-test1").style;
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      a.position = "fixed";
+      a.paddingRight="30%";
+      b.width="91%";
+    } else {
+      a.paddingRight="0";
+      a.position = "relative";
+      b.width="98%";
+    }
+  } 
 
 
 }

@@ -15,7 +15,7 @@ export class QuestionService {
   ) { }
 
   getQuestion(): Observable<any>{
-    return this.http.get<any>(this.url)
+    return this.http.get<any>(this.url).delay(150)
   }
 
   postQuestion(question: questionModel): Observable<any>{

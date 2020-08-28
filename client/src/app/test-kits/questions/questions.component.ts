@@ -103,7 +103,6 @@ export class QuestionsComponent implements OnInit {
 
 //Scroll
   @HostListener('window:scroll', ['$event']) onScrollEvent(){
-   
     let a = document.getElementById("set-scroll").style;
     let b = document.getElementById("add-question").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {

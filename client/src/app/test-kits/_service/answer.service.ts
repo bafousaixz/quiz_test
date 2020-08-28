@@ -13,7 +13,7 @@ export class AnswerService {
   ) { }
 
     getAnswer(): Observable<any>{
-      return this.http.get<any>(this.url)
+      return this.http.get<any>(this.url).delay(150)
     }
 
     postAnswer(answer: answerModel): Observable<any>{

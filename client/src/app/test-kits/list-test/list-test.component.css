@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-#add-test {
+#set-scroll {
     position: relative;
     top: 0vh;
-    margin-left: 1%;
+    z-index: 1;
+    width: 100%;
+    background: none;
+}
+
+#add-test1 {
+    position: relative;
+    top: 0vh;
+    left: 1%;
     width: 98%;
     height: 50px;
-    background-color: #ffffff;
-    z-index: 1;
-    border-bottom: 1px solid #f2f2f2;
-    /* box-shadow: 0px 5px 5px rgba(0, 0, 0, .1); */
-    text-align: center;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: height .5s;
 }
 
 .btn-add {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
     border-radius: 5px;
     color: #ffffff;
     padding: 5px;
@@ -29,10 +40,8 @@
     transition: .3s;
 }
 
-#add-test {
-    transition: all .5s;
-    height: 0px;
-    overflow: hidden;
+.create {
+    margin-top: 20px;
 }
 
 .container-test {

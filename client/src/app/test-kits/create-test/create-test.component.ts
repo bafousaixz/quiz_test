@@ -57,12 +57,15 @@ export class CreateTestComponent implements OnInit {
     let test: testModel ={
       name: name_test,
       amount: this.amount,
+      easy: this.min,
+      medium: this.max - this.min,
+      high: this.amount - this.max,
       resource_id: this.resource_id
       // result: this.result
     }
     if(name !== null && this.amount !=null){
       this.testService.postTest(test).subscribe();
-     this.close()
+      this.close()
     }
     else{
       alert('error')
@@ -77,7 +80,7 @@ export class CreateTestComponent implements OnInit {
   }
 
   close(){
-    this.OutputValue.emit("0px");
+    this.OutputValue.emit("50px");
     this.name = "";
     this.amount= null;
   }
