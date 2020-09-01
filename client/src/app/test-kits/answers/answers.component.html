@@ -1,31 +1,33 @@
 <div class="answer">
-    <h5>Answer</h5>
     <table>
         <tr>
             <th style="width: 100px;">Status</th>
             <th>Content</th>
-            <th style="width: 80px; margin-left: 10px;"></th>
+            <th style="width: 100px; margin-left: 10px;"></th>
         </tr>
         <tr *ngFor="let a of answer | filter: id">
             <td style="width: 100px;">
-                <button (click)="putAnswer(a)" class="btn-answer1" type="button">{{a.Right}}</button>
+                <button *ngIf="a.Right && !fix" class="btn-answer1" type="button">{{a.Right}}</button>
+                <button *ngIf="fix" (click)="editRight(a)" class="btn-answer1" type="button">{{a.Right}}</button>
             </td>
             <td>
-                <input type="text" (input)="putAnswer(a)" [(ngModel)]="a.Content" class="cont">
+                <input *ngIf="fix === a._id" type="text" [(ngModel)]="a.Content" class="cont">
+                <h1 *ngIf="fix !== a._id">{{a.Content}}</h1>
             </td>
-            <td style="width: 80px;">
-                <button (click)="deleteAnswer(a._id)" class="btn-answer"><i class="fas fa-trash-alt"></i></button>
+            <td style="width: 100px;">
+                <button *ngIf="!fix" (click)="edit(a)" class="btn-answer"><i class="fas fa-edit"></i></button>
+                <button *ngIf="fix" (click)="putAnswer(a)" class="btn-answer"><i class="fas fa-save"></i></button>
+                <button (click)="deleteAnswer(a._id)" class="btn-answer btn-remove"><i class="fas fa-trash-alt"></i></button>
             </td>
         </tr>
-        <hr>
         <tr>
             <td style="width: 100px;">
                 <button (click)="add_right()" class="btn-answer1" type="button">{{r}}</button>
             </td>
             <td>
-                <input type="text" [(ngModel)]="content" placeholder="Add answer" class="cont" style="border-bottom: 1px solid rgba(15, 188, 249, 1.0);">
+                <input type="text" [(ngModel)]="content" placeholder="Add answer" class="cont">
             </td>
-            <td style="width: 80px;">
+            <td style="width: 100px;">
                 <button (click)="postAnswer()" class="btn-answer"> <i class="fas fa-plus-circle"></i> </button>
             </td>
         </tr>

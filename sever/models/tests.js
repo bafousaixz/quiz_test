@@ -7,6 +7,10 @@ const Tests = new Schema({
         unique: false,
         required: true
     },
+    time: {
+        type: Number,
+        required: true
+    },
     amount: {
         type: Number,
         required: true

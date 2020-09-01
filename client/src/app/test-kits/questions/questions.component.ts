@@ -11,13 +11,15 @@ import { questionModel } from '../_model/question.model';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-  add_answer: string;
   id_question: string;
   base64textString = [];
-  cates =[ "Easy", "Medium", "High"]
+  easy: boolean;
+  medium: boolean;
+  high: boolean;
   p: number = 1;
 
   _id: string;
+  img: string;
   image: string;
   content: string;
   level: string = "Easy";
@@ -44,13 +46,13 @@ export class QuestionsComponent implements OnInit {
     let q: questionModel = {
       _id: this._id,
       Content: this.content,
-      Img: this.image,
+      Img: this.img,
       Level: this.level,
       Resource_id: this.id
     }
     this.questionService.postQuestion(q).subscribe()
     this.getQuestion();
-    this. cancer_add();
+    this.cancer_add();
   }
 
   putQuestion(){
@@ -58,14 +60,12 @@ export class QuestionsComponent implements OnInit {
       _id: this.id_question,
       Content: this.qs.Content,
       Img: this.qs.Img ,
-      Level: this.qs.Level,
+      Level: this.level,
       Resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe(data=>{
-      const index = this.update(this.qs._id); 
-      this.qs[index] = data;
-    })
-    this.cancer();
+    this.questionService.putQuestion(q).subscribe()
+    this.getQuestion()
+    this.cancer_add()
   }
 
   deleteQuestion(id: string){
@@ -73,18 +73,6 @@ export class QuestionsComponent implements OnInit {
       this.getQuestion();
     })
   }
-
-//update value
-  update(id: string) {
-    let result = 0;
-    this.question.forEach((q, index) =>{
-      if(q._id == id){
-        result = index;
-      }
-    })
-    return result-1;
-  }
-
 
 //Base64 image
   onUploadChange(evt: any) {
@@ -98,6 +86,7 @@ export class QuestionsComponent implements OnInit {
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
+    this.img = 'data:image/png;base64,' + btoa(e.target.result);
     this.qs.Img= 'data:image/png;base64,' + btoa(e.target.result);
   }
 
@@ -117,9 +106,23 @@ export class QuestionsComponent implements OnInit {
   } 
 
   //Handle UI
-  selectLevel(e){
-    this.level = e.target.value;
-    console.log(this.level)
+  level1(){
+    this.easy=true
+    this.medium=false
+    this.high=false
+    this.level="Easy"
+  }
+  level2(){
+    this.easy=false
+    this.medium=true
+    this.high=false
+    this.level="Medium"
+  }
+  level3(){
+    this.easy=false
+    this.medium=false
+    this.high=true
+    this.level="High"
   }
 
   showAnswer(q: questionModel){
@@ -130,20 +133,20 @@ export class QuestionsComponent implements OnInit {
 
   add(){
     this.id_question=""
-    this.image=""
-    this.add_answer="1"
+    this.img=""
+    document.getElementById("add").style.opacity="0"
     document.getElementById("add-question").style.height="530px"
   }
   cancer_add(){
+    this.id_question=""
     this.content=""
-    this.add_answer=""
-    this.image=""
+    this.img=""
+    this.easy=false
+    this.medium=false
+    this.high=false
+    document.getElementById("add").style.opacity="1"
     document.getElementById("add-question").style.height="50px"
   }
-  cancer(){
-    this.id_question=""
-  }
-
 
 
 }

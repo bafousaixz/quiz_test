@@ -1,11 +1,1 @@
-<div style="background: none; border: none;" *ngIf="username" class="dropdown login">
-    <img style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px;" src="{{avatar}}" />
-    <button style="background: none; border: none; outline: 0; color: #ffffff;">
-      Hello {{username}}
-    </button>
-    <div class="dropdown-content">
-        <a class="dropdown-item" routerLink="/profile">Profile</a>
-        <a (click)="logout()" class="dropdown-item" routerLink="/">Logout</a>
-    </div>
-</div>
 <router-outlet></router-outlet>

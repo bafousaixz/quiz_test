@@ -1,24 +1,20 @@
 <div style="font-family: 'Quicksand', sans-serif;" *ngIf="tests">
 
-    <div id="set-scroll">
-        <div id="add-test1">
-            <button (click)="add()" class="btn-add"> Add</button>
-            <div class="create">
-                <app-create-test [resource]="name_resource" (OutputValue)="handle($event)">
-                </app-create-test>
-            </div>
-
-        </div>
-    </div>
+    <app-create-test [resource]="name_resource" (OutputValue)="handle($event)">
+    </app-create-test>
 
     <div class="container-test">
         <div *ngFor="let test of tests | filter: id" class="test">
             <button (click)="deleteTest(test._id)" class="btn-test"><i class="fas fa-trash-alt"></i></button>
             <div class="content">
                 <p class="test-name"> {{test.name}} </p>
-                <p style="font-style: italic;">{{test.amount}} question </p>
+                <p>{{test.time}} minute -
+                    <span style="font-style: italic;">{{test.amount}} question</span>
+                </p>
             </div>
-            <button class="btn-start ">Exam start</button>
+            <a href="tests/{{test._id}}">
+                <button class="btn-start ">Share</button>
+            </a>
         </div>
     </div>
 </div>

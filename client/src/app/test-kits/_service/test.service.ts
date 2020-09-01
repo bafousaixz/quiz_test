@@ -15,7 +15,11 @@ export class TestService {
   ) { }
 
   getTest(): Observable<any>{
-    return this.http.get<any>(this.url).delay(250)
+    return this.http.get<any>(this.url)
+  }
+
+  getDetail(id: string): Observable<any>{
+    return this.http.get<any>(this.url + id)
   }
 
   postTest(test: testModel): Observable<any>{

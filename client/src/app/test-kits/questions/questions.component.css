@@ -7,25 +7,28 @@
     background: #ffffff;
     margin: 1%;
     padding: 1%;
-    padding-top: 2%;
+    height: 470px;
 }
 
 .input-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
     height: 100px;
-    width: 100px;
+    width: 150px;
     cursor: pointer;
     z-index: 1;
 }
 
 .input-image {
     position: relative;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     outline: none;
     border: 1px dotted #5f45ea;
-    margin-top: 20px;
     display: block;
+    cursor: pointer;
 }
 
 .input-image p {
@@ -39,9 +42,9 @@
 }
 
 img {
-    margin-bottom: 20px;
     max-height: 100px;
     max-width: 80%;
+    cursor: pointer;
 }
 
 #set-scroll {
@@ -65,20 +68,22 @@ img {
     transition: height .5s;
 }
 
+#add {
+    opacity: 1;
+    transition: all .6s;
+}
+
 .btn-add {
     margin: 10px auto;
     display: flex;
     justify-content: center;
     border-radius: 5px;
-    color: #ffffff;
+    color: rgba(15, 188, 249, 1.0);
     padding: 5px;
     border: none;
     outline: none;
     font-weight: bold;
-    font-size: 13px;
-    background: rgba(15, 188, 249, 1.0);
-    box-shadow: 0px 5px 5px rgba(15, 188, 249, 0.5);
-    width: 80px;
+    font-size: 15px;
     height: 30px;
     transition: .3s;
 }
@@ -90,14 +95,36 @@ img {
     font-weight: bold;
     font-size: 13px;
     background: rgba(15, 188, 249, 1.0);
-    box-shadow: 0px 5px 5px rgba(15, 188, 249, 0.5);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
     color: #ffffff;
     margin: 5px;
     right: 0;
     padding: 5px;
-    width: 80px;
+    width: 70px;
     display: inline-block;
     transition: .3s;
+}
+
+.btn-cancer {
+    background: none;
+    width: 55px;
+    padding: 4px;
+    color: #000;
+    font-weight: normal;
+    border: 1px solid #f2f2f2f2;
+}
+
+.btn-edit {
+    background: #ffffff;
+    border: 1px solid #f2f2ff;
+    color: rgba(15, 188, 249, 1.0);
+    width: 30px;
+}
+
+.btn-remove {
+    width: 30px;
+    background: #F79F1F;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
 }
 
 .btn-question:hover,
@@ -112,12 +139,18 @@ img {
     height: auto;
 }
 
+.level {
+    margin: 10px 0px;
+    font-size: 15px;
+    font-style: italic;
+}
+
 .container-question {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 170vh;
-    margin-top: 25px;
+    min-height: 250vh;
+    margin-top: 10px;
 }
 
 .question {
@@ -145,7 +178,7 @@ img {
 .ct {
     font-size: 15px;
     width: 100%;
-    margin: 2% 0%;
+    margin: 0% 0% 1% 0%;
     height: auto;
     padding: 5px;
     min-height: 150px;
@@ -160,7 +193,7 @@ img {
 
 .image-question input {
     height: 100px;
-    width: 300px;
+    width: 150px;
     position: absolute;
     top: 0;
     left: 0;
@@ -184,13 +217,37 @@ h5 {
     font-size: 17px;
     font-weight: bold;
     margin-right: 10px;
+    margin-bottom: -10px;
 }
 
-select {
-    width: 100px;
-    height: 30px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(15, 188, 249, 1.0);
-    background: none;
+label {
+    margin-bottom: -1%;
+    font-size: 15px;
+    margin-top: 1%;
+    width: 100%;
+}
+
+.toggle {
+    width: 100%;
+    height: 40px;
+}
+
+.toggle ul {
+    margin: 0;
+    padding: 0;
+}
+
+.toggle ul li {
+    display: inline-block;
+    border: 2px solid #f2f2f2f2;
+    padding: 3px;
+    font-size: 15px;
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.select-level {
+    background: #f2f2f2f2;
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, .1);
 }

@@ -2,9 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Options } from 'ng5-slider';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
+
 @Component({
   selector: 'app-create-test',
   templateUrl: './create-test.component.html',
@@ -16,12 +18,12 @@ export class CreateTestComponent implements OnInit {
 
   set: number ;
   amount: number;
+  time: number;
   easy: number;
   medium: number;
   high: number;
   name: string;
   resource_id = this.route.snapshot.paramMap.get('id');
-  result: [];
 
   min: number = 0;
   max: number = 10;
@@ -35,19 +37,14 @@ export class CreateTestComponent implements OnInit {
     noSwitching: true,
     showOuterSelectionBars: true,
   };
-
-  
   
   constructor(
     private testService: TestService,
     private router: Router,
     private route: ActivatedRoute,
-  ) {
-   }
+  ) {}
 
-  ngOnInit(): void {
-  
-  }
+  ngOnInit(): void {}
 
   createTest(){
     this.easy = this.min;
@@ -56,12 +53,12 @@ export class CreateTestComponent implements OnInit {
     const name_test: string = this.resource + "- " + this.name
     let test: testModel ={
       name: name_test,
+      time: this.time,
       amount: this.amount,
       easy: this.min,
       medium: this.max - this.min,
       high: this.amount - this.max,
       resource_id: this.resource_id
-      // result: this.result
     }
     if(name !== null && this.amount !=null){
       this.testService.postTest(test).subscribe();
@@ -77,12 +74,39 @@ export class CreateTestComponent implements OnInit {
     const newOptions: Options = Object.assign({}, this.options);
     newOptions.ceil = newCeil;
     this.options = newOptions;
+    document.getElementById("add-test1").style.height="410px"
+    document.getElementById("slider").style.height="100px";
+    document.getElementById("slider").style.opacity="1";
+
   }
 
   close(){
-    this.OutputValue.emit("50px");
+    document.getElementById("add-test1").style.height="50px"
+    document.getElementById("slider").style.height="0px";
+    document.getElementById("slider").style.opacity="0";
+    document.getElementById("btn-add").style.opacity="1"
+    this.OutputValue.emit("close");
     this.name = "";
+    this.time = null;
     this.amount= null;
   }
 
+  add(){
+    document.getElementById("add-test1").style.height="310px"
+    document.getElementById("btn-add").style.opacity="0"
+  }
+
+  @HostListener('window:scroll', ['$event']) onScrollEvent(){
+    let a = document.getElementById("set-scroll").style;
+    let b = document.getElementById("add-test1").style;
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      a.position = "fixed";
+      a.paddingRight="30%";
+      b.width="91%";
+    } else {
+      a.paddingRight="0";
+      a.position = "relative";
+      b.width="98%";
+    }
+  } 
 }

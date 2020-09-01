@@ -2,11 +2,7 @@ const Mongoose = require('mongoose');
 var Schema = Mongoose.Schema;
 
 const TestQuestion = new Schema({
-    // name: {
-    //     type: String,
-    //     unique: false,
-    //     required: true
-    // },
+
     test_id: {
         type: Schema.Types.ObjectId,
         ref: 'tests',

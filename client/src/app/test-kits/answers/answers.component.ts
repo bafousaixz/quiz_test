@@ -10,13 +10,14 @@ import { AnswerService } from '../_service/answer.service';
   styleUrls: ['./answers.component.css']
 })
 export class AnswersComponent implements OnInit {
+  @Input() id: string;
+
+  fix:string
   answer: answerModel[]
   ans: answerModel
   content: string
-  right: boolean = false
   r: boolean = false
   _id: string
-  @Input() id: string;
 
   constructor(
     private answerService: AnswerService,
@@ -42,18 +43,11 @@ export class AnswersComponent implements OnInit {
     }
     this.answerService.postAnswer(as).subscribe()
     this.content=""
-    this.right=false
     this.getAnswer()
   }
   
 
   putAnswer(a: answerModel){
-    if(a.Right == true){
-      a.Right = false
-    }
-    else{
-      a.Right = true
-    }
     const as : answerModel = {
       _id: a._id,
       Content : a.Content,
@@ -61,7 +55,7 @@ export class AnswersComponent implements OnInit {
       question_id : this.id
     }
     this.answerService.putAnswer(as).subscribe() 
-    console.log(as)
+    this.fix =""
   }
 
   deleteAnswer(id: string){
@@ -69,6 +63,17 @@ export class AnswersComponent implements OnInit {
     this.getAnswer()
   }
 
+  editRight(a){
+    if(a.Right == true){
+      a.Right = false
+    }
+    else{
+      a.Right = true
+    }
+  }
+  edit(a){
+    this.fix = a._id
+  }
 
   add_right(){
     if(this.r == true){

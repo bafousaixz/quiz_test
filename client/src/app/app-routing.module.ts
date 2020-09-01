@@ -6,6 +6,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { ResourcesComponent } from './test-kits/resources/resources.component';
 import { ResourceComponent } from './test-kits/resource/resource.component';
+import { ExamComponent} from './tests/exam/exam.component'
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'test-resources/:id',
     component: ResourceComponent
+  },
+  {
+    path: 'tests/:id',
+    component: ExamComponent
   },
 
   {

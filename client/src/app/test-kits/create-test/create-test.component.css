@@ -6,13 +6,57 @@
 }
 
 .test {
-    align-items: center;
+    /* align-items: center; */
     width: 98%;
     background: #ffffff;
     border-radius: 0 0 10px 10px;
     height: auto;
     margin: 1%;
     overflow: hidden;
+}
+
+#slider {
+    z-index: -1;
+    height: 0;
+    transition: .5s;
+    opacity: 0;
+}
+
+#set-scroll {
+    position: relative;
+    top: 0vh;
+    z-index: 1;
+    width: 100%;
+    background: none;
+}
+
+#add-test1 {
+    position: relative;
+    top: 0vh;
+    left: 1%;
+    width: 98%;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: height .5s;
+}
+
+#btn-add {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    color: rgba(15, 188, 249, 1.0);
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 15px;
+    height: 30px;
+    cursor: pointer;
+    transition: .3s;
 }
 
 .btn-test {
@@ -26,27 +70,46 @@
     color: #ffffff;
     right: 0;
     padding: 5px;
-    width: 80px;
-    display: block;
-    margin: 10px;
+    width: 70px;
+    display: inline-block;
+    margin: 5px;
+    z-index: 10;
     transition: .3s;
 }
 
-.btn-test:hover {
+.btn-cancer {
+    background: none;
+    width: 55px;
+    padding: 4px;
+    color: #000;
+    font-weight: normal;
+    border: 1px solid #f2f2f2f2;
+}
+
+.btn-test:hover,
+.btn-add:hover {
     box-shadow: 0px 5px 5px #ffffff;
     cursor: pointer;
 }
 
-p {
+.set-level ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.set-level ul li {
     font-size: 15px;
     color: #778ca3;
     font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
 }
 
 .name-test {
     font-size: 15px;
     width: 100%;
-    margin: 0% 0% 1% 0%;
     height: auto;
     padding: 5px;
     /* min-height: 100px; */
@@ -57,28 +120,16 @@ p {
 
 .a {
     position: relative;
-    height: 100px;
-    width: 750px;
+    width: 60%;
     display: flex;
     margin: 0 auto;
 }
 
-.b {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.c {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 input {
-    width: 50px;
+    width: 60px;
     border: 1px solid #f2f2f2;
     outline: none;
+    margin-right: 20px;
 }
 
 .alert1 {
@@ -89,4 +140,11 @@ input {
     color: #856404;
     line-height: 35px;
     padding: 5px 10px;
+}
+
+label {
+    margin-bottom: -1%;
+    font-size: 15px;
+    margin-top: 2%;
+    width: 100%;
 }

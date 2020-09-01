@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../login/users.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,36 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  username:string;
-  avatar:string;
-  token = localStorage.getItem("token")
-  
-  constructor(
-    public userService: UsersService,
-    public router: Router
-  ) { 
+ 
+  constructor( ) { 
    
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  }
 
-    this.get();
-    // console.log(this.username)
-  }
-
-  get(){
-    if(this.token != null){
-      this.userService.getUser().subscribe(data=>{
-        this.avatar = data.Image
-        this.username = data.Last_Name
-       })
-    }
-  }
-
-  logout(){
-    localStorage.removeItem('token');
-    this.username = "";
-    this.router.navigate(['/']);
-  }
+ 
 
 }

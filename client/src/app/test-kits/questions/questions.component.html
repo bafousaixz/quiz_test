@@ -1,24 +1,32 @@
 <div style="font-family: 'Quicksand', sans-serif;">
     <div id="set-scroll">
         <div id="add-question">
-            <button (click)="add()" class="btn-add"> Add</button>
+            <h2 id="add" (click)="add()" class="btn-add"><i class="fas fa-plus-circle"></i> Add question</h2>
             <div id="center">
                 <h5 style="text-align: center;">Question</h5>
-                <textarea type="text" name="content" [(ngModel)]="content" class="ct" placeholder="Question content"></textarea><br>
 
-                <h5 style="display: inline;">Level:</h5>
-                <select (change)="selectLevel($event)">     
-                    <option *ngFor="let cate of cates" [value]="cate" >{{cate}}</option>
-                </select>
-                <br>
-                <div *ngIf="!image" class="input-image">
+                <label>Content:</label>
+                <textarea type="text" name="content" [(ngModel)]="content" class="ct" placeholder="Question content"></textarea>
+
+                <label>Level:</label>
+                <div class="toggle">
+                    <ul>
+                        <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
+                        <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
+                        <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
+                    </ul>
+                </div>
+
+                <label>Image:</label>
+                <div *ngIf="!img" class="input-image">
                     <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
                     <p><i class="fas fa-camera"></i></p>
                 </div>
-                <img src="{{image}}" alt="" style="margin-top: 20px;">
+                <img src="{{img}}" alt="">
 
-                <div>
+                <div style="position: absolute; bottom: 0;">
                     <button (click)="postQuestion()" class="btn-question">Save</button>
+                    <button (click)="cancer_add()" class="btn-question btn-cancer">Cancer</button>
                 </div>
             </div>
         </div>
@@ -29,25 +37,48 @@
             <div class="content">
                 <div *ngIf=" id_question !== q._id">
                     <div class="right-zone">
-                        <button (click)="showAnswer(q)" class="btn-question">Edit</button>
-                        <button (click)="deleteQuestion(q._id)" class="btn-question">Remove</button>
-                        <h6 style="margin: 5px;">Level: {{q.Level}}</h6>
+                        <button (click)="showAnswer(q)" class="btn-question btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button (click)="deleteQuestion(q._id)" class="btn-question btn-remove">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+
                     </div>
                     <p style="font-size: 15px;">{{q.Content}}</p>
+                    <p class="level">Level: {{q.Level}}</p>
                     <img src="{{q.Img}}">
                 </div>
 
                 <div *ngIf="id_question === q._id" id="edit">
                     <h5>Question</h5>
-                    <textarea type="text" name="content" [(ngModel)]="q.Content" class="ct"></textarea><br>
+                    <hr>
+                    <label>Content:</label>
+                    <textarea type="text" name="content" [(ngModel)]="q.Content" class="ct" placeholder="Question content"></textarea>
+
+                    <label>Level:</label>
+                    <div class="toggle">
+                        <ul>
+                            <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
+                            <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
+                            <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
+                        </ul>
+                    </div>
+
+                    <label>Image:</label>
                     <div class="image-question">
                         <img *ngIf="q.Img && !image" src="{{q.Img}}">
                         <img *ngIf="image" src="{{image}}">
                         <h4 *ngIf="!q.Img && !image"><i class="fas fa-camera"></i></h4>
                         <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
                     </div>
-                    <hr>
-                    <app-answers [id]="id_question "></app-answers>
+
+                    <div style="margin-top: 60px;">
+                        <h5>Answer</h5>
+                        <hr>
+                        <app-answers [id]="id_question "></app-answers>
+                    </div>
+
                     <div style="display: block; margin-left: 45%; margin-top: 20px;">
                         <button (click)="putQuestion() " class="btn-question">Save</button>
                     </div>

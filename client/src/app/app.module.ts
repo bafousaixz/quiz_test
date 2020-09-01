@@ -4,21 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProfileModule } from './profile/profile.module'
 import { LoginModule } from './login/login.module';
 import { TestKitsModule } from  './test-kits/test-kits.module';
-
+import { ComponentModule } from  './component/component.module';
+import { TestsModule } from './tests/tests.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './component/home/home.component';
-import { ErrorComponent } from './component/error/error.component';
-import { FooterComponent } from './component/footer/footer.component';
 import { UsersService } from 'src/app/login/users.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ErrorComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +21,8 @@ import { UsersService } from 'src/app/login/users.service';
     LoginModule,
     ProfileModule,
     TestKitsModule,
-
+    ComponentModule,
+    TestsModule,
   ],
   providers: [
     UsersService,

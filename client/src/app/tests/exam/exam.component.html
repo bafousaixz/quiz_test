@@ -1,0 +1,19 @@
+<app-user (OutputValue)="handle($event)"></app-user>
+<div style="font-family: 'Quicksand', sans-serif; background: #f2f2ff;">
+    <div class="top-exam">
+    </div>
+
+    <div class="container-exam">
+        <div class="exam">
+            <div class="content-exam">
+                <p class="exam-name"> {{test.name}} </p>
+                <p>{{test.time}} minute -
+                    <span style="font-style: italic;">{{test.amount}} question</span>
+                </p>
+            </div>
+            <a>
+                <button (click)="handle($event)" class="btn-start ">Exam start</button>
+            </a>
+        </div>
+    </div>
+</div>

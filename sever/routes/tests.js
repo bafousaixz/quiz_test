@@ -20,13 +20,29 @@ router.get('/tests', async(req, res) => {
             res.send(result);
         }
     });
-    // try {
-    //     const result = await tests.find().exec();
-    //     res.send(result);
-    // } catch (error) {
-    //     res.status(400).send(error)
-    // }
+
 })
+
+router.get('/tests/:id', async(req, res) => {
+    const id = req.params.id;
+    tests.aggregate([{
+        $lookup: {
+            from: test_question.collection.name,
+            localField: '_id',
+            foreignField: 'test_id',
+            as: 'questionList',
+        }
+    }]).exec((err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            var test = result.filter(item => (
+                item._id == id
+            ));
+            res.send((test[0]));
+        }
+    });
+});
 
 router.get('/testquestions', async(req, res) => {
     try {
@@ -38,7 +54,7 @@ router.get('/testquestions', async(req, res) => {
 })
 
 router.post('/tests', async(req, res) => {
-    const { name, amount, easy, medium, high, resource_id } = req.body
+    const { name, time, amount, easy, medium, high, resource_id } = req.body
     const rs = new tests(req.body)
     const result_test = await rs.save();
     const test_id = result_test._id

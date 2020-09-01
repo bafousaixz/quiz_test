@@ -1,21 +1,12 @@
 <div class="top">
+    <app-user></app-user>
+
     <input type="checkbox" id="check">
     <label for="check" class="check-btn">
         <i class="fas fa-bars"></i>
     </label>
-    <a *ngIf="!username" class="login" routerLink="/login">Login</a>
-    <div style="background: none; border: none;" *ngIf="username" class="dropdown login">
-        <img style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px;" src="{{avatar}}" />
-        <button style="background: none; border: none; outline: 0; color: #ffffff;">
-          Hello {{username}}
-        </button>
-        <div class="dropdown-content">
-            <a class="dropdown-item" routerLink="/profile">Profile</a>
-            <a (click)="logout()" class="dropdown-item" routerLink="/">Logout</a>
-        </div>
-    </div>
     <ul>
-        <li><a routerLink="test-resources">Test kit</a></li>
+        <li><a [routerLink]="'test-resources'">Test kit</a></li>
         <li><a href="#">Create test</a></li>
         <li><a href="#">Nani</a></li>
     </ul>
