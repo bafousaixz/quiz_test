@@ -10,6 +10,7 @@ import { testModel } from '../../test-kits/_model/test.model';
 })
 export class ExamComponent implements OnInit {
   user: string;
+  start: boolean = false
   _id: string = this.route.snapshot.paramMap.get('id');
   test: testModel;
   constructor(
@@ -19,17 +20,18 @@ export class ExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.get()
-   
   }
 
   get(){
     this.service.getDetail(this._id).subscribe(data=>{
     this.test= data
-    console.log(data)
     })
   }
 
   handle(e){
     console.log(e)
+  }
+  onClick(){
+    this.start=true
   }
 }

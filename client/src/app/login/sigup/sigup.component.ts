@@ -41,7 +41,7 @@ export class SigupComponent implements OnInit {
     else{
       this.userService.signup(signup).subscribe(data =>{
         window.localStorage.setItem('token', data['token'])
-        this.router.navigate(['/test-resources']);
+        this.router.navigate(['/resources']);
        });
     }
   }

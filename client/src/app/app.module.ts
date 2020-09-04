@@ -23,6 +23,7 @@ import { UsersService } from 'src/app/login/users.service';
     TestKitsModule,
     ComponentModule,
     TestsModule,
+ 
   ],
   providers: [
     UsersService,

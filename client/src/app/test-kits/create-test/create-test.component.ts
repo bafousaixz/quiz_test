@@ -28,11 +28,11 @@ export class CreateTestComponent implements OnInit {
   name: string;
   resource_id = this.route.snapshot.paramMap.get('id');
 
-  min: number = 0;
+  min: number = 1;
   max: number = 10;
   options: Options = {
     floor: 0,
-    ceil: 100,
+    ceil: 10,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true,

@@ -5,8 +5,6 @@ import { QuestionService } from '../_service/question.service';
 import { questionModel } from '../_model/question.model';
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
-import { answerModel } from '../_model/answer.model';
-import { AnswerService } from '../_service/answer.service';
 
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -21,26 +19,23 @@ export class EditTestComponent implements OnInit {
   _id: string
   name_test: string
   test_question: test_questionModule[] = []
-  questions: questionModel[]=[]
-  answers: answerModel[]
   q: test_questionModule
+  questions: questionModel[]=[]
+  
  
   constructor(
     public route: ActivatedRoute,
     private serviceTestQuestion: TestQuestionService,
     public questionService: QuestionService,
     private testService: TestService,
-    private answerService: AnswerService,
   ) { }
 
   ngOnInit(): void {
     this.get();
     this.getTest();
-    this.getAnswer();
   }
 
   get(){
-    let count = 0
     this.serviceTestQuestion.getDetail(this.id).subscribe(data=>{
       this.test_question = data
     })
@@ -56,11 +51,6 @@ export class EditTestComponent implements OnInit {
   getTest(){
     this.testService.getDetail(this.id).subscribe(data=>{
       this.test= data
-    })
-  }
-  getAnswer(){
-    this.answerService.getAnswer().subscribe(data =>{
-      this.answers = data;
     })
   }
 
@@ -85,9 +75,8 @@ export class EditTestComponent implements OnInit {
     this.popup = true
     this.getQuestion()
   }
+
   cancer(){
     this.popup = false
   }
-
-
 }

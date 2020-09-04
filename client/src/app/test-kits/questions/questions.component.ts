@@ -58,8 +58,7 @@ export class QuestionsComponent implements OnInit {
         this.getQuestion();
         this.cancer_add();
       }
-    })
-   
+    })   
   }
 
   putQuestion(){
@@ -70,9 +69,12 @@ export class QuestionsComponent implements OnInit {
       Level: this.level,
       Resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe()
-    this.getQuestion()
-    this.cancer_add()
+    this.questionService.putQuestion(q).subscribe(data=>{
+      if(data!=null){
+        this.getQuestion()
+        this.cancer_add()
+      }
+    })
   }
 
   deleteQuestion(id: string){

@@ -33,7 +33,7 @@ export class SiginComponent implements OnInit {
       this.service.signin(signin).subscribe(data =>{
         window.localStorage.setItem('token', data['token'])
        // window.location.reload();
-        this.router.navigate(['/test-resources']);
+        this.router.navigate(['/resources']);
        });
     }
     
