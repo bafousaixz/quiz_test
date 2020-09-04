@@ -1,4 +1,4 @@
-<div style="font-family: 'Quicksand', sans-serif;" *ngIf="tests">
+<div class="right-zone" *ngIf="tests">
 
     <app-create-test [resource]="name_resource" (OutputValue)="handle($event)">
     </app-create-test>
@@ -15,6 +15,7 @@
             <a href="tests/{{test._id}}">
                 <button class="btn-start ">Share</button>
             </a>
+            <a routerLink="{{test._id}}"> <button class="btn-start ">Edit</button></a>
         </div>
     </div>
 </div>

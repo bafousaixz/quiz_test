@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.container-questions {
+    width: 65%;
+    height: auto;
+    min-height: 80vh;
+    position: absolute;
+    top: 22vh;
+    right: 0;
+}
+
 #center {
     position: relative;
     align-items: center;
@@ -250,4 +259,10 @@ label {
 .select-level {
     background: #f2f2f2f2;
     box-shadow: inset 0px 5px 5px rgba(0, 0, 0, .1);
+}
+
+textarea::placeholder {
+    font-style: 13px;
+    color: #dcdde1;
+    font-style: italic;
 }

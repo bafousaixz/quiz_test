@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { HostListener } from '@angular/core';
 
 import { QuestionService } from '../_service/question.service';
@@ -23,7 +23,7 @@ export class QuestionsComponent implements OnInit {
   image: string;
   content: string;
   level: string = "Easy";
-  id = this.route.snapshot.paramMap.get('id');
+  id = '';
   question: questionModel[];
   qs: questionModel;
 
@@ -34,6 +34,9 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestion()
+    this.route.parent.params.subscribe((param: Params) => {
+      this.id = param['id'];
+    })
   }
   
   getQuestion(){
@@ -50,9 +53,13 @@ export class QuestionsComponent implements OnInit {
       Level: this.level,
       Resource_id: this.id
     }
-    this.questionService.postQuestion(q).subscribe()
-    this.getQuestion();
-    this.cancer_add();
+    this.questionService.postQuestion(q).subscribe(data=>{
+      if(data !=null){
+        this.getQuestion();
+        this.cancer_add();
+      }
+    })
+   
   }
 
   putQuestion(){

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { FormsModule } from '@angular/forms';
 
 import { answerModel } from '../_model/answer.model';
 import { AnswerService } from '../_service/answer.service';
@@ -41,9 +40,14 @@ export class AnswersComponent implements OnInit {
       Right : this.r,
       question_id : this.id
     }
-    this.answerService.postAnswer(as).subscribe()
-    this.content=""
-    this.getAnswer()
+    this.answerService.postAnswer(as).subscribe(data=>{
+      if(data!=null){
+        this.content="";
+        this.r = false;
+        this.getAnswer()
+      }
+    })
+    
   }
   
 

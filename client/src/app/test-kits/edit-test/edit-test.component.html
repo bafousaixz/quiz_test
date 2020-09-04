@@ -1,0 +1,48 @@
+<div class="container-edit">
+    <div class="content" *ngIf="test">
+        <p class="test-name"> {{test.name}} </p>
+        <p style="text-align: center;">{{test.time}} minute -
+            <span style="font-style: italic;">{{test.amount}} question</span>
+        </p>
+    </div>
+    <div class="container">
+        <div class="content" *ngFor="let tq of test_question">
+            <p>{{tq.questions.Content}}</p>
+            <div class="answer-container1">
+                <ul>
+                    <li *ngFor="let answer of answers | filter: tq.questions._id">
+                        <input type="radio" [checked]="answer.Right" disabled='disabled'> {{answer.Content}}
+                    </li>
+                </ul>
+            </div>
+            <h3 (click)="edit(tq, tq.questions.Content)"><i class="fas fa-exchange-alt"></i></h3>
+            <hr>
+        </div>
+    </div>
+
+    <div *ngIf="popup" class="container-popup">
+        <div class="edit-test-question">
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="text" [(ngModel)]="content" name="question" placeholder="Search question">
+            </div>
+            <div class="container-qs">
+                <table>
+                    <tr>
+                        <th>Content</th>
+                    </tr>
+                    <tr class="list-question" *ngFor="let question of questions | filter: content">
+                        <td *ngIf="question">
+                            {{question.Content}}
+                        </td>
+                        <td style="width: 30px;">
+                            <h2 (click)="put(question)"> Upload</h2>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button (click)="cancer()" class="btn-cancer">Cancer</button>
+        </div>
+
+    </div>
+</div>

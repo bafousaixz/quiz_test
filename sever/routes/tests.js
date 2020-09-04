@@ -57,6 +57,7 @@ router.post('/tests', async(req, res) => {
     const { name, time, amount, easy, medium, high, resource_id } = req.body
     const rs = new tests(req.body)
     const result_test = await rs.save();
+    res.send(result_test)
     const test_id = result_test._id
 
     questions.aggregate([{
@@ -74,9 +75,6 @@ router.post('/tests', async(req, res) => {
             const tq = new test_question({ test_id, questions })
             tq.save();
         });
-        res.send("oke")
-
-
     });
 
     questions.aggregate([{

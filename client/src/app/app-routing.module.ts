@@ -6,7 +6,10 @@ import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { ResourcesComponent } from './test-kits/resources/resources.component';
 import { ResourceComponent } from './test-kits/resource/resource.component';
-import { ExamComponent} from './tests/exam/exam.component'
+import { QuestionsComponent } from './test-kits/questions/questions.component';
+import { ListTestComponent } from './test-kits/list-test/list-test.component';
+import { EditTestComponent } from './test-kits/edit-test/edit-test.component'
+import { ExamComponent} from './tests/exam/exam.component';
 
 const routes: Routes = [
   {
@@ -25,14 +28,33 @@ const routes: Routes = [
   },
 
   {
-    path: 'test-resources',
+    path: 'resources',
     component: ResourcesComponent
   },
 
   {
-    path: 'test-resources/:id',
-    component: ResourceComponent
+    path: 'resources/:id',
+    component: ResourceComponent,
+    children: [
+      {
+        path: '',
+        component: QuestionsComponent
+      },
+      {
+        path: 'questions',
+        component: QuestionsComponent
+      },
+      {
+        path: 'tests',
+        component: ListTestComponent
+      },
+      {
+        path: 'tests/:id',
+        component: EditTestComponent
+      },
+    ]
   },
+  
   {
     path: 'tests/:id',
     component: ExamComponent

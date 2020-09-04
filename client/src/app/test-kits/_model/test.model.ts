@@ -1,5 +1,5 @@
 export class testModel {
-    // _id: string;
+    _id: string;
     name: string;
     time: number;
     amount: number;

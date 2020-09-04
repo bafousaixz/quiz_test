@@ -9,7 +9,6 @@
     </div>
 
     <div class="mid" *ngIf="resource">
-
         <div id="resource-zone">
             <div class="custom-shape-divider-top-1598372428">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -24,21 +23,18 @@
                     <h4 *ngIf="!resource.Image && !image" class="avatar-resource">+</h4>
                     <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg .svg" class="input-img">
                 </div>
-                <button (click)="showListquestion()" [ngClass]="{ 'target-btn' : check == true}">Questions</button>
-                <button (click)="showListtest()" [ngClass]="{ 'target-btn' : check == false}">Tests</button>
+                <a routerLink="questions" [ngClass]="{ 'target-btn' : check == true}" (click)="showListquestion()">
+                    <i class="fas fa-question-circle"></i>
+                    <p>Questions </p>
+                </a>
+                <a routerLink="tests" [ngClass]="{ 'target-btn' : check == false}" (click)="showListtest()">
+                    <i class="fas fa-file-alt"></i>
+                    <p>Tests </p>
+                </a>
                 <input (change)="putResource()" type="text" [(ngModel)]="resource.Name" class="name-resource">
                 <textarea (change)="putResource()" [(ngModel)]="resource.Content"></textarea>
             </div>
         </div>
-
-        <div class="right-zone">
-            <div *ngIf="check">
-                <app-questions></app-questions>
-            </div>
-            <div *ngIf="!check">
-                <app-list-test [name_resource]="resource.Name"></app-list-test>
-            </div>
-        </div>
-
+        <router-outlet></router-outlet>
     </div>
 </div>

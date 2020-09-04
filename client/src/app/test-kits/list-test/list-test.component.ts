@@ -1,25 +1,34 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { TestService } from '../_service/test.service';
 import { testModel } from '../_model/test.model';
+import { ResourceService } from  '../_service/resource.service';
+
 @Component({
   selector: 'app-list-test',
   templateUrl: './list-test.component.html',
   styleUrls: ['./list-test.component.css']
 })
 export class ListTestComponent implements OnInit {
-  @Input() name_resource: string; 
-  check: string
-  id = this.route.snapshot.paramMap.get('id');
+  check: string;
+  _id: string;
+  id = '';
   tests: testModel[];
+  name_resource='';
+
   constructor(
     private testService: TestService,
-    public route: ActivatedRoute,
+    private resourceService: ResourceService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.getTests();
+    this.route.parent.params.subscribe((param: Params) => {
+      this.id = param['id'];
+    });
+    this.getResource();
   }
 
   getTests(){
@@ -33,9 +42,13 @@ export class ListTestComponent implements OnInit {
     this.getTests()
   }
 
-  handle(e){
-    this.getTests()
+  getResource(){
+    this.resourceService.getReourceId(this.id).subscribe(data=>{
+      this.name_resource = data.Name
+    })
   }
 
- 
+  handle(e){
+    this.getTests()
+  } 
 }

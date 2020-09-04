@@ -11,7 +11,8 @@
     background: #ffffff;
     border-radius: 0 0 10px 10px;
     height: auto;
-    margin: 1%;
+    padding: 10px;
+    margin: 10px;
     overflow: hidden;
 }
 
@@ -147,4 +148,10 @@ label {
     font-size: 15px;
     margin-top: 2%;
     width: 100%;
+}
+
+input::placeholder {
+    font-style: 13px;
+    color: #dcdde1;
+    font-style: italic;
 }

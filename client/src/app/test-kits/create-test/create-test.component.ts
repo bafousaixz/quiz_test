@@ -16,6 +16,9 @@ export class CreateTestComponent implements OnInit {
   @Input() resource: string; 
   @Output() OutputValue = new EventEmitter();
 
+  test: testModel;
+  id =''
+  _id: string;
   set: number ;
   amount: number;
   time: number;
@@ -31,8 +34,8 @@ export class CreateTestComponent implements OnInit {
     floor: 0,
     ceil: 100,
     step: 1,
-    hideLimitLabels:  true,
-    hidePointerLabels:  true,
+    hideLimitLabels: true,
+    hidePointerLabels: true,
     showSelectionBar: false,
     noSwitching: true,
     showOuterSelectionBars: true,
@@ -52,6 +55,7 @@ export class CreateTestComponent implements OnInit {
     this.high = this.amount - this.max;
     const name_test: string = this.resource + "- " + this.name
     let test: testModel ={
+      _id: this._id,
       name: name_test,
       time: this.time,
       amount: this.amount,
@@ -61,8 +65,15 @@ export class CreateTestComponent implements OnInit {
       resource_id: this.resource_id
     }
     if(name !== null && this.amount !=null){
-      this.testService.postTest(test).subscribe();
-      this.close()
+      this.testService.postTest(test).subscribe(data=>{
+        if(data!=null){
+          this.testService.getTest().subscribe(data=>{
+            this.test = data[data.length -1]
+            this.router.navigate([this.test._id], { relativeTo: this.route });
+          })
+          this.close()
+        }
+      }); 
     }
     else{
       alert('error')
@@ -77,7 +88,6 @@ export class CreateTestComponent implements OnInit {
     document.getElementById("add-test1").style.height="410px"
     document.getElementById("slider").style.height="100px";
     document.getElementById("slider").style.opacity="1";
-
   }
 
   close(){

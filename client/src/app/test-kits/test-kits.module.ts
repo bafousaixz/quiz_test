@@ -14,6 +14,7 @@ import { AnswersComponent } from './answers/answers.component';
 import { ResourceComponent } from './resource/resource.component';
 import { ListTestComponent } from './list-test/list-test.component';
 import { CreateTestComponent } from './create-test/create-test.component';
+import { EditTestComponent } from './edit-test/edit-test.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CreateTestComponent } from './create-test/create-test.component';
     AnswersComponent,
     ResourceComponent,
     ListTestComponent,
-    CreateTestComponent
+    CreateTestComponent,
+    EditTestComponent
   ],
   imports: [
     CommonModule,
