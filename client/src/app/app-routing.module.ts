@@ -10,6 +10,7 @@ import { QuestionsComponent } from './test-kits/questions/questions.component';
 import { ListTestComponent } from './test-kits/list-test/list-test.component';
 import { EditTestComponent } from './test-kits/edit-test/edit-test.component'
 import { ExamComponent} from './tests/exam/exam.component';
+import { ResultComponent } from './tests/result/result.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'tests/:id',
     component: ExamComponent
+  },
+  {
+    path: 'tests/:id/:id',
+    component: ResultComponent
   },
 
   {

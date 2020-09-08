@@ -1,3 +1,5 @@
+import { test_questionModule } from './test_question';
+
 export class testModel {
     _id: string;
     name: string;
@@ -7,5 +9,6 @@ export class testModel {
     medium: number;
     high: number;
     resource_id: string;
+    questionList?: test_questionModule[]
     // result: [];
 }

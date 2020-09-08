@@ -4,33 +4,6 @@
     margin: 0;
 }
 
-#set-scroll {
-    position: relative;
-    top: 0vh;
-    width: 100%;
-    background: none;
-}
-
-.container-start {
-    width: 73%;
-    height: auto;
-    min-height: 100px;
-}
-
-#content-qs {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: auto;
-    min-height: 80px;
-    width: 100%;
-    padding: 15px;
-    background: #ffffff;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
-    overflow: hidden;
-    transition: height .5s;
-}
-
 .content {
     position: relative;
     display: block;
@@ -157,16 +130,13 @@ h2 {
 }
 
 
-/* On mouse-over, add a grey background color */
-
-.container:hover input~.checkmark {
-    background-color: #ccc;
-}
-
-
 /* When the radio button is checked, add a blue background */
 
-.container input:checked~.checkmark {
+.cs:checked~.checkmark {
+    background-color: red;
+}
+
+.choose:checked~.checkmark {
     background-color: #2196F3;
 }
 
@@ -206,46 +176,4 @@ h2 {
 
 h1::first-letter {
     text-transform: uppercase;
-}
-
-.countdown {
-    text-align: center;
-    margin: 20px 50px;
-    font-style: 20px;
-    padding: 10px 20px;
-    background: #f2f2f2;
-    border-radius: 10px;
-}
-
-#menu-test {
-    position: absolute;
-    top: 110px;
-    right: 1%;
-    width: 25%;
-    height: auto;
-    min-height: 40vh;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 10px;
-    transition: 1s;
-    z-index: 1;
-}
-
-.container-menu1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: stretch;
-}
-
-.container-menu1 p {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    color: #ffffff;
-    background: rgba(15, 188, 249, 1.0);
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
 }

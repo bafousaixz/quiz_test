@@ -3,5 +3,5 @@ export class questionModel {
     Content: string;
     Img: string;
     Level: string;
-    Resource_id: string
+    Resource_id: string;
 }

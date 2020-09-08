@@ -7,8 +7,8 @@
         <div *ngIf="test" class="exam">
             <div class="content-exam">
                 <p class="exam-name"> {{test.name}} </p>
-                <p>{{test.time}} minute -
-                    <span style="font-style: italic;">{{test.amount}} question</span>
+                <p>{{test.time}} minutes -
+                    <span style="font-style: italic;">{{test.amount}} questions</span>
                 </p>
             </div>
             <a>
@@ -18,6 +18,6 @@
     </div>
 
     <div *ngIf="start">
-        <app-start-exam [test]="test"></app-start-exam>
+        <app-start-exam [test]="test" [user]="user"></app-start-exam>
     </div>
 </div>

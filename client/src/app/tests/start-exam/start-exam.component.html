@@ -1,33 +1,41 @@
-<div *ngIf="test" style="margin-top: 20px; font-family: 'Roboto', sans-serif;">
+<div *ngIf="test" style=" font-family: 'Roboto', sans-serif; position: relative;">
     <div id="set-scroll">
         <div id="content-qs">
             <p class="test-name"> {{test.name}} </p>
             <p style="text-align: center;">
                 <span style="font-style: italic;"> {{test.amount}} question</span>
             </p>
-            <countdown [config]="{ leftTime: test.time*60, format: 'm:s' }"></countdown>
         </div>
     </div>
 
     <div class="container-start">
-        <div class="content" *ngFor="let tq of test.questionList; index as index">
-            <label><i class="far fa-dot-circle"></i>  Question {{index + 1}}</label>
+        <div class="content" *ngFor="let tq of test.questionList; index as i" [id]="i">
+            <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
             <div style="padding: 0px 15px 15px 15px;">
                 <h1>{{tq.questions.Content}}</h1>
                 <img src="{{tq.questions.Img}}" alt="">
                 <div class="answer-container1">
-                    <ul>
-                        <li *ngFor="let answer of tq.questions.answerList | filter: tq.questions._id">
-                            <div *ngIf="tq.questions.answerList.length == 4">
-                                <input type="radio"> {{answer.Content}}
-                            </div>
-                            <div *ngIf=" tq.questions.answerList.length !==4 ">
-                                <input type="checkbox "> {{answer.Content}}
-                            </div>
-                        </li>
-                    </ul>
+                    <div *ngFor="let answer of tq.questions.answerList" class="list-answers">
+                        <label *ngIf="tq.questions.answerList.length === 4" class="container">{{answer.Content}} 
+                            <input type="radio" [(ngModel)]="choose_answer[tq._id]" [value]="answer?._id" [name]="tq._id">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
+        <button (click)="onSubmit()" class="btn-submit">Submit</button>
     </div>
+
+    <div id="menu-test">
+        <div class="countdown">
+            <countdown [config]="{ leftTime: test.time*60, format: ' m:s ' }"></countdown>
+        </div>
+        <div class="container-menu1">
+            <p *ngFor="let tq of test.questionList; index as i" (click)="scroll(i)">
+                {{i +1}}
+            </p>
+        </div>
+    </div>
+
 </div>

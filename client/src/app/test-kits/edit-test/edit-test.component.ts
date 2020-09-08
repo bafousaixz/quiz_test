@@ -59,7 +59,7 @@ export class EditTestComponent implements OnInit {
     let question_test : test_questionModule ={
       _id: this.q._id,
       test_id: this.id,
-      questions: qs
+      questions: qs,
     }
     this.serviceTestQuestion.putTest_question(question_test).subscribe(data=>{
       if(data!=null){

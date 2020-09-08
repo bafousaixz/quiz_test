@@ -20,7 +20,6 @@ router.get('/tests', async(req, res) => {
             res.send(result);
         }
     });
-
 })
 
 router.get('/tests/:id', async(req, res) => {

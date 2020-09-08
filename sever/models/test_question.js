@@ -9,7 +9,7 @@ const TestQuestion = new Schema({
     },
     questions: {
         type: Object
-    }
+    },
 
 });
 

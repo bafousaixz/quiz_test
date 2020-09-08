@@ -1,0 +1,40 @@
+<app-user (OutputValue)="handle($event)"></app-user>
+<div style="font-family: 'Quicksand', sans-serif; background: #f2f2ff;">
+    <div class="top-exam">
+    </div>
+
+    <div class="container-exam" style="height: 150px;">
+        <div *ngIf="result" class="exam">
+            <div class="content-exam">
+                <p class="exam-name"> {{result.test.name}} </p>
+                <p>{{result.test.time}} minutes -
+                    <span style="font-style: italic;">{{result.test.amount}} questions</span>
+                </p>
+                <p>Point: {{result.score}}/{{questions.length}}</p>
+            </div>
+            <a>
+                <button (click)="detail()" class="btn-start" *ngIf="!check">Detail</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-start" style="width: 100%;" *ngIf="check">
+        <div class="content" *ngFor="let tq of questions; index as i" [id]="i" style="margin: 10px; width: 98%;">
+            <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
+            <div style="padding: 0px 15px 15px 15px;">
+                <h1>{{tq.questions.Content}}</h1>
+                <img src="{{tq.questions.Img}}" alt="">
+                <div class="answer-container1">
+                    <div *ngFor="let answer of tq.questions.answerList;" class="list-answers">
+                        <label *ngIf="tq.questions.answerList.length === 4" class="container">{{answer.Content}} 
+                            <input type="radio" [checked]="answer.Right" disabled class="cs" >
+                            <input *ngIf="answer._id === tq.choose_answer" type="radio" [checked]="true" disabled  class="choose">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

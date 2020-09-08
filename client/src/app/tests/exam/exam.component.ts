@@ -9,7 +9,7 @@ import { testModel } from '../../test-kits/_model/test.model';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
-  user: string;
+  user: string
   start: boolean = false
   _id: string = this.route.snapshot.paramMap.get('id');
   test: testModel;
@@ -19,6 +19,7 @@ export class ExamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.user)
     this.get()
   }
 
@@ -29,7 +30,7 @@ export class ExamComponent implements OnInit {
   }
 
   handle(e){
-    console.log(e)
+    this.user = e
   }
   onClick(){
     this.start=true

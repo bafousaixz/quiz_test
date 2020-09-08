@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
         this.avatar = data.Image
         this.name = data.Last_Name
         this.username = data.username
-      this.OutputValue.emit(this.username)
+        this.OutputValue.emit(data._id)
        })
     }
   }
