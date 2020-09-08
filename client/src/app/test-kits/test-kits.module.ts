@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ComponentModule } from '../component/component.module';
+import { FormsModule } from '@angular/forms';
 
 import { ResourceService } from './_service/resource.service';
-import { FormsModule } from '@angular/forms';
 import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { FilterPipe } from './filter.pipe';
@@ -15,6 +15,8 @@ import { ResourceComponent } from './resource/resource.component';
 import { ListTestComponent } from './list-test/list-test.component';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { EditTestComponent } from './edit-test/edit-test.component';
+import { ListResultComponent } from './list-result/list-result.component';
+import { MiddleModule } from '../middle/middle.module';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { EditTestComponent } from './edit-test/edit-test.component';
     ResourceComponent,
     ListTestComponent,
     CreateTestComponent,
-    EditTestComponent
+    EditTestComponent,
+    ListResultComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ import { EditTestComponent } from './edit-test/edit-test.component';
     NgxPaginationModule,
     Ng5SliderModule,
     ComponentModule,
+    MiddleModule,
   ],
   providers:[
     ResourceService,

@@ -9,6 +9,7 @@ import { TestsModule } from './tests/tests.module';
 
 import { AppComponent } from './app.component';
 import { UsersService } from 'src/app/login/users.service';
+import { MiddleModule } from './middle/middle.module';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { UsersService } from 'src/app/login/users.service';
     TestKitsModule,
     ComponentModule,
     TestsModule,
- 
+    MiddleModule,
   ],
   providers: [
     UsersService,

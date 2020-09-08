@@ -18,6 +18,7 @@ export class EditTestComponent implements OnInit {
   test: testModel;
   _id: string
   name_test: string
+  content: string
   test_question: test_questionModule[] = []
   q: test_questionModule
   questions: questionModel[]=[]

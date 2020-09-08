@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { testModel } from '../../test-kits/_model/test.model';
 import { testResult } from '../_model/test_result';
 import { TestResultService } from '../_service/test-result.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-start-exam',
