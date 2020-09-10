@@ -13,6 +13,9 @@ const TestResult = new Schema({
     choose: {
         type: Object
     },
+    answer_right: {
+        type: Number
+    },
     score: {
         type: Number
     }

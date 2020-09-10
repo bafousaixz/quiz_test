@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 
-import { answerModel } from '../_model/answer.model';
-import { AnswerService } from '../_service/answer.service';
+import { answerModel } from 'src/app/middle/model/answer.model';
+import { AnswerService } from 'src/app/middle/service/answer.service';
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',

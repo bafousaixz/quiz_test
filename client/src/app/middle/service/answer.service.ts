@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { answerModel } from '../_model/answer.model'
+import { answerModel } from '../model/answer.model'
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class AnswerService {
   ) { }
 
     getAnswer(): Observable<any>{
-      return this.http.get<any>(this.url).delay(150)
+      return this.http.get<any>(this.url)
     }
 
     postAnswer(answer: answerModel): Observable<any>{

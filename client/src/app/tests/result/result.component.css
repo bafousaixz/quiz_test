@@ -131,11 +131,11 @@ h2 {
 /* When the radio button is checked, add a blue background */
 
 .cs:checked~.checkmark {
-    background-color: red;
+    background-color: #2196F3;
 }
 
 .choose:checked~.checkmark {
-    background-color: #2196F3;
+    background-color: #33d9b2;
 }
 
 

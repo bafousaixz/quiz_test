@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
 
-import { TestService } from '../_service/test.service';
-import { testModel } from '../_model/test.model';
+import { TestService } from 'src/app/middle/service/test.service';
+import { testModel } from 'src/app/middle/model/test.model';
 
 @Component({
   selector: 'app-create-test',

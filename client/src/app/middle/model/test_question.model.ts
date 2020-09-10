@@ -1,5 +1,5 @@
 import { answerModel } from './answer.model'
-export class test_questionModule{
+export class test_questionModel{
     _id: string;
     test_id: string;
     questions: {

@@ -85,6 +85,6 @@ UserModel.statics.findByCredentials = async(username, hash) => {
 }
 
 
-users = Mongoose.model("userss", UserModel)
+users = Mongoose.model("users", UserModel)
 
 module.exports = users;

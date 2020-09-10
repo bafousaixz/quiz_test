@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { testModel } from '../../test-kits/_model/test.model';
-import { testResult } from '../_model/test_result';
-import { TestResultService } from '../_service/test-result.service';
+import { testModel } from 'src/app/middle/model/test.model';
+import { testResult } from 'src/app/middle/model/test_result';
+import { TestResultService } from 'src/app/middle/service/test-result.service';
 
 @Component({
   selector: 'app-start-exam',
@@ -31,6 +31,7 @@ export class StartExamComponent implements OnInit {
     return this._test;
   }
   index: string
+  answer_right: number = 0
   s: number = 0
   r: testResult
   constructor(
@@ -40,23 +41,23 @@ export class StartExamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.test)
   }
 
 
-  onSubmit(something){
+  onSubmit(){
     this.score()
       let result: testResult = {
         test_id: this.test._id,
         user_id: this.user,
         choose: this.choose_answer,
+        answer_right: this.answer_right,
         score: this.s
       }
     this.testResultService.postResult(result).subscribe(data=>{
       if(data){
         this.testResultService.getResult().subscribe(data=>{
           if(data){
-            this.r = data[data.length -1]
+            this.r = data.result[data.result.length -1]
             this.router.navigate([this.r._id], { relativeTo: this.route });
           }
         })
@@ -70,13 +71,24 @@ export class StartExamComponent implements OnInit {
         if(answer.Right===true){
           Object.values(this.choose_answer).forEach(choose => {
             if(choose===answer._id){
-              this.s +=1
+              this.answer_right +=1
             }
           });
         }
       }) 
     });
-    return this.s
+    this.s = (10.0 / this.test.questionList.length) * this.answer_right
+  }
+
+  handleEvent(e){
+    let a = document.getElementById('countdown').style
+    if(e.action === 'notify'){
+      a.background='#F79F1F'
+      a.color = '#ffffff'
+    }
+    if(e.action === 'done'){
+      this.onSubmit()
+    }
   }
 
 

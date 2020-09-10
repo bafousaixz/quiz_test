@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TestService } from '../../test-kits/_service/test.service';
-import { testModel } from '../../test-kits/_model/test.model';
+import { TestService } from 'src/app/middle/service/test.service';
+import { testModel } from 'src/app/middle/model/test.model';
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.component.html',
@@ -19,7 +19,6 @@ export class ExamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.user)
     this.get()
   }
 

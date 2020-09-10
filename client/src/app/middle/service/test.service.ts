@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import 'rxjs/add/operator/delay'
 
-import { testModel } from '../_model/test.model';
+import { testModel } from '../model/test.model';
 @Injectable({
   providedIn: 'root'
 })

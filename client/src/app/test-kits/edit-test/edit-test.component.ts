@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { test_questionModule } from '../_model/test_question';
-import { TestQuestionService } from '../_service/test-question.service';
+
+import { test_questionModel } from 'src/app/middle/model/test_question.model';
+import { TestQuestionService } from 'src/app/middle/service/test-question.service';
 import { QuestionService } from '../_service/question.service';
 import { questionModel } from '../_model/question.model';
-import { TestService } from '../_service/test.service';
-import { testModel } from '../_model/test.model';
+import { TestService } from 'src/app/middle/service/test.service';
+import { testModel } from 'src/app/middle/model/test.model';
 
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -19,8 +20,8 @@ export class EditTestComponent implements OnInit {
   _id: string
   name_test: string
   content: string
-  test_question: test_questionModule[] = []
-  q: test_questionModule
+  test_question: test_questionModel[] = []
+  q: test_questionModel
   questions: questionModel[]=[]
   
  
@@ -57,7 +58,7 @@ export class EditTestComponent implements OnInit {
 
   put(qs: questionModel){
     const { _id, ...x} = qs;
-    let question_test : test_questionModule ={
+    let question_test : test_questionModel ={
       _id: this.q._id,
       test_id: this.id,
       questions: qs,
@@ -70,7 +71,7 @@ export class EditTestComponent implements OnInit {
     });
 }
 
-  edit(question: test_questionModule, content: string){
+  edit(question: test_questionModel, content: string){
     this.q = question
     this.name_test = content
     this.popup = true

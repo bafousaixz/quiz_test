@@ -33,3 +33,27 @@
     text-align: center;
     margin-bottom: 10px;
 }
+
+.list-result {
+    width: 96%;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fff;
+    height: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

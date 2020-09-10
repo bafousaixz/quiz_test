@@ -1,11 +1,11 @@
-// import { testModel } from 'src/app/test-kits/_model/test.model';
+import { testModel } from './test.model';
 
 export class testResult {
     _id?: string;
     user_id: string;
     test_id: string;
+    answer_right: number;
     score: number;
-    choose?: {}
-    test?: {}
-    // test?: testModel;
+    choose?: {};
+    test?: testModel;
 }

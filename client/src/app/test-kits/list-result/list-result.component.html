@@ -1,8 +1,30 @@
-<div class="container-edit">
+<div class="container-edit" *ngIf="test">
     <div class="content-qs">
-        <p class="test-name"> name </p>
-        <p style="text-align: center;">asd minute -
-            <span style="font-style: italic;">asd question</span>
+        <p class="test-name"> {{test.name}} </p>
+        <p style="text-align: center;">{{test.time}} minute -
+            <span style="font-style: italic;">{{test.amount}} question</span>
         </p>
+    </div>
+
+    <div class="list-result">
+        <table>
+            <tr>
+                <th style="width: auto; max-width: 500px;">Name</th>
+                <th style="width: 80px;">Score</th>
+            </tr>
+            <tr *ngFor="let a of results | filter: _id">
+                <td *ngIf="a.user_id" style="width: auto; max-width: 500px;">
+                    <p *ngFor="let u of users | filter: a.user_id">
+                        {{u.username}}
+                    </p>
+                </td>
+                <td *ngIf="!a.user_id" style="width: auto; max-width: 500px;">
+                    Unknown
+                </td>
+                <td>
+                    {{a.score}}
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

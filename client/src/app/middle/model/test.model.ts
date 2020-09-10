@@ -1,4 +1,4 @@
-import { test_questionModule } from './test_question';
+import { test_questionModel } from './test_question.model';
 
 export class testModel {
     _id: string;
@@ -9,6 +9,6 @@ export class testModel {
     medium: number;
     high: number;
     resource_id: string;
-    questionList?: test_questionModule[]
+    questionList?: test_questionModel[]
     // result: [];
 }

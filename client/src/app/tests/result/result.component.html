@@ -10,7 +10,8 @@
                 <p>{{result.test.time}} minutes -
                     <span style="font-style: italic;">{{result.test.amount}} questions</span>
                 </p>
-                <p>Point: {{result.score}}/{{questions.length}}</p>
+                <p>Answer Right: {{result.answer_right}}/{{questions.length}}</p>
+                <p>Point: {{result.score}}/10</p>
             </div>
             <a>
                 <button (click)="detail()" class="btn-start" *ngIf="!check">Detail</button>

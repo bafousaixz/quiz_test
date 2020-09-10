@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourceService } from '../_service/resource.service'
 import { resourceModel } from '../_model/resource.model';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-resources',

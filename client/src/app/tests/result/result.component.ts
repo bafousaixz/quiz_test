@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TestResultService } from '../_service/test-result.service';
-import { testResult } from '../_model/test_result';
-import { testModel } from '../../test-kits/_model/test.model';
-
-import { TestService } from '../../test-kits/_service/test.service';
 import { ActivatedRoute } from '@angular/router';
-import { test_questionModule } from 'src/app/test-kits/_model/test_question';
+
+import { TestResultService } from 'src/app/middle/service/test-result.service';
+import { testResult } from 'src/app/middle/model/test_result';
+import { testModel } from 'src/app/middle/model/test.model';
+import { TestService } from 'src/app/middle/service/test.service';
+import { test_questionModel } from 'src/app/middle/model/test_question.model';
 
 @Component({
   selector: 'app-result',
@@ -18,7 +18,7 @@ export class ResultComponent implements OnInit {
   result: testResult
   test: testModel
   choose: any[]
-  questions: test_questionModule[]
+  questions: test_questionModel[]
   _id: string = this.route.snapshot.paramMap.get('id');
   constructor(
     private testResultService: TestResultService,
@@ -42,7 +42,6 @@ export class ResultComponent implements OnInit {
           }
         }
       }
-      console.log(this.questions)
     })
   }
 

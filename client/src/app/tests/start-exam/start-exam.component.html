@@ -28,8 +28,8 @@
     </div>
 
     <div id="menu-test">
-        <div class="countdown">
-            <countdown [config]="{ leftTime: test.time*60, format: ' m:s ' }"></countdown>
+        <div id="countdown">
+            <countdown [config]="{ leftTime: test.time*60, format: ' m:s ', notify: [  60 ] }" (event)="handleEvent($event)"></countdown>
         </div>
         <div class="container-menu1">
             <p *ngFor="let tq of test.questionList; index as i" (click)="scroll(i)">

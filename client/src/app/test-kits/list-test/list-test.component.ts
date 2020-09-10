@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { TestService } from '../_service/test.service';
-import { testModel } from '../_model/test.model';
+import { TestService } from 'src/app/middle/service/test.service';
+import { testModel } from 'src/app/middle/model/test.model';
 import { ResourceService } from  '../_service/resource.service';
 
 @Component({
