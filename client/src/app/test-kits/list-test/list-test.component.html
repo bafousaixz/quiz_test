@@ -12,8 +12,8 @@
                     <span style="font-style: italic;">{{test.amount}} question</span>
                 </p>
             </div>
-            <a href="tests/{{test._id}}">
-                <button class="btn-start ">Start</button>
+            <a>
+                <button (click)="getUrl(test)" class="btn-start ">Start</button>
             </a>
             <a routerLink="result/{{test._id}}">
                 <button class="btn-start ">Results</button>
@@ -21,4 +21,22 @@
             <a routerLink="{{test._id}}"> <button class="btn-start ">Edit</button></a>
         </div>
     </div>
+
+    <div *ngIf="check" class="container-popup">
+        <div class="popup-share-test">
+            <div class="password">
+                <input class="pass" type="password" [(ngModel)]="password">
+                <button class="pass-btn" (click)="putTest()">Set password</button>
+            </div>
+            <div *ngIf="url">
+                <div class="url">
+                    <input #text_url type="text" [value]="url">
+                    <button (click)='coppyUrl(text_url)'><i class="far fa-copy"></i></button>
+                </div>
+                <p id="coppied">Copied <i class="fas fa-check"></i></p>
+            </div>
+            <p (click)="closePupup()" class="close">-</p>
+        </div>
+    </div>
+
 </div>

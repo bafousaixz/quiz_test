@@ -27,6 +27,10 @@ const Tests = new Schema({
         type: Number,
 
     },
+    password: {
+        type: String,
+        required: false
+    },
     resource_id: {
         type: String,
         require: true,

@@ -8,6 +8,7 @@ export class testModel {
     easy: number;
     medium: number;
     high: number;
+    password?: string;
     resource_id: string;
     questionList?: test_questionModel[]
     // result: [];

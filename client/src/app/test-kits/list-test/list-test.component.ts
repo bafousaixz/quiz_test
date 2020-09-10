@@ -11,10 +11,13 @@ import { ResourceService } from  '../_service/resource.service';
   styleUrls: ['./list-test.component.css']
 })
 export class ListTestComponent implements OnInit {
-  check: string;
+  check: boolean = false;
+  url: string;
+  password: string;
   _id: string;
   id = '';
   tests: testModel[];
+  test: testModel;
   name_resource='';
 
   constructor(
@@ -37,6 +40,26 @@ export class ListTestComponent implements OnInit {
     })
   }
 
+  putTest(){
+    let t : testModel = {
+      _id: this.test._id,
+      name: this.test.name,
+      time: this.test.time,
+      amount: this.test.amount,
+      easy: this.test.easy,
+      medium: this.test.medium,
+      high: this.test.high,
+      password: this.password,
+      resource_id: this.test.resource_id,
+      questionList: this.test.questionList
+    }
+    this.testService.putTest(t).subscribe(data=>{
+      if(data){
+        this.url = `http://localhost:4200/tests/${this.test._id}`
+      }
+    });
+  }
+
   deleteTest(id: string){
     this.testService.deleteTest(id).subscribe()
     this.getTests()
@@ -46,6 +69,22 @@ export class ListTestComponent implements OnInit {
     this.resourceService.getReourceId(this.id).subscribe(data=>{
       this.name_resource = data.Name
     })
+  }
+
+  getUrl(test: testModel){
+    this.test = test
+    this.check = true
+  }
+
+  coppyUrl(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+    document.getElementById('coppied').style.opacity="1";
+  }
+
+  closePupup(){
+    this.check = false
   }
 
   handle(e){

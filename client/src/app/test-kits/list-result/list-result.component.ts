@@ -24,6 +24,9 @@ export class ListResultComponent implements OnInit {
   ngOnInit(): void {
     this.getdetail()
     this.get()
+    setTimeout(()=>{
+      this.get()
+    },30000)
   }
 
   getdetail(){

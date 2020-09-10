@@ -57,6 +57,7 @@
     box-shadow: 0px 5px 5px rgba(15, 188, 249, 0.5);
     color: #ffffff;
     margin: 10px;
+    margin-bottom: 15px;
     right: 0;
     padding: 5px;
     display: inline-block;
@@ -66,4 +67,88 @@
 .btn-start:hover {
     box-shadow: 0px 5px 5px #ffffff;
     cursor: pointer;
+}
+
+.container-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .2);
+    z-index: 10;
+}
+
+.popup-share-test {
+    position: fixed;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 22vh;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+    animation-name: poppup-start;
+    animation-duration: .3s;
+}
+
+@keyframes poppup-start {
+    0% {
+        top: 70%;
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 50%;
+        height: 20vh;
+    }
+}
+
+#check-pass {
+    opacity: 0;
+    font-style: italic;
+    font-weight: bold;
+    background: #32ff7e;
+    color: #ffffff;
+    margin: 0 15%;
+    transition: .5s;
+}
+
+.password {
+    position: relative;
+    width: 70%;
+    display: block;
+    margin: 10px auto;
+    margin-top: 20px;
+}
+
+.password i {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pass {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    border: 1px solid #778ca3;
+    outline: none;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: #ffffff;
+    background: #FFC312;
 }

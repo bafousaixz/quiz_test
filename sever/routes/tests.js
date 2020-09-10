@@ -112,6 +112,18 @@ router.post('/tests', async(req, res) => {
 
 })
 
+router.put('/tests/:id', async(req, res) => {
+    try {
+        const rs = await tests.findById(req.params.id).exec();
+        rs.set(req.body);
+        const result = await rs.save();
+        res.send(result);
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
 router.delete("/tests/:id", async(req, res) => {
     try {
         const result = await tests.deleteOne({ _id: req.params.id }).exec();

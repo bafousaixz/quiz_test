@@ -12,8 +12,21 @@
                 </p>
             </div>
             <a>
-                <button (click)="onClick()" class="btn-start ">Exam start</button>
+                <button (click)="onClick()" class="btn-start">Exam start</button>
             </a>
+        </div>
+    </div>
+
+    <div *ngIf="popup" class="container-popup">
+        <div class="popup-share-test">
+            <div class="password">
+                <input [type]="show ? 'text' : 'password'" class="pass" [(ngModel)]="password">
+                <i *ngIf="!show" (click)="viewPass()" class="far fa-eye"></i>
+                <i *ngIf="show" (click)="viewPass()" class="far fa-eye-slash"></i>
+            </div>
+            <button class="btn-start " (click)="checkPassword()">Congfirm</button>
+            <p id="check-pass">Wrong password <b style="color: red;">!!!</b> </p>
+            <p (click)="closePupup()" class="close">-</p>
         </div>
     </div>
 

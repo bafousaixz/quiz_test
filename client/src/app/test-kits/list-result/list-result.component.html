@@ -10,6 +10,7 @@
         <table>
             <tr>
                 <th style="width: auto; max-width: 500px;">Name</th>
+                <th>Right</th>
                 <th style="width: 80px;">Score</th>
             </tr>
             <tr *ngFor="let a of results | filter: _id">
@@ -20,6 +21,9 @@
                 </td>
                 <td *ngIf="!a.user_id" style="width: auto; max-width: 500px;">
                     Unknown
+                </td>
+                <td>
+                    {{a.answer_right}}
                 </td>
                 <td>
                     {{a.score}}

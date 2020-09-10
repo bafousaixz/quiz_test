@@ -9,6 +9,9 @@ import { testModel } from 'src/app/middle/model/test.model';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
+  popup: boolean = false
+  show: boolean = false
+  password: string
   user: string
   start: boolean = false
   _id: string = this.route.snapshot.paramMap.get('id');
@@ -31,7 +34,35 @@ export class ExamComponent implements OnInit {
   handle(e){
     this.user = e
   }
+
+  checkPassword(){
+    if(this.password === this.test.password){
+      this.popup = false
+      this.start = true
+    }
+    else{
+      this.password ='';
+      document.getElementById('check-pass').style.opacity = '1';
+      setTimeout(()=>{
+        document.getElementById('check-pass').style.opacity = '0';
+      }, 2000)
+      
+    }
+  }
   onClick(){
-    this.start=true
+    this.popup = true
+  }
+
+  viewPass(){
+    if(this.show === true){
+      this.show = false
+    }
+    else{
+      this.show = true
+    }
+  }
+
+  closePupup(){
+    this.popup = false
   }
 }

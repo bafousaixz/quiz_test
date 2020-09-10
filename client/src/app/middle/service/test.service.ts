@@ -26,6 +26,10 @@ export class TestService {
     return this.http.post<any>(this.url, test);
   }
 
+  putTest(test: testModel): Observable<any>{
+    return this.http.put<any>(`${this.url}${test._id}`, test)
+  }
+
   deleteTest(id: string): Observable<any>{
     return this.http.delete<any>(this.url + id)
   }
