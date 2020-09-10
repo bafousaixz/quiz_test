@@ -20,7 +20,7 @@
                     </p>
                 </td>
                 <td *ngIf="!a.user_id" style="width: auto; max-width: 500px;">
-                    Unknown
+                    {{a.name}}<b style="color: red;">*</b>
                 </td>
                 <td>
                     {{a.answer_right}}

@@ -85,7 +85,7 @@ export class CreateTestComponent implements OnInit {
     const newOptions: Options = Object.assign({}, this.options);
     newOptions.ceil = newCeil;
     this.options = newOptions;
-    document.getElementById("add-test1").style.height="410px"
+    document.getElementById("add-test1").style.height="420px"
     document.getElementById("slider").style.height="100px";
     document.getElementById("slider").style.opacity="1";
   }
@@ -102,7 +102,7 @@ export class CreateTestComponent implements OnInit {
   }
 
   add(){
-    document.getElementById("add-test1").style.height="310px"
+    document.getElementById("add-test1").style.height="320px"
     document.getElementById("btn-add").style.opacity="0"
   }
 

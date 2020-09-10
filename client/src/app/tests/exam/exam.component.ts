@@ -13,6 +13,7 @@ export class ExamComponent implements OnInit {
   show: boolean = false
   password: string
   user: string
+  name: string
   start: boolean = false
   _id: string = this.route.snapshot.paramMap.get('id');
   test: testModel;

@@ -12,6 +12,7 @@ import { TestResultService } from 'src/app/middle/service/test-result.service';
 })
 export class StartExamComponent implements OnInit {
   @Input() user;
+  @Input() name;
   
   @Input() set test(value: testModel) {
     this._test = value;
@@ -51,7 +52,8 @@ export class StartExamComponent implements OnInit {
         user_id: this.user,
         choose: this.choose_answer,
         answer_right: this.answer_right,
-        score: this.s
+        score: this.s,
+        name: this.name
       }
     this.testResultService.postResult(result).subscribe(data=>{
       if(data){
@@ -77,7 +79,7 @@ export class StartExamComponent implements OnInit {
         }
       }) 
     });
-    this.s = (10.0 / this.test.questionList.length) * this.answer_right
+    this.s = (10.0 / this.test.questionList.length) * this.answer_right  
   }
 
   handleEvent(e){

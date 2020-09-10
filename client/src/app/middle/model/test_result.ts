@@ -6,6 +6,7 @@ export class testResult {
     test_id: string;
     answer_right: number;
     score: number;
+    name?: string;
     choose?: {};
     test?: testModel;
 }

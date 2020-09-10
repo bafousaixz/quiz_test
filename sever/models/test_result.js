@@ -16,6 +16,10 @@ const TestResult = new Schema({
     answer_right: {
         type: Number
     },
+    name: {
+        type: String,
+        required: false
+    },
     score: {
         type: Number
     }

@@ -42,12 +42,12 @@ export class AnswersComponent implements OnInit {
     }
     this.answerService.postAnswer(as).subscribe(data=>{
       if(data!=null){
+        console.log(data)
         this.content="";
         this.r = false;
         this.getAnswer()
       }
     })
-    
   }
   
 
