@@ -10,11 +10,12 @@ import { testModel } from 'src/app/middle/model/test.model';
   styleUrls: ['./list-result.component.css']
 })
 export class ListResultComponent implements OnInit {
-
+  popup: boolean = false;
   _id: string = this.route.snapshot.paramMap.get('id');
-  results: testResult;
+  results: testResult[];
+  questions: any[]= [];
   test: testModel;
-  users: any[] = [];
+  choose: any[];
   constructor(
     private testResultService: TestResultService,
     private service: TestService,
@@ -22,21 +23,39 @@ export class ListResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getdetail()
-    this.get()
+    this.getTestdetail()
+    this.getResult()
   }
 
-  getdetail(){
+  getTestdetail(){
     this.service.getDetail(this._id).subscribe(data=>{
       this.test= data
     })
   }
   
-  get(){
+  getResult(){
     this.testResultService.getResult().subscribe(data=>{
-      this.results = data.result
-      this.users = data.user
+      this.results = data
     })
+  }
+
+  getResultDetail(id: string){
+    this.testResultService.getdetail(id).subscribe(data=>{
+      this.questions = data.test.questionList
+      this.choose = data.choose_answer
+      for(let i=0; i<this.questions.length; i++){
+        for(let j =0; j<this.choose.length; j++){
+          if(i===j){
+            this.questions[i].choose_answer = this.choose[j]
+          }
+        }
+      }
+      this.popup = true
+    })
+  }
+
+  close(){
+    this.popup = false
   }
 
 }

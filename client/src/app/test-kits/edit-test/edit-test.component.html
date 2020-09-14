@@ -31,10 +31,15 @@
 
     <div *ngIf="popup" class="container-popup">
         <div class="edit-test-question">
+            <div class="header-popup">
+                <button (click)="close()" class="btn-close"><i class="fas fa-times"></i></button>
+            </div>
+
             <div class="search">
                 <i class="fas fa-search"></i>
                 <input type="text" [(ngModel)]="content" name="question" placeholder="Search question">
             </div>
+
             <div class="container-qs">
                 <table>
                     <tr>
@@ -50,8 +55,7 @@
                     </tr>
                 </table>
             </div>
-            <button (click)="cancer()" class="btn-cancer">Cancer</button>
-        </div>
 
+        </div>
     </div>
 </div>

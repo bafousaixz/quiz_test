@@ -65,7 +65,7 @@ export class EditTestComponent implements OnInit {
     }
     this.serviceTestQuestion.putTest_question(question_test).subscribe(data=>{
       if(data!=null){
-        this.cancer();
+        this.close();
         this.get();
       }
     });
@@ -78,7 +78,7 @@ export class EditTestComponent implements OnInit {
     this.getQuestion()
   }
 
-  cancer(){
+  close(){
     this.popup = false
   }
 }

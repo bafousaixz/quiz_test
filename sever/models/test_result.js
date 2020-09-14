@@ -21,7 +21,7 @@ const TestResult = new Schema({
         required: false
     },
     score: {
-        type: Number
+        type: String
     }
 
 });

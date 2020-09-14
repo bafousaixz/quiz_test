@@ -9,6 +9,7 @@ import { testModel } from '../model/test.model';
 })
 export class TestService {
   url="http://localhost:3000/tests/";
+  _url="http://localhost:3000/tests_ad/";
 
   constructor(
     private http: HttpClient,

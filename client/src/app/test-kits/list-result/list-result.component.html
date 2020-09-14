@@ -12,12 +12,11 @@
                 <th style="width: auto; max-width: 500px;">Name</th>
                 <th>Right</th>
                 <th style="width: 80px;">Score</th>
+                <th style="width: 80px;"></th>
             </tr>
             <tr *ngFor="let a of results | filter: _id">
                 <td *ngIf="a.user_id" style="width: auto; max-width: 500px;">
-                    <p *ngFor="let u of users | filter: a.user_id">
-                        {{u.username}}
-                    </p>
+                    {{a.user.First_Name}} {{a.user.Last_Name}}
                 </td>
                 <td *ngIf="!a.user_id" style="width: auto; max-width: 500px;">
                     {{a.name}}<b style="color: red;">*</b>
@@ -28,7 +27,42 @@
                 <td>
                     {{a.score}}
                 </td>
+                <td>
+                    <button (click)="getResultDetail(a._id)">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </td>
             </tr>
         </table>
+
     </div>
+
+
+    <div *ngIf="popup" class="container-popup">
+        <div class="edit-test-question">
+            <div class="header-popup">
+                <button (click)="close()" class="btn-close"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="container-start">
+                <div class="content" *ngFor="let tq of questions; index as i" [id]="i" style="margin: 10px; width: 98%;">
+                    <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
+                    <div style="padding: 0px 15px 15px 15px;">
+                        <h1>{{tq.questions.Content}}</h1>
+                        <img src="{{tq.questions.Img}}" alt="">
+                        <div class="answer-container1">
+                            <div *ngFor="let answer of tq.questions.answerList;" class="list-answers">
+                                <label *ngIf="tq.questions.answerList.length === 4" class="container">{{answer.Content}} 
+                                    <input type="radio" [checked]="answer.Right" disabled class="cs" >
+                                    <input *ngIf="answer._id === tq.choose_answer" type="radio" [checked]="true" disabled  class="choose">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

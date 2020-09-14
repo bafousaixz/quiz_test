@@ -57,3 +57,219 @@ td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+.container-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .2);
+    z-index: 10;
+}
+
+.header-popup {
+    width: 100%;
+    height: 50px;
+    background: #5758BB;
+}
+
+.btn-close {
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    color: #ffffff;
+    z-index: 10;
+    transition: .3s;
+}
+
+.edit-test-question {
+    position: fixed;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 78vh;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: #ffffff;
+    box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+    animation-name: poppup;
+    animation-duration: .3s;
+}
+
+@keyframes poppup {
+    0% {
+        top: 80%;
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 80%;
+        height: 80vh;
+    }
+}
+
+.container-start {
+    height: 70vh;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: fixed;
+}
+
+#content-qs {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: auto;
+    min-height: 80px;
+    width: 100%;
+    padding: 15px;
+    background: #ffffff;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: height .5s;
+}
+
+.content {
+    position: relative;
+    display: block;
+    margin: 15px auto;
+    height: auto;
+    min-height: 30px;
+    width: 96%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.number-question {
+    padding: 2px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    font-size: 12px;
+    font-style: italic;
+    margin: 2px 5px 10px 2px;
+    padding: 0 5px;
+    color: rgba(0, 0, 0, .5);
+}
+
+.content h1 {
+    font-size: 17px;
+    line-height: 25x;
+    font-style: 15px;
+    margin-right: 50px;
+}
+
+.content img {
+    height: 100px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.container-qs {
+    height: 60vh;
+    width: 90%;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: fixed;
+}
+
+.test-name {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #778ca3;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.list-answers {
+    height: 30px;
+    font-size: 15px;
+}
+
+
+/* The container */
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default radio button */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+}
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+
+/* When the radio button is checked, add a blue background */
+
+.cs:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+.choose:checked~.checkmark {
+    background-color: #33d9b2;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.container .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}

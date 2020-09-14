@@ -35,10 +35,15 @@ router.get('/tests/:id', async(req, res) => {
         if (err) {
             console.log(err)
         } else {
-            var test = result.filter(item => (
+            const test = result.find(item => (
                 item._id == id
             ));
-            res.send((test[0]));
+            test.questionList.forEach(question => {
+                question.questions.answerList.forEach(answer => {
+                    delete answer.Right
+                });
+            });
+            res.send(test);
         }
     });
 });

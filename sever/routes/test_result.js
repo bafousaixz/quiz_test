@@ -4,21 +4,27 @@ var test_result = require('../models/test_result')
 var tests = require('../models/tests');
 var test_question = require('../models/test_question');
 var users = require('../models/user.model');
-
-/* GET home page. */
-router.get("/test_result", async(req, res) => {
+var question = require('../models/test_question')
+    /* GET home page. */
+router.get("/test_result/", async(req, res) => {
     try {
-        const result = await test_result.find().exec();
+        const results = await test_result.find().lean().exec();
         const user = await users.find().exec();
-        // results.forEach(element => {
-        //     const user = Model.findById(result[0].user_id).exec();
-        //     Object.assign(element, { user: "2" });
-        // });
-        res.send({ result, user });
+
+        rs = results.map(result => {
+            const u = user.find(u => u._id.toString() === result.user_id);
+            result.user = u;
+            console.log(result)
+            return result
+        });
+
+        res.send(rs);
     } catch (error) {
+        console.log(error)
         res.status(400).send(error)
     }
 })
+
 
 /* GET detail. */
 router.get("/test_result/:id", async(req, res) => {
@@ -46,14 +52,31 @@ router.get("/test_result/:id", async(req, res) => {
     });
 })
 router.post("/test_result", async(req, res) => {
-    try {
-        let rs = new test_result(req.body);
-        let result = await rs.save();
-        res.send(result);
-    } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+    let rs = new test_result(req.body);
+    const test_id = rs.test_id
+    const user_id = rs.user_id
+    const choose = rs.choose
+    const name = rs.name
+    let answer_right = 0;
+    const questions = await question.find().lean().exec();
+    if (rs.test_id) {
+        q = questions.filter(item => item.test_id.toString() === test_id.toString())
+        q.forEach(question => {
+            question.questions.answerList.forEach(answer => {
+                if (answer.Right === true) {
+                    Object.values(rs.choose).forEach(choose => {
+                        if (choose.toString() === answer._id.toString()) {
+                            answer_right += 1;
+                        }
+                    });
+                }
+            });
+        });
     }
+    score = ((10.0 / q.length) * answer_right).toFixed(2)
+    const result = new test_result({ test_id, user_id, choose, name, answer_right, score })
+    const d = await result.save()
+    res.send(d);
 })
 
 module.exports = router;

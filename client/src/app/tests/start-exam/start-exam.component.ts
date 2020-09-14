@@ -5,6 +5,7 @@ import { testModel } from 'src/app/middle/model/test.model';
 import { testResult } from 'src/app/middle/model/test_result';
 import { TestResultService } from 'src/app/middle/service/test-result.service';
 
+
 @Component({
   selector: 'app-start-exam',
   templateUrl: './start-exam.component.html',
@@ -33,8 +34,9 @@ export class StartExamComponent implements OnInit {
   }
   index: string
   answer_right: number = 0
-  s: number = 0
+  s: string
   r: testResult
+  testAd: testModel
   constructor(
     private testResultService: TestResultService,
     private router: Router,
@@ -44,42 +46,23 @@ export class StartExamComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   onSubmit(){
-    this.score()
       let result: testResult = {
         test_id: this.test._id,
         user_id: this.user,
         choose: this.choose_answer,
-        answer_right: this.answer_right,
-        score: this.s,
         name: this.name
       }
     this.testResultService.postResult(result).subscribe(data=>{
       if(data){
         this.testResultService.getResult().subscribe(data=>{
           if(data){
-            this.r = data.result[data.result.length -1]
+            this.r = data[data.length -1]
             this.router.navigate([this.r._id], { relativeTo: this.route });
           }
         })
       }
     })
-  }
-
-  score(){
-    this.test.questionList.forEach(element => {
-      element.questions.answerList.forEach(answer => {
-        if(answer.Right===true){
-          Object.values(this.choose_answer).forEach(choose => {
-            if(choose===answer._id){
-              this.answer_right +=1
-            }
-          });
-        }
-      }) 
-    });
-    this.s = (10.0 / this.test.questionList.length) * this.answer_right  
   }
 
   handleEvent(e){
@@ -92,7 +75,6 @@ export class StartExamComponent implements OnInit {
       this.onSubmit()
     }
   }
-
 
   scroll(i){
     document.getElementById(i).scrollIntoView();
