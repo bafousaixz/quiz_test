@@ -14,7 +14,7 @@
                 <th style="width: 80px;">Score</th>
                 <th style="width: 80px;"></th>
             </tr>
-            <tr *ngFor="let a of results | filter: _id">
+            <tr *ngFor="let a of results ">
                 <td *ngIf="a.user_id" style="width: auto; max-width: 500px;">
                     {{a.user.First_Name}} {{a.user.Last_Name}}
                 </td>

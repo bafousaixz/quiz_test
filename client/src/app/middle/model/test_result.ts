@@ -1,5 +1,6 @@
+import { from } from 'rxjs';
 import { testModel } from './test.model';
-
+import { userModel } from './user.model';
 export class testResult {
     _id?: string;
     user_id: string;
@@ -9,4 +10,5 @@ export class testResult {
     name?: string;
     choose?: {};
     test?: testModel;
+    user?: userModel;
 }

@@ -34,7 +34,7 @@ export class ListResultComponent implements OnInit {
   }
   
   getResult(){
-    this.testResultService.getResult().subscribe(data=>{
+    this.testResultService.getResult(this._id).subscribe(data=>{
       this.results = data
     })
   }

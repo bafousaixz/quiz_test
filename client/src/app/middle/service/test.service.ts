@@ -9,8 +9,8 @@ import { testModel } from '../model/test.model';
 })
 export class TestService {
   url="http://localhost:3000/tests/";
-  _url="http://localhost:3000/tests_ad/";
-
+  _url="http://localhost:3000/test/";
+  
   constructor(
     private http: HttpClient,
   ) { }
@@ -19,8 +19,16 @@ export class TestService {
     return this.http.get<any>(this.url)
   }
 
+  getTittle(id: string): Observable<any>{
+    return this.http.get<any>(this._url + id)
+  }
+
   getDetail(id: string): Observable<any>{
     return this.http.get<any>(this.url + id)
+  }
+
+  checkPassword(test: testModel):Observable<any>{
+    return this.http.post<any>(this._url, test)
   }
 
   postTest(test: testModel): Observable<any>{

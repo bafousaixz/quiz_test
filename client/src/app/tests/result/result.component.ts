@@ -22,7 +22,6 @@ export class ResultComponent implements OnInit {
   _id: string = this.route.snapshot.paramMap.get('id');
   constructor(
     private testResultService: TestResultService,
-    private service: TestService,
     private route: ActivatedRoute
   ) { }
 
@@ -32,6 +31,7 @@ export class ResultComponent implements OnInit {
 
   get(){
     this.testResultService.getdetail(this._id).subscribe(data=>{
+      console.log(data)
       this.result = data
       this.questions = data.test.questionList
       this.choose = data.choose_answer

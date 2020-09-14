@@ -38,6 +38,14 @@ const Tests = new Schema({
 
 });
 
+Tests.pre('save', async function(next) {
+    const test = this
+    if (test.isModified('hash')) {
+        test.password = await bcrypt.hash(test.password, 8)
+    }
+    next()
+})
+
 tests = Mongoose.model("tests", Tests)
 
 module.exports = tests;

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { testModel } from 'src/app/middle/model/test.model';
 import { testResult } from 'src/app/middle/model/test_result';
 import { TestResultService } from 'src/app/middle/service/test-result.service';
+import { TestService } from 'src/app/middle/service/test.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class StartExamComponent implements OnInit {
   @Input() user;
   @Input() name;
   
-  @Input() set test(value: testModel) {
+  set test(value: testModel) {
     this._test = value;
     if (value) {
       this.choose_answer = this.test.questionList.reduce((pre, cur) => {
@@ -36,26 +37,34 @@ export class StartExamComponent implements OnInit {
   answer_right: number = 0
   s: string
   r: testResult
-  testAd: testModel
+  _id: string = this.route.snapshot.paramMap.get('id');
   constructor(
     private testResultService: TestResultService,
+    private service: TestService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.getTest()
+  }
+
+  getTest(){
+    this.service.getDetail(this._id).subscribe(data=>{
+      this.test = data
+    })
   }
 
   onSubmit(){
-      let result: testResult = {
-        test_id: this.test._id,
-        user_id: this.user,
-        choose: this.choose_answer,
-        name: this.name
-      }
+    let result: testResult = {
+      test_id: this.test._id,
+      user_id: this.user,
+      choose: this.choose_answer,
+      name: this.name
+    }
     this.testResultService.postResult(result).subscribe(data=>{
       if(data){
-        this.testResultService.getResult().subscribe(data=>{
+        this.testResultService.getAllResult().subscribe(data=>{
           if(data){
             this.r = data[data.length -1]
             this.router.navigate([this.r._id], { relativeTo: this.route });

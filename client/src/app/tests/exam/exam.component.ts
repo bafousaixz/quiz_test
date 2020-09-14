@@ -23,12 +23,35 @@ export class ExamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.get()
+    this.getTittle()
   }
 
-  get(){
-    this.service.getDetail(this._id).subscribe(data=>{
+  getTittle(){
+    this.service.getTittle(this._id).subscribe(data=>{
     this.test= data
+    })
+  }
+
+
+  checkPassword(){
+    let test: testModel ={
+      _id: this._id,
+      name: this.test.name,
+      password: this.password,
+    }
+
+    this.service.checkPassword(test).subscribe(data=>{
+      if(data){
+        this.popup = false
+        this.start = true
+      }
+      if(data === null){
+        this.password ='';
+        document.getElementById('check-pass').style.opacity = '1';
+        setTimeout(()=>{
+          document.getElementById('check-pass').style.opacity = '0';
+        }, 2000)
+      }
     })
   }
 
@@ -36,21 +59,7 @@ export class ExamComponent implements OnInit {
     this.user = e
   }
 
-  checkPassword(){
-    if(this.password === this.test.password){
-      this.popup = false
-      this.start = true
-    }
-    else{
-      this.password ='';
-      document.getElementById('check-pass').style.opacity = '1';
-      setTimeout(()=>{
-        document.getElementById('check-pass').style.opacity = '0';
-      }, 2000)
-      
-    }
-  }
-  onClick(){
+  openPopup(){
     this.popup = true
   }
 

@@ -1,11 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require('bcryptjs');
 var tests = require('../models/tests');
 var test_question = require('../models/test_question');
 var questions = require('../models/test_questions');
 var answers = require('../models/test_answers');
 
 router.get('/tests', async(req, res) => {
+    // try {
+    //     const result = await tests.find().exec();
+    //     res.send(result);
+    // } catch (error) {
+    //     res.status(400).send(error)
+    // }
     tests.aggregate([{
         $lookup: {
             from: test_question.collection.name,
@@ -21,6 +28,16 @@ router.get('/tests', async(req, res) => {
         }
     });
 })
+
+router.get('/test/:id', async(req, res) => {
+    try {
+        const result = await tests.findById(req.params.id).exec();
+        res.send(result);
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+});
 
 router.get('/tests/:id', async(req, res) => {
     const id = req.params.id;
@@ -47,15 +64,6 @@ router.get('/tests/:id', async(req, res) => {
         }
     });
 });
-
-router.get('/testquestions', async(req, res) => {
-    try {
-        const result = await test_question.find().exec();
-        res.send(result);
-    } catch (error) {
-        res.status(400).send(error)
-    }
-})
 
 router.post('/tests', async(req, res) => {
     const { name, time, amount, easy, medium, high, resource_id } = req.body
@@ -117,10 +125,33 @@ router.post('/tests', async(req, res) => {
 
 })
 
+router.post('/test', async(req, res) => {
+    try {
+        const pass = req.body.password;
+        const id = req.body._id;
+        const rs = await tests.findById(id).exec();
+        const hass = bcrypt.compare(pass, rs.password, (err, result) => {
+            if (result === true) {
+                res.send(rs)
+            } else {
+                res.send('')
+            }
+        });
+        console.log(rs.password)
+        if (hass) {
+            res.send(rs)
+        }
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 router.put('/tests/:id', async(req, res) => {
     try {
+        const pass = req.body.password
+        const hash = bcrypt.hashSync(pass, 8);
         const rs = await tests.findById(req.params.id).exec();
-        rs.set(req.body);
+        rs.set(rs.password = hash);
         const result = await rs.save();
         res.send(result);
     } catch (error) {

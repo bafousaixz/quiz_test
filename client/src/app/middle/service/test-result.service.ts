@@ -8,13 +8,17 @@ import { testResult } from 'src/app/middle/model/test_result';
 })
 export class TestResultService {
   url = "http://localhost:3000/test_result/"
-
+  _url = "http://localhost:3000/test_results/"
   constructor(
     private http: HttpClient, 
   ) { }
 
-  getResult(): Observable<any>{
-    return this.http.get<any>(this.url)
+  getAllResult(): Observable<any>{
+    return this.http.get<any>(this._url)
+  }
+
+  getResult(id: string): Observable<any>{
+    return this.http.get<any>(this._url + id)
   }
 
   getdetail(id: string): Observable<any>{

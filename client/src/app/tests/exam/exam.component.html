@@ -17,7 +17,7 @@
                 </div>
             </div>
             <a *ngIf="user || name">
-                <button (click)="onClick()" class="btn-start">Exam start</button>
+                <button (click)="openPopup()" class="btn-start">Exam start</button>
             </a>
         </div>
     </div>
@@ -36,6 +36,6 @@
     </div>
 
     <div *ngIf="start">
-        <app-start-exam [test]="test" [user]="user" [name]="name"></app-start-exam>
+        <app-start-exam [user]="user" [name]="name"></app-start-exam>
     </div>
 </div>

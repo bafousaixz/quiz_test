@@ -6,19 +6,26 @@ var test_question = require('../models/test_question');
 var users = require('../models/user.model');
 var question = require('../models/test_question')
     /* GET home page. */
-router.get("/test_result/", async(req, res) => {
+router.get("/test_results/:ss", async(req, res) => {
     try {
-        const results = await test_result.find().lean().exec();
+        const results = await test_result.find(req.params.id).lean().exec();
         const user = await users.find().exec();
-
         rs = results.map(result => {
             const u = user.find(u => u._id.toString() === result.user_id);
             result.user = u;
-            console.log(result)
             return result
         });
-
         res.send(rs);
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
+router.get("/test_results/", async(req, res) => {
+    try {
+        const results = await test_result.find().exec();
+        res.send(results);
     } catch (error) {
         console.log(error)
         res.status(400).send(error)
