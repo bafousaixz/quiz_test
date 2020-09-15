@@ -8,7 +8,8 @@ var question = require('../models/test_question')
     /* GET home page. */
 router.get("/test_results/:ss", async(req, res) => {
     try {
-        const results = await test_result.find(req.params.id).lean().exec();
+        const id = req.params.ss
+        const results = await test_result.find({ test_id: id }).lean().exec();
         const user = await users.find().exec();
         rs = results.map(result => {
             const u = user.find(u => u._id.toString() === result.user_id);

@@ -1,0 +1,24 @@
+<div class="container">
+    <table>
+        <tr>
+            <th style="width: 100px;">Stt</th>
+            <th>User name</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let user of users ; index as i">
+            <td style="width: 100px;">
+                {{i + 1}}
+            </td>
+            <td>
+                {{user.username}}
+            </td>
+            <td>
+                {{user.Last_Name}}
+            </td>
+            <td style="width: 40px; cursor: pointer;">
+                <i class="fas fa-trash"></i>
+            </td>
+        </tr>
+    </table>
+</div>

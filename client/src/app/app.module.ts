@@ -10,7 +10,7 @@ import { TestsModule } from './tests/tests.module';
 import { AppComponent } from './app.component';
 import { UsersService } from 'src/app/login/users.service';
 import { MiddleModule } from './middle/middle.module';
-
+import { AdminModule } from './admin/admin.module'
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { MiddleModule } from './middle/middle.module';
     ComponentModule,
     TestsModule,
     MiddleModule,
+    AdminModule,
   ],
   providers: [
     UsersService,

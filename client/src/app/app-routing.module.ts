@@ -12,6 +12,9 @@ import { EditTestComponent } from './test-kits/edit-test/edit-test.component';
 import { ListResultComponent } from './test-kits/list-result/list-result.component';
 import { ExamComponent} from './tests/exam/exam.component';
 import { ResultComponent } from './tests/result/result.component';
+import { AdminComponent } from './admin/admin/admin.component';
+import { ListUserComponent } from './admin/list-user/list-user.component';
+import { CreateUserComponent } from './admin/create-user/create-user.component';
 
 
 const routes: Routes = [
@@ -58,6 +61,21 @@ const routes: Routes = [
       {
         path: 'tests/result/:id',
         component: ListResultComponent,
+      }
+    ]
+  },
+
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children:[
+      {
+        path: 'list-user',
+        component: ListUserComponent,
+      },
+      {
+        path: 'create-user',
+        component: CreateUserComponent,
       }
     ]
   },

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { Router } from '@angular/router';
+import { Params, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
 
@@ -26,7 +26,7 @@ export class CreateTestComponent implements OnInit {
   medium: number;
   high: number;
   name: string;
-  resource_id = this.route.snapshot.paramMap.get('id');
+  resource_id = '';
 
   min: number = 1;
   max: number = 10;
@@ -47,7 +47,11 @@ export class CreateTestComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.parent.params.subscribe((param: Params) => {
+      this.resource_id = param['id'];
+    });
+  }
 
   createTest(){
     this.easy = this.min;
