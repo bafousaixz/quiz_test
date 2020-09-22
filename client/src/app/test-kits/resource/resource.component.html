@@ -1,5 +1,5 @@
-<app-user></app-user>
-<div style="  background: #f5f6fa; height: auto; font-family: 'Quicksand', sans-serif;">
+<app-user (OutputValue)="handle($event)"></app-user>
+<div class="container-resource">
     <div class="top-questions">
         <div class="custom-shape-divider-bottom-1598373291">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -16,11 +16,11 @@
                 </svg>
             </div>
 
-            <div *ngIf="resource" style="margin: 5%; position: relative; height: 80vh; font-size: 15px;">
+            <div *ngIf="resource" style="margin: 5%; position: relative; font-size: 15px;">
                 <div class="image-resource">
-                    <img *ngIf="resource.Image && !image" src="{{resource.Image}}" class="avatar-resource">
+                    <img *ngIf="resource.image && !image" src="{{resource.image}}" class="avatar-resource">
                     <img *ngIf="image" src="{{image}}" class="avatar-resource">
-                    <h4 *ngIf="!resource.Image && !image" class="avatar-resource">+</h4>
+                    <h4 *ngIf="!resource.image && !image" class="avatar-resource">+</h4>
                     <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg .svg" class="input-img">
                 </div>
                 <a routerLink="questions" [ngClass]="{ 'target-btn' : check == true}" (click)="showListquestion()">
@@ -31,8 +31,8 @@
                     <i class="fas fa-file-alt"></i>
                     <p>Tests </p>
                 </a>
-                <input (change)="putResource()" type="text" [(ngModel)]="resource.Name" class="name-resource">
-                <textarea (change)="putResource()" [(ngModel)]="resource.Content"></textarea>
+                <input (input)="putResource()" type="text" [(ngModel)]="resource.name" class="name-resource">
+                <textarea (input)="putResource()" [(ngModel)]="resource.content"></textarea>
             </div>
         </div>
         <router-outlet></router-outlet>

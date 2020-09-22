@@ -150,9 +150,12 @@ h2 {
     position: absolute;
     top: 0;
     left: 0;
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     background-color: #eee;
+}
+
+.check-radio {
     border-radius: 50%;
 }
 
@@ -190,8 +193,8 @@ h2 {
 /* Style the indicator (dot/circle) */
 
 .container .checkmark:after {
-    top: 6px;
-    left: 6px;
+    top: 5px;
+    left: 5px;
     width: 8px;
     height: 8px;
     border-radius: 50%;

@@ -1,9 +1,9 @@
 export class userModel{
-    First_Name: string;
-    Last_Name: string;
+    firstName: string;
+    lastName: string;
     username:string;
-    hash:string;
-    Email: string;
-    Tel:string;
-    Image:string;
+    password:string;
+    email: string;
+    tel:string;
+    image:string;
   }

@@ -3,26 +3,30 @@ var router = express.Router();
 var resource = require('../models/test_resource')
 
 /* GET home page. */
-router.get('/resource', async(req, res) => {
+router.get('/resources/:s', async(req, res) => {
     try {
-        const result = await resource.find().exec();
+        const user_id = req.params.s
+        const result = await resource.find({ user_id: user_id }).exec();
         res.send(result);
     } catch (error) {
         res.status(400).send(error)
     }
 })
 
-router.get('/resource/:id', async(req, res) => {
+router.get('/resources/:id/:user_id', async(req, res) => {
     try {
-        const user = await resource.findById(req.params.id).exec();
-        res.send(user);
-
+        const { id, user_id } = req.params
+        const user = await resource.findById(id).exec();
+        if (user.user_id === user_id) {
+            res.send(user);
+        }
     } catch (error) {
+        console.log(error)
         res.status(500).send(error);
     }
 });
 
-router.post('/resource', async(req, res) => {
+router.post('/resources', async(req, res) => {
     try {
         const rs = new resource(req.body)
         const result = await rs.save();
@@ -32,7 +36,7 @@ router.post('/resource', async(req, res) => {
     }
 })
 
-router.put('/resource/:id', async(req, res) => {
+router.put('/resources/:id', async(req, res) => {
     try {
         const value = await resource.findById(req.params.id).exec();
         value.set(req.body);
@@ -43,7 +47,7 @@ router.put('/resource/:id', async(req, res) => {
     }
 })
 
-router.delete('/resource/:id', async(req, res) => {
+router.delete('/resources/:id', async(req, res) => {
     try {
         const result = await resource.deleteOne({ _id: req.params.id }).exec();
         res.send(result);

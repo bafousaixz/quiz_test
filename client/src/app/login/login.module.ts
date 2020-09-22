@@ -6,19 +6,21 @@ import { SigupComponent } from './sigup/sigup.component';
 import { UsersService } from './users.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LoginDirective } from './login.directive';
 
 
 @NgModule({
-  declarations: [LoginComponent, SiginComponent, SigupComponent],
+  declarations: [LoginComponent, SiginComponent, SigupComponent, LoginDirective],
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
 
   ],
   providers: [
     UsersService,
-    HttpClientModule,
   ]
   
 })

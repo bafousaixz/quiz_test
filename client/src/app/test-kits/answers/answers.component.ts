@@ -36,13 +36,12 @@ export class AnswersComponent implements OnInit {
   postAnswer(){
     const as : answerModel = {
       _id: this._id,
-      Content : this.content,
-      Right : this.r,
+      content : this.content,
+      right : this.r,
       question_id : this.id
     }
     this.answerService.postAnswer(as).subscribe(data=>{
       if(data!=null){
-        console.log(data)
         this.content="";
         this.r = false;
         this.getAnswer()
@@ -54,8 +53,8 @@ export class AnswersComponent implements OnInit {
   putAnswer(a: answerModel){
     const as : answerModel = {
       _id: a._id,
-      Content : a.Content,
-      Right : a.Right,
+      content : a.content,
+      right : a.right,
       question_id : this.id
     }
     this.answerService.putAnswer(as).subscribe() 
@@ -68,11 +67,11 @@ export class AnswersComponent implements OnInit {
   }
 
   editRight(a){
-    if(a.Right == true){
-      a.Right = false
+    if(a.right == true){
+      a.right = false
     }
     else{
-      a.Right = true
+      a.right = true
     }
   }
   edit(a){

@@ -5,14 +5,9 @@ var tests = require('../models/tests');
 var test_question = require('../models/test_question');
 var questions = require('../models/test_questions');
 var answers = require('../models/test_answers');
+var test_result = require('../models/test_result')
 
 router.get('/tests', async(req, res) => {
-    // try {
-    //     const result = await tests.find().exec();
-    //     res.send(result);
-    // } catch (error) {
-    //     res.status(400).send(error)
-    // }
     tests.aggregate([{
         $lookup: {
             from: test_question.collection.name,
@@ -57,7 +52,7 @@ router.get('/tests/:id', async(req, res) => {
             ));
             test.questionList.forEach(question => {
                 question.questions.answerList.forEach(answer => {
-                    delete answer.Right
+                    delete answer.right
                 });
             });
             res.send(test);
@@ -80,7 +75,7 @@ router.post('/tests', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { Level: "Medium" } },
+        { $match: { level: "Medium" } },
         { $sample: { size: medium } }
     ]).exec(async(err, result) => {
         result.forEach(questions => {
@@ -97,7 +92,7 @@ router.post('/tests', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { Level: "Easy" } },
+        { $match: { level: "Easy" } },
         { $sample: { size: easy } }
     ]).exec(async(err, result) => {
         result.forEach(questions => {
@@ -114,7 +109,7 @@ router.post('/tests', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { Level: "High" } },
+        { $match: { level: "High" } },
         { $sample: { size: high } }
     ]).exec(async(err, result) => {
         result.forEach(questions => {
@@ -162,10 +157,14 @@ router.put('/tests/:id', async(req, res) => {
 
 router.delete("/tests/:id", async(req, res) => {
     try {
-        const result = await tests.deleteOne({ _id: req.params.id }).exec();
+        const id = req.params.id
+        const result = await tests.deleteOne({ _id: id }).exec();
+        const q = await test_question.deleteMany({ test_id: id });
+        const t = await test_result.deleteMany({ test_id: id });
         res.send(result);
 
     } catch (error) {
+        console.log(error)
         res.status(500).send(error);
     }
 });

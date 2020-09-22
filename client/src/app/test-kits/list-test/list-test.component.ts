@@ -66,8 +66,8 @@ export class ListTestComponent implements OnInit {
   }
 
   getResource(){
-    this.resourceService.getReourceId(this.id).subscribe(data=>{
-      this.name_resource = data.Name
+    this.resourceService.getListResource(this.id).subscribe(data=>{
+      this.name_resource = data.name
     })
   }
 
@@ -81,6 +81,9 @@ export class ListTestComponent implements OnInit {
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
     document.getElementById('coppied').style.opacity="1";
+    setTimeout(() => {
+      this.closePupup();
+    }, 2000);
   }
 
   closePupup(){

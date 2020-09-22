@@ -1,61 +1,23 @@
-<!-- <span style= "font-family: Poppins-Regular, sans-serif; width: 150%; margin-top: -200px;" class="login100-form-title p-b-34">
-    Account Register
-  </span>
-  <div  style="width: 150%;" class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-        <input id="first-name" class="input100" type="text" name="firstname" placeholder="First name" [(ngModel)]="firstname" >
-        <span class="focus-input100"></span>
-      </div>
-  <div  style="width: 150%;" class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-    <input id="last-name" class="input100" type="gmail" name="lastname" placeholder="Last name" [(ngModel)]="lastname" >
-    <span class="focus-input100"></span>
-  </div>
-  <div style="width: 150%;" class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-    <input  class="input100" type="text" name="pass" placeholder="User name" [(ngModel)]="username" >
-    <span class="focus-input100"></span>
-  </div>
-  <div style="width: 150%;" class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-        <input  class="input100" type="password" name="pass" placeholder="Password" [(ngModel)]="password" >
-        <span class="focus-input100"></span>
+<div class="ctn">
+    <div class="left">
+        <img src="../../../assets/login.svg" alt="">
     </div>
-  
-  <div style="width: 150%;  margin-top: 100px; "  class="container-login100-form-btn">
-    <button  (click)="signup()" class="login100-form-btn"  >
-     <a style="color: #fff;"> Sign up</a>
-    </button>
-  </div> -->
-<h2 style="text-align: center; font-weight: bold;" class="title">Sign up</h2>
-<div class="input-field">
-    <i class="fas fa-user"></i>
-    <input type="text" placeholder="First Name" [(ngModel)]="firstname" />
-</div>
-<div class="input-field">
-    <i class="fas fa-user"></i>
-    <input type="text" placeholder="Last Name" [(ngModel)]="lastname" />
-</div>
-<div class="input-field">
-    <i class="fas fa-user"></i>
-    <input type="text" placeholder="Username" [(ngModel)]="username" />
-</div>
-<div class="input-field">
-    <i class="fas fa-lock"></i>
-    <input type="password" placeholder="Password" [(ngModel)]="password" />
-</div>
-<div style=" display: flex; justify-content: center;">
-    <input type="submit" class="btn" value="Sign up" (click)="signup()" />
-</div>
-
-<p class="social-text">Or Sign up with social platforms</p>
-<div class="social-media">
-    <a href="#" class="social-icon">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social-icon">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="#" class="social-icon">
-        <i class="fab fa-google"></i>
-    </a>
-    <a href="#" class="social-icon">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
+    <div class="right">
+        <div class="container-signup">
+            <div class="auth-pane">
+                <h3>Create your account</h3>
+                <p>Already have an account? <span><a href="login">Log In</a></span>
+                </p>
+                <form (ngSubmit)="signUp() && registerForm.form.valid" #registerForm="ngForm" [appLogin]="user">
+                    <input type="text" [(ngModel)]="lastName" placeholder="Name" name="name" #name="ngModel" required>
+                    <h4 *ngIf="(name.touched || registerForm.submitted) && name.errors?.required" class="check"> Name is required<b>!!!</b></h4>
+                    <input type="text" [(ngModel)]="userName" placeholder="Email Address" name="user" #user="ngModel" required>
+                    <h4 *ngIf="(user.touched || registerForm.submitted) && user.errors?.usernameMiss" class="check"> Email must be on the @BotStar.com domain<b>!!!</b></h4>
+                    <input type="password" [(ngModel)]="password" placeholder="Password" name="password" #pass="ngModel" required minlength="6">
+                    <h4 *ngIf="(pass.touched || registerForm.submitted) && pass.errors?.minlength" class="check"> Password greater than 6 characters <b>!!!</b></h4>
+                    <button>Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

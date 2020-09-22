@@ -1,6 +1,7 @@
 export class resourceModel {
     _id: string;
-    Name: string;
-    Image: string;
-    Content: string
+    name: string;
+    user_id?: string;
+    image: string;
+    content: string
 }

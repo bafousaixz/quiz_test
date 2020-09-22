@@ -11,7 +11,7 @@
                     <button *ngIf="image" (click)="onUpload()" type="button">Save image</button>
                 </div>
             </div>
-            <h3> {{user.First_Name}} {{user.Last_Name}}</h3>
+            <h3> {{user.firstName}} {{user.lastName}}</h3>
         </div>
     </div>
     <div class="bottom">
@@ -27,36 +27,38 @@
                     <h6>User Name: </h6>
                     <p>{{user.username}}</p>
                     <h6>Full Name: </h6>
-                    <p>{{user.First_Name}} {{user.Last_Name}}</p>
-                </div>
-                <div class="col-md-4">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
                     <h6>Email: </h6>
-                    <p>{{user.Email}}</p>
+                    <p>{{user.email}}</p>
                     <h6>Tel: </h6>
-                    <p>{{user.Tel}}</p>
+                    <p>{{user.tel}}</p>
                 </div>
             </div>
 
             <div *ngIf="profile1 == false">
-                <form class="form1" novalidate [formGroup]="profileUser" (ngSubmit)="onUpload()">
+                <form class="form1" (ngSubmit)="onUpload()">
+                    <div class="col-md-5">
+                        User Name:
+                        <input class="form-control" type="text" name="username" [(ngModel)]="user.username">
+                    </div>
                     <div class="col-md-5">
                         First Name:
-                        <input class="form-control" type="text" name="username" formControlName="firstname">
+                        <input class="form-control" type="text" name="firstname" [(ngModel)]="user.firstName">
                     </div>
                     <div class="col-md-5">
                         Last Name:
-                        <input class="form-control" type="first-name" name="firstname" formControlName="lastname">
+                        <input class="form-control" type="first-name" name="lastname" [(ngModel)]="user.lastName">
                     </div>
                     <div class="col-md-5">
                         Email:
-                        <input class="form-control" type="text" name="username" formControlName="email">
+                        <input class="form-control" type="text" name="email" [(ngModel)]="user.email">
                     </div>
                     <div class="col-md-5">
                         Tel:
-                        <input class="form-control" type="text" name="username" formControlName="tel">
+                        <input class="form-control" type="text" name="tel" [(ngModel)]="user.tel">
                     </div>
                     <div class="col-md4">
-                        <button type="submit">save</button>
+                        <button>save</button>
                     </div>
                 </form>
             </div>

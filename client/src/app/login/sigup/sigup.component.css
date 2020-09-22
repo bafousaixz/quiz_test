@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.ctn {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    color: #1d364b;
+    background-color: #fafafa;
+}
+
+.left {
+    width: 30%;
+    height: 100%;
+    float: left;
+    background: url("../../../assets/signin.jpg");
+    background-size: 100vh;
+    background-position: center;
+}
+
+.left img {
+    margin: 50px;
+    height: 50px;
+}
+
+.right {
+    float: right;
+    width: 70%;
+    height: 100%;
+}
+
+.container-signup {
+    display: block;
+    margin: 120px auto;
+    width: 450px;
+    height: 100vh;
+}

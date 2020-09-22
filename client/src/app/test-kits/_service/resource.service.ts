@@ -8,17 +8,20 @@ import { resourceModel } from '../_model/resource.model';
   providedIn: 'root'
 })
 export class ResourceService {
-  url = "http://localhost:3000/resource/"
-
+  url = "http://localhost:3000/resources/"
   constructor(
     private http: HttpClient
   ) { }
 
-  getReource(): Observable<any>{
-    return this.http.get<any>(this.url)
+  getReource(user_id: string): Observable<any>{
+    return this.http.get<any>(this.url + user_id)
   }
 
-  getReourceId(id: string): Observable<any>{
+  getReourceId(id: string, user_id: string): Observable<any>{
+    return this.http.get<any>(this.url + id + '/' + user_id)
+  }
+
+  getListResource(id: string): Observable<any>{
     return this.http.get<any>(this.url + id)
   }
 

@@ -2,11 +2,11 @@ const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
 const Answer = new Schema({
-    Content: {
+    content: {
         type: String,
         required: true
     },
-    Right: {
+    right: {
         type: Boolean,
         required: true,
     },

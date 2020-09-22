@@ -23,15 +23,22 @@
         <div class="content" *ngFor="let tq of questions; index as i" [id]="i" style="margin: 10px; width: 98%;">
             <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
             <div style="padding: 0px 15px 15px 15px;">
-                <h1>{{tq.questions.Content}}</h1>
-                <img src="{{tq.questions.Img}}" alt="">
+                <h1>{{tq.questions.content}}</h1>
+                <img src="{{tq.questions.image}}" alt="">
                 <div class="answer-container1">
                     <div *ngFor="let answer of tq.questions.answerList;" class="list-answers">
-                        <label *ngIf="tq.questions.answerList.length === 4" class="container">{{answer.Content}} 
-                            <input type="radio" [checked]="answer.Right" disabled class="cs" >
+                        <label *ngIf="tq.questions.answerList.length <= 4" class="container">{{answer.content}} 
+                            <input type="radio" [checked]="answer.right" disabled class="cs" >
                             <input *ngIf="answer._id === tq.choose_answer" type="radio" [checked]="true" disabled  class="choose">
+                            <span class="checkmark check-radio"></span>
+                        </label>
+
+                        <label *ngIf="tq.questions.answerList.length > 4" class="container">{{answer.content}} 
+                            <input type="checkbox" [checked]="answer.right" disabled class="cs" >
+                            <input *ngIf="answer._id === tq.choose_answer" type="checkbox" [checked]="true" disabled  class="choose">
                             <span class="checkmark"></span>
                         </label>
+
                     </div>
                 </div>
             </div>

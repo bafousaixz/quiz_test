@@ -28,10 +28,19 @@ h1 {
     border-radius: 5px;
     width: 30px;
     cursor: pointer;
-    background: rgba(15, 188, 249, 1.0);
-    color: #ffffff;
+    background: #ffffff;
     margin-right: 5px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+    opacity: 0;
+}
+
+.target:hover .btn-answer {
+    opacity: 1;
+}
+
+.target:hover {
+    cursor: pointer;
+    background: #9AECDB;
 }
 
 .btn-answer:hover {
@@ -39,6 +48,7 @@ h1 {
 }
 
 .btn-remove {
+    color: #ffffff;
     background: #F79F1F;
 }
 

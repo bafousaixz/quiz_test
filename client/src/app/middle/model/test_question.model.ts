@@ -4,8 +4,8 @@ export class test_questionModel{
     test_id: string;
     questions: {
         _id: string,
-        Content: string,
-        Img: string,
+        content: string,
+        image: string,
         answerList?: answerModel[]
     };
     choose_answer?: string

@@ -48,10 +48,10 @@ export class QuestionsComponent implements OnInit {
   postQuestion(){
     let q: questionModel = {
       _id: this._id,
-      Content: this.content,
-      Img: this.img,
-      Level: this.level,
-      Resource_id: this.id
+      content: this.content,
+      image: this.img,
+      level: this.level,
+      resource_id: this.id
     }
     this.questionService.postQuestion(q).subscribe(data=>{
       if(data !=null){
@@ -64,10 +64,10 @@ export class QuestionsComponent implements OnInit {
   putQuestion(){
     let q: questionModel = {
       _id: this.id_question,
-      Content: this.qs.Content,
-      Img: this.qs.Img ,
-      Level: this.level,
-      Resource_id: this.id
+      content: this.qs.content,
+      image: this.qs.image ,
+      level: this.level,
+      resource_id: this.id
     }
     this.questionService.putQuestion(q).subscribe(data=>{
       if(data!=null){
@@ -96,7 +96,7 @@ export class QuestionsComponent implements OnInit {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
     this.img = 'data:image/png;base64,' + btoa(e.target.result);
-    this.qs.Img= 'data:image/png;base64,' + btoa(e.target.result);
+    this.qs.image= 'data:image/png;base64,' + btoa(e.target.result);
   }
 
 //Scroll

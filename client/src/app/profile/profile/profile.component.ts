@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.get()
     this.user
-    this.initForm()
   }
 
   onUploadChange(evt: any) {
@@ -58,32 +57,22 @@ export class ProfileComponent implements OnInit {
   get(){
     if(this.token != null ){
       this.userService.getUser().subscribe(data=>{
-        this.avatar= data.Image
+        this.avatar= data.image
         this.user = data;
-        // console.log(this.user)
+        console.log(this.user)
        })
     }
   }
 
-  initForm(){
-    this.profileUser = this.fb.group({
-      firstname : '' ,
-      lastname : '',
-      username : '',
-      email: '',
-      tel : '',
-    });
-  }
-
   onUpload(){
     let profile : User = {
-      First_Name: this.firstname,
-      Last_Name : this.lastname,
-      username: this.username,
-      hash: this.password,
-      Email: this.email,
-      Tel: this.tel,
-      Image: this.image
+      firstName: this.user.firstName,
+      lastName : this.user.lastName,
+      username: this.user.username,
+      password: this.user.password,
+      email: this.user.email,
+      tel: this.user.tel,
+      image: this.user.image,
     };
     console.log(profile)
     this.userService.editProfile(profile).subscribe(data =>{

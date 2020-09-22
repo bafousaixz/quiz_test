@@ -12,18 +12,18 @@ import { Observable, of } from 'rxjs';
 export class UsersService {
 
   url = "http://localhost:3000/users/"
-  uri = "http://localhost:3000/users/login/"
+  _url = "http://localhost:3000/users/login/"
   get = "http://localhost:3000/users/me/"
 
   constructor(
     private http: HttpClient
   ) { } 
 
-  signin(user: Signin): Observable<User>{
-    return this.http.post<User>(this.uri, user)
+  signIn(user: Signin): Observable<User>{
+    return this.http.post<User>(this._url, user)
   }
 
-  signup(user : User): Observable<User>{
+  signUp(user : User): Observable<User>{
     return this.http.post<User>(this.url, user)
   }
 

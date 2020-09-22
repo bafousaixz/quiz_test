@@ -16,6 +16,7 @@ export class ResourceComponent implements OnInit {
 
   base64textString = [];
   image: string;
+  user_id: string;
   resource: resourceModel;
   _id: string = this.route.snapshot.paramMap.get('id');
 
@@ -27,11 +28,14 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResource()
+    if(this.router.url === `/resources/${this._id}/tests`){
+      this.check = false
+    }
   }
 
   getResource(){
     const id = this.route.snapshot.paramMap.get('id');
-    this.resourceService.getReourceId(id).subscribe(data =>{
+    this.resourceService.getReourceId(id, this.user_id).subscribe(data =>{
       this.resource = data
     })
   }
@@ -39,9 +43,9 @@ export class ResourceComponent implements OnInit {
   putResource(){
     const rs : resourceModel ={
       _id : this.resource._id,
-      Name : this.resource.Name,
-      Image : this.resource.Image,
-      Content : this.resource.Content,
+      name : this.resource.name,
+      image : this.resource.image,
+      content : this.resource.content,
     }
     this.resourceService.putResource(rs).subscribe();
   }
@@ -64,19 +68,24 @@ export class ResourceComponent implements OnInit {
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
-    this.resource.Image= 'data:image/png;base64,' + btoa(e.target.result);
+    this.resource.image= 'data:image/png;base64,' + btoa(e.target.result);
   }
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent(){
-    let left = document.getElementById("resource-zone").style;
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      left.position = "fixed";
-      left.top = "1vh";
-    } else {
-      left.position = "absolute";
-      left.top = "22vh";
-    }
-  } 
+  // @HostListener('window:scroll', ['$event']) onScrollEvent(){
+  //   let left = document.getElementById("resource-zone").style;
+  //   if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+  //     left.position = "fixed";
+  //     left.top = "1vh";
+  //   } else {
+  //     left.position = "absolute";
+  //     left.top = "22vh";
+  //   }
+  // } 
+
+  handle(e){
+    this.user_id = e;
+    this.getResource();
+  }
 
   showListquestion(){
     this.check= true;

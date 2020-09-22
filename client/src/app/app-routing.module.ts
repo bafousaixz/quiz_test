@@ -15,18 +15,25 @@ import { ResultComponent } from './tests/result/result.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { ListUserComponent } from './admin/list-user/list-user.component';
 import { CreateUserComponent } from './admin/create-user/create-user.component';
+import { SiginComponent } from './login/sigin/sigin.component';
+import { SigupComponent } from './login/sigup/sigup.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
 
   {
     path: 'login',
-    component: LoginComponent
+    component: SiginComponent,
   },
+  {
+    path: 'signup',
+    component: SigupComponent,
+  },
+
 
   {
     path: 'profile',

@@ -26,7 +26,7 @@ export class CreateTestComponent implements OnInit {
   medium: number;
   high: number;
   name: string;
-  resource_id = '';
+  resourceId = '';
 
   min: number = 1;
   max: number = 10;
@@ -49,7 +49,7 @@ export class CreateTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.parent.params.subscribe((param: Params) => {
-      this.resource_id = param['id'];
+      this.resourceId = param['id'];
     });
   }
 
@@ -66,7 +66,7 @@ export class CreateTestComponent implements OnInit {
       easy: this.min,
       medium: this.max - this.min,
       high: this.amount - this.max,
-      resource_id: this.resource_id
+      resource_id: this.resourceId
     }
     if(name !== null && this.amount !=null){
       this.testService.postTest(test).subscribe(data=>{

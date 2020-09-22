@@ -45,7 +45,7 @@ export class EditTestComponent implements OnInit {
 
   getQuestion(){
     this.questionService.getQuestion().subscribe((data: any[]) =>{
-      data = data.filter(x => !this.test_question.some(q => q.questions.Content === x.Content));
+      data = data.filter(x => !this.test_question.some(q => q.questions.content === x.content));
       return this.questions = data
     })
   }

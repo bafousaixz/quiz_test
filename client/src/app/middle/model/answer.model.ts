@@ -1,6 +1,6 @@
 export class answerModel {
     _id: string;
-    Content: string;
-    Right: boolean; 
+    content: string;
+    right: boolean; 
     question_id: string;
 }

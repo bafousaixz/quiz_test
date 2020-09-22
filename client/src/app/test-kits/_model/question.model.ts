@@ -1,7 +1,7 @@
 export class questionModel {
     _id: string;
-    Content: string;
-    Img: string;
-    Level: string;
-    Resource_id: string;
+    content: string;
+    image: string;
+    level: string;
+    resource_id: string;
 }

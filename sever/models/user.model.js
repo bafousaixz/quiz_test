@@ -10,34 +10,39 @@ const UserModel = new Schema({
         required: true
     },
 
-    hash: {
+    password: {
         type: String,
         required: true
     },
 
-    First_Name: {
+    firstName: {
         type: String,
         required: true
     },
 
-    Last_Name: {
+    lastName: {
         type: String,
         required: true
     },
 
-    Email: {
+    email: {
         type: String,
         required: false
     },
 
-    Tel: {
+    tel: {
         type: String,
         required: false
     },
 
-    Image: {
+    image: {
         type: String,
         required: false
+    },
+
+    role: {
+        type: Number,
+        required: true
     },
 
     tokens: [{
@@ -53,8 +58,8 @@ const UserModel = new Schema({
 // Hash the password before saving the user model
 UserModel.pre('save', async function(next) {
     const user = this
-    if (user.isModified('hash')) {
-        user.hash = await bcrypt.hash(user.hash, 8)
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, 8)
     }
     next()
 })
@@ -66,18 +71,18 @@ UserModel.methods.generateAuthToken = async function() {
     const token = jwt.sign({ _id: user._id }, 'cut deeee')
     user.tokens = user.tokens.concat({ token })
     await user.save()
-    console.log(token)
     return token
 }
 
 
 // Search for a user by email and password.
-UserModel.statics.findByCredentials = async(username, hash) => {
+UserModel.statics.findByCredentials = async(username, password) => {
     const user = await users.findOne({ username })
     if (!user) {
         throw new Error({ error: 'Invalid login credentials' })
     }
-    const isPasswordMatch = await bcrypt.compare(hash, user.hash)
+    const isPasswordMatch = await bcrypt.compare(password, user.password)
+    console.log(isPasswordMatch)
     if (!isPasswordMatch) {
         throw new Error({ error: 'Invalid login credentials' })
     }

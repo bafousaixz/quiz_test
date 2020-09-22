@@ -12,6 +12,7 @@ export class ResourcesComponent implements OnInit {
   popup: string;
   resource: resourceModel;
   name: string;
+  user_id: string;
   image: string;
   content: string;
   _id: string;
@@ -21,21 +22,24 @@ export class ResourcesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.get();
   }
  
   get(){
-    this.service.getReource().subscribe(data =>{
-      this.resource = data
-    })
+    if(this.user_id){
+      this.service.getReource(this.user_id).subscribe(data =>{
+        this.resource = data
+      })
+    }
+   
   }
 
   post(){
     let rs: resourceModel = {
       _id: this._id,
-      Name: this.name,
-      Image: this.image,
-      Content: this.content
+      name: this.name,
+      user_id: this.user_id,
+      image: this.image,
+      content: this.content
     }
     this.service.postResource(rs).subscribe();
     if(this.name != null){
@@ -45,8 +49,10 @@ export class ResourcesComponent implements OnInit {
     else alert("null")
   }
 
-
-
+  handle(e){
+    this.user_id = e
+    this.get();
+  }
   
 
   up(){

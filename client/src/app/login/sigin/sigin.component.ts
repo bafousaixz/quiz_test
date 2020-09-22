@@ -6,39 +6,30 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sigin',
   templateUrl: './sigin.component.html',
-  styleUrls: ['../login/login.component.css']
+  styleUrls: ['./sigin.component.css']
 })
 export class SiginComponent implements OnInit {
 
   username: string
   password: string
-
   constructor(
-    private service: UsersService,
+    private userService: UsersService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  signin(){
+  signIn(){
     let signin : Signin = {
       username: this.username,
-      hash : this.password,
+      password : this.password,
     };
-    if(this.username == null || this.password == null){
-      alert("Please don't input null")
-    }
-    else{
-      this.service.signin(signin).subscribe(data =>{
+    this.userService.signIn(signin).subscribe(data =>{
+      if(data){
         window.localStorage.setItem('token', data['token'])
-       // window.location.reload();
         this.router.navigate(['/resources']);
-       });
-    }
-    
+      }
+    })   
   }
-
-
-
 }

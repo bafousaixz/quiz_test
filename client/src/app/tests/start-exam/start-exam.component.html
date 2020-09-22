@@ -12,14 +12,20 @@
         <div class="content" *ngFor="let tq of test.questionList; index as i" [id]="i">
             <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
             <div style="padding: 0px 15px 15px 15px;">
-                <h1>{{tq.questions.Content}}</h1>
-                <img src="{{tq.questions.Img}}" alt="">
+                <h1>{{tq.questions.content}}</h1>
+                <img src="{{tq.questions.image}}" alt="">
                 <div class="answer-container1">
                     <div *ngFor="let answer of tq.questions.answerList" class="list-answers">
-                        <label *ngIf="tq.questions.answerList.length === 4" class="container">{{answer.Content}} 
-                            <input type="radio" [(ngModel)]="choose_answer[tq._id]" [value]="answer?._id" [name]="tq._id">
+                        <label *ngIf="tq.questions.answerList.length <= 4" class="container">{{answer.content}} 
+                            <input type="radio" (change)="getChoose(answer._id)" [value]="answer?._id" [name]="tq._id">
+                            <span class="checkmark check-radio"></span>
+                        </label>
+
+                        <label *ngIf="tq.questions.answerList.length > 4" class="container">{{answer.content}} 
+                            <input type="checkbox" (change)="getChoose(answer._id)">
                             <span class="checkmark"></span>
                         </label>
+
                     </div>
                 </div>
             </div>
@@ -29,7 +35,7 @@
 
     <div id="menu-test">
         <div id="countdown">
-            <countdown [config]="{ leftTime: test.time*60, format: ' m:s ', notify: [  60 ] }" (event)="handleEvent($event)"></countdown>
+            <countdown [config]="{ leftTime: test.time*60, format: ' mm:ss ', notify: [  60 ] }" (event)="handleEvent($event)"></countdown>
         </div>
         <div class="container-menu1">
             <p *ngFor="let tq of test.questionList; index as i" (click)="scroll(i)">

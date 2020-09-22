@@ -67,13 +67,12 @@
 
 .bia h3 {
     position: absolute;
-    top: 55%;
-    left: 450px;
+    top: 69%;
+    left: 420px;
     margin: 50px 0 0 -100px;
     color: #ffffff;
     font-weight: bold;
     font-size: 200%;
-    border-bottom: 2px solid rgba(15, 188, 249, 1.0);
 }
 
 @media (max-height: 700px) {

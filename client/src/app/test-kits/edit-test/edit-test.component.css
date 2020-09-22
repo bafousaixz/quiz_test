@@ -107,7 +107,7 @@ h3 {
 .header-popup {
     width: 100%;
     height: 50px;
-    background: #5758BB;
+    background: rgba(23, 192, 235, 1.0);
 }
 
 .btn-close {

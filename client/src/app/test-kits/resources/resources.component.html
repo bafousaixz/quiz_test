@@ -1,4 +1,4 @@
-<app-user></app-user>
+<app-user (OutputValue)="handle($event)"></app-user>
 <div class="top-resource">
     <h1>Resources</h1>
 </div>
@@ -6,7 +6,7 @@
 <div class="mid">
     <div class="content">
         <div *ngIf="resource" class="flexbox">
-            <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.Name}}</a>
+            <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.name}}</a>
             <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
         </div>
 

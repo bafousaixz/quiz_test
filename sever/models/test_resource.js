@@ -2,16 +2,20 @@ const Mongoose = require('mongoose');
 var Schema = Mongoose.Schema;
 
 const Resoure = new Schema({
-    Name: {
+    name: {
         type: String,
         unique: true,
         required: true
     },
-    Image: {
+    user_id: {
+        type: String,
+        required: true
+    },
+    image: {
         type: String,
         required: false
     },
-    Content: {
+    content: {
         type: String,
         required: false
     }

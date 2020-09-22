@@ -41,7 +41,7 @@ router.get("/test_result/:id", async(req, res) => {
     const user_id = r.user_id
     const answer_right = r.answer_right
     const score = r.score
-    const choose_answer = Object.values(r.choose)
+    const choose_answer = r.choose
     const test_id = r.test_id
     tests.aggregate([{
         $lookup: {
@@ -69,19 +69,21 @@ router.post("/test_result", async(req, res) => {
     const questions = await question.find().lean().exec();
     if (rs.test_id) {
         q = questions.filter(item => item.test_id.toString() === test_id.toString())
-        q.forEach(question => {
-            question.questions.answerList.forEach(answer => {
-                if (answer.Right === true) {
-                    Object.values(rs.choose).forEach(choose => {
+        tam = 10 / q.length
+        q.map(question => {
+            question.questions.answerList.map(answer => {
+                if (answer.right === true) {
+                    rs.choose.map(choose => {
                         if (choose.toString() === answer._id.toString()) {
                             answer_right += 1;
                         }
                     });
+                    console.log(answer)
                 }
             });
         });
     }
-    score = ((10.0 / q.length) * answer_right).toFixed(2)
+    score = (tam * answer_right).toFixed(2)
     const result = new test_result({ test_id, user_id, choose, name, answer_right, score })
     const d = await result.save()
     res.send(d);

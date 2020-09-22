@@ -13,7 +13,7 @@
                 </p>
             </div>
             <a>
-                <button (click)="getUrl(test)" class="btn-start ">Start</button>
+                <button (click)="getUrl(test)" class="btn-start ">Share</button>
             </a>
             <a routerLink="result/{{test._id}}">
                 <button class="btn-start ">Results</button>
@@ -24,8 +24,12 @@
 
     <div *ngIf="check" class="container-popup">
         <div class="popup-share-test">
+            <div class="header-popup">
+                <button (click)="closePupup()" class="btn-close"><i class="fas fa-times"></i></button>
+            </div>
+
             <div class="password">
-                <input class="pass" type="password" [(ngModel)]="password">
+                <input class="pass" type="password" [(ngModel)]="password" placeholder="Password">
                 <button class="pass-btn" (click)="putTest()">Set password</button>
             </div>
             <div *ngIf="url">
@@ -35,7 +39,6 @@
                 </div>
                 <p id="coppied">Copied <i class="fas fa-check"></i></p>
             </div>
-            <p (click)="closePupup()" class="close">-</p>
         </div>
     </div>
 

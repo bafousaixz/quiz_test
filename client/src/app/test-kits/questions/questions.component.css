@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 .container-questions {
     width: 65%;
-    height: auto;
-    min-height: 80vh;
+    /* height: auto;
+    min-height: 80vh; */
     position: absolute;
     top: 22vh;
     right: 0;
+    background: #f5f6fa;
 }
 
 #center {
@@ -71,7 +72,7 @@ img {
     width: 98%;
     height: 50px;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
     overflow: hidden;
     transition: height .5s;
@@ -105,11 +106,28 @@ img {
     font-size: 13px;
     background: rgba(15, 188, 249, 1.0);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
-    color: #ffffff;
     margin: 5px;
     right: 0;
     padding: 5px;
     width: 70px;
+    display: inline-block;
+    opacity: 0;
+    transition: .3s;
+}
+
+.btn-question1 {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 13px;
+    background: rgba(15, 188, 249, 1.0);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+    margin: 5px;
+    right: 0;
+    padding: 5px;
+    width: 70px;
+    cursor: pointer;
     display: inline-block;
     transition: .3s;
 }
@@ -126,11 +144,12 @@ img {
 .btn-edit {
     background: #ffffff;
     border: 1px solid #f2f2ff;
-    color: rgba(15, 188, 249, 1.0);
+    /* color: rgba(15, 188, 249, 1.0); */
     width: 30px;
 }
 
 .btn-remove {
+    color: #ffffff;
     width: 30px;
     background: #F79F1F;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
@@ -158,7 +177,6 @@ img {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 250vh;
     margin-top: 10px;
 }
 
@@ -172,6 +190,14 @@ img {
     min-height: 100px;
     margin: 1%;
     overflow: hidden;
+}
+
+.question:hover {
+    cursor: pointer;
+}
+
+.question:hover .btn-question {
+    opacity: 1;
 }
 
 #edit {

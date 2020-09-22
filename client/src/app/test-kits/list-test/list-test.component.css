@@ -16,7 +16,7 @@
 .container-test {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: auto;
     margin-top: 10px;
 }
 
@@ -31,6 +31,10 @@
     min-height: 140px;
     margin: 1%;
     overflow: hidden;
+}
+
+.test:hover .btn-start {
+    opacity: 1;
 }
 
 .content {
@@ -97,6 +101,7 @@ p {
     right: 0;
     padding: 5px;
     display: inline-block;
+    opacity: 0;
     transition: .3s;
 }
 
@@ -110,13 +115,32 @@ p {
     z-index: 10;
 }
 
+.header-popup {
+    width: 100%;
+    height: 50px;
+    background: rgba(23, 192, 235, 1.0);
+}
+
+.btn-close {
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    height: 0;
+    color: #ffffff;
+    z-index: 10;
+    cursor: pointer;
+}
+
 .popup-share-test {
     position: fixed;
     overflow: hidden;
     top: 50%;
     left: 50%;
     width: 50%;
-    height: 30vh;
+    height: 40vh;
     transform: translate(-50%, -50%);
     z-index: 10;
     background: #ffffff;
@@ -127,13 +151,13 @@ p {
 
 @keyframes poppup-test {
     0% {
-        top: 70%;
+        top: 75%;
         width: 0;
         height: 0;
     }
     100% {
         width: 50%;
-        height: 20vh;
+        height: 30vh;
     }
 }
 
@@ -143,17 +167,6 @@ p {
     font-weight: bold;
     font-style: 15px;
     opacity: 0;
-}
-
-.close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    color: #ffffff;
-    background: #FFC312;
 }
 
 .password {
@@ -208,4 +221,10 @@ p {
     cursor: pointer;
     font-style: 20px;
     color: rgba(15, 188, 249, 1.0);
+}
+
+::placeholder {
+    font-size: 13px;
+    font-style: italic;
+    margin-left: 5px;
 }

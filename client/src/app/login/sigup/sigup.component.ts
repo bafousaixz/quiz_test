@@ -5,16 +5,14 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-sigup',
   templateUrl: './sigup.component.html',
-  styleUrls: ['../login/login.component.css']
+  styleUrls: ['./sigup.component.css' , '../sigin/sigin.component.css' ]
 })
 export class SigupComponent implements OnInit {
-
-  firstname: string;
-  lastname: string;
-  username: string;
+  firstName: string = 'le';
+  lastName: string;
+  userName: string;
   password: string;
-  email: string ;
-  tel: string ;
+  role: number = 3;
   image: string = "https://res.cloudinary.com/heymarketer/image/upload/dpr_auto,w_auto,f_auto,q_auto:good/v1553089040/Testimonials/undraw_profile_pic_ic5t.svg";
 
   constructor(
@@ -25,25 +23,21 @@ export class SigupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  signup(){
-    let signup : User = {
-      First_Name: this.firstname,
-      Last_Name : this.lastname,
-      username: this.username,
-      hash: this.password,
-      Email: this.email,
-      Tel: this.tel,
-      Image: this.image
+  signUp(){
+    let s : User = {
+      firstName: this.firstName,
+      lastName : this.lastName,
+      username: this.userName,
+      password: this.password,
+      role: this.role,
+      image: this.image
     };
-    if(this.firstname == null || this.lastname == null || this.username == null || this. password == null ){
-      alert("Please don't input null")
-    }
-    else{
-      this.userService.signup(signup).subscribe(data =>{
+    this.userService.signUp(s).subscribe(data =>{
+      if(data){
         window.localStorage.setItem('token', data['token'])
         this.router.navigate(['/resources']);
-       });
-    }
+      }
+    });
   }
 
 }

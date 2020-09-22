@@ -15,24 +15,8 @@ import { TestService } from 'src/app/middle/service/test.service';
 export class StartExamComponent implements OnInit {
   @Input() user;
   @Input() name;
-  
-  set test(value: testModel) {
-    this._test = value;
-    if (value) {
-      this.choose_answer = this.test.questionList.reduce((pre, cur) => {
-        pre[cur._id] = '';
-        return pre;
-      }, {});
-    }
-  }
-  _test: testModel = {} as any;
-  choose_answer: {
-    [questionId: string]: string;
-  } = {};
-
-  get test() {
-    return this._test;
-  }
+  test: testModel = {} as any;
+  choose : any[] = []
   index: string
   answer_right: number = 0
   s: string
@@ -54,12 +38,16 @@ export class StartExamComponent implements OnInit {
       this.test = data
     })
   }
+  
+  getChoose(c: string){
+    this.choose.push(c)
+  }
 
   onSubmit(){
     let result: testResult = {
       test_id: this.test._id,
       user_id: this.user,
-      choose: this.choose_answer,
+      choose: this.choose,
       name: this.name
     }
     this.testResultService.postResult(result).subscribe(data=>{

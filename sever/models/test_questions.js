@@ -3,20 +3,20 @@ const Schema = Mongoose.Schema;
 
 
 const Question = new Schema({
-    Content: {
+    content: {
         type: String,
         unique: true,
         required: true
     },
-    Img: {
+    image: {
         type: String,
         required: false,
     },
-    Level: {
+    level: {
         type: String,
         required: false,
     },
-    Resource_id: {
+    resource_id: {
         type: String,
         require: true,
     },
