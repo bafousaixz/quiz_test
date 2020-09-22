@@ -8,13 +8,16 @@
                 <h3>Create your account</h3>
                 <p>Already have an account? <span><a href="login">Log In</a></span>
                 </p>
-                <form (ngSubmit)="signUp() && registerForm.form.valid" #registerForm="ngForm" [appLogin]="user">
+                <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && signUp()" [appLogin]="user" novalidate>
                     <input type="text" [(ngModel)]="lastName" placeholder="Name" name="name" #name="ngModel" required>
                     <h4 *ngIf="(name.touched || registerForm.submitted) && name.errors?.required" class="check"> Name is required<b>!!!</b></h4>
+
                     <input type="text" [(ngModel)]="userName" placeholder="Email Address" name="user" #user="ngModel" required>
                     <h4 *ngIf="(user.touched || registerForm.submitted) && user.errors?.usernameMiss" class="check"> Email must be on the @BotStar.com domain<b>!!!</b></h4>
+
                     <input type="password" [(ngModel)]="password" placeholder="Password" name="password" #pass="ngModel" required minlength="6">
                     <h4 *ngIf="(pass.touched || registerForm.submitted) && pass.errors?.minlength" class="check"> Password greater than 6 characters <b>!!!</b></h4>
+
                     <button>Create Account</button>
                 </form>
             </div>

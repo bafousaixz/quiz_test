@@ -16,16 +16,12 @@ export class ValidatorService {
         if(t){
           const tam: string[] = t.split('@');
           const domain: string = tam[tam.length - 1]
-          const check = tam[tam.length - 2]
           if(!username){
             return null
           }
           if(domain.toLowerCase() !== 'botstar.com'){
             username.setErrors({usernameMiss: true})
           }
-          // if(check === ''){
-          //   username.setErrors({usernameError: true})
-          // }
           else{
             username.setErrors(null)
           }

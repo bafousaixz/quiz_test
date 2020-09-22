@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UppercasePipe } from 'src/app/middle/uppercase.pipe';
-import { UsersService } from '../../login/users.service';
+import { LoginService } from '../../login/_service/login.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-user',
@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   token = localStorage.getItem("token")
   
   constructor(
-    public userService: UsersService,
+    public userService: LoginService,
     public router: Router
   ) { }
 

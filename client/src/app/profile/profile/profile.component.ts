@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../login/users.service';
-import { User } from '../../login/user.model';
+import { LoginService } from '../../login/_service/login.service';
+import { User } from '../../login/_model/user.model';
 import { HttpClient} from '@angular/common/http'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   profile1: boolean = true
   base64textString = [];
   constructor(
-    private userService: UsersService,
+    private userService: LoginService,
     private http: HttpClient,
     private fb: FormBuilder,
   ) { }

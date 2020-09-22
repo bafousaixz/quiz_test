@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ProfileComponent } from './profile/profile/profile.component';
@@ -15,25 +14,31 @@ import { ResultComponent } from './tests/result/result.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { ListUserComponent } from './admin/list-user/list-user.component';
 import { CreateUserComponent } from './admin/create-user/create-user.component';
-import { SiginComponent } from './login/sigin/sigin.component';
-import { SigupComponent } from './login/sigup/sigup.component';
+import { SignupComponent } from './login/signup/signup.component';
+import { LoginComponent } from './login/login/login.component';
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: HomeComponent,
+  // },
+  //user
   {
-    path: '',
-    component: HomeComponent,
+    path: '', 
+    redirectTo: '/login', 
+    pathMatch: 'full' 
   },
 
   {
     path: 'login',
-    component: SiginComponent,
-  },
-  {
-    path: 'signup',
-    component: SigupComponent,
+    component: LoginComponent,
   },
 
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
 
   {
     path: 'profile',

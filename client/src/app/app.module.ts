@@ -8,7 +8,6 @@ import { ComponentModule } from  './component/component.module';
 import { TestsModule } from './tests/tests.module';
 
 import { AppComponent } from './app.component';
-import { UsersService } from 'src/app/login/users.service';
 import { MiddleModule } from './middle/middle.module';
 import { AdminModule } from './admin/admin.module'
 
@@ -27,9 +26,7 @@ import { AdminModule } from './admin/admin.module'
     MiddleModule,
     AdminModule,
   ],
-  providers: [
-    UsersService,
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

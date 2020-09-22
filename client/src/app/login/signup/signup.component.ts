@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user.model';
-import { UsersService } from '../users.service';
+import { User } from '../_model/user.model';
+import { LoginService } from '../_service/login.service';
 import { Router } from '@angular/router'
+
 @Component({
-  selector: 'app-sigup',
-  templateUrl: './sigup.component.html',
-  styleUrls: ['./sigup.component.css' , '../sigin/sigin.component.css' ]
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css', '../login/login.component.css']
 })
-export class SigupComponent implements OnInit {
+export class SignupComponent implements OnInit {
+
   firstName: string = 'le';
   lastName: string;
   userName: string;
@@ -16,7 +18,7 @@ export class SigupComponent implements OnInit {
   image: string = "https://res.cloudinary.com/heymarketer/image/upload/dpr_auto,w_auto,f_auto,q_auto:good/v1553089040/Testimonials/undraw_profile_pic_ic5t.svg";
 
   constructor(
-   public userService: UsersService,
+   public userService: LoginService,
    public router: Router
   ) { }
 

@@ -1,4 +1,4 @@
-export class Signin {
+export class Login {
     username: string
     password: string
 }
