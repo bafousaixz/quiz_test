@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-
 import { TestService } from 'src/app/middle/services/test.service';
 import { TestModel } from 'src/app/middle/models/test.model';
 import { ResourceService } from  '../_services/resource.service';
@@ -18,7 +17,7 @@ export class ListTestComponent implements OnInit {
   id = '';
   tests: TestModel[];
   test: TestModel;
-  name_resource='';
+  name_resource: string = '';
 
   constructor(
     private testService: TestService,
@@ -28,19 +27,19 @@ export class ListTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTests();
-    this.route.parent.params.subscribe((param: Params) => {
+    this.route.parent.params.subscribe((param: Params) =>{
       this.id = param['id'];
     });
     this.getResource();
   }
 
-  getTests(){
-    this.testService.getTest().subscribe(data=>{
+  getTests() {
+    this.testService.getTest().subscribe(data =>{
       this.tests = data;
     })
   }
 
-  putTest(){
+  putTest() {
     let t : TestModel = {
       _id: this.test._id,
       name: this.test.name,
@@ -53,44 +52,44 @@ export class ListTestComponent implements OnInit {
       resource_id: this.test.resource_id,
       questionList: this.test.questionList
     }
-    this.testService.putTest(t).subscribe(data=>{
-      if(data){
-        this.url = `http://localhost:4200/tests/${this.test._id}`
+    this.testService.putTest(t).subscribe(data =>{
+      if(data) {
+        this.url = `http://localhost:4200/tests/${this.test._id}`;
       }
     });
   }
 
-  deleteTest(id: string){
-    this.testService.deleteTest(id).subscribe()
-    this.getTests()
+  deleteTest(id: string) {
+    this.testService.deleteTest(id).subscribe();
+    this.getTests();
   }
 
-  getResource(){
-    this.resourceService.getListResource(this.id).subscribe(data=>{
-      this.name_resource = data.name
+  getResource() {
+    this.resourceService.getListResource(this.id).subscribe(data =>{
+      this.name_resource = data.name;
     })
   }
 
-  getUrl(test: TestModel){
-    this.test = test
-    this.check = true
+  getUrl(test: TestModel) {
+    this.test = test;
+    this.check = true;
   }
 
-  coppyUrl(inputElement){
+  coppyUrl(inputElement) {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
-    document.getElementById('coppied').style.opacity="1";
+    document.getElementById('coppied').style.opacity = "1";
     setTimeout(() => {
       this.closePupup();
     }, 2000);
   }
 
-  closePupup(){
-    this.check = false
+  closePupup() {
+    this.check = false;
   }
 
-  handle(e){
-    this.getTests()
+  handle(e) {
+    this.getTests();
   } 
 }

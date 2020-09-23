@@ -9,71 +9,65 @@ import { TestModel } from 'src/app/middle/models/test.model';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
-  popup: boolean = false
-  show: boolean = false
-  password: string
-  user: string
-  name: string
-  start: boolean = false
-  _id: string = this.route.snapshot.paramMap.get('id');
+  popup: boolean = false;
+  show: boolean = false;
+  password: string;
+  user: string;
+  name: string;
+  start: boolean = false;
+  _id: string = this.router.snapshot.paramMap.get('id');
   test: TestModel;
   constructor(
-    private route: ActivatedRoute,
+    public router: ActivatedRoute,
     private service: TestService,
   ) { }
 
   ngOnInit(): void {
-    this.getTittle()
+    this.getTittle();
   }
 
-  getTittle(){
-    this.service.getTittle(this._id).subscribe(data=>{
-    this.test = data
+  getTittle() {
+    this.service.getTittle(this._id).subscribe(data =>{
+      this.test = data;
     })
   }
 
 
   checkPassword(){
-    let test: TestModel ={
+    let test: TestModel = {
       _id: this._id,
       name: this.test.name,
       password: this.password,
     }
 
-    this.service.checkPassword(test).subscribe(data=>{
+    this.service.checkPassword(test).subscribe(data =>{
       if(data){
-        this.popup = false
-        this.start = true
+        this.popup = false;
+        this.start = true;
       }
       if(data === null){
         this.password ='';
         document.getElementById('check-pass').style.opacity = '1';
-        setTimeout(()=>{
+        setTimeout(() =>{
           document.getElementById('check-pass').style.opacity = '0';
         }, 2000)
       }
     })
   }
 
-  handle(e){
-    this.user = e
+  handle(e) {
+    this.user = e;
   }
 
-  openPopup(){
-    this.popup = true
+  openPopup() {
+    this.popup = true;
   }
 
-  viewPass(){
-    // this.show = !this.show;
-    if(this.show === true){
-      this.show = false
-    }
-    else{
-      this.show = true
-    }
+  viewPass() {
+    this.show = !this.show;
   }
 
-  closePupup(){
-    this.popup = false
+  closePupup() {
+    this.popup = false;
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UppercasePipe } from 'src/app/middle/uppercase.pipe';
 import { LoginService } from '../../login/_services/login.service';
 import { Router } from '@angular/router';
 @Component({
@@ -12,11 +11,11 @@ export class UserComponent implements OnInit {
   userName:string;
   name: string;
   avatar:string;
-  token = localStorage.getItem("token")
+  token = localStorage.getItem("token");
   
   constructor(
     public userService: LoginService,
-    public router: Router
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -26,10 +25,10 @@ export class UserComponent implements OnInit {
   get(){
     if(this.token != null){
       this.userService.getUser().subscribe(data=>{
-        this.avatar = data.image
-        this.name = data.lastName
-        this.userName = data.username
-        this.OutputValue.emit(data._id)
+        this.avatar = data.image;
+        this.name = data.lastName;
+        this.userName = data.username;
+        this.OutputValue.emit(data._id);
        })
     }
   }

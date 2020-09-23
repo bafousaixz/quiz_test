@@ -12,18 +12,18 @@ export class ValidatorService {
     return(formGroup: FormGroup) =>{
       if(user){
         const username = formGroup.controls.user;
-        let t = username.value
+        let t = username.value;
         if(t){
           const tam: string[] = t.split('@');
-          const domain: string = tam[tam.length - 1]
+          const domain: string = tam[tam.length - 1];
           if(!username){
             return null
           }
           if(domain.toLowerCase() !== 'botstar.com'){
-            username.setErrors({usernameMiss: true})
+            username.setErrors({usernameMiss: true});
           }
           else{
-            username.setErrors(null)
+            username.setErrors(null);
           }
         }
       }

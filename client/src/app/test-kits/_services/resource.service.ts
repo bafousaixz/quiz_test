@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ResourceModel } from '../_models/resource.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ResourceService {
   url = "http://localhost:3000/resources/"
   constructor(

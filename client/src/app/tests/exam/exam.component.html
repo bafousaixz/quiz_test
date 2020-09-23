@@ -1,5 +1,5 @@
 <app-user (OutputValue)="handle($event)"></app-user>
-<div style="font-family: 'Quicksand', sans-serif; background: #f2f2ff;">
+<div *ngIf="router.children.length === 0" style="font-family: 'Quicksand', sans-serif; background: #f2f2ff;">
     <div class="top-exam">
     </div>
 
@@ -39,3 +39,4 @@
         <app-start-exam [user]="user" [name]="name"></app-start-exam>
     </div>
 </div>
+<router-outlet></router-outlet>

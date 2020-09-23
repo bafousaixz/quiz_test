@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { MiddleModule } from '../middle/middle.module';
 import { ResourceRoutingModule } from './resource-routing.module'
 import { FilterPipe } from './filter.pipe';
-import { ResourceService } from './_services/resource.service';
 import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { AnswersComponent } from './answers/answers.component';
@@ -43,7 +42,6 @@ import { ListResultComponent } from './list-result/list-result.component';
     ResourceRoutingModule,
   ],
   providers:[
-    ResourceService,
   ],
   exports: [
     FilterPipe,

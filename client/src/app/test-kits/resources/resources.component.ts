@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourceService } from '../_services/resource.service'
 import { ResourceModel } from '../_models/resource.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
@@ -9,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class ResourcesComponent implements OnInit {
 
-  nextpage:boolean = true
   popup: string;
   resource: ResourceModel;
   name: string;
@@ -20,25 +20,21 @@ export class ResourcesComponent implements OnInit {
  
   constructor(
     private service: ResourceService,
-    private router: Router
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    if(this.router.url !=='/resources'){
-      this.nextpage = false
-    }
   }
  
-  get(){
+  get() {
     if(this.user_id){
       this.service.getReource(this.user_id).subscribe(data =>{
-        this.resource = data
+        this.resource = data;
       })
     }
-   
   }
 
-  post(){
+  post() {
     let rs: ResourceModel = {
       _id: this._id,
       name: this.name,
@@ -47,29 +43,23 @@ export class ResourcesComponent implements OnInit {
       content: this.content
     }
     this.service.postResource(rs).subscribe();
-    if(this.name != null){
-      this.get()
-      this.cancer()
+    if(this.name !== null) {
+      this.get();
+      this.cancer();
     }
-    else alert("null")
+    else alert("null");
   }
 
-  handle(e){
-    this.user_id = e
+  handle(e) {
+    this.user_id = e;
     this.get();
   }
   
-  next(){
-    if(this.router.url ==='/resources'){
-      this.nextpage = false
-    }
+  up() {
+    this.popup = 'oke';
   }
-
-  up(){
-    this.popup = 'oke'
-  }
-  cancer(){
-    this.popup =''
+  cancer() {
+    this.popup = '';
   }
 
 }

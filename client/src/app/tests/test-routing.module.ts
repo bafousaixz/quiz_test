@@ -7,14 +7,15 @@ import { ResultComponent } from './result/result.component';
 const TestRoutes: Routes = [ 
 
     {
-        path: 'tests/:id',
-        component: ExamComponent
-    },
-    {
-        path: 'tests/:id/result/:id',
-        component: ResultComponent
-    },
-    
+        path: '',
+        component: ExamComponent,
+        children:[
+            {
+                path: 'result/:id',
+                component: ResultComponent
+            },
+        ]
+    }
 ]
 
 @NgModule({

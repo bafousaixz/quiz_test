@@ -5,7 +5,9 @@ import { UppercasePipe } from './uppercase.pipe';
 
 
 @NgModule({
-  declarations: [UppercasePipe],
+  declarations: [
+    UppercasePipe
+  ],
   imports: [
     CommonModule
   ],

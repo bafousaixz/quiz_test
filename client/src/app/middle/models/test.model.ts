@@ -10,5 +10,5 @@ export class TestModel {
     high?: number;
     password?: string;
     resource_id?: string;
-    questionList?: TestQuestionModel[]
+    questionList?: TestQuestionModel[];
 }

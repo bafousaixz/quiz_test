@@ -13,7 +13,7 @@ export class ListResultComponent implements OnInit {
   popup: boolean = false;
   _id: string = this.route.snapshot.paramMap.get('id');
   results: TestResult[];
-  questions: any[]= [];
+  questions: any[] = [];
   test: TestModel;
   choose: any[];
   constructor(
@@ -23,39 +23,39 @@ export class ListResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getTestdetail()
-    this.getResult()
+    this.getTestdetail();
+    this.getResult();
   }
 
-  getTestdetail(){
-    this.service.getDetail(this._id).subscribe(data=>{
-      this.test= data
+  getTestdetail() {
+    this.service.getDetail(this._id).subscribe(data =>{
+      this.test = data;
     })
   }
   
-  getResult(){
-    this.testResultService.getResult(this._id).subscribe(data=>{
-      this.results = data
+  getResult() {
+    this.testResultService.getResult(this._id).subscribe(data =>{
+      this.results = data;
     })
   }
 
-  getResultDetail(id: string){
-    this.testResultService.getdetail(id).subscribe(data=>{
-      this.questions = data.test.questionList
-      this.choose = data.choose_answer
-      for(let i=0; i<this.questions.length; i++){
-        for(let j =0; j<this.choose.length; j++){
-          if(i===j){
-            this.questions[i].choose_answer = this.choose[j]
+  getResultDetail(id: string) {
+    this.testResultService.getdetail(id).subscribe(data =>{
+      this.questions = data.test.questionList;
+      this.choose = data.choose_answer;
+      for(let i = 0; i<this.questions.length; i++) {
+        for(let j = 0; j<this.choose.length; j++) {
+          if(i === j) {
+            this.questions[i].choose_answer = this.choose[j];
           }
         }
       }
-      this.popup = true
+      this.popup = true;
     })
   }
 
-  close(){
-    this.popup = false
+  close() {
+    this.popup = false;
   }
 
 }

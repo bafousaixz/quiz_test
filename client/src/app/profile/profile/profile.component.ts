@@ -9,11 +9,11 @@ import { User } from '../../login/_models/user.model';
 })
 export class ProfileComponent implements OnInit {
 
-  token = localStorage.getItem('token')
+  token = localStorage.getItem('token');
   user: User;
-  image: string
-  avatar: string
-  profile1: boolean = true
+  image: string;
+  avatar: string;
+  profile1: boolean = true;
   base64textString = [];
 
   constructor(
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.get()
+    this.get();
   }
 
   onUploadChange(evt: any) {
@@ -35,16 +35,15 @@ export class ProfileComponent implements OnInit {
   
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
-    this.image = 'data:image/png;base64,' + btoa(e.target.result)
-    console.log(this.image)
+    this.image = 'data:image/png;base64,' + btoa(e.target.result);
   }
 
   get(){
     if(this.token != null ){
       this.userService.getUser().subscribe(data=>{
-        this.avatar= data.image
+        this.avatar= data.image;
         this.user = data;
-        console.log(this.user)
+        console.log(this.user);
        })
     }
   }
@@ -61,7 +60,7 @@ export class ProfileComponent implements OnInit {
     };
     console.log(profile)
     this.userService.editProfile(profile).subscribe(data =>{
-      window.location.reload()
+      window.location.reload();
       this.profile1=false;
     })
   }

@@ -1,5 +1,5 @@
 <app-user (OutputValue)="handle($event)"></app-user>
-<div *ngIf="nextpage">
+<div *ngIf="route.children.length === 0">
     <div class="top-resource">
         <h1>Resources</h1>
     </div>
@@ -7,7 +7,7 @@
     <div class="mid">
         <div class="content">
             <div *ngIf="resource" class="flexbox">
-                <a *ngFor="let r of resource" (click)="next()" routerLink="{{r._id}}" class="box">{{r.name}}</a>
+                <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.name}}</a>
                 <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
             </div>
 
@@ -20,4 +20,5 @@
         </div>
     </div>
 </div>
+
 <router-outlet></router-outlet>

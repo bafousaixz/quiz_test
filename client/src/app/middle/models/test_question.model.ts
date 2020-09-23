@@ -8,5 +8,5 @@ export class TestQuestionModel{
         image: string,
         answerList?: AnswerModel[]
     };
-    choose_answer?: string
+    choose_answer?: string;
 }

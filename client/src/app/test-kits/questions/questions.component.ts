@@ -12,15 +12,14 @@ import { QuestionModel } from '../_models/question.model';
 })
 export class QuestionsComponent implements OnInit {
   id_question: string;
+  _id: string;
   base64textString = [];
+  img: string;
+  image: string;
   easy: boolean;
   medium: boolean;
   high: boolean;
   p: number = 1;
-
-  _id: string;
-  img: string;
-  image: string;
   content: string;
   level: string = "Easy";
   id = '';
@@ -34,18 +33,18 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestion()
-    this.route.parent.params.subscribe((param: Params) => {
+    this.route.parent.params.subscribe((param: Params) =>{
       this.id = param['id'];
     })
   }
   
-  getQuestion(){
+  getQuestion() {
     this.questionService.getQuestion().subscribe(data =>{
-      this.question = data
+      this.question = data;
     })
   }
 
-  postQuestion(){
+  postQuestion() {
     let q: QuestionModel = {
       _id: this._id,
       content: this.content,
@@ -53,15 +52,15 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.postQuestion(q).subscribe(data=>{
-      if(data !=null){
+    this.questionService.postQuestion(q).subscribe(data =>{
+      if(data !== null){
         this.getQuestion();
         this.cancer_add();
       }
     })   
   }
 
-  putQuestion(){
+  putQuestion() {
     let q: QuestionModel = {
       _id: this.id_question,
       content: this.qs.content,
@@ -69,15 +68,15 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe(data=>{
-      if(data!=null){
-        this.getQuestion()
-        this.cancer_add()
+    this.questionService.putQuestion(q).subscribe(data =>{
+      if(data !== null) {
+        this.getQuestion();
+        this.cancer_add();
       }
     })
   }
 
-  deleteQuestion(id: string){
+  deleteQuestion(id: string) {
     this.questionService.deleteQuestion(id).subscribe(data=>{
       this.getQuestion();
     })
@@ -96,7 +95,7 @@ export class QuestionsComponent implements OnInit {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
     this.img = 'data:image/png;base64,' + btoa(e.target.result);
-    this.qs.image= 'data:image/png;base64,' + btoa(e.target.result);
+    this.qs.image = 'data:image/png;base64,' + btoa(e.target.result);
   }
 
 //Scroll
@@ -105,57 +104,56 @@ export class QuestionsComponent implements OnInit {
     let b = document.getElementById("add-question").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       a.position = "fixed";
-      a.paddingRight="30%";
-      b.width="91%";
+      a.paddingRight = "30%";
+      b.width = "91%";
     } else {
-      a.paddingRight="0";
+      a.paddingRight = "0";
       a.position = "relative";
-      b.width="98%";
+      b.width = "98%";
     }
   } 
 
   //Handle UI
-  level1(){
-    this.easy=true
-    this.medium=false
-    this.high=false
-    this.level="Easy"
+  level1() {
+    this.easy = true;
+    this.medium = false;
+    this.high = false;
+    this.level = "Easy";
   }
-  level2(){
-    this.easy=false
-    this.medium=true
-    this.high=false
-    this.level="Medium"
+  level2() {
+    this.easy = false;
+    this.medium = true;
+    this.high = false;
+    this.level = "Medium";
   }
   level3(){
-    this.easy=false
-    this.medium=false
-    this.high=true
-    this.level="High"
+    this.easy = false;
+    this.medium = false;
+    this.high = true;
+    this.level = "High";
   }
 
   showAnswer(q: QuestionModel){
     this.qs = q;
-    this.id_question=this.qs._id
-    this.image=""
+    this.id_question = this.qs._id;
+    this.image = "";
   }
 
   add(){
-    this.id_question=""
-    this.img=""
-    document.getElementById("add").style.opacity="0"
-    document.getElementById("add-question").style.height="530px"
+    this.id_question = "";
+    this.img = "";
+    document.getElementById("add").style.opacity = "0";
+    document.getElementById("add-question").style.height = "530px";
   }
   cancer_add(){
-    this.id_question=""
-    this.content=""
-    this.img=""
-    this.easy=false
-    this.medium=false
-    this.high=false
-    document.getElementById("add").style.opacity="1"
-    document.getElementById("add-question").style.height="50px"
+    this.id_question = "";
+    this.content = "";
+    this.img = "";
+    this.easy = false;
+    this.medium = false;
+    this.high = false;
+    document.getElementById("add").style.opacity = "1";
+    document.getElementById("add-question").style.height = "50px";
   }
-
 
 }

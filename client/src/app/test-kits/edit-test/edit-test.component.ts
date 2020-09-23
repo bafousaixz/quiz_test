@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 import { TestQuestionService } from 'src/app/middle/services/test-question.service';
 import { QuestionService } from '../_services/question.service';
@@ -17,12 +16,12 @@ export class EditTestComponent implements OnInit {
   id: string = this.route.snapshot.paramMap.get('id');
   popup: boolean = false;
   test: TestModel;
-  _id: string
-  name_test: string
-  content: string
-  test_question: TestQuestionModel[] = []
-  q: TestQuestionModel
-  questions: QuestionModel[]=[]
+  _id: string;
+  name_test: string;
+  content: string;
+  test_question: TestQuestionModel[] = [];
+  q: TestQuestionModel;
+  questions: QuestionModel[] = [];
   
  
   constructor(
@@ -37,48 +36,47 @@ export class EditTestComponent implements OnInit {
     this.getTest();
   }
 
-  get(){
-    this.serviceTestQuestion.getDetail(this.id).subscribe(data=>{
-      this.test_question = data
+  get() {
+    this.serviceTestQuestion.getDetail(this.id).subscribe(data =>{
+      this.test_question = data;
     })
   }
 
-  getQuestion(){
+  getQuestion() {
     this.questionService.getQuestion().subscribe((data: any[]) =>{
       data = data.filter(x => !this.test_question.some(q => q.questions.content === x.content));
-      return this.questions = data
+      return this.questions = data;
     })
   }
 
-  getTest(){
-    this.testService.getDetail(this.id).subscribe(data=>{
-      this.test= data
+  getTest() {
+    this.testService.getDetail(this.id).subscribe(data =>{
+      this.test = data;
     })
   }
 
-  put(qs: QuestionModel){
-    const { _id, ...x} = qs;
-    let question_test : TestQuestionModel ={
+  put(qs: QuestionModel) {
+    let question_test : TestQuestionModel = {
       _id: this.q._id,
       test_id: this.id,
       questions: qs,
     }
-    this.serviceTestQuestion.putTest_question(question_test).subscribe(data=>{
-      if(data!=null){
+    this.serviceTestQuestion.putTest_question(question_test).subscribe(data =>{
+      if(data !== null) {
         this.close();
         this.get();
       }
     });
 }
 
-  edit(question: TestQuestionModel, content: string){
-    this.q = question
-    this.name_test = content
-    this.popup = true
-    this.getQuestion()
+  edit(question: TestQuestionModel, content: string) {
+    this.q = question;
+    this.name_test = content;
+    this.popup = true;
+    this.getQuestion();
   }
 
   close(){
-    this.popup = false
+    this.popup = false;
   }
 }

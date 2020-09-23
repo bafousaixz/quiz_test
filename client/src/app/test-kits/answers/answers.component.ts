@@ -10,19 +10,19 @@ import { AnswerService } from 'src/app/middle/services/answer.service';
 export class AnswersComponent implements OnInit {
   @Input() id: string;
 
-  fix:string
-  answer: AnswerModel[]
-  ans: AnswerModel
-  content: string
-  r: boolean = false
-  _id: string
+  fix: string;
+  answer: AnswerModel[];
+  ans: AnswerModel;
+  content: string;
+  r: boolean = false;
+  _id: string;
 
   constructor(
     private answerService: AnswerService,
   ) { }
 
   ngOnInit(): void {
-    this.getAnswer()
+    this.getAnswer();
   }
 
   getAnswer(){
@@ -55,34 +55,24 @@ export class AnswersComponent implements OnInit {
       right : a.right,
       question_id : this.id
     }
-    this.answerService.putAnswer(as).subscribe() 
-    this.fix =""
+    this.answerService.putAnswer(as).subscribe();
+    this.fix ="";
   }
 
   deleteAnswer(id: string){
-    this.answerService.deleteAnswer(id).subscribe()
-    this.getAnswer()
+    this.answerService.deleteAnswer(id).subscribe();
+    this.getAnswer();
   }
 
   editRight(a){
-    if(a.right == true){
-      a.right = false
-    }
-    else{
-      a.right = true
-    }
+    a.right = !a.right;
   }
   edit(a){
-    this.fix = a._id
+    this.fix = a._id;
   }
 
   add_right(){
-    if(this.r == true){
-      this.r = false
-    }
-    else{
-      this.r = true
-    }
+    this.r = !this.r
   }
 
 

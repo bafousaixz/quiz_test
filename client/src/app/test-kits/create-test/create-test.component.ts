@@ -17,9 +17,9 @@ export class CreateTestComponent implements OnInit {
   @Output() OutputValue = new EventEmitter();
 
   test: TestModel;
-  id =''
+  id = '';
   _id: string;
-  set: number ;
+  set: number;
   amount: number;
   time: number;
   easy: number;
@@ -53,12 +53,12 @@ export class CreateTestComponent implements OnInit {
     });
   }
 
-  createTest(){
+  createTest() {
     this.easy = this.min;
     this.medium = this.max - this.min;
     this.high = this.amount - this.max;
-    const name_test: string = this.resource + "- " + this.name
-    let test: TestModel ={
+    const name_test: string = this.resource + " - " + this.name
+    let test: TestModel = { 
       _id: this._id,
       name: name_test,
       time: this.time,
@@ -68,59 +68,59 @@ export class CreateTestComponent implements OnInit {
       high: this.amount - this.max,
       resource_id: this.resourceId
     }
-    if(name !== null && this.amount !=null){
-      this.testService.postTest(test).subscribe(data=>{
-        if(data!=null){
-          this.testService.getTest().subscribe(data=>{
-            this.test = data[data.length -1]
-            this.router.navigate([this.test._id], { relativeTo: this.route });
+    if(name !== null && this.amount !== null) {
+      this.testService.postTest(test).subscribe(data => {
+        if(data !== null){
+          this.testService.getTest().subscribe(data => {
+            this.test = data[data.length -1];
+            this.router.navigate([this.test._id], { relativeTo: this.route});
           })
-          this.close()
+          this.close();
         }
       }); 
     }
-    else{
-      alert('error')
+    else {
+      alert('error');
     }
   }
 
-  setNewCeil(newCeil: number){
-    this.max=newCeil-1
+  setNewCeil(newCeil: number) {
+    this.max = newCeil-1;
     const newOptions: Options = Object.assign({}, this.options);
     newOptions.ceil = newCeil;
     this.options = newOptions;
-    document.getElementById("add-test1").style.height="420px"
-    document.getElementById("slider").style.height="100px";
-    document.getElementById("slider").style.opacity="1";
+    document.getElementById("add-test1").style.height = "420px";
+    document.getElementById("slider").style.height = "100px";
+    document.getElementById("slider").style.opacity = "1";
   }
 
-  close(){
-    document.getElementById("add-test1").style.height="50px"
-    document.getElementById("slider").style.height="0px";
-    document.getElementById("slider").style.opacity="0";
-    document.getElementById("btn-add").style.opacity="1"
+  close() {
+    document.getElementById("add-test1").style.height = "50px";
+    document.getElementById("slider").style.height = "0px";
+    document.getElementById("slider").style.opacity = "0";
+    document.getElementById("btn-add").style.opacity = "1";
     this.OutputValue.emit("close");
     this.name = "";
     this.time = null;
-    this.amount= null;
+    this.amount = null;
   }
 
-  add(){
-    document.getElementById("add-test1").style.height="320px"
-    document.getElementById("btn-add").style.opacity="0"
+  add() {
+    document.getElementById("add-test1").style.height = "320px";
+    document.getElementById("btn-add").style.opacity = "0";
   }
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent(){
+  @HostListener('window:scroll', ['$event']) onScrollEvent() {
     let a = document.getElementById("set-scroll").style;
     let b = document.getElementById("add-test1").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       a.position = "fixed";
-      a.paddingRight="30%";
-      b.width="91%";
+      a.paddingRight = "30%";
+      b.width = "91%";
     } else {
-      a.paddingRight="0";
+      a.paddingRight = "0";
       a.position = "relative";
-      b.width="98%";
+      b.width = "98%";
     }
   } 
 }

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ProfileModule } from './profile/profile.module';
-import { ResourcesComponent } from './test-kits/resources/resources.component';
 
 const routes: Routes = [
 
   {
     path: 'resources',
     loadChildren: ()=> import('./test-kits/test-kits.module').then(m => m.TestKitsModule)
+  },
+
+  {
+    path: 'tests/:id',
+    loadChildren: ()=> import('./tests/tests.module').then(m => m.TestsModule)
   },
 
   {

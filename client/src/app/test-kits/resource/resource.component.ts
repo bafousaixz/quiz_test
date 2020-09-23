@@ -11,8 +11,8 @@ import { ResourceModel } from '../_models/resource.model';
   styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit {
-  check: boolean = true;
 
+  check: boolean = true;
   base64textString = [];
   image: string;
   user_id: string;
@@ -27,33 +27,32 @@ export class ResourceComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
-    this.getResource()
+    this.getResource();
     if(this.router.url === `/resources/${this._id}/tests`){
-      this.check = false
+      this.check = false;
     }
   }
 
-  getResource(){
+  getResource() {
     const id = this.route.snapshot.paramMap.get('id');
     this.resourceService.getReourceId(id, this.user_id).subscribe(data =>{
-      this.resource = data
+      this.resource = data;
     })
   }
 
-  putResource(){
-    const rs : ResourceModel ={
-      _id : this.resource._id,
-      name : this.resource.name,
-      image : this.resource.image,
-      content : this.resource.content,
+  putResource() {
+    const rs : ResourceModel = {
+      _id: this.resource._id,
+      name: this.resource.name,
+      image: this.resource.image,
+      content: this.resource.content,
     }
     this.resourceService.putResource(rs).subscribe();
   }
 
-  deleteResource(id: string){
-    this.resourceService.deleteResource(id).subscribe()
-    this.router.navigate(['/test-resources'])
+  deleteResource(id: string) {
+    this.resourceService.deleteResource(id).subscribe();
+    this.router.navigate(['/test-resources']);
   }
 
 
@@ -72,15 +71,15 @@ export class ResourceComponent implements OnInit {
     this.resource.image= 'data:image/png;base64,' + btoa(e.target.result);
   }
 
-  handle(e){
+  handle(e) {
     this.user_id = e;
     this.getResource();
   }
 
-  showListquestion(){
+  showListquestion() {
     this.check= true;
   }
-  showListtest(){
+  showListtest() {
     this.check = false;
   }
 }
