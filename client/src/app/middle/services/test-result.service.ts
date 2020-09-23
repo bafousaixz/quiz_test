@@ -7,8 +7,8 @@ import { TestResult } from 'src/app/middle/models/test_result';
   providedIn: 'root'
 })
 export class TestResultService {
-  url = "http://localhost:3000/test_result/"
-  _url = "http://localhost:3000/test_results/"
+  url = "http://localhost:3000/test-result/"
+  _url = "http://localhost:3000/test-results/"
   constructor(
     private http: HttpClient, 
   ) { }

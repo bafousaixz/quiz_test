@@ -17,7 +17,7 @@ router.get('/tests', async(req, res) => {
         }
     }]).exec((err, result) => {
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
             res.send(result);
         }
@@ -29,8 +29,7 @@ router.get('/test/:id', async(req, res) => {
         const result = await tests.findById(req.params.id).exec();
         res.send(result);
     } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 });
 
@@ -45,14 +44,14 @@ router.get('/tests/:id', async(req, res) => {
         }
     }]).exec((err, result) => {
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
-            const test = result.find(item => (
+            const test = result.find((item) => (
                 item._id == id
             ));
-            test.questionList.forEach(question => {
-                question.questions.answerList.forEach(answer => {
-                    delete answer.right
+            test.questionList.forEach((question) => {
+                question.questions.answerList.forEach((answer) => {
+                    delete answer.right;
                 });
             });
             res.send(test);
@@ -61,10 +60,10 @@ router.get('/tests/:id', async(req, res) => {
 });
 
 router.post('/tests', async(req, res) => {
-    const { name, time, amount, easy, medium, high, resource_id } = req.body
-    const rs = new tests(req.body)
+    const { name, time, amount, easy, medium, high, resource_id } = req.body;
+    const rs = new tests(req.body);
     const result_test = await rs.save();
-    res.send(result_test)
+    res.send(result_test);
     const test_id = result_test._id
 
     questions.aggregate([{
@@ -78,8 +77,8 @@ router.post('/tests', async(req, res) => {
         { $match: { level: "Medium" } },
         { $sample: { size: medium } }
     ]).exec(async(err, result) => {
-        result.forEach(questions => {
-            const tq = new test_question({ test_id, questions })
+        result.forEach((questions) => {
+            const tq = new test_question({ test_id, questions });
             tq.save();
         });
     });
@@ -95,8 +94,8 @@ router.post('/tests', async(req, res) => {
         { $match: { level: "Easy" } },
         { $sample: { size: easy } }
     ]).exec(async(err, result) => {
-        result.forEach(questions => {
-            const tq = new test_question({ test_id, questions })
+        result.forEach((questions) => {
+            const tq = new test_question({ test_id, questions });
             tq.save();
         });
     });
@@ -113,11 +112,10 @@ router.post('/tests', async(req, res) => {
         { $sample: { size: high } }
     ]).exec(async(err, result) => {
         result.forEach(questions => {
-            const tq = new test_question({ test_id, questions })
+            const tq = new test_question({ test_id, questions });
             tq.save();
         });
     });
-
 })
 
 router.post('/test', async(req, res) => {
@@ -127,31 +125,29 @@ router.post('/test', async(req, res) => {
         const rs = await tests.findById(id).exec();
         const hass = bcrypt.compare(pass, rs.password, (err, result) => {
             if (result === true) {
-                res.send(rs)
+                res.send(rs);
             } else {
-                res.send('')
+                res.send('');
             }
         });
-        console.log(rs.password)
         if (hass) {
-            res.send(rs)
+            res.send(rs);
         }
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 })
 
 router.put('/tests/:id', async(req, res) => {
     try {
-        const pass = req.body.password
+        const pass = req.body.password;
         const hash = bcrypt.hashSync(pass, 8);
         const rs = await tests.findById(req.params.id).exec();
         rs.set(rs.password = hash);
         const result = await rs.save();
         res.send(result);
     } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 })
 
@@ -164,7 +160,6 @@ router.delete("/tests/:id", async(req, res) => {
         res.send(result);
 
     } catch (error) {
-        console.log(error)
         res.status(500).send(error);
     }
 });

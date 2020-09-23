@@ -1,59 +1,62 @@
-<div class="container-edit">
-    <div class="content-qs" *ngIf="test">
-        <p class="test-name"> {{test.name}} </p>
-        <p style="text-align: center;">{{test.time}} minute -
-            <span style="font-style: italic;">{{test.amount}} question</span>
-        </p>
-    </div>
-    <div class="container">
-        <div class="content" *ngFor="let tq of test_question; index as index">
-            <label><i class="far fa-dot-circle"></i>  Question {{index + 1}}</label>
-            <div style="padding: 0px 15px 15px 15px;">
-                <h1>{{tq.questions.content}}</h1>
-                <img src="{{tq.questions.image}}" alt="">
-                <div class="answer-container1">
-                    <div *ngFor="let answer of tq.questions.answerList | filter: tq.questions._id">
-                        <div *ngIf="tq.questions.answerList.length <= 4">
-                            <input type="radio" [checked]="answer.right" disabled='disabled'> {{answer.content}}
-                        </div>
-                        <div *ngIf="tq.questions.answerList.length > 4">
-                            <input type="checkbox" [checked]="answer.right" disabled='disabled'> {{answer.content}}
+<div style="width: 100%; display: flex; background: #f5f6fa;
+font-family: 'Quicksand', sans-serif;">
+    <div class="container-edit">
+        <div class="content-qs" *ngIf="test">
+            <p class="test-name"> {{test.name}} </p>
+            <p style="text-align: center;">{{test.time}} minute -
+                <span style="font-style: italic;">{{test.amount}} question</span>
+            </p>
+        </div>
+        <div class="container">
+            <div class="content" *ngFor="let tq of test_question; index as index">
+                <label><i class="far fa-dot-circle"></i>  Question {{index + 1}}</label>
+                <div style="padding: 0px 15px 15px 15px;">
+                    <h1>{{tq.questions.content}}</h1>
+                    <img src="{{tq.questions.image}}" alt="">
+                    <div class="answer-container1">
+                        <div *ngFor="let answer of tq.questions.answerList | filter: tq.questions._id">
+                            <div *ngIf="tq.questions.answerList.length <= 4">
+                                <input type="radio" [checked]="answer.right" disabled='disabled'> {{answer.content}}
+                            </div>
+                            <div *ngIf="tq.questions.answerList.length > 4">
+                                <input type="checkbox" [checked]="answer.right" disabled='disabled'> {{answer.content}}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <h3 (click)="edit(tq, tq.questions.content)"><i class="fas fa-exchange-alt"></i></h3>
+                    <h3 (click)="edit(tq, tq.questions.content)"><i class="fas fa-exchange-alt"></i></h3>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <div *ngIf="popup" class="container-popup">
-        <div class="edit-test-question">
-            <div class="header-popup">
-                <button (click)="close()" class="btn-close"><i class="fas fa-times"></i></button>
+        <div *ngIf="popup" class="container-popup">
+            <div class="edit-test-question">
+                <div class="header-popup">
+                    <button (click)="close()" class="btn-close"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" [(ngModel)]="content" name="question" placeholder="Search question">
+                </div>
+
+                <div class="container-qs">
+                    <table>
+                        <tr>
+                            <th>Content</th>
+                        </tr>
+                        <tr class="list-question" *ngFor="let question of questions | filter: content">
+                            <td *ngIf="question">
+                                {{question.content}}
+                            </td>
+                            <td style="width: 30px;">
+                                <h2 (click)="put(question)"> Upload</h2>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
-
-            <div class="search">
-                <i class="fas fa-search"></i>
-                <input type="text" [(ngModel)]="content" name="question" placeholder="Search question">
-            </div>
-
-            <div class="container-qs">
-                <table>
-                    <tr>
-                        <th>Content</th>
-                    </tr>
-                    <tr class="list-question" *ngFor="let question of questions | filter: content">
-                        <td *ngIf="question">
-                            {{question.content}}
-                        </td>
-                        <td style="width: 30px;">
-                            <h2 (click)="put(question)"> Upload</h2>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
         </div>
     </div>
 </div>

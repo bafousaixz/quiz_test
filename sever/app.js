@@ -48,12 +48,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/', usersRouter);
-app.use('/', resourceRouter);
-app.use('/', questionRouter);
-app.use('/', answerRouter);
+app.use('/users', usersRouter);
+app.use('/resources', resourceRouter);
+app.use('/questions', questionRouter);
+app.use('/answers', answerRouter);
 app.use('/', testRouter);
-app.use('/', test_questionRouter);
+app.use('/test-question', test_questionRouter);
 app.use('/', test_resultRouter);
 
 

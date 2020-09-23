@@ -3,14 +3,19 @@
     margin: 0;
 }
 
-.container-edit {
+.container-asd {
+    width: 100%;
+    display: flex;
+    background: #f5f6fa;
     font-family: 'Quicksand', sans-serif;
+}
+
+.container-edit {
     width: 65%;
-    height: auto;
-    min-height: 80vh;
-    position: absolute;
-    top: 22vh;
-    right: 1vh;
+    display: block;
+    margin-left: 34%;
+    margin-top: 1%;
+    background: #f5f6fa;
 }
 
 .content-qs {

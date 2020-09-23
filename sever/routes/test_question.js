@@ -3,16 +3,16 @@ var router = express.Router();
 var question = require('../models/test_question')
 var answers = require('../models/test_answers')
 
-router.get('/test-question', async(req, res) => {
+router.get('/', async(req, res) => {
     try {
         const result = await question.find().exec();
         res.send(result);
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 })
 
-router.get('/test-question/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     const id = req.params.id;
     question.aggregate([{
         $lookup: {
@@ -23,7 +23,7 @@ router.get('/test-question/:id', async(req, res) => {
         }
     }]).exec((err, result) => {
         if (err) {
-            console.log(err)
+            console.log(err);
         } else {
             var test = result.filter(item => (
                 item.test_id == id
@@ -33,18 +33,17 @@ router.get('/test-question/:id', async(req, res) => {
     });
 });
 
-router.post('/test-question', async(req, res) => {
+router.post('/', async(req, res) => {
     try {
         let rs = new question(req.body);
         let result = await rs.save();
         res.send(result);
     } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 })
 
-router.put('/test-question/:id', async(req, res) => {
+router.put('/:id', async(req, res) => {
     try {
         const rs = await question.findById(req.params.id).exec();
         rs.set(req.body);
@@ -52,12 +51,11 @@ router.put('/test-question/:id', async(req, res) => {
         const result = await rs.save();
         res.send(result);
     } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 })
 
-router.delete("/test-question/:id", async(req, res) => {
+router.delete("/:id", async(req, res) => {
     try {
         const result = await question.deleteOne({ _id: req.params.id }).exec();
         res.send(result);
