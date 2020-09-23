@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceService } from '../_service/resource.service'
-import { resourceModel } from '../_model/resource.model';
-
+import { ResourceService } from '../_services/resource.service'
+import { ResourceModel } from '../_models/resource.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
@@ -9,8 +9,9 @@ import { resourceModel } from '../_model/resource.model';
 })
 export class ResourcesComponent implements OnInit {
 
+  nextpage:boolean = true
   popup: string;
-  resource: resourceModel;
+  resource: ResourceModel;
   name: string;
   user_id: string;
   image: string;
@@ -19,9 +20,13 @@ export class ResourcesComponent implements OnInit {
  
   constructor(
     private service: ResourceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    if(this.router.url !=='/resources'){
+      this.nextpage = false
+    }
   }
  
   get(){
@@ -34,7 +39,7 @@ export class ResourcesComponent implements OnInit {
   }
 
   post(){
-    let rs: resourceModel = {
+    let rs: ResourceModel = {
       _id: this._id,
       name: this.name,
       user_id: this.user_id,
@@ -54,6 +59,11 @@ export class ResourcesComponent implements OnInit {
     this.get();
   }
   
+  next(){
+    if(this.router.url ==='/resources'){
+      this.nextpage = false
+    }
+  }
 
   up(){
     this.popup = 'oke'

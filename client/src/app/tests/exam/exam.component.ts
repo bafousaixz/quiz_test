@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TestService } from 'src/app/middle/service/test.service';
-import { testModel } from 'src/app/middle/model/test.model';
+import { TestService } from 'src/app/middle/services/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.component.html',
@@ -16,7 +16,7 @@ export class ExamComponent implements OnInit {
   name: string
   start: boolean = false
   _id: string = this.route.snapshot.paramMap.get('id');
-  test: testModel;
+  test: TestModel;
   constructor(
     private route: ActivatedRoute,
     private service: TestService,
@@ -28,13 +28,13 @@ export class ExamComponent implements OnInit {
 
   getTittle(){
     this.service.getTittle(this._id).subscribe(data=>{
-    this.test= data
+    this.test = data
     })
   }
 
 
   checkPassword(){
-    let test: testModel ={
+    let test: TestModel ={
       _id: this._id,
       name: this.test.name,
       password: this.password,
@@ -64,6 +64,7 @@ export class ExamComponent implements OnInit {
   }
 
   viewPass(){
+    // this.show = !this.show;
     if(this.show === true){
       this.show = false
     }

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../login/_service/login.service';
-import { User } from '../../login/_model/user.model';
-import { HttpClient} from '@angular/common/http'
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { LoginService } from '../../login/_services/login.service';
+import { User } from '../../login/_models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -11,36 +9,23 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class ProfileComponent implements OnInit {
 
-  profileUser: FormGroup;
-
   token = localStorage.getItem('token')
   user: User;
-
-  username: string
-  password: string
-  firstname: string
-  lastname: string
-  email: string 
-  tel: string
   image: string
   avatar: string
-
   profile1: boolean = true
   base64textString = [];
+
   constructor(
     private userService: LoginService,
-    private http: HttpClient,
-    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.get()
-    this.user
   }
 
   onUploadChange(evt: any) {
     const file = evt.target.files[0];
-  
     if (file) {
       const reader = new FileReader();
       reader.onload = this.handleReaderLoaded.bind(this);
@@ -87,8 +72,5 @@ export class ProfileComponent implements OnInit {
   edit(){
     this.profile1=false;
   }
-
-
-
 
 }

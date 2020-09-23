@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TestResultService } from 'src/app/middle/service/test-result.service';
+import { TestResultService } from 'src/app/middle/services/test-result.service';
 import { ActivatedRoute } from '@angular/router';
-import { testResult } from 'src/app/middle/model/test_result';
-import { TestService } from 'src/app/middle/service/test.service';
-import { testModel } from 'src/app/middle/model/test.model';
+import { TestResult } from 'src/app/middle/models/test_result';
+import { TestService } from 'src/app/middle/services/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
 @Component({
   selector: 'app-list-result',
   templateUrl: './list-result.component.html',
@@ -12,9 +12,9 @@ import { testModel } from 'src/app/middle/model/test.model';
 export class ListResultComponent implements OnInit {
   popup: boolean = false;
   _id: string = this.route.snapshot.paramMap.get('id');
-  results: testResult[];
+  results: TestResult[];
   questions: any[]= [];
-  test: testModel;
+  test: TestModel;
   choose: any[];
   constructor(
     private testResultService: TestResultService,

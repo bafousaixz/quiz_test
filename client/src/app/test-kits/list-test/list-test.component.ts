@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { TestService } from 'src/app/middle/service/test.service';
-import { testModel } from 'src/app/middle/model/test.model';
-import { ResourceService } from  '../_service/resource.service';
+import { TestService } from 'src/app/middle/services/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
+import { ResourceService } from  '../_services/resource.service';
 
 @Component({
   selector: 'app-list-test',
@@ -16,8 +16,8 @@ export class ListTestComponent implements OnInit {
   password: string;
   _id: string;
   id = '';
-  tests: testModel[];
-  test: testModel;
+  tests: TestModel[];
+  test: TestModel;
   name_resource='';
 
   constructor(
@@ -41,7 +41,7 @@ export class ListTestComponent implements OnInit {
   }
 
   putTest(){
-    let t : testModel = {
+    let t : TestModel = {
       _id: this.test._id,
       name: this.test.name,
       time: this.test.time,
@@ -71,7 +71,7 @@ export class ListTestComponent implements OnInit {
     })
   }
 
-  getUrl(test: testModel){
+  getUrl(test: TestModel){
     this.test = test
     this.check = true
   }

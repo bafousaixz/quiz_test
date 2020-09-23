@@ -1,20 +1,23 @@
 <app-user (OutputValue)="handle($event)"></app-user>
-<div class="top-resource">
-    <h1>Resources</h1>
-</div>
+<div *ngIf="nextpage">
+    <div class="top-resource">
+        <h1>Resources</h1>
+    </div>
 
-<div class="mid">
-    <div class="content">
-        <div *ngIf="resource" class="flexbox">
-            <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.name}}</a>
-            <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
-        </div>
+    <div class="mid">
+        <div class="content">
+            <div *ngIf="resource" class="flexbox">
+                <a *ngFor="let r of resource" (click)="next()" routerLink="{{r._id}}" class="box">{{r.name}}</a>
+                <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
+            </div>
 
-        <div *ngIf="popup" class="popup">
-            <h1>Add Test Resource</h1>
-            <button (click)="cancer()" class="cancer">-</button>
-            <input [(ngModel)]="name" type="text" name="resource" placeholder="Test Resource"><br>
-            <button (click)="post()" class="save" type="submit">Save</button>
+            <div *ngIf="popup" class="popup">
+                <h1>Add Test Resource</h1>
+                <button (click)="cancer()" class="cancer">-</button>
+                <input [(ngModel)]="name" type="text" name="resource" placeholder="Test Resource"><br>
+                <button (click)="post()" class="save" type="submit">Save</button>
+            </div>
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>

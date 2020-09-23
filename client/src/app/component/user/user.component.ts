@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UppercasePipe } from 'src/app/middle/uppercase.pipe';
-import { LoginService } from '../../login/_service/login.service';
+import { LoginService } from '../../login/_services/login.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-user',

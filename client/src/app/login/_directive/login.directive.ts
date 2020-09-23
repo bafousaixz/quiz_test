@@ -1,6 +1,6 @@
 import { Directive, Input } from '@angular/core';
 import { FormGroup, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
-import { ValidatorService } from '../_service/validator.service'
+import { ValidatorService } from '../_services/validator.service'
 @Directive({
   selector: '[appLogin]',
   providers: [{ provide: NG_VALIDATORS, useExisting: LoginDirective, multi: true }]

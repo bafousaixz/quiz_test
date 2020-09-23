@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { testModel } from 'src/app/middle/model/test.model';
-import { testResult } from 'src/app/middle/model/test_result';
-import { TestResultService } from 'src/app/middle/service/test-result.service';
-import { TestService } from 'src/app/middle/service/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
+import { TestResult } from 'src/app/middle/models/test_result';
+import { TestResultService } from 'src/app/middle/services/test-result.service';
+import { TestService } from 'src/app/middle/services/test.service';
 
 
 @Component({
@@ -15,12 +15,12 @@ import { TestService } from 'src/app/middle/service/test.service';
 export class StartExamComponent implements OnInit {
   @Input() user;
   @Input() name;
-  test: testModel = {} as any;
-  choose : any[] = []
+  test: TestModel = {} as any;
+  choose: any[] = []
   index: string
   answer_right: number = 0
   s: string
-  r: testResult
+  r: TestResult
   _id: string = this.route.snapshot.paramMap.get('id');
   constructor(
     private testResultService: TestResultService,
@@ -44,7 +44,7 @@ export class StartExamComponent implements OnInit {
   }
 
   onSubmit(){
-    let result: testResult = {
+    let result: TestResult = {
       test_id: this.test._id,
       user_id: this.user,
       choose: this.choose,
@@ -54,8 +54,8 @@ export class StartExamComponent implements OnInit {
       if(data){
         this.testResultService.getAllResult().subscribe(data=>{
           if(data){
-            this.r = data[data.length -1]
-            this.router.navigate([this.r._id], { relativeTo: this.route });
+            this.r = data[data.length - 1]
+            this.router.navigate([`result/${this.r._id}`], { relativeTo: this.route });
           }
         })
       }

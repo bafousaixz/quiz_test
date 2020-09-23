@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../_model/login.model';
-import { LoginService } from '../_service/login.service';
+import { Login } from '../_models/login.model';
+import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,14 +10,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username: string
-  password: string
+  username: string;
+  password: string;
+  token = localStorage.getItem("token");
   constructor(
     private userService: LoginService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    if(this.token){
+      this.router.navigate(['/resources']);
+    }
   }
 
   signIn(){

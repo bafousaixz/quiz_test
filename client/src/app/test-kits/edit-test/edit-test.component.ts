@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { test_questionModel } from 'src/app/middle/model/test_question.model';
-import { TestQuestionService } from 'src/app/middle/service/test-question.service';
-import { QuestionService } from '../_service/question.service';
-import { questionModel } from '../_model/question.model';
-import { TestService } from 'src/app/middle/service/test.service';
-import { testModel } from 'src/app/middle/model/test.model';
+import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
+import { TestQuestionService } from 'src/app/middle/services/test-question.service';
+import { QuestionService } from '../_services/question.service';
+import { QuestionModel } from '../_models/question.model';
+import { TestService } from 'src/app/middle/services/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
 
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -16,13 +16,13 @@ import { ActivatedRoute } from '@angular/router';
 export class EditTestComponent implements OnInit {
   id: string = this.route.snapshot.paramMap.get('id');
   popup: boolean = false;
-  test: testModel;
+  test: TestModel;
   _id: string
   name_test: string
   content: string
-  test_question: test_questionModel[] = []
-  q: test_questionModel
-  questions: questionModel[]=[]
+  test_question: TestQuestionModel[] = []
+  q: TestQuestionModel
+  questions: QuestionModel[]=[]
   
  
   constructor(
@@ -56,9 +56,9 @@ export class EditTestComponent implements OnInit {
     })
   }
 
-  put(qs: questionModel){
+  put(qs: QuestionModel){
     const { _id, ...x} = qs;
-    let question_test : test_questionModel ={
+    let question_test : TestQuestionModel ={
       _id: this.q._id,
       test_id: this.id,
       questions: qs,
@@ -71,7 +71,7 @@ export class EditTestComponent implements OnInit {
     });
 }
 
-  edit(question: test_questionModel, content: string){
+  edit(question: TestQuestionModel, content: string){
     this.q = question
     this.name_test = content
     this.popup = true

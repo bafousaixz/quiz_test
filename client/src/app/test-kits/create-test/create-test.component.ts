@@ -4,8 +4,8 @@ import { Params, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
 
-import { TestService } from 'src/app/middle/service/test.service';
-import { testModel } from 'src/app/middle/model/test.model';
+import { TestService } from 'src/app/middle/services/test.service';
+import { TestModel } from 'src/app/middle/models/test.model';
 
 @Component({
   selector: 'app-create-test',
@@ -16,7 +16,7 @@ export class CreateTestComponent implements OnInit {
   @Input() resource: string; 
   @Output() OutputValue = new EventEmitter();
 
-  test: testModel;
+  test: TestModel;
   id =''
   _id: string;
   set: number ;
@@ -58,7 +58,7 @@ export class CreateTestComponent implements OnInit {
     this.medium = this.max - this.min;
     this.high = this.amount - this.max;
     const name_test: string = this.resource + "- " + this.name
-    let test: testModel ={
+    let test: TestModel ={
       _id: this._id,
       name: name_test,
       time: this.time,

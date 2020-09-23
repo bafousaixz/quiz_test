@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TestResultService } from 'src/app/middle/service/test-result.service';
-import { testResult } from 'src/app/middle/model/test_result';
-import { testModel } from 'src/app/middle/model/test.model';
-import { TestService } from 'src/app/middle/service/test.service';
-import { test_questionModel } from 'src/app/middle/model/test_question.model';
+import { TestResultService } from 'src/app/middle/services/test-result.service';
+import { TestResult } from 'src/app/middle/models/test_result';
+import { TestModel } from 'src/app/middle/models/test.model';
+import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 
 @Component({
   selector: 'app-result',
@@ -15,10 +14,10 @@ import { test_questionModel } from 'src/app/middle/model/test_question.model';
 export class ResultComponent implements OnInit {
   check: boolean = false
   user: string
-  result: testResult
-  test: testModel
+  result: TestResult
+  test: TestModel
   choose: any[]
-  questions: test_questionModel[]
+  questions: TestQuestionModel[]
   _id: string = this.route.snapshot.paramMap.get('id');
   constructor(
     private testResultService: TestResultService,

@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
 
-import { answerModel } from 'src/app/middle/model/answer.model';
-import { AnswerService } from 'src/app/middle/service/answer.service';
+import { AnswerModel } from 'src/app/middle/models/answer.model';
+import { AnswerService } from 'src/app/middle/services/answer.service';
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',
@@ -12,15 +11,14 @@ export class AnswersComponent implements OnInit {
   @Input() id: string;
 
   fix:string
-  answer: answerModel[]
-  ans: answerModel
+  answer: AnswerModel[]
+  ans: AnswerModel
   content: string
   r: boolean = false
   _id: string
 
   constructor(
     private answerService: AnswerService,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +32,7 @@ export class AnswersComponent implements OnInit {
   }
   
   postAnswer(){
-    const as : answerModel = {
+    const as : AnswerModel = {
       _id: this._id,
       content : this.content,
       right : this.r,
@@ -50,8 +48,8 @@ export class AnswersComponent implements OnInit {
   }
   
 
-  putAnswer(a: answerModel){
-    const as : answerModel = {
+  putAnswer(a: AnswerModel){
+    const as : AnswerModel = {
       _id: a._id,
       content : a.content,
       right : a.right,

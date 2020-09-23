@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { HostListener } from '@angular/core';
 
-import { ResourceService } from  '../_service/resource.service';
-import { resourceModel } from '../_model/resource.model';
+import { ResourceService } from  '../_services/resource.service';
+import { ResourceModel } from '../_models/resource.model';
 
 @Component({
   selector: 'app-resource',
@@ -17,16 +16,18 @@ export class ResourceComponent implements OnInit {
   base64textString = [];
   image: string;
   user_id: string;
-  resource: resourceModel;
+  resource: ResourceModel;
   _id: string = this.route.snapshot.paramMap.get('id');
 
   constructor(
     public resourceService: ResourceService,
     public route: ActivatedRoute,
     public router: Router,
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
+    
     this.getResource()
     if(this.router.url === `/resources/${this._id}/tests`){
       this.check = false
@@ -41,7 +42,7 @@ export class ResourceComponent implements OnInit {
   }
 
   putResource(){
-    const rs : resourceModel ={
+    const rs : ResourceModel ={
       _id : this.resource._id,
       name : this.resource.name,
       image : this.resource.image,
@@ -70,17 +71,6 @@ export class ResourceComponent implements OnInit {
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
     this.resource.image= 'data:image/png;base64,' + btoa(e.target.result);
   }
-
-  // @HostListener('window:scroll', ['$event']) onScrollEvent(){
-  //   let left = document.getElementById("resource-zone").style;
-  //   if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-  //     left.position = "fixed";
-  //     left.top = "1vh";
-  //   } else {
-  //     left.position = "absolute";
-  //     left.top = "22vh";
-  //   }
-  // } 
 
   handle(e){
     this.user_id = e;

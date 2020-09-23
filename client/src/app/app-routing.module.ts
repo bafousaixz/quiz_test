@@ -1,115 +1,27 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './component/home/home.component';
-import { ErrorComponent } from './component/error/error.component';
-import { ProfileComponent } from './profile/profile/profile.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { ProfileModule } from './profile/profile.module';
 import { ResourcesComponent } from './test-kits/resources/resources.component';
-import { ResourceComponent } from './test-kits/resource/resource.component';
-import { QuestionsComponent } from './test-kits/questions/questions.component';
-import { ListTestComponent } from './test-kits/list-test/list-test.component';
-import { EditTestComponent } from './test-kits/edit-test/edit-test.component';
-import { ListResultComponent } from './test-kits/list-result/list-result.component';
-import { ExamComponent} from './tests/exam/exam.component';
-import { ResultComponent } from './tests/result/result.component';
-import { AdminComponent } from './admin/admin/admin.component';
-import { ListUserComponent } from './admin/list-user/list-user.component';
-import { CreateUserComponent } from './admin/create-user/create-user.component';
-import { SignupComponent } from './login/signup/signup.component';
-import { LoginComponent } from './login/login/login.component';
-
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: HomeComponent,
-  // },
-  //user
-  {
-    path: '', 
-    redirectTo: '/login', 
-    pathMatch: 'full' 
-  },
 
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-
-  {
-    path: 'signup',
-    component: SignupComponent,
+    path: 'resources',
+    loadChildren: ()=> import('./test-kits/test-kits.module').then(m => m.TestKitsModule)
   },
 
   {
     path: 'profile',
-    component: ProfileComponent
+    loadChildren: ()=> import('./profile/profile.module').then(m=>m.ProfileModule)
   },
 
-  {
-    path: 'resources',
-    component: ResourcesComponent
-  },
-
-  {
-    path: 'resources/:id',
-    component: ResourceComponent,
-    children: [
-      {
-        path: '',
-        component: QuestionsComponent
-      },
-      {
-        path: 'questions',
-        component: QuestionsComponent
-      },
-      {
-        path: 'tests',
-        component: ListTestComponent
-      },
-      {
-        path: 'tests/:id',
-        component: EditTestComponent
-      },
-      {
-        path: 'tests/result/:id',
-        component: ListResultComponent,
-      }
-    ]
-  },
-
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children:[
-      {
-        path: 'list-user',
-        component: ListUserComponent,
-      },
-      {
-        path: 'create-user',
-        component: CreateUserComponent,
-      }
-    ]
-  },
-  
-  {
-    path: 'tests/:id',
-    component: ExamComponent
-  },
-  {
-    path: 'tests/:id/:id',
-    component: ResultComponent
-  },
-
-  {
-    path: '**', 
-    component: ErrorComponent
-  },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HostListener } from '@angular/core';
 
-import { QuestionService } from '../_service/question.service';
-import { questionModel } from '../_model/question.model';
+import { QuestionService } from '../_services/question.service';
+import { QuestionModel } from '../_models/question.model';
 
 @Component({
   selector: 'app-questions',
@@ -24,8 +24,8 @@ export class QuestionsComponent implements OnInit {
   content: string;
   level: string = "Easy";
   id = '';
-  question: questionModel[];
-  qs: questionModel;
+  question: QuestionModel[];
+  qs: QuestionModel;
 
   constructor(
     public questionService: QuestionService,
@@ -46,7 +46,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   postQuestion(){
-    let q: questionModel = {
+    let q: QuestionModel = {
       _id: this._id,
       content: this.content,
       image: this.img,
@@ -62,7 +62,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   putQuestion(){
-    let q: questionModel = {
+    let q: QuestionModel = {
       _id: this.id_question,
       content: this.qs.content,
       image: this.qs.image ,
@@ -134,7 +134,7 @@ export class QuestionsComponent implements OnInit {
     this.level="High"
   }
 
-  showAnswer(q: questionModel){
+  showAnswer(q: QuestionModel){
     this.qs = q;
     this.id_question=this.qs._id
     this.image=""

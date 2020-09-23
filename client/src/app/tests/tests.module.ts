@@ -8,7 +8,7 @@ import { StartExamComponent } from './start-exam/start-exam.component'
 import { CountdownModule } from 'ngx-countdown';
 import { FormsModule } from '@angular/forms';
 import { ResultComponent } from './result/result.component';
-
+import { TestRoutingModule } from './test-routing.module';
 
 @NgModule({
   declarations: [ExamComponent, StartExamComponent, ResultComponent],
@@ -19,6 +19,7 @@ import { ResultComponent } from './result/result.component';
     RouterModule,
     FormsModule,
     MiddleModule,
+    TestRoutingModule,
   ]
 })
 export class TestsModule { }
