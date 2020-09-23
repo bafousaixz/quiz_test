@@ -91,13 +91,13 @@ export class CreateTestComponent implements OnInit {
     this.options = newOptions;
     document.getElementById("add-test1").style.height = "420px";
     document.getElementById("slider").style.height = "100px";
-    document.getElementById("slider").style.opacity = "1";
+    document.getElementById("slider").style.display = "inline";
   }
 
   close() {
     document.getElementById("add-test1").style.height = "50px";
     document.getElementById("slider").style.height = "0px";
-    document.getElementById("slider").style.opacity = "0";
+    document.getElementById("slider").style.display = "none";
     document.getElementById("btn-add").style.opacity = "1";
     this.OutputValue.emit("close");
     this.name = "";

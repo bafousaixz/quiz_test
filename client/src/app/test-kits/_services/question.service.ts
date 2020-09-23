@@ -4,9 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { QuestionModel } from '../_models/question.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class QuestionService {
   url = "http://localhost:3000/questions/"
 

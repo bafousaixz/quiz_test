@@ -4,7 +4,7 @@
             <h2 (click)="add()" id="btn-add"><i class="fas fa-plus-circle"></i> Add test</h2>
             <div class="create">
                 <div class="container-test">
-                    <form (ngSubmit)="createTest()" class="test">
+                    <div class="test">
                         <div style="margin: 10px;">
                             <label>Name: </label>
                             <input [(ngModel)]="name" class="name-test" type="text" name="test" placeholder="Test name">
@@ -28,9 +28,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-test">Generate</button>
+                        <button (click)="createTest()" class="btn-test">Generate</button>
                         <button (click)="close()" class="btn-test btn-cancer">Cancer</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

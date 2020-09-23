@@ -6,7 +6,7 @@
         <div class="container-signup">
             <div class="auth-pane">
                 <h3>Create your account</h3>
-                <p>Already have an account? <span><a href="login">Log In</a></span>
+                <p>Already have an account? <span><a routerLink="/">Log In</a></span>
                 </p>
                 <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && signUp()" [appLogin]="user" novalidate>
                     <input type="text" [(ngModel)]="lastName" placeholder="Name" name="name" #name="ngModel" required>

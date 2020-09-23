@@ -1,9 +1,9 @@
-<div class="auth">
+<div *ngIf="route.children.length === 0" class="auth">
     <div class="container-login">
         <img src="../../../assets/login.svg" alt=""><br>
         <div class="auth-pane">
             <h3>Log Into Your Account</h3>
-            <p>Don't have an account yet?<span><a href="signup">Sign up</a></span>
+            <p>Don't have an account yet?<span><a routerLink="signup">Sign up</a></span>
             </p>
             <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && signIn()" [appLogin]="user" novalidate>
                 <input type="text" [(ngModel)]="username" placeholder="Email Address" name="user" #user="ngModel" required>
@@ -16,3 +16,4 @@
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>

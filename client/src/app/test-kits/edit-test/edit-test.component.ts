@@ -37,20 +37,20 @@ export class EditTestComponent implements OnInit {
   }
 
   get() {
-    this.serviceTestQuestion.getDetail(this.id).subscribe(data =>{
+    this.serviceTestQuestion.getDetail(this.id).subscribe(data => {
       this.test_question = data;
     })
   }
 
   getQuestion() {
-    this.questionService.getQuestion().subscribe((data: any[]) =>{
-      data = data.filter(x => !this.test_question.some(q => q.questions.content === x.content));
+    this.questionService.getQuestion().subscribe((data: any[]) => {
+      data = data.filter((x) => !this.test_question.some((q) => q.questions.content === x.content));
       return this.questions = data;
     })
   }
 
   getTest() {
-    this.testService.getDetail(this.id).subscribe(data =>{
+    this.testService.getDetail(this.id).subscribe(data => {
       this.test = data;
     })
   }
@@ -61,7 +61,7 @@ export class EditTestComponent implements OnInit {
       test_id: this.id,
       questions: qs,
     }
-    this.serviceTestQuestion.putTest_question(question_test).subscribe(data =>{
+    this.serviceTestQuestion.putTest_question(question_test).subscribe(data => {
       if(data !== null) {
         this.close();
         this.get();

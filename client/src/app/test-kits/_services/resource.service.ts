@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ResourceModel } from '../_models/resource.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class ResourceService {
   url = "http://localhost:3000/resources/"
