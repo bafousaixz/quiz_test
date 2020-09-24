@@ -11,7 +11,12 @@ import { ComponentModule } from '../component/component.module';
 import { StartExamComponent } from './start-exam/start-exam.component';
 
 @NgModule({
-  declarations: [ExamComponent, StartExamComponent, ResultComponent],
+  declarations: [
+    ExamComponent,
+    StartExamComponent, 
+    ResultComponent
+  ],
+  
   imports: [
     FormsModule,
     CommonModule,

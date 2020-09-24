@@ -9,6 +9,7 @@ import { TestService } from 'src/app/middle/services/test.service';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
+  
   id: string;
   user: string;
   name: string;

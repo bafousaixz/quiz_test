@@ -26,7 +26,6 @@ export class CreateTestComponent implements OnInit {
   high: number;
   name: string;
   resourceId = '';
-
   min: number = 1;
   max: number = 10;
   options: Options = {

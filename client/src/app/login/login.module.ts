@@ -21,7 +21,7 @@ import { LoginDirective } from './_directive/login.directive';
     RouterModule,
     LoginRoutingModule
   ],
-  providers: [ ]
+  providers: []
   
 })
 export class LoginModule { }

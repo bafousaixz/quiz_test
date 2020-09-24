@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { User } from '../_models/user.model';
+import { UserModel } from 'src/app/middle/models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../_services/login.service';
+import { LoginService } from 'src/app/middle/services/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(){
-    let s : User = {
+    let s : UserModel = {
       firstName: this.firstName,
       lastName : this.lastName,
       username: this.userName,

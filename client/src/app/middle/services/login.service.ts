@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { User } from '../_models/user.model';
-import { Login } from '../_models/login.model';
+import { Login } from '../models/login.model';
+import { UserModel } from '../models/user.model';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'any'
+  providedIn: 'root'
 })
 export class LoginService {
 
@@ -17,12 +17,12 @@ export class LoginService {
     private http: HttpClient
   ) { } 
 
-  signIn(user: Login): Observable<User>{
-    return this.http.post<User>(this._url, user)
+  signIn(user: Login): Observable<any>{
+    return this.http.post<any>(this._url, user)
   }
 
-  signUp(user : User): Observable<User>{
-    return this.http.post<User>(this.url, user)
+  signUp(user : UserModel): Observable<any>{
+    return this.http.post<any>(this.url, user)
   }
 
   getUser():Observable<any>{
@@ -35,13 +35,13 @@ export class LoginService {
     return this.http.get<any>(this.get, httpOptions)
   }
 
-  editProfile(user: User): Observable<User>{
+  editProfile(user: UserModel): Observable<any>{
     const token = localStorage.getItem("token")
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization":  token
       })
     };
-    return this.http.put<User>(this.get, user, httpOptions)
+    return this.http.put<any>(this.get, user, httpOptions)
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../_models/login.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from '../_services/login.service';
+import { Login } from 'src/app/middle/models/login.model';
+import { LoginService } from 'src/app/middle/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   token = localStorage.getItem("token");
 
   constructor(
-    private userService: LoginService,
     private router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private userService: LoginService,
   ) { }
 
   ngOnInit(): void {

@@ -1,7 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LoginService } from '../../login/_services/login.service';
 import { Router } from '@angular/router';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { LoginService } from 'src/app/middle/services/login.service'
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

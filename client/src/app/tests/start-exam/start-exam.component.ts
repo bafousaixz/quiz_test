@@ -11,6 +11,7 @@ import { TestResultService } from 'src/app/middle/services/test-result.service';
   styleUrls: ['./start-exam.component.css']
 })
 export class StartExamComponent implements OnInit {
+  
   @Input() user;
   @Input() name;
   id: string; 

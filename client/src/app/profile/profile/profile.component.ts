@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../login/_models/user.model';
-import { LoginService } from '../../login/_services/login.service';
+import { UserModel } from 'src/app/middle/models/user.model';
+import { LoginService } from 'src/app/middle/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +10,7 @@ import { LoginService } from '../../login/_services/login.service';
 export class ProfileComponent implements OnInit {
 
   token = localStorage.getItem('token');
-  user: User;
+  user: UserModel;
   image: string;
   avatar: string;
   base64textString = [];
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onUpload(){
-    let profile : User = {
+    let profile : UserModel = {
       firstName: this.user.firstName,
       lastName : this.user.lastName,
       username: this.user.username,

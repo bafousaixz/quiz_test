@@ -11,6 +11,7 @@ import { TestResultService } from 'src/app/middle/services/test-result.service';
   styleUrls: ['../exam/exam.component.css', './result.component.css']
 })
 export class ResultComponent implements OnInit {
+  
   check: boolean = false;
   id: string;
   user: string;

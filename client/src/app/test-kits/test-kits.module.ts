@@ -18,7 +18,6 @@ import { ResourcesComponent } from './resources/resources.component';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { ListResultComponent } from './list-result/list-result.component';
 
-
 @NgModule({
   declarations: [
     FilterPipe,
