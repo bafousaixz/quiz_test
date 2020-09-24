@@ -26,14 +26,14 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResource();
-    if(this.router.url === `/resources/${this.id}/tests`){
+    if(this.router.url === `/resources/${this.id}/tests`) {
       this.check = false;
     }
   }
 
   getResource() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.resourceService.getReourceId(id, this.userId).subscribe(data =>{
+    this.resourceService.getReourceId(id, this.userId).subscribe(data => {
       this.resource = data;
     })
   }
@@ -66,7 +66,7 @@ export class ResourceComponent implements OnInit {
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
-    this.resource.image= 'data:image/png;base64,' + btoa(e.target.result);
+    this.resource.image = 'data:image/png;base64,' + btoa(e.target.result);
   }
 
   handle(e) {
@@ -75,7 +75,7 @@ export class ResourceComponent implements OnInit {
   }
 
   showListquestion() {
-    this.check= true;
+    this.check = true;
   }
 
   showListtest() {

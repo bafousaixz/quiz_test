@@ -14,17 +14,17 @@ export class UserComponent implements OnInit {
   token = localStorage.getItem("token");
   
   constructor(
-    public userService: LoginService,
     public router: Router,
+    public userService: LoginService
   ) { }
 
   ngOnInit(): void {
     this.get();
   }
 
-  get(){
-    if(this.token){
-      this.userService.getUser().subscribe(data=>{
+  get() {
+    if(this.token) {
+      this.userService.getUser().subscribe(data => {
         this.avatar = data.image;
         this.name = data.lastName;
         this.userName = data.username;
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.userName = "";
     this.router.navigate(['/']);

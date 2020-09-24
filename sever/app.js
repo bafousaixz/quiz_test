@@ -6,17 +6,15 @@ var logger = require('morgan');
 
 var Mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
+var testRouter = require('./routes/tests');
 var usersRouter = require('./routes/users');
+var answerRouter = require('./routes/answers');
 var resourceRouter = require('./routes/resource');
 var questionRouter = require('./routes/questions');
-var answerRouter = require('./routes/answers');
-var testRouter = require('./routes/tests');
-var testQuestionRouter = require('./routes/test_question');
 var testResultRouter = require('./routes/test_result');
+var testQuestionRouter = require('./routes/test_question');
 
 var app = express();
-
 
 //connect DB
 var url = 'mongodb://localhost:27017/mydb';
@@ -47,15 +45,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/tests', testRouter);
 app.use('/users', usersRouter);
+app.use('/answers', answerRouter);
 app.use('/resources', resourceRouter);
 app.use('/questions', questionRouter);
-app.use('/answers', answerRouter);
-app.use('/tests', testRouter);
-app.use('/test-questions', testQuestionRouter);
 app.use('/test-results', testResultRouter);
-
+app.use('/test-questions', testQuestionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

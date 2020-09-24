@@ -53,7 +53,7 @@ export class QuestionsComponent implements OnInit {
       resource_id: this.id
     }
     this.questionService.postQuestion(q).subscribe(data => {
-      if(data !== null){
+      if(data !== null) {
         this.getQuestion();
         this.cancer_add();
       }
@@ -100,7 +100,7 @@ export class QuestionsComponent implements OnInit {
   }
 
 //Scroll
-  @HostListener('window:scroll', ['$event']) onScrollEvent(){
+  @HostListener('window:scroll', ['$event']) onScrollEvent() {
     let a = document.getElementById("set-scroll").style;
     let b = document.getElementById("add-question").style;
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -129,27 +129,27 @@ export class QuestionsComponent implements OnInit {
     this.level = "Medium";
   }
 
-  level3(){
+  level3() {
     this.easy = false;
     this.medium = false;
     this.high = true;
     this.level = "High";
   }
 
-  showAnswer(q: QuestionModel){
+  showAnswer(q: QuestionModel) {
     this.qs = q;
     this.id_question = this.qs._id;
     this.image = "";
   }
 
-  add(){
+  add() {
     this.id_question = "";
     this.img = "";
     document.getElementById("add").style.opacity = "0";
     document.getElementById("add-question").style.height = "530px";
   }
   
-  cancer_add(){
+  cancer_add() {
     this.id_question = "";
     this.content = "";
     this.img = "";

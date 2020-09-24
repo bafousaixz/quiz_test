@@ -27,7 +27,7 @@ export class EditTestComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private testService: TestService,
-    public questionService: QuestionService,
+    private questionService: QuestionService,
     private serviceTestQuestion: TestQuestionService,
   ) { }
 
@@ -77,7 +77,8 @@ export class EditTestComponent implements OnInit {
     this.getQuestion();
   }
 
-  close(){
+  close() {
     this.popup = false;
   }
+  
 }

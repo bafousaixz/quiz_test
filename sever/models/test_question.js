@@ -13,8 +13,6 @@ const TestQuestion = new Schema({
 
 });
 
-
-
-test_question = Mongoose.model("testquestions", TestQuestion)
+test_question = Mongoose.model("testquestions", TestQuestion);
 
 module.exports = test_question;

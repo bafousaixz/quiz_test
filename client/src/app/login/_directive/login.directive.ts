@@ -10,20 +10,20 @@ export class LoginDirective implements Validator {
   constructor() { }
 
   validate(formGroup: FormGroup): ValidationErrors {
-    if(this.username){
+    if(this.username) {
       const username = formGroup.controls.user;
-      if(username){
+      if(username) {
         let t = username.value;
-        if(t){
+        if(t) {
           const tam: string[] = t.split('@');
           const domain: string = tam[tam.length - 1];
-          if(!username){
+          if(!username) {
             return null
           }
-          if(domain.toLowerCase() !== 'botstar.com'){
+          if(domain.toLowerCase() !== 'botstar.com') {
             username.setErrors({usernameMiss: true});
           }
-          else{
+          else {
             username.setErrors(null);
           }
         }

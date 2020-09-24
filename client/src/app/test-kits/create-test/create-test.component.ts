@@ -40,9 +40,9 @@ export class CreateTestComponent implements OnInit {
   };
   
   constructor(
-    private testService: TestService,
     private router: Router,
     private route: ActivatedRoute,
+    private testService: TestService,
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +68,7 @@ export class CreateTestComponent implements OnInit {
     }
     if(name !== null && this.amount !== null) {
       this.testService.postTest(test).subscribe(data => {
-        if(data !== null){
+        if(data !== null) {
           this.testService.getTest().subscribe(data => {
             this.test = data[data.length -1];
             this.router.navigate([this.test._id], { relativeTo: this.route});

@@ -39,11 +39,10 @@ export class ProfileComponent implements OnInit {
   }
 
   get(){
-    if(this.token != null ){
+    if(this.token){
       this.userService.getUser().subscribe(data => {
-        this.avatar= data.image;
+        this.avatar = data.image;
         this.user = data;
-        console.log(this.user);
        })
     }
   }
@@ -58,18 +57,17 @@ export class ProfileComponent implements OnInit {
       tel: this.user.tel,
       image: this.user.image,
     };
-    console.log(profile)
     this.userService.editProfile(profile).subscribe(data => {
       window.location.reload();
-      this.profile1=false;
+      this.profile1 = false;
     })
   }
 
   profile(){
-    this.profile1=true;
+    this.profile1 = true;
   }
   edit(){
-    this.profile1=false;
+    this.profile1 = false;
   }
 
 }

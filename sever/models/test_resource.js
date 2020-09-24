@@ -21,6 +21,6 @@ const Resoure = new Schema({
     }
 });
 
-resource = Mongoose.model("resource", Resoure)
+resource = Mongoose.model("resource", Resoure);
 
 module.exports = resource;

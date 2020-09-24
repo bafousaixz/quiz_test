@@ -17,6 +17,6 @@ const Answer = new Schema({
     }
 });
 
-answers = Mongoose.model("answers", Answer)
+answers = Mongoose.model("answers", Answer);
 
 module.exports = answers;

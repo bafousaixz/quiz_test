@@ -18,19 +18,19 @@ const resourceRoutes: Routes = [
                 children: [
                     {
                         path: '',
-                        component: QuestionsComponent
+                        component: QuestionsComponent,
                     },
                     {
                         path: 'questions',
-                        component: QuestionsComponent
+                        component: QuestionsComponent,
                     },
                     {
                         path: 'tests',
-                        component: ListTestComponent
+                        component: ListTestComponent,
                     },
                     {
                         path: 'tests/:id',
-                        component: EditTestComponent
+                        component: EditTestComponent,
                     },
                     {
                         path: 'tests/result/:id',

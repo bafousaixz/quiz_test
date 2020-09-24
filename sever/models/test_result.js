@@ -26,8 +26,6 @@ const TestResult = new Schema({
 
 });
 
-
-
-test_result = Mongoose.model("testResult", TestResult)
+test_result = Mongoose.model("testResult", TestResult);
 
 module.exports = test_result;

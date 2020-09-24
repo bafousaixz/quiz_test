@@ -19,13 +19,13 @@ export class SignupComponent implements OnInit {
 
   constructor(
    public userService: LoginService,
-   public router: Router
+   public router: Router,
   ) { }
 
   ngOnInit(): void {
   }
 
-  signUp(){
+  signUp() {
     let s : UserModel = {
       firstName: this.firstName,
       lastName : this.lastName,
@@ -34,8 +34,8 @@ export class SignupComponent implements OnInit {
       role: this.role,
       image: this.image
     };
-    this.userService.signUp(s).subscribe(data =>{
-      if(data){
+    this.userService.signUp(s).subscribe(data => {
+      if(data) {
         window.localStorage.setItem('token', data['token'])
         this.router.navigate(['/resources']);
       }

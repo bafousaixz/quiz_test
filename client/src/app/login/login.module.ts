@@ -12,14 +12,14 @@ import { LoginDirective } from './_directive/login.directive';
   declarations: [
     LoginDirective, 
     LoginComponent, 
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
-    CommonModule,
-    HttpClientModule,
     FormsModule,
     RouterModule,
-    LoginRoutingModule
+    CommonModule,
+    HttpClientModule,
+    LoginRoutingModule,
   ],
   providers: []
   

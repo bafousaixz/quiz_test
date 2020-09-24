@@ -9,6 +9,8 @@ import { MiddleModule } from '../middle/middle.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentModule } from '../component/component.module';
 import { ResourceRoutingModule } from './resource-routing.module';
+import { ResourceService } from './_services/resource.service';
+import { QuestionService } from './_services/question.service';
 import { AnswersComponent } from './answers/answers.component';
 import { ResourceComponent } from './resource/resource.component';
 import { EditTestComponent } from './edit-test/edit-test.component';
@@ -41,7 +43,10 @@ import { ListResultComponent } from './list-result/list-result.component';
     NgxPaginationModule,
     ResourceRoutingModule,
   ],
-  providers:[],
+  providers:[
+    ResourceService,
+    QuestionService
+  ],
   exports: [FilterPipe]
 })
 export class TestKitsModule { }

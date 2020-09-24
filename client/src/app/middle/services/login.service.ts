@@ -4,9 +4,7 @@ import { Login } from '../models/login.model';
 import { UserModel } from '../models/user.model';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
 
   url = "http://localhost:3000/users/"
@@ -17,15 +15,15 @@ export class LoginService {
     private http: HttpClient
   ) { } 
 
-  signIn(user: Login): Observable<any>{
+  signIn(user: Login): Observable<any> {
     return this.http.post<any>(this._url, user)
   }
 
-  signUp(user : UserModel): Observable<any>{
+  signUp(user : UserModel): Observable<any> {
     return this.http.post<any>(this.url, user)
   }
 
-  getUser():Observable<any>{
+  getUser():Observable<any> {
     const token = localStorage.getItem("token")
     const httpOptions = {
       headers: new HttpHeaders({
@@ -35,7 +33,7 @@ export class LoginService {
     return this.http.get<any>(this.get, httpOptions)
   }
 
-  editProfile(user: UserModel): Observable<any>{
+  editProfile(user: UserModel): Observable<any> {
     const token = localStorage.getItem("token")
     const httpOptions = {
       headers: new HttpHeaders({
@@ -44,4 +42,5 @@ export class LoginService {
     };
     return this.http.put<any>(this.get, user, httpOptions)
   }
+  
 }

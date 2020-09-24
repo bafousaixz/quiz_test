@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var questions = require('../models/test_questions')
-var answers = require('../models/test_answers')
+var answers = require('../models/test_answers');
+var questions = require('../models/test_questions');
 
 router.get('/', async(req, res) => {
     questions.aggregate([{

@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcryptjs');
 var tests = require('../models/tests');
-var test_question = require('../models/test_question');
-var questions = require('../models/test_questions');
 var answers = require('../models/test_answers');
-var test_result = require('../models/test_result')
+var test_result = require('../models/test_result');
+var questions = require('../models/test_questions');
+var test_question = require('../models/test_question');
 
 router.get('/', async(req, res) => {
     tests.aggregate([{
@@ -51,12 +51,14 @@ router.get('/:id', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
+    //Create test
     const { name, time, amount, easy, medium, high, resource_id } = req.body;
     const rs = new tests(req.body);
     const result_test = await rs.save();
     res.send(result_test);
-    const test_id = result_test._id
+    const test_id = result_test._id;
 
+    //Create test_question and save to collection test_question
     questions.aggregate([{
             $lookup: {
                 from: answers.collection.name,
@@ -124,14 +126,14 @@ router.put('/:id', async(req, res) => {
 
 router.delete("/:id", async(req, res) => {
     try {
-        const id = req.params.id
+        const id = req.params.id;
         const result = await tests.deleteOne({ _id: id }).exec();
         const q = await test_question.deleteMany({ test_id: id });
         const t = await test_result.deleteMany({ test_id: id });
         res.send(result);
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.status(500).send(error);
     }
 });

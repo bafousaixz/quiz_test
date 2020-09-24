@@ -11,22 +11,22 @@ const routes: Routes = [
 
   {
     path: 'tests/:id',
-    loadChildren: ()=> import('./tests/tests.module').then(m => m.TestsModule)
+    loadChildren: () => import('./tests/tests.module').then(m => m.TestsModule)
   },
 
   {
     path: 'auth',
-    loadChildren: ()=> import('./login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
 
   {
     path: 'profile',
-    loadChildren: ()=> import('./profile/profile.module').then(m=>m.ProfileModule)
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
 
   {
     path: 'resources',
-    loadChildren: ()=> import('./test-kits/test-kits.module').then(m => m.TestKitsModule)
+    loadChildren: () => import('./test-kits/test-kits.module').then(m => m.TestKitsModule)
   },
 
 ];

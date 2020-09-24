@@ -33,7 +33,7 @@ export class StartExamComponent implements OnInit {
   }
 
   getTest() {
-    this.testService.getDetail(this.id).subscribe(data =>{
+    this.testService.getDetail(this.id).subscribe(data => {
       this.test = data;
     })
   }
@@ -65,7 +65,7 @@ export class StartExamComponent implements OnInit {
   handleEvent(e) {
     let a = document.getElementById('countdown').style;
     if(e.action === 'notify') {
-      a.background='#F79F1F';
+      a.background ='#F79F1F';
       a.color = '#ffffff';
     }
     if(e.action === 'done') {
@@ -81,10 +81,10 @@ export class StartExamComponent implements OnInit {
     let b = document.getElementById("menu-test").style;
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
       b.position = "fixed";
-      b.top="50px";
+      b.top = "50px";
     } else {
       b.position = "absolute";
-      b.top="110px";
+      b.top = "110px";
     }
   } 
 

@@ -30,26 +30,26 @@ export class ExamComponent implements OnInit {
   }
 
   getTittle() {
-    this.testService.getTittle(this.id).subscribe(data =>{
+    this.testService.getTittle(this.id).subscribe(data => {
       this.test = data;
     })
   }
 
-  checkPassword(){
+  checkPassword() {
     let test: TestModel = {
       _id: this.id,
       name: this.test.name,
       password: this.password,
     }
-    this.testService.checkPassword(test).subscribe(data =>{
-      if(data){
+    this.testService.checkPassword(test).subscribe(data => {
+      if(data) {
         this.popup = false;
         this.start = true;
       }
-      if(data === null){
-        this.password ='';
+      if(data === null) {
+        this.password = '';
         document.getElementById('check-pass').style.opacity = '1';
-        setTimeout(() =>{
+        setTimeout(() => {
           document.getElementById('check-pass').style.opacity = '0';
         }, 2000)
       }

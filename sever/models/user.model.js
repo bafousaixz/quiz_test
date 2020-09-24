@@ -53,43 +53,38 @@ const UserModel = new Schema({
     }]
 });
 
-
-
 // Hash the password before saving the user model
 UserModel.pre('save', async function(next) {
-    const user = this
+    const user = this;
     if (user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8)
+        user.password = await bcrypt.hash(user.password, 8);
     }
-    next()
+    next();
 })
-
 
 // Generate an auth token for the user
 UserModel.methods.generateAuthToken = async function() {
-    const user = this
-    const token = jwt.sign({ _id: user._id }, 'cut deeee')
-    user.tokens = user.tokens.concat({ token })
-    await user.save()
-    return token
+    const user = this;
+    const token = jwt.sign({ _id: user._id }, 'cut deeee');
+    user.tokens = user.tokens.concat({ token });
+    await user.save();
+    return token;
 }
 
 
 // Search for a user by email and password.
 UserModel.statics.findByCredentials = async(username, password) => {
-    const user = await users.findOne({ username })
+    const user = await users.findOne({ username });
     if (!user) {
-        throw new Error({ error: 'Invalid login credentials' })
+        throw new Error({ error: 'Invalid login credentials' });
     }
-    const isPasswordMatch = await bcrypt.compare(password, user.password)
-    console.log(isPasswordMatch)
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
-        throw new Error({ error: 'Invalid login credentials' })
+        throw new Error({ error: 'Invalid login credentials' });
     }
-    return user
+    return user;
 }
 
-
-users = Mongoose.model("users", UserModel)
+users = Mongoose.model("users", UserModel);
 
 module.exports = users;

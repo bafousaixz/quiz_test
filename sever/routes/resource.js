@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var resource = require('../models/test_resource')
+var resource = require('../models/test_resource');
 
 /* GET home page. */
 router.get('/:s', async(req, res) => {

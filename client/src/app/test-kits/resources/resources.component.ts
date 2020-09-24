@@ -27,7 +27,7 @@ export class ResourcesComponent implements OnInit {
   }
  
   get() {
-    if(this.user_id){
+    if(this.user_id) {
       this.service.getReource(this.user_id).subscribe(data => {
         this.resource = data;
       })

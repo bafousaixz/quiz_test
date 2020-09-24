@@ -1,7 +1,6 @@
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
-
 const Question = new Schema({
     content: {
         type: String,
@@ -22,6 +21,6 @@ const Question = new Schema({
     },
 });
 
-questions = Mongoose.model("questions", Question)
+questions = Mongoose.model("questions", Question);
 
 module.exports = questions;

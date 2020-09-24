@@ -47,7 +47,6 @@ router.put('/:id', async(req, res) => {
     try {
         const rs = await question.findById(req.params.id).exec();
         rs.set(req.body);
-        console.log(rs);
         const result = await rs.save();
         res.send(result);
     } catch (error) {

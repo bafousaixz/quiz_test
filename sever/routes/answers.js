@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var answer = require('../models/test_answers')
+var answer = require('../models/test_answers');
 
 /* GET home page. */
 router.get("/", async(req, res) => {

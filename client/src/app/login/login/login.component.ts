@@ -21,17 +21,17 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.token){
+    if(this.token) {
       this.router.navigate(['/resources']);
     }
   }
 
-  signIn(){
+  signIn() {
     let signin : Login = {
       username: this.username,
       password : this.password,
     };
-    this.userService.signIn(signin).subscribe(data =>{
+    this.userService.signIn(signin).subscribe(data => {
       if(data){
         window.localStorage.setItem('token', data['token']);
         this.router.navigate(['/resources']);

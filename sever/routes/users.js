@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Model = require('../models/user.model')
-var auth = require('../middleware/auth')
+var auth = require('../middleware/auth');
+var Model = require('../models/user.model');
+
 
 router.post('/', async(req, res) => {
     // Create a new user
@@ -30,7 +31,6 @@ router.post('/login', async(req, res) => {
     }
 })
 
-
 router.get('/me', auth, async(req, res) => {
     res.send(req.user);
 })
@@ -45,7 +45,6 @@ router.put('/me', auth, async(req, res) => {
         res.status(400).send(error);
     }
 })
-
 
 router.post('/me/logout', auth, async(req, res) => {
     // Log user out of the application
