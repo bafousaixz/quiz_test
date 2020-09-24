@@ -12,8 +12,8 @@ var resourceRouter = require('./routes/resource');
 var questionRouter = require('./routes/questions');
 var answerRouter = require('./routes/answers');
 var testRouter = require('./routes/tests');
-var test_questionRouter = require('./routes/test_question');
-var test_resultRouter = require('./routes/test_result');
+var testQuestionRouter = require('./routes/test_question');
+var testResultRouter = require('./routes/test_result');
 
 var app = express();
 
@@ -52,9 +52,9 @@ app.use('/users', usersRouter);
 app.use('/resources', resourceRouter);
 app.use('/questions', questionRouter);
 app.use('/answers', answerRouter);
-app.use('/', testRouter);
-app.use('/test-question', test_questionRouter);
-app.use('/', test_resultRouter);
+app.use('/tests', testRouter);
+app.use('/test-questions', testQuestionRouter);
+app.use('/test-results', testResultRouter);
 
 
 // catch 404 and forward to error handler

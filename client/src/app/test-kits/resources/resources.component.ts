@@ -58,6 +58,7 @@ export class ResourcesComponent implements OnInit {
   up() {
     this.popup = 'oke';
   }
+  
   cancer() {
     this.popup = '';
   }

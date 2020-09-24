@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { TestQuestionModel } from '../models/test_question.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TestQuestionService {
-  url="http://localhost:3000/test-question/";
+  url="http://localhost:3000/test-questions/";
 
   constructor(
     private http: HttpClient,
@@ -21,17 +21,16 @@ export class TestQuestionService {
     return this.http.get<any>(this.url + id)
   }
 
-  postTest_question(test: TestQuestionModel): Observable<any>{
+  postTestQuestion(test: TestQuestionModel): Observable<any>{
     return this.http.post<any>(this.url, test);
   }
 
-  putTest_question(test: TestQuestionModel): Observable<any>{
+  putTestQuestion(test: TestQuestionModel): Observable<any>{
     return this.http.put<any>(`${this.url}${test._id}`, test)
   }
 
-  deleteTest_question(id: string): Observable<any>{
+  deleteTestQuestion(id: string): Observable<any>{
     return this.http.delete<any>(this.url + id)
   }
-  
 
 }

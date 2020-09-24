@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-
 import { ResourceService } from  '../_services/resource.service';
 import { ResourceModel } from '../_models/resource.model';
 
@@ -15,7 +14,7 @@ export class ResourceComponent implements OnInit {
   check: boolean = true;
   base64textString = [];
   image: string;
-  user_id: string;
+  userId: string;
   resource: ResourceModel;
   _id: string = this.route.snapshot.paramMap.get('id');
 
@@ -23,8 +22,7 @@ export class ResourceComponent implements OnInit {
     public resourceService: ResourceService,
     public route: ActivatedRoute,
     public router: Router,
-  ) {
-   }
+  ) {}
 
   ngOnInit(): void {
     this.getResource();
@@ -35,7 +33,7 @@ export class ResourceComponent implements OnInit {
 
   getResource() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.resourceService.getReourceId(id, this.user_id).subscribe(data =>{
+    this.resourceService.getReourceId(id, this.userId).subscribe(data =>{
       this.resource = data;
     })
   }
@@ -55,7 +53,6 @@ export class ResourceComponent implements OnInit {
     this.router.navigate(['/test-resources']);
   }
 
-
   //Base64 image
   onUploadChange(evt: any) {
     const file = evt.target.files[0];
@@ -65,6 +62,7 @@ export class ResourceComponent implements OnInit {
       reader.readAsBinaryString(file);
     }
   }
+
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
@@ -72,14 +70,16 @@ export class ResourceComponent implements OnInit {
   }
 
   handle(e) {
-    this.user_id = e;
+    this.userId = e;
     this.getResource();
   }
 
   showListquestion() {
     this.check= true;
   }
+
   showListtest() {
     this.check = false;
   }
+
 }

@@ -13,17 +13,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-test.component.css']
 })
 export class EditTestComponent implements OnInit {
+
   id: string = this.route.snapshot.paramMap.get('id');
   popup: boolean = false;
   test: TestModel;
   _id: string;
-  name_test: string;
+  nameTest: string;
   content: string;
-  test_question: TestQuestionModel[] = [];
+  testQuestion: TestQuestionModel[] = [];
   q: TestQuestionModel;
   questions: QuestionModel[] = [];
   
- 
   constructor(
     public route: ActivatedRoute,
     private serviceTestQuestion: TestQuestionService,
@@ -38,13 +38,13 @@ export class EditTestComponent implements OnInit {
 
   get() {
     this.serviceTestQuestion.getDetail(this.id).subscribe(data => {
-      this.test_question = data;
+      this.testQuestion = data;
     })
   }
 
   getQuestion() {
     this.questionService.getQuestion().subscribe((data: any[]) => {
-      data = data.filter((x) => !this.test_question.some((q) => q.questions.content === x.content));
+      data = data.filter((x) => !this.testQuestion.some((q) => q.questions.content === x.content));
       return this.questions = data;
     })
   }
@@ -56,13 +56,13 @@ export class EditTestComponent implements OnInit {
   }
 
   put(qs: QuestionModel) {
-    let question_test : TestQuestionModel = {
+    let questionTest : TestQuestionModel = {
       _id: this.q._id,
       test_id: this.id,
       questions: qs,
     }
-    this.serviceTestQuestion.putTest_question(question_test).subscribe(data => {
-      if(data !== null) {
+    this.serviceTestQuestion.putTestQuestion(questionTest).subscribe(data => {
+      if(data) {
         this.close();
         this.get();
       }
@@ -71,7 +71,7 @@ export class EditTestComponent implements OnInit {
 
   edit(question: TestQuestionModel, content: string) {
     this.q = question;
-    this.name_test = content;
+    this.nameTest = content;
     this.popup = true;
     this.getQuestion();
   }

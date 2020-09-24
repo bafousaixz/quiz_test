@@ -10,12 +10,14 @@ import { TestModel } from 'src/app/middle/models/test.model';
   styleUrls: ['./list-result.component.css']
 })
 export class ListResultComponent implements OnInit {
+  
   popup: boolean = false;
   _id: string = this.route.snapshot.paramMap.get('id');
   results: TestResult[];
   questions: any[] = [];
   test: TestModel;
   choose: any[];
+
   constructor(
     private testResultService: TestResultService,
     private service: TestService,

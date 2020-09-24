@@ -91,6 +91,7 @@ export class QuestionsComponent implements OnInit {
       reader.readAsBinaryString(file);
     }
   }
+
   handleReaderLoaded(e) {
     this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
     this.image = 'data:image/png;base64,' + btoa(e.target.result);
@@ -120,12 +121,14 @@ export class QuestionsComponent implements OnInit {
     this.high = false;
     this.level = "Easy";
   }
+
   level2() {
     this.easy = false;
     this.medium = true;
     this.high = false;
     this.level = "Medium";
   }
+
   level3(){
     this.easy = false;
     this.medium = false;
@@ -145,6 +148,7 @@ export class QuestionsComponent implements OnInit {
     document.getElementById("add").style.opacity = "0";
     document.getElementById("add-question").style.height = "530px";
   }
+  
   cancer_add(){
     this.id_question = "";
     this.content = "";

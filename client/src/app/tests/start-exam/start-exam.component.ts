@@ -18,7 +18,6 @@ export class StartExamComponent implements OnInit {
   choose: any[] = [];
   index: string;
   answer_right: number = 0;
-  s: string;
   r: TestResult;
   _id: string = this.route.snapshot.paramMap.get('id');
   

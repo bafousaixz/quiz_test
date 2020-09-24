@@ -7,7 +7,7 @@ var questions = require('../models/test_questions');
 var answers = require('../models/test_answers');
 var test_result = require('../models/test_result')
 
-router.get('/tests', async(req, res) => {
+router.get('/', async(req, res) => {
     tests.aggregate([{
         $lookup: {
             from: test_question.collection.name,
@@ -24,16 +24,7 @@ router.get('/tests', async(req, res) => {
     });
 })
 
-router.get('/test/:id', async(req, res) => {
-    try {
-        const result = await tests.findById(req.params.id).exec();
-        res.send(result);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-});
-
-router.get('/tests/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     const id = req.params.id;
     tests.aggregate([{
         $lookup: {
@@ -59,7 +50,7 @@ router.get('/tests/:id', async(req, res) => {
     });
 });
 
-router.post('/tests', async(req, res) => {
+router.post('/', async(req, res) => {
     const { name, time, amount, easy, medium, high, resource_id } = req.body;
     const rs = new tests(req.body);
     const result_test = await rs.save();
@@ -118,7 +109,45 @@ router.post('/tests', async(req, res) => {
     });
 })
 
-router.post('/test', async(req, res) => {
+router.put('/:id', async(req, res) => {
+    try {
+        const pass = req.body.password;
+        const hash = bcrypt.hashSync(pass, 8);
+        const rs = await tests.findById(req.params.id).exec();
+        rs.set(rs.password = hash);
+        const result = await rs.save();
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
+router.delete("/:id", async(req, res) => {
+    try {
+        const id = req.params.id
+        const result = await tests.deleteOne({ _id: id }).exec();
+        const q = await test_question.deleteMany({ test_id: id });
+        const t = await test_result.deleteMany({ test_id: id });
+        res.send(result);
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send(error);
+    }
+});
+
+//get Tittle test
+router.get('/start/:id', async(req, res) => {
+    try {
+        const result = await tests.findById(req.params.id).exec();
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+//check password start test
+router.post('/start', async(req, res) => {
     try {
         const pass = req.body.password;
         const id = req.body._id;
@@ -137,31 +166,5 @@ router.post('/test', async(req, res) => {
         res.status(400).send(error);
     }
 })
-
-router.put('/tests/:id', async(req, res) => {
-    try {
-        const pass = req.body.password;
-        const hash = bcrypt.hashSync(pass, 8);
-        const rs = await tests.findById(req.params.id).exec();
-        rs.set(rs.password = hash);
-        const result = await rs.save();
-        res.send(result);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-})
-
-router.delete("/tests/:id", async(req, res) => {
-    try {
-        const id = req.params.id
-        const result = await tests.deleteOne({ _id: id }).exec();
-        const q = await test_question.deleteMany({ test_id: id });
-        const t = await test_result.deleteMany({ test_id: id });
-        res.send(result);
-
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
 
 module.exports = router;

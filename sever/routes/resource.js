@@ -56,4 +56,13 @@ router.delete('/:id', async(req, res) => {
     }
 })
 
+router.get('/', async(req, res) => {
+    try {
+        const result = await resource.find().exec();
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
 module.exports = router;

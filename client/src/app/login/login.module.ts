@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginService } from './_services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -22,9 +21,7 @@ import { LoginRoutingModule } from './login-routing.module';
     RouterModule,
     LoginRoutingModule
   ],
-  providers: [
-    LoginService,
-  ]
+  providers: [ ]
   
 })
 export class LoginModule { }

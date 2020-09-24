@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { QuestionModel } from '../_models/question.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'any'
+})
 export class QuestionService {
   url = "http://localhost:3000/questions/"
 
@@ -13,7 +14,7 @@ export class QuestionService {
   ) { }
 
   getQuestion(): Observable<any>{
-    return this.http.get<any>(this.url).delay(150)
+    return this.http.get<any>(this.url)
   }
 
   postQuestion(question: QuestionModel): Observable<any>{

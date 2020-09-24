@@ -1,5 +1,4 @@
 <div class="user-style">
-    <a *ngIf="!userName" class="login" href="auth">Login</a>
     <div style="background: none; border: none;" *ngIf="userName" class="dropdown login">
         <img style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px;" src="{{avatar}}" />
         <button style="background: none; border: none; outline: 0; color: #ffffff;">
@@ -10,4 +9,5 @@
             <a (click)="logout()" class="dropdown-item" routerLink="/">Logout</a>
         </div>
     </div>
+    <a *ngIf="!userName" class="login" href="auth">Login</a>
 </div>

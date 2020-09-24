@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { TestService } from 'src/app/middle/services/test.service';
 import { TestModel } from 'src/app/middle/models/test.model';
 import { ResourceService } from  '../_services/resource.service';
+import { TestService } from 'src/app/middle/services/test.service';
 
 @Component({
   selector: 'app-list-test',
@@ -10,31 +10,31 @@ import { ResourceService } from  '../_services/resource.service';
   styleUrls: ['./list-test.component.css']
 })
 export class ListTestComponent implements OnInit {
-  check: boolean = false;
-  url: string;
-  password: string;
-  _id: string;
   id = '';
-  tests: TestModel[];
+  _id: string;
+  url: string;
   test: TestModel;
-  name_resource: string = '';
+  password: string;
+  tests: TestModel[];
+  check: boolean = false;
+  nameResource: string = '';
 
   constructor(
+    private route: ActivatedRoute,
     private testService: TestService,
     private resourceService: ResourceService,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.getTests();
-    this.route.parent.params.subscribe((param: Params) =>{
+    this.route.parent.params.subscribe((param: Params) => {
       this.id = param['id'];
     });
     this.getResource();
   }
 
   getTests() {
-    this.testService.getTest().subscribe(data =>{
+    this.testService.getTest().subscribe(data => {
       this.tests = data;
     })
   }
@@ -43,16 +43,11 @@ export class ListTestComponent implements OnInit {
     let t : TestModel = {
       _id: this.test._id,
       name: this.test.name,
-      time: this.test.time,
-      amount: this.test.amount,
-      easy: this.test.easy,
-      medium: this.test.medium,
-      high: this.test.high,
       password: this.password,
       resource_id: this.test.resource_id,
       questionList: this.test.questionList
     }
-    this.testService.putTest(t).subscribe(data =>{
+    this.testService.putTest(t).subscribe(data => {
       if(data) {
         this.url = `http://localhost:4200/tests/${this.test._id}`;
       }
@@ -65,8 +60,11 @@ export class ListTestComponent implements OnInit {
   }
 
   getResource() {
-    this.resourceService.getListResource(this.id).subscribe(data =>{
-      this.name_resource = data.name;
+    this.resourceService.getNameResource().subscribe(data => {
+      data.find(el => {
+        el._id === this.id
+      })
+      this.nameResource = data[0].name;
     })
   }
 

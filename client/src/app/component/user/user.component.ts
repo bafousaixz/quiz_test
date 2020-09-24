@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   }
 
   get(){
-    if(this.token != null){
+    if(this.token){
       this.userService.getUser().subscribe(data=>{
         this.avatar = data.image;
         this.name = data.lastName;

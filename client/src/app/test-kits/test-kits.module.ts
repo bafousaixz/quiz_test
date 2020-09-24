@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
-
 import { Ng5SliderModule } from 'ng5-slider';
 import { ComponentModule } from '../component/component.module';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MiddleModule } from '../middle/middle.module';
 import { ResourceRoutingModule } from './resource-routing.module'
@@ -17,10 +17,6 @@ import { ListTestComponent } from './list-test/list-test.component';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { EditTestComponent } from './edit-test/edit-test.component';
 import { ListResultComponent } from './list-result/list-result.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ResourceService } from './_services/resource.service';
-import { QuestionService } from './_services/question.service';
-
 
 
 @NgModule({
@@ -46,12 +42,7 @@ import { QuestionService } from './_services/question.service';
     ResourceRoutingModule,
     HttpClientModule,
   ],
-  providers:[
-    ResourceService,
-    QuestionService
-  ],
-  exports: [
-    FilterPipe,
-  ]
+  providers:[],
+  exports: [FilterPipe]
 })
 export class TestKitsModule { }

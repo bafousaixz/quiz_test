@@ -5,8 +5,9 @@ var tests = require('../models/tests');
 var test_question = require('../models/test_question');
 var users = require('../models/user.model');
 var question = require('../models/test_question')
-    /* GET home page. */
-router.get("/test-results/:ss", async(req, res) => {
+
+//get list results and user
+router.get("/:ss", async(req, res) => {
     try {
         const id = req.params.ss
         const results = await test_result.find({ test_id: id }).lean().exec();
@@ -23,7 +24,8 @@ router.get("/test-results/:ss", async(req, res) => {
     }
 })
 
-router.get("/test-results/", async(req, res) => {
+
+router.get("/", async(req, res) => {
     try {
         const results = await test_result.find().exec();
         res.send(results);
@@ -33,9 +35,8 @@ router.get("/test-results/", async(req, res) => {
     }
 })
 
-
-/* GET detail. */
-router.get("/test-result/:id", async(req, res) => {
+//get result user after test
+router.get("/user_test/:id", async(req, res) => {
     const r = await test_result.findById(req.params.id).exec();
     const _id = r._id
     const user_id = r.user_id
@@ -59,7 +60,9 @@ router.get("/test-result/:id", async(req, res) => {
         }
     });
 })
-router.post("/test-result", async(req, res) => {
+
+//nop bai & tinh diem
+router.post("/user_test", async(req, res) => {
     let rs = new test_result(req.body);
     const test_id = rs.test_id
     const user_id = rs.user_id

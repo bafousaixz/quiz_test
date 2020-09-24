@@ -7,7 +7,7 @@ import { TestResult } from 'src/app/middle/models/test_result';
   providedIn: 'root'
 })
 export class TestResultService {
-  url = "http://localhost:3000/test-result/"
+  url = "http://localhost:3000/test-results/user_test/"
   _url = "http://localhost:3000/test-results/"
   constructor(
     private http: HttpClient, 
@@ -21,12 +21,14 @@ export class TestResultService {
     return this.http.get<any>(this._url + id)
   }
 
-  getdetail(id: string): Observable<any>{
-    return this.http.get<any>(this.url + id)
-  }
-
+//nop bai & tinh diem
   postResult(result: TestResult): Observable<any>{
     return this.http.post<any>(this.url, result)
   } 
+
+//get result after test
+  getdetail(id: string): Observable<any>{
+    return this.http.get<any>(this.url + id)
+  }
 
 }
