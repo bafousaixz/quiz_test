@@ -32,7 +32,7 @@ export class QuestionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getQuestion()
+    this.getQuestion();
     this.route.parent.params.subscribe((param: Params) => {
       this.id = param['id'];
     })

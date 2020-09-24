@@ -55,7 +55,7 @@ export class CreateTestComponent implements OnInit {
     this.easy = this.min;
     this.medium = this.max - this.min;
     this.high = this.amount - this.max;
-    const name_test: string = this.resource + " - " + this.name
+    const name_test: string = this.resource + " - " + this.name;
     let test: TestModel = { 
       _id: this._id,
       name: name_test,
@@ -83,7 +83,7 @@ export class CreateTestComponent implements OnInit {
   }
 
   setNewCeil(newCeil: number) {
-    this.max = newCeil-1;
+    this.max = newCeil - 1;
     const newOptions: Options = Object.assign({}, this.options);
     newOptions.ceil = newCeil;
     this.options = newOptions;
@@ -98,7 +98,7 @@ export class CreateTestComponent implements OnInit {
     document.getElementById("slider").style.display = "none";
     document.getElementById("btn-add").style.opacity = "1";
     this.OutputValue.emit("close");
-    this.name = "";
+    this.name = '';
     this.time = null;
     this.amount = null;
   }

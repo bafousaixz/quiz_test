@@ -41,7 +41,7 @@ export class AnswersComponent implements OnInit {
       if(data) {
         this.content = '';
         this.r = false;
-        this.getAnswer()
+        this.getAnswer();
       }
     })
   }
@@ -71,7 +71,7 @@ export class AnswersComponent implements OnInit {
   }
 
   add_right() {
-    this.r = !this.r
+    this.r = !this.r;
   }
 
 }
