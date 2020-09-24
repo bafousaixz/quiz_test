@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionModel } from '../_models/question.model';
+import { TestModel } from 'src/app/middle/models/test.model';
+import { QuestionService } from '../_services/question.service';
+import { TestService } from 'src/app/middle/services/test.service';
 import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 import { TestQuestionService } from 'src/app/middle/services/test-question.service';
-import { QuestionService } from '../_services/question.service';
-import { QuestionModel } from '../_models/question.model';
-import { TestService } from 'src/app/middle/services/test.service';
-import { TestModel } from 'src/app/middle/models/test.model';
 
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -14,24 +14,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditTestComponent implements OnInit {
 
-  id: string = this.route.snapshot.paramMap.get('id');
+  id: string; 
+  _id: string;
+  content: string;
+  nameTest: string;
   popup: boolean = false;
   test: TestModel;
-  _id: string;
-  nameTest: string;
-  content: string;
-  testQuestion: TestQuestionModel[] = [];
   q: TestQuestionModel;
   questions: QuestionModel[] = [];
+  testQuestion: TestQuestionModel[] = [];
   
   constructor(
     public route: ActivatedRoute,
-    private serviceTestQuestion: TestQuestionService,
-    public questionService: QuestionService,
     private testService: TestService,
+    public questionService: QuestionService,
+    private serviceTestQuestion: TestQuestionService,
   ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.get();
     this.getTest();
   }

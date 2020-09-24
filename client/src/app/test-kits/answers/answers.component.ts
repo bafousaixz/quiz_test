@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { AnswerModel } from 'src/app/middle/models/answer.model';
 import { AnswerService } from 'src/app/middle/services/answer.service';
+
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',
@@ -9,13 +9,12 @@ import { AnswerService } from 'src/app/middle/services/answer.service';
 })
 export class AnswersComponent implements OnInit {
   @Input() id: string;
-
   fix: string;
-  answer: AnswerModel[];
-  ans: AnswerModel;
-  content: string;
-  r: boolean = false;
   _id: string;
+  content: string;
+  ans: AnswerModel;
+  r: boolean = false;
+  answer: AnswerModel[];
 
   constructor(
     private answerService: AnswerService,

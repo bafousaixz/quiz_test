@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ResourceService } from  '../_services/resource.service';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ResourceModel } from '../_models/resource.model';
+import { ResourceService } from  '../_services/resource.service';
 
 @Component({
   selector: 'app-resource',
@@ -11,22 +11,22 @@ import { ResourceModel } from '../_models/resource.model';
 })
 export class ResourceComponent implements OnInit {
 
-  check: boolean = true;
-  base64textString = [];
   image: string;
   userId: string;
+  check: boolean = true;
+  base64textString = [];
   resource: ResourceModel;
-  _id: string = this.route.snapshot.paramMap.get('id');
+  id: string = this.route.snapshot.paramMap.get('id');
 
   constructor(
-    public resourceService: ResourceService,
-    public route: ActivatedRoute,
     public router: Router,
+    public route: ActivatedRoute,
+    public resourceService: ResourceService
   ) {}
 
   ngOnInit(): void {
     this.getResource();
-    if(this.router.url === `/resources/${this._id}/tests`){
+    if(this.router.url === `/resources/${this.id}/tests`){
       this.check = false;
     }
   }

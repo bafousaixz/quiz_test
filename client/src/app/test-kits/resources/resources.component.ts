@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ResourceService } from '../_services/resource.service'
-import { ResourceModel } from '../_models/resource.model';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ResourceModel } from '../_models/resource.model';
+import { ResourceService } from '../_services/resource.service';
 
 @Component({
   selector: 'app-resources',
@@ -10,17 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResourcesComponent implements OnInit {
 
-  popup: string;
-  resource: ResourceModel;
+  id: string;
   name: string;
-  user_id: string;
+  popup: string;
   image: string;
+  user_id: string;
   content: string;
-  _id: string;
+  resource: ResourceModel;
  
   constructor(
+    public route: ActivatedRoute,
     private service: ResourceService,
-    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
  
   get() {
     if(this.user_id){
-      this.service.getReource(this.user_id).subscribe(data =>{
+      this.service.getReource(this.user_id).subscribe(data => {
         this.resource = data;
       })
     }
@@ -36,7 +36,7 @@ export class ResourcesComponent implements OnInit {
 
   post() {
     let rs: ResourceModel = {
-      _id: this._id,
+      _id: this.id,
       name: this.name,
       user_id: this.user_id,
       image: this.image,

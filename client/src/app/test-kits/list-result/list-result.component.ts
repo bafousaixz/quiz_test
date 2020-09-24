@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { TestResultService } from 'src/app/middle/services/test-result.service';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { TestModel } from 'src/app/middle/models/test.model';
 import { TestResult } from 'src/app/middle/models/test_result';
 import { TestService } from 'src/app/middle/services/test.service';
-import { TestModel } from 'src/app/middle/models/test.model';
+import { TestResultService } from 'src/app/middle/services/test-result.service';
+
 @Component({
   selector: 'app-list-result',
   templateUrl: './list-result.component.html',
@@ -11,12 +12,12 @@ import { TestModel } from 'src/app/middle/models/test.model';
 })
 export class ListResultComponent implements OnInit {
   
-  popup: boolean = false;
-  _id: string = this.route.snapshot.paramMap.get('id');
+  choose: any[];
+  test: TestModel;
   results: TestResult[];
   questions: any[] = [];
-  test: TestModel;
-  choose: any[];
+  popup: boolean = false;
+  id: string = this.route.snapshot.paramMap.get('id');
 
   constructor(
     private testResultService: TestResultService,
@@ -30,13 +31,13 @@ export class ListResultComponent implements OnInit {
   }
 
   getTestdetail() {
-    this.service.getDetail(this._id).subscribe(data =>{
+    this.service.getDetail(this.id).subscribe(data =>{
       this.test = data;
     })
   }
   
   getResult() {
-    this.testResultService.getResult(this._id).subscribe(data =>{
+    this.testResultService.getResult(this.id).subscribe(data =>{
       this.results = data;
     })
   }

@@ -5,7 +5,6 @@ import { ResultComponent } from './result/result.component';
 
 
 const TestRoutes: Routes = [ 
-
     {
         path: '',
         component: ExamComponent,

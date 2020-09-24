@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { TestResultService } from 'src/app/middle/services/test-result.service';
-import { TestResult } from 'src/app/middle/models/test_result';
+import { Component, OnInit } from '@angular/core';
 import { TestModel } from 'src/app/middle/models/test.model';
+import { TestResult } from 'src/app/middle/models/test_result';
 import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
+import { TestResultService } from 'src/app/middle/services/test-result.service';
 
 @Component({
   selector: 'app-result',
@@ -13,24 +12,26 @@ import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 })
 export class ResultComponent implements OnInit {
   check: boolean = false;
+  id: string;
   user: string;
-  result: TestResult;
-  test: TestModel;
   choose: any[];
+  test: TestModel;
+  result: TestResult;
   questions: TestQuestionModel[];
-  _id: string = this.route.snapshot.paramMap.get('id');
 
   constructor(
+    private route: ActivatedRoute,
     private testResultService: TestResultService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.get();
   }
 
+//get result after test
   get() {
-    this.testResultService.getdetail(this._id).subscribe(data =>{
+    this.testResultService.getdetail(this.id).subscribe(data =>{
       this.result = data;
       this.questions = data.test.questionList;
       this.choose = data.choose_answer;

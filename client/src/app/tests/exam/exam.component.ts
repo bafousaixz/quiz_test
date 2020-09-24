@@ -1,46 +1,46 @@
-import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { TestService } from 'src/app/middle/services/test.service';
+import { Component, OnInit } from '@angular/core';
 import { TestModel } from 'src/app/middle/models/test.model';
+import { TestService } from 'src/app/middle/services/test.service';
+
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
-  popup: boolean = false;
-  show: boolean = false;
-  password: string;
+  id: string;
   user: string;
   name: string;
-  start: boolean = false;
-  _id: string = this.router.snapshot.paramMap.get('id');
   test: TestModel;
+  password: string;
+  show: boolean = false;
+  popup: boolean = false;
+  start: boolean = false;
+
   constructor(
+    private testService: TestService,
     public router: ActivatedRoute,
-    private service: TestService,
   ) { }
 
   ngOnInit(): void {
+    this.id = this.router.snapshot.paramMap.get('id');
     this.getTittle();
   }
 
   getTittle() {
-    this.service.getTittle(this._id).subscribe(data =>{
+    this.testService.getTittle(this.id).subscribe(data =>{
       this.test = data;
     })
   }
 
-
   checkPassword(){
     let test: TestModel = {
-      _id: this._id,
+      _id: this.id,
       name: this.test.name,
       password: this.password,
     }
-
-    this.service.checkPassword(test).subscribe(data =>{
+    this.testService.checkPassword(test).subscribe(data =>{
       if(data){
         this.popup = false;
         this.start = true;

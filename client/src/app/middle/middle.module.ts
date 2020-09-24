@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { UppercasePipe } from './uppercase.pipe';
 import { PreloadComponent } from './preload/preload.component';
 
-
-
 @NgModule({
   declarations: [
     UppercasePipe,

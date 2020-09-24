@@ -1,11 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Options } from 'ng5-slider';
+import { HostListener } from '@angular/core';
 import { Params, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { HostListener } from '@angular/core';
-
-import { TestService } from 'src/app/middle/services/test.service';
 import { TestModel } from 'src/app/middle/models/test.model';
+import { TestService } from 'src/app/middle/services/test.service';
 
 @Component({
   selector: 'app-create-test',

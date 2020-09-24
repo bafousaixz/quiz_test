@@ -1,9 +1,8 @@
+import { HostListener } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { HostListener } from '@angular/core';
-
-import { QuestionService } from '../_services/question.service';
 import { QuestionModel } from '../_models/question.model';
+import { QuestionService } from '../_services/question.service';
 
 @Component({
   selector: 'app-questions',
@@ -11,20 +10,21 @@ import { QuestionModel } from '../_models/question.model';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-  id_question: string;
+
+  id = '';
   _id: string;
-  base64textString = [];
   img: string;
   image: string;
-  easy: boolean;
-  medium: boolean;
+  easy: boolean;  
   high: boolean;
   p: number = 1;
+  medium: boolean;
   content: string;
+  id_question: string;
+  base64textString = [];
   level: string = "Easy";
-  id = '';
-  question: QuestionModel[];
   qs: QuestionModel;
+  question: QuestionModel[];
 
   constructor(
     public questionService: QuestionService,
@@ -33,13 +33,13 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestion()
-    this.route.parent.params.subscribe((param: Params) =>{
+    this.route.parent.params.subscribe((param: Params) => {
       this.id = param['id'];
     })
   }
   
   getQuestion() {
-    this.questionService.getQuestion().subscribe(data =>{
+    this.questionService.getQuestion().subscribe(data => {
       this.question = data;
     })
   }
@@ -52,7 +52,7 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.postQuestion(q).subscribe(data =>{
+    this.questionService.postQuestion(q).subscribe(data => {
       if(data !== null){
         this.getQuestion();
         this.cancer_add();
@@ -68,7 +68,7 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe(data =>{
+    this.questionService.putQuestion(q).subscribe(data => {
       if(data !== null) {
         this.getQuestion();
         this.cancer_add();
@@ -77,7 +77,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion(id: string) {
-    this.questionService.deleteQuestion(id).subscribe(data=>{
+    this.questionService.deleteQuestion(id).subscribe(data => {
       this.getQuestion();
     })
   }

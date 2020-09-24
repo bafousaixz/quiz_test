@@ -1,6 +1,6 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { TestQuestionModel } from '../models/test_question.model';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class TestQuestionService {
   }
 
   postTestQuestion(test: TestQuestionModel): Observable<any>{
-    return this.http.post<any>(this.url, test);
+    return this.http.post<any>(this.url, test)
   }
 
   putTestQuestion(test: TestQuestionModel): Observable<any>{

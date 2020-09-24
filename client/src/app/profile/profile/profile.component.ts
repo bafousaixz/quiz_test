@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../login/_services/login.service';
 import { User } from '../../login/_models/user.model';
+import { LoginService } from '../../login/_services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +13,8 @@ export class ProfileComponent implements OnInit {
   user: User;
   image: string;
   avatar: string;
-  profile1: boolean = true;
   base64textString = [];
+  profile1: boolean = true;
 
   constructor(
     private userService: LoginService,
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
 
   get(){
     if(this.token != null ){
-      this.userService.getUser().subscribe(data=>{
+      this.userService.getUser().subscribe(data => {
         this.avatar= data.image;
         this.user = data;
         console.log(this.user);
@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
       image: this.user.image,
     };
     console.log(profile)
-    this.userService.editProfile(profile).subscribe(data =>{
+    this.userService.editProfile(profile).subscribe(data => {
       window.location.reload();
       this.profile1=false;
     })

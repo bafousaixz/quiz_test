@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditTestComponent } from './edit-test/edit-test.component';
-import { ListResultComponent } from './list-result/list-result.component';
-import { ListTestComponent } from './list-test/list-test.component';
-import { QuestionsComponent } from './questions/questions.component';
 import { ResourceComponent } from './resource/resource.component';
+import { ListTestComponent } from './list-test/list-test.component';
+import { EditTestComponent } from './edit-test/edit-test.component';
+import { QuestionsComponent } from './questions/questions.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { ListResultComponent } from './list-result/list-result.component';
 
 const resourceRoutes: Routes = [ 
     {
