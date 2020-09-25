@@ -32,9 +32,9 @@ export class EditTestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.get();
     this.getTest();
-    this.id = this.route.snapshot.paramMap.get('id');
   }
 
   get() {

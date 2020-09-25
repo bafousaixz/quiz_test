@@ -5,6 +5,5 @@ export class UserModel {
     lastName: string;
     email?: string;
     tel?:string;
-    role?: number;
     image?:string;
 }

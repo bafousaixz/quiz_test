@@ -237,8 +237,9 @@ h1::first-letter {
 .container-menu1 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: stretch;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .container-menu1 p {
@@ -251,4 +252,5 @@ h1::first-letter {
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    margin: 5px;
 }

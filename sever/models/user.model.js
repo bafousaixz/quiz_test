@@ -40,11 +40,6 @@ const UserModel = new Schema({
         required: false
     },
 
-    role: {
-        type: Number,
-        required: true
-    },
-
     tokens: [{
         token: {
             type: String,

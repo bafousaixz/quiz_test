@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
       password: this.user.password,
       email: this.user.email,
       tel: this.user.tel,
-      image: this.user.image,
+      image: this.image,
     };
     this.userService.editProfile(profile).subscribe(data => {
       if(data) {

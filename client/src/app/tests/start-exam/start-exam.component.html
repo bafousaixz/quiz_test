@@ -38,9 +38,9 @@
             <countdown [config]="{ leftTime: test.time*60, format: ' mm:ss ', notify: [  60 ] }" (event)="handleEvent($event)"></countdown>
         </div>
         <div class="container-menu1">
-            <p *ngFor="let tq of test.questionList; index as i" (click)="scroll(i)">
-                {{i +1}}
-            </p>
+            <div *ngFor="let tq of test.questionList; index as i" (click)="scroll(i)">
+                <p>{{i +1}}</p>
+            </div>
         </div>
     </div>
 

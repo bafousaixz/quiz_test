@@ -17,7 +17,7 @@ export class ExamComponent implements OnInit {
   password: string;
   show: boolean = false;
   popup: boolean = false;
-  start: boolean = false;
+  start: boolean = true;
 
   constructor(
     private testService: TestService,

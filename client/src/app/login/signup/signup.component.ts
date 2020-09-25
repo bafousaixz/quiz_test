@@ -14,7 +14,6 @@ export class SignupComponent implements OnInit {
   lastName: string;
   userName: string;
   password: string;
-  role: number = 3;
   image: string = "https://res.cloudinary.com/heymarketer/image/upload/dpr_auto,w_auto,f_auto,q_auto:good/v1553089040/Testimonials/undraw_profile_pic_ic5t.svg";
 
   constructor(
@@ -31,7 +30,6 @@ export class SignupComponent implements OnInit {
       lastName : this.lastName,
       username: this.userName,
       password: this.password,
-      role: this.role,
       image: this.image
     };
     this.userService.signUp(s).subscribe(data => {

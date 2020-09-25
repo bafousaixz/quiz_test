@@ -55,8 +55,9 @@ export class ListTestComponent implements OnInit {
   }
 
   deleteTest(id: string) {
-    this.testService.deleteTest(id).subscribe();
-    this.getTests();
+    this.testService.deleteTest(id).subscribe(data => {
+      this.getTests();
+    });
   }
 
   getResource() {
