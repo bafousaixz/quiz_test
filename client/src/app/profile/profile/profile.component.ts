@@ -58,8 +58,9 @@ export class ProfileComponent implements OnInit {
       image: this.user.image,
     };
     this.userService.editProfile(profile).subscribe(data => {
-      window.location.reload();
-      this.profile1 = false;
+      if(data) {
+        this.profile1 = true;
+      }
     })
   }
 

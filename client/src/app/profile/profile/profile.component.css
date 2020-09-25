@@ -12,7 +12,7 @@
 .bia {
     margin: 0 auto;
     width: 95%;
-    height: 300px;
+    height: 200px;
     background-image: url('../../../assets/banner2.jpg');
     background-size: cover;
     border: 1px solid #ffffff;
@@ -63,6 +63,15 @@
 
 .change:hover {
     background-color: rgba(206, 214, 224, 0.3);
+}
+
+.row h6 {
+    font-size: 15px;
+}
+
+.row h5 {
+    font-size: 17px;
+    margin-bottom: 15px;
 }
 
 .bia h3 {
@@ -130,6 +139,7 @@
     border: none;
     outline: none;
     font-weight: bold;
+    cursor: pointer;
     transform: .5s;
 }
 
@@ -167,14 +177,27 @@
 
 .form1 {
     margin-left: 100px;
+    margin-right: 100px;
 }
 
 .form1 button {
     margin-top: 10px;
     padding: 5px 20px;
+    width: 200px;
     border: none;
     outline: none;
     color: #fdffff;
     background: #9980FA;
     border-radius: 2px;
+    cursor: pointer;
+}
+
+label {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input {
+    padding-left: 10px;
+    width: 200px;
 }
