@@ -49,4 +49,4 @@ import { ListResultComponent } from './list-result/list-result.component';
   ],
   exports: [FilterPipe]
 })
-export class TestKitsModule { }
+export class ResourcesModule { }

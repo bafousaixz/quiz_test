@@ -26,7 +26,7 @@ const routes: Routes = [
 
   {
     path: 'resources',
-    loadChildren: () => import('./test-kits/test-kits.module').then(m => m.TestKitsModule)
+    loadChildren: () => import('./resources/resources.module').then(m => m.ResourcesModule)
   },
 
 ];
