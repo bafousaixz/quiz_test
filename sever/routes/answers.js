@@ -3,11 +3,13 @@ var router = express.Router();
 var answer = require('../models/test_answers');
 
 /* GET home page. */
-router.get("/", async(req, res) => {
+router.get("/:id", async(req, res) => {
     try {
-        const result = await answer.find().exec();
+        const id = req.params.id;
+        const result = await answer.find({ resource_id: id }).exec();
         res.send(result);
     } catch (error) {
+        console.log(error)
         res.status(400).send(error);
     }
 })

@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { AnswerModel } from 'src/app/middle/models/answer.model';
 import { AnswerService } from 'src/app/middle/services/answer.service';
@@ -14,18 +15,23 @@ export class AnswersComponent implements OnInit {
   content: string;
   ans: AnswerModel;
   r: boolean = false;
+  resource_id: string;
   answer: AnswerModel[];
 
   constructor(
+    private route: ActivatedRoute,
     private answerService: AnswerService,
   ) { }
 
   ngOnInit(): void {
+    this.route.parent.params.subscribe((param: Params) => {
+      this.resource_id = param['id'];
+    })
     this.getAnswer();
   }
 
   getAnswer() {
-    this.answerService.getAnswer().subscribe(data => {
+    this.answerService.getAnswer(this.resource_id).subscribe(data => {
       this.answer = data;
     })
   }
@@ -35,7 +41,8 @@ export class AnswersComponent implements OnInit {
       _id: this._id,
       content : this.content,
       right : this.r,
-      question_id : this.id
+      question_id : this.id,
+      resource_id: this.resource_id
     }
     this.answerService.postAnswer(as).subscribe(data => {
       if(data) {
@@ -45,7 +52,6 @@ export class AnswersComponent implements OnInit {
       }
     })
   }
-  
 
   putAnswer(a: AnswerModel) {
     const as : AnswerModel = {
@@ -59,13 +65,17 @@ export class AnswersComponent implements OnInit {
   }
 
   deleteAnswer(id: string) {
-    this.answerService.deleteAnswer(id).subscribe();
-    this.getAnswer();
+    this.answerService.deleteAnswer(id).subscribe(data => {
+      if(data) {
+        this.getAnswer();
+      }
+    });
   }
 
   editRight(a) {
     a.right = !a.right;
   }
+  
   edit(a) {
     this.fix = a._id;
   }

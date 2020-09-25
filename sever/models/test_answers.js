@@ -10,6 +10,10 @@ const Answer = new Schema({
         type: Boolean,
         required: true,
     },
+    resource_id: {
+        type: String,
+        require: true
+    },
     question_id: {
         type: Schema.Types.ObjectId,
         ref: 'questions',

@@ -26,8 +26,8 @@ export class ListResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getTestdetail();
     this.getResult();
+    this.getTestdetail();
   }
 
   getTestdetail() {

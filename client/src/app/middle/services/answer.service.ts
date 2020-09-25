@@ -12,8 +12,8 @@ export class AnswerService {
     private http: HttpClient
   ) { }
 
-    getAnswer(): Observable<any> {
-      return this.http.get<any>(this.url)
+    getAnswer(id: string): Observable<any> {
+      return this.http.get<any>(this.url + id)
     }
 
     postAnswer(answer: AnswerModel): Observable<any> {

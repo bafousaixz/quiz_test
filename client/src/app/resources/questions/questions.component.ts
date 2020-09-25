@@ -78,7 +78,9 @@ export class QuestionsComponent implements OnInit {
 
   deleteQuestion(id: string) {
     this.questionService.deleteQuestion(id).subscribe(data => {
-      this.getQuestion();
+      if(data) {
+        this.getQuestion();
+      }
     })
   }
 

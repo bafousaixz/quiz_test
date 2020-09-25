@@ -50,7 +50,7 @@
                         <img src="{{q.image}}">
                     </div>
 
-                    <form (ngSubmit)="putQuestion()" *ngIf="id_question === q._id" id="edit">
+                    <div *ngIf="id_question === q._id" id="edit">
                         <h5>Question</h5>
                         <hr>
                         <label>Content:</label>
@@ -80,9 +80,9 @@
                         </div>
 
                         <div style="display: block; margin-left: 45%; margin-top: 20px;">
-                            <button class="btn-question">Save</button>
+                            <button (click)="putQuestion()" class="btn-question">Save</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <pagination-controls (pageChange)="p = $event" style="margin-top: 20px;"></pagination-controls>

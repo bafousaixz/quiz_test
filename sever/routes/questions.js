@@ -43,7 +43,9 @@ router.put('/:id', async(req, res) => {
 
 router.delete("/:id", async(req, res) => {
     try {
-        const result = await questions.deleteOne({ _id: req.params.id }).exec();
+        const id = req.params.id;
+        const result = await questions.deleteOne({ _id: id }).exec();
+        const answer = await answers.deleteMany({ question_id: id }).exec();
         res.send(result);
     } catch (error) {
         res.status(500).send(error);

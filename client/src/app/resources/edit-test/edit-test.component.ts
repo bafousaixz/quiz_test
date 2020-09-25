@@ -68,7 +68,7 @@ export class EditTestComponent implements OnInit {
         this.get();
       }
     });
-}
+  }
 
   edit(question: TestQuestionModel, content: string) {
     this.q = question;

@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var answers = require('../models/test_answers');
 var resource = require('../models/test_resource');
+var questions = require('../models/test_questions');
 
-/* GET home page. */
 router.get('/:s', async(req, res) => {
     try {
         const user_id = req.params.s;
@@ -48,9 +49,11 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     try {
-        const result = await resource.deleteOne({ _id: req.params.id }).exec();
+        const id = req.params.id;
+        const result = await resource.deleteOne({ _id: id }).exec();
+        const question = await questions.deleteMany({ resource_id: id });
+        const answer = await answers.deleteMany({ resource_id: id }).exec();
         res.send(result);
-
     } catch (error) {
         res.status(500).send(error);
     }

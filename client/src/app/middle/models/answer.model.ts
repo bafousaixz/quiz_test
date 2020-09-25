@@ -3,4 +3,5 @@ export class AnswerModel {
     content: string;
     right: boolean; 
     question_id: string;
+    resource_id?: string;
 }

@@ -20,7 +20,7 @@ export class ResourcesComponent implements OnInit {
  
   constructor(
     public route: ActivatedRoute,
-    private service: ResourceService,
+    private resourceService: ResourceService,
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
  
   get() {
     if(this.user_id) {
-      this.service.getReource(this.user_id).subscribe(data => {
+      this.resourceService.getReource(this.user_id).subscribe(data => {
         this.resource = data;
       })
     }
@@ -42,12 +42,10 @@ export class ResourcesComponent implements OnInit {
       image: this.image,
       content: this.content
     }
-    this.service.postResource(rs).subscribe();
-    if(this.name !== null) {
+    this.resourceService.postResource(rs).subscribe(data => {
       this.get();
       this.cancer();
-    }
-    else alert("null");
+    });
   }
 
   handle(e) {

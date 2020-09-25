@@ -27,8 +27,8 @@
             <td>
                 <input type="text" [(ngModel)]="content" placeholder="Add answer" class="cont">
             </td>
-            <td style="width: 100px;">
-                <button (click)="postAnswer()" class="btn-answer"> <i class="fas fa-plus-circle"></i> </button>
+            <td style="width: 100px;" *ngIf="content">
+                <button (click)="postAnswer()" class="btn-answer3"> <i class="fas fa-plus-circle"></i> </button>
             </td>
         </tr>
     </table>
