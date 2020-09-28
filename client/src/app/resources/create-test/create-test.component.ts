@@ -67,9 +67,9 @@ export class CreateTestComponent implements OnInit {
       resource_id: this.resourceId
     }
     if(name !== null && this.amount !== null) {
-      this.testService.postTest(test).subscribe(data => {
+      this.testService.postTest(test).subscribe((data) => {
         if(data !== null) {
-          this.testService.getTest().subscribe(data => {
+          this.testService.getTest().subscribe((data) => {
             this.test = data[data.length -1];
             this.router.navigate([this.test._id], { relativeTo: this.route});
           })

@@ -32,7 +32,7 @@ export class ResultComponent implements OnInit {
 
 //get result after test
   get() {
-    this.testResultService.getdetail(this.id).subscribe(data => {
+    this.testResultService.getdetail(this.id).subscribe((data) => {
       this.result = data;
       this.questions = data.test.questionList;
       this.choose = data.choose_answer;

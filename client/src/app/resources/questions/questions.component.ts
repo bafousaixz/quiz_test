@@ -39,7 +39,7 @@ export class QuestionsComponent implements OnInit {
   }
   
   getQuestion() {
-    this.questionService.getQuestion().subscribe(data => {
+    this.questionService.getQuestion().subscribe((data) => {
       this.question = data;
     })
   }
@@ -52,7 +52,7 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.postQuestion(q).subscribe(data => {
+    this.questionService.postQuestion(q).subscribe((data) => {
       if(data !== null) {
         this.getQuestion();
         this.cancel_add();
@@ -68,7 +68,7 @@ export class QuestionsComponent implements OnInit {
       level: this.level,
       resource_id: this.id
     }
-    this.questionService.putQuestion(q).subscribe(data => {
+    this.questionService.putQuestion(q).subscribe((data) => {
       if(data !== null) {
         this.getQuestion();
         this.cancel_add();
@@ -77,7 +77,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion(id: string) {
-    this.questionService.deleteQuestion(id).subscribe(data => {
+    this.questionService.deleteQuestion(id).subscribe((data) => {
       if(data) {
         this.getQuestion();
       }

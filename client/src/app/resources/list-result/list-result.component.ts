@@ -31,19 +31,19 @@ export class ListResultComponent implements OnInit {
   }
 
   getTestdetail() {
-    this.testService.getDetail(this.id).subscribe(data => {
+    this.testService.getDetail(this.id).subscribe((data) => {
       this.test = data;
     })
   }
   
   getResult() {
-    this.testResultService.getResult(this.id).subscribe(data => {
+    this.testResultService.getResult(this.id).subscribe((data) => {
       this.results = data;
     })
   }
 
   getResultDetail(id: string) {
-    this.testResultService.getdetail(id).subscribe(data => {
+    this.testResultService.getdetail(id).subscribe((data) => {
       this.questions = data.test.questionList;
       this.choose = data.choose_answer;
       for(let i = 0; i<this.questions.length; i++) {

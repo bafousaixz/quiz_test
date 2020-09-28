@@ -38,7 +38,7 @@ export class EditTestComponent implements OnInit {
   }
 
   get() {
-    this.testQuestionService.getDetail(this.id).subscribe(data => {
+    this.testQuestionService.getDetail(this.id).subscribe((data) => {
       this.testQuestion = data;
     })
   }
@@ -51,7 +51,7 @@ export class EditTestComponent implements OnInit {
   }
 
   getTest() {
-    this.testService.getDetail(this.id).subscribe(data => {
+    this.testService.getDetail(this.id).subscribe((data) => {
       this.test = data;
     })
   }
@@ -62,7 +62,7 @@ export class EditTestComponent implements OnInit {
       test_id: this.id,
       questions: qs,
     }
-    this.testQuestionService.putTestQuestion(questionTest).subscribe(data => {
+    this.testQuestionService.putTestQuestion(questionTest).subscribe((data) => {
       if(data) {
         this.close();
         this.get();

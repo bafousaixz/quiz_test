@@ -22,6 +22,7 @@
         "@angular/platform-browser-dynamic": "^10.0.8",
         "@angular/router": "^10.0.8",
         "@m0t0r/ngx-slider": "^1.0.0",
+        "angularx-social-login": "^3.2.2",
         "material": "^0.4.3",
         "mdbootstrap": "^4.19.1",
         "ng5-slider": "^1.2.4",

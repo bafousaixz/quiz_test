@@ -10,7 +10,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'test/:id',
+    path: 'tests/:id',
     loadChildren: () => import('./tests/tests.module').then(m => m.TestsModule)
   },
 
@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'resources',
     loadChildren: () => import('./resources/resources.module').then(m => m.ResourcesModule)
   },
+
+  { 
+    path: '**',
+    redirectTo: '/notfound' 
+  }
 
 ];
 

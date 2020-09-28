@@ -32,7 +32,7 @@ export class ResourceComponent implements OnInit {
   }
 
   getResource() {
-    this.resourceService.getReourceId(this.id, this.userId).subscribe(data => {
+    this.resourceService.getReourceId(this.id, this.userId).subscribe((data) => {
       this.resource = data;
     })
   }

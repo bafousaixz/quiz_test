@@ -33,7 +33,7 @@ export class StartExamComponent implements OnInit {
   }
 
   getTest() {
-    this.testService.getDetail(this.id).subscribe(data => {
+    this.testService.getDetail(this.id).subscribe((data) => {
       this.test = data;
     })
   }
@@ -50,9 +50,9 @@ export class StartExamComponent implements OnInit {
       choose: this.choose,
       name: this.name
     }
-    this.testResultService.postResult(result).subscribe(data => {
+    this.testResultService.postResult(result).subscribe((data) => {
       if(data) {
-        this.testResultService.getAllResult().subscribe(data => {
+        this.testResultService.getAllResult().subscribe((data) => {
           if(data) {
             this.r = data[data.length - 1];
             this.router.navigate([`result/${this.r._id}`], { relativeTo: this.route });

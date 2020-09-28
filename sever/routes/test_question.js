@@ -25,7 +25,7 @@ router.get('/:id', async(req, res) => {
         if (err) {
             console.log(err);
         } else {
-            var test = result.filter(item => (
+            var test = result.filter((item) => (
                 item.test_id == id
             ));
             res.send(test);

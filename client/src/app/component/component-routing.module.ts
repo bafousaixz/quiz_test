@@ -6,9 +6,10 @@ import { ErrorComponent } from './error/error.component';
 const ComponentRoutes: Routes = [ 
 
     {
-        path: '***', 
+        path: 'notfound', 
         component: ErrorComponent
     },
+
 ]
 
 @NgModule({

@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
 
   get(){
     if(this.token){
-      this.userService.getUser().subscribe(data => {
+      this.userService.getUser().subscribe((data) => {
         this.avatar = data.image;
         this.user = data;
        })
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
       tel: this.user.tel,
       image: this.image,
     };
-    this.userService.editProfile(profile).subscribe(data => {
+    this.userService.editProfile(profile).subscribe((data) => {
       if(data) {
         this.profile1 = true;
       }

@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
       password: this.password,
       image: this.image
     };
-    this.userService.signUp(s).subscribe(data => {
+    this.userService.signUp(s).subscribe((data) => {
       if(data) {
         window.localStorage.setItem('token', data['token'])
         this.router.navigate(['/resources']);

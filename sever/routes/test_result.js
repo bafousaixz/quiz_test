@@ -54,7 +54,7 @@ router.get("/user_test/:id", async(req, res) => {
         if (err) {
             console.log(err);
         } else {
-            const test = result.find(el => el._id = test_id);
+            const test = result.find((el) => el._id = test_id);
             res.send({ _id, user_id, answer_right, score, choose_answer, test });
         }
     });
@@ -72,10 +72,10 @@ router.post("/user_test", async(req, res) => {
     if (rs.test_id) {
         q = questions.filter(item => item.test_id.toString() === test_id.toString());
         tam = 10 / q.length;
-        q.map(question => {
-            question.questions.answerList.map(answer => {
+        q.map((question) => {
+            question.questions.answerList.map((answer) => {
                 if (answer.right === true) {
-                    rs.choose.map(choose => {
+                    rs.choose.map((choose) => {
                         if (choose.toString() === answer._id.toString()) {
                             answer_right += 1;
                         }

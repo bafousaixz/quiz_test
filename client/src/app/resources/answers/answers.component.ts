@@ -31,7 +31,7 @@ export class AnswersComponent implements OnInit {
   }
 
   getAnswer() {
-    this.answerService.getAnswer(this.resource_id).subscribe(data => {
+    this.answerService.getAnswer(this.resource_id).subscribe((data) => {
       this.answer = data;
     })
   }
@@ -44,7 +44,7 @@ export class AnswersComponent implements OnInit {
       question_id : this.id,
       resource_id: this.resource_id
     }
-    this.answerService.postAnswer(as).subscribe(data => {
+    this.answerService.postAnswer(as).subscribe((data) => {
       if(data) {
         this.content = '';
         this.r = false;
@@ -65,7 +65,7 @@ export class AnswersComponent implements OnInit {
   }
 
   deleteAnswer(id: string) {
-    this.answerService.deleteAnswer(id).subscribe(data => {
+    this.answerService.deleteAnswer(id).subscribe((data) => {
       if(data) {
         this.getAnswer();
       }

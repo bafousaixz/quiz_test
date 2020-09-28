@@ -30,7 +30,7 @@ export class ExamComponent implements OnInit {
   }
 
   getTittle() {
-    this.testService.getTittle(this.id).subscribe(data => {
+    this.testService.getTittle(this.id).subscribe((data) => {
       this.test = data;
     })
   }
@@ -41,7 +41,7 @@ export class ExamComponent implements OnInit {
       name: this.test.name,
       password: this.password,
     }
-    this.testService.checkPassword(test).subscribe(data => {
+    this.testService.checkPassword(test).subscribe((data) => {
       if(data) {
         this.popup = false;
         this.start = true;

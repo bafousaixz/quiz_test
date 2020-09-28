@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
  
   get() {
     if(this.user_id) {
-      this.resourceService.getReource(this.user_id).subscribe(data => {
+      this.resourceService.getReource(this.user_id).subscribe((data) => {
         this.resource = data;
       })
     }
@@ -42,9 +42,11 @@ export class ResourcesComponent implements OnInit {
       image: this.image,
       content: this.content
     }
-    this.resourceService.postResource(rs).subscribe(data => {
-      this.get();
-      this.cancel();
+    this.resourceService.postResource(rs).subscribe((data) => {
+      if(data) {
+        this.get();
+        this.cancel();
+      }
     });
   }
 

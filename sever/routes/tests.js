@@ -67,7 +67,9 @@ router.post('/', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { level: "Medium" } },
+        {
+            $match: { level: "Medium", resource_id: resource_id },
+        },
         { $sample: { size: medium } }
     ]).exec(async(err, result) => {
         result.forEach((questions) => {
@@ -84,7 +86,7 @@ router.post('/', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { level: "Easy" } },
+        { $match: { level: "Easy", resource_id: resource_id } },
         { $sample: { size: easy } }
     ]).exec(async(err, result) => {
         result.forEach((questions) => {
@@ -101,10 +103,10 @@ router.post('/', async(req, res) => {
                 as: 'answerList',
             }
         },
-        { $match: { level: "High" } },
+        { $match: { level: "High", resource_id: resource_id } },
         { $sample: { size: high } }
     ]).exec(async(err, result) => {
-        result.forEach(questions => {
+        result.forEach((questions) => {
             const tq = new test_question({ test_id, questions });
             tq.save();
         });

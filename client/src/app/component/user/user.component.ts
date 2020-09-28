@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LoginService } from 'src/app/middle/services/login.service'
+import { LoginService } from 'src/app/middle/services/login.service';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -24,7 +25,7 @@ export class UserComponent implements OnInit {
 
   get() {
     if(this.token) {
-      this.userService.getUser().subscribe(data => {
+      this.userService.getUser().subscribe((data) => {
         this.avatar = data.image;
         this.name = data.lastName;
         this.userName = data.username;

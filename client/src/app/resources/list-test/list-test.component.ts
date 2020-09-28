@@ -34,7 +34,7 @@ export class ListTestComponent implements OnInit {
   }
 
   getTests() {
-    this.testService.getTest().subscribe(data => {
+    this.testService.getTest().subscribe((data) => {
       this.tests = data;
     })
   }
@@ -47,7 +47,7 @@ export class ListTestComponent implements OnInit {
       resource_id: this.test.resource_id,
       questionList: this.test.questionList
     }
-    this.testService.putTest(t).subscribe(data => {
+    this.testService.putTest(t).subscribe((data) => {
       if(data) {
         this.url = `http://localhost:4200/test/${this.test._id}`;
       }
@@ -55,15 +55,16 @@ export class ListTestComponent implements OnInit {
   }
 
   deleteTest(id: string) {
-    this.testService.deleteTest(id).subscribe(data => {
+    this.testService.deleteTest(id).subscribe((data) => {
       if(data){
         this.getTests();
       }
     });
   }
 
+//get name resource
   getResource() {
-    this.resourceService.getNameResource().subscribe(data => {
+    this.resourceService.getNameResource().subscribe((data) => {
       data.find(el => {
         el._id === this.id
       })
