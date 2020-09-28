@@ -3,22 +3,56 @@
     width: 100%;
     height: 100vh;
     text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: url('../../../assets/404.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.btns {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btns button {
+    padding: 7px 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #F79F1F;
+    text-decoration: none;
+}
+
+.btns b {
+    color: #F79F1F;
+}
+
+.btns h1 {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .content {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .content h1 {
-    font-size: 6vw;
+    font-size: 10vw;
     font-weight: bold;
+    display: inline-block;
+    color: #F79F1F;
 }
 
 .content img {
-    width: 100px;
+    width: 9vw;
     animation: error 5s linear infinite;
 }
 
@@ -28,5 +62,24 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .btns {
+        top: 49%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .content h1 {
+        font-size: 20vw;
+    }
+    .btns h1 {
+        font-size: 20px;
+    }
+    .btns button {
+        padding: 5px 10px;
+        font-size: 15px;
     }
 }

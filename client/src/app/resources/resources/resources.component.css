@@ -1,22 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 .top-resource {
-    background: url('../../../assets/resource.jpeg');
+    background: rgba(84, 160, 255, .5);
+    /* background: url('https://www.ngfa.org/wp-content/uploads/background-web.png');
     background-size: cover;
-    background-position: center;
+    background-position: center; */
     width: 100%;
-    height: 30vh;
+    height: 50vh;
+    position: relative;
+}
+
+.top-resource img {
+    position: absolute;
+    top: 5vh;
+    right: 20vh;
+    height: 40vh;
 }
 
 .top-resource h1 {
     position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 18vh;
+    left: 30vh;
     color: #ffffff;
     font-weight: bold;
     font-family: 'Dancing Script', cursive;
     font-size: 70px;
+}
+
+.custom-shape-divider-bottom-1601287614 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1601287614 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1601287614 .shape-fill {
+    fill: #FFFFFF;
 }
 
 .mid {
