@@ -6,7 +6,7 @@ import { TestService } from 'src/app/middle/services/test.service';
 import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 import { TestQuestionService } from 'src/app/middle/services/test-question.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-edit-test',
   templateUrl: './edit-test.component.html',
@@ -28,7 +28,7 @@ export class EditTestComponent implements OnInit {
     public route: ActivatedRoute,
     private testService: TestService,
     private questionService: QuestionService,
-    private serviceTestQuestion: TestQuestionService,
+    private testQuestionService: TestQuestionService,
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class EditTestComponent implements OnInit {
   }
 
   get() {
-    this.serviceTestQuestion.getDetail(this.id).subscribe(data => {
+    this.testQuestionService.getDetail(this.id).subscribe(data => {
       this.testQuestion = data;
     })
   }
@@ -62,7 +62,7 @@ export class EditTestComponent implements OnInit {
       test_id: this.id,
       questions: qs,
     }
-    this.serviceTestQuestion.putTestQuestion(questionTest).subscribe(data => {
+    this.testQuestionService.putTestQuestion(questionTest).subscribe(data => {
       if(data) {
         this.close();
         this.get();

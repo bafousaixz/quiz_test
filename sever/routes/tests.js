@@ -40,8 +40,8 @@ router.get('/:id', async(req, res) => {
             const test = result.find((item) => (
                 item._id == id
             ));
-            test.questionList.forEach((question) => {
-                question.questions.answerList.forEach((answer) => {
+            test.questionList.map((question) => {
+                question.questions.answerList.map((answer) => {
                     delete answer.right;
                 });
             });

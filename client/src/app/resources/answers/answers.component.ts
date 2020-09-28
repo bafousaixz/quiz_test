@@ -80,7 +80,7 @@ export class AnswersComponent implements OnInit {
     this.fix = a._id;
   }
 
-  add_right() {
+  addRight() {
     this.r = !this.r;
   }
 

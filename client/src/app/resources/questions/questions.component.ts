@@ -27,15 +27,15 @@ export class QuestionsComponent implements OnInit {
   question: QuestionModel[];
 
   constructor(
-    public questionService: QuestionService,
     public route: ActivatedRoute,
+    public questionService: QuestionService,
   ) { }
 
   ngOnInit(): void {
-    this.getQuestion();
     this.route.parent.params.subscribe((param: Params) => {
       this.id = param['id'];
     })
+    this.getQuestion();
   }
   
   getQuestion() {
@@ -55,7 +55,7 @@ export class QuestionsComponent implements OnInit {
     this.questionService.postQuestion(q).subscribe(data => {
       if(data !== null) {
         this.getQuestion();
-        this.cancer_add();
+        this.cancel_add();
       }
     })   
   }
@@ -71,7 +71,7 @@ export class QuestionsComponent implements OnInit {
     this.questionService.putQuestion(q).subscribe(data => {
       if(data !== null) {
         this.getQuestion();
-        this.cancer_add();
+        this.cancel_add();
       }
     })
   }
@@ -151,7 +151,7 @@ export class QuestionsComponent implements OnInit {
     document.getElementById("add-question").style.height = "530px";
   }
   
-  cancer_add() {
+  cancel_add() {
     this.id_question = "";
     this.content = "";
     this.img = "";

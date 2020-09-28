@@ -26,14 +26,13 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResource();
-    if(this.router.url === `/resources/${this.id}/tests`) {
+    if(this.router.url !== `/resources/${this.id}/questions`) {
       this.check = false;
     }
   }
 
   getResource() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.resourceService.getReourceId(id, this.userId).subscribe(data => {
+    this.resourceService.getReourceId(this.id, this.userId).subscribe(data => {
       this.resource = data;
     })
   }

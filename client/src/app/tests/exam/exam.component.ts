@@ -17,11 +17,11 @@ export class ExamComponent implements OnInit {
   password: string;
   show: boolean = false;
   popup: boolean = false;
-  start: boolean = true;
+  start: boolean = false;
 
   constructor(
-    private testService: TestService,
     public router: ActivatedRoute,
+    private testService: TestService,
   ) { }
 
   ngOnInit(): void {

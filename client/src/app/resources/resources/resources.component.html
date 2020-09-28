@@ -12,8 +12,10 @@
             </div>
 
             <div *ngIf="popup" class="popup">
+                <div class="close-popup">
+                    <button (click)="cancel()" class="cancel"><i class="fas fa-times"></i></button>
+                </div>
                 <h1>Add Test Resource</h1>
-                <button (click)="cancer()" class="cancer">-</button>
                 <input [(ngModel)]="name" type="text" name="resource" placeholder="Test Resource"><br>
                 <button (click)="post()" class="save" type="submit">Save</button>
             </div>

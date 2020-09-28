@@ -124,27 +124,41 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
 }
 
-.popup h1 {
+.close-popup {
+    width: 100%;
+    height: 30px;
+    background: rgba(15, 188, 249, 1.0);
     position: absolute;
-    top: 20%;
+    top: 0;
+    margin-bottom: 20px;
+}
+
+.popup h1 {
+    width: 100%;
+    position: absolute;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+    margin-bottom: 50px;
 }
 
 .popup button {
     border: none;
     outline: none;
     font-weight: bold;
-    background: rgba(15, 188, 249, 1.0);
     color: #ffffff;
 }
 
-.cancer {
+.cancel {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 10px 20px;
+    padding: 5px 10px;
+    color: #ffffff;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
 }
 
 .save {

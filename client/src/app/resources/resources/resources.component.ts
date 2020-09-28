@@ -44,7 +44,7 @@ export class ResourcesComponent implements OnInit {
     }
     this.resourceService.postResource(rs).subscribe(data => {
       this.get();
-      this.cancer();
+      this.cancel();
     });
   }
 
@@ -57,7 +57,7 @@ export class ResourcesComponent implements OnInit {
     this.popup = 'oke';
   }
   
-  cancer() {
+  cancel() {
     this.popup = '';
   }
 

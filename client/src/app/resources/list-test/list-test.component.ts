@@ -49,14 +49,16 @@ export class ListTestComponent implements OnInit {
     }
     this.testService.putTest(t).subscribe(data => {
       if(data) {
-        this.url = `http://localhost:4200/tests/${this.test._id}`;
+        this.url = `http://localhost:4200/test/${this.test._id}`;
       }
     });
   }
 
   deleteTest(id: string) {
     this.testService.deleteTest(id).subscribe(data => {
-      this.getTests();
+      if(data){
+        this.getTests();
+      }
     });
   }
 
