@@ -14,7 +14,11 @@
                     <input type="password" [(ngModel)]="password" placeholder="Password" name="password" #pass="ngModel" required>
                     <h4 *ngIf="(pass.touched || registerForm.submitted) && pass.errors?.minlength" class="check"> Password greater than 6 characters <b>!!!</b></h4>
                 </div>
-                <button>Log In</button>
+                <button class="login">Log In</button><br>
+                <div class="fb-gg">
+                    <button class="login-fb"><i class="fab fa-facebook"></i>  Login With Facebook</button>
+                    <button class="login-gg"><i class="fab fa-google"></i>  Login With Google</button>
+                </div>
             </form>
         </div>
     </div>

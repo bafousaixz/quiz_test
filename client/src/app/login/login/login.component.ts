@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Login } from 'src/app/middle/models/login.model';
+import { LoginModel } from 'src/app/middle/models/login.model';
 import { LoginService } from 'src/app/middle/services/login.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    let signin: Login = {
+    let signin: LoginModel = {
       username: this.username,
       password: this.password,
     };

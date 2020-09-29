@@ -18,7 +18,7 @@
                     <input type="password" [(ngModel)]="password" placeholder="Password" name="password" #pass="ngModel" required minlength="6">
                     <h4 *ngIf="(pass.touched || registerForm.submitted) && pass.errors?.minlength" class="check"> Password greater than 6 characters <b>!!!</b></h4>
 
-                    <button>Create Account</button>
+                    <button class="login">Create Account</button>
                 </form>
             </div>
         </div>

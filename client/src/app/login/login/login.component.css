@@ -78,7 +78,7 @@ a:hover {
     font-size: 15px;
 }
 
-.auth-pane button {
+.auth-pane .login {
     position: relative;
     width: 80%;
     height: 50px;
@@ -92,7 +92,7 @@ a:hover {
     overflow: hidden;
 }
 
-.auth-pane button::before {
+.auth-pane .login::before {
     content: "";
     position: absolute;
     top: 0;
@@ -105,7 +105,7 @@ a:hover {
     transition: .4s;
 }
 
-.auth-pane button:hover::before {
+.auth-pane .login:hover::before {
     left: 0;
     border: none;
 }
@@ -114,4 +114,38 @@ a:hover {
     margin: 0;
     color: #EE5A24;
     font-style: italic;
+}
+
+.fb-gg {
+    width: 80%;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 45px;
+    position: relative;
+}
+
+.login-fb {
+    position: absolute;
+    left: 0;
+    background: #1B1464;
+    outline: none;
+    border: none;
+    width: 49%;
+    height: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.login-gg {
+    position: absolute;
+    right: 0;
+    background: #EE5A24;
+    outline: none;
+    border: none;
+    width: 49%;
+    height: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
 }

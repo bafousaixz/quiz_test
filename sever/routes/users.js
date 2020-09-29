@@ -3,7 +3,6 @@ var router = express.Router();
 var auth = require('../middleware/auth');
 var Model = require('../models/user.model');
 
-
 router.post('/', async(req, res) => {
     // Create a new user
     try {
