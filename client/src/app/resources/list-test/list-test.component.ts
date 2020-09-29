@@ -42,7 +42,7 @@ export class ListTestComponent implements OnInit {
   }
 
   putTest() {
-    let t : TestModel = {
+    let t: TestModel = {
       _id: this.test._id,
       name: this.test.name,
       password: this.password,

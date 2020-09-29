@@ -8,6 +8,7 @@ import { LoginService } from 'src/app/middle/services/login.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css', '../login/login.component.css']
 })
+
 export class SignupComponent implements OnInit {
 
   lastName: string;
@@ -24,8 +25,8 @@ export class SignupComponent implements OnInit {
   }
 
   signUp() {
-    let s : UserModel = {
-      lastName : this.lastName,
+    let s: UserModel = {
+      lastName: this.lastName,
       username: this.userName,
       password: this.password,
       image: this.image

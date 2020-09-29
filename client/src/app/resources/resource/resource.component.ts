@@ -39,7 +39,7 @@ export class ResourceComponent implements OnInit {
   }
 
   putResource() {
-    const rs : ResourceModel = {
+    const rs: ResourceModel = {
       _id: this.resource._id,
       name: this.resource.name,
       image: this.resource.image,

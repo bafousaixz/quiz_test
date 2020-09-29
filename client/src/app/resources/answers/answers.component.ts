@@ -39,11 +39,11 @@ export class AnswersComponent implements OnInit {
   }
   
   postAnswer() {
-    const as : AnswerModel = {
+    const as: AnswerModel = {
       _id: this._id,
-      content : this.content,
-      right : this.r,
-      question_id : this.id,
+      content: this.content,
+      right: this.r,
+      question_id: this.id,
       resource_id: this.resource_id
     }
     this.answerService.postAnswer(as).subscribe((data) => {
@@ -56,11 +56,11 @@ export class AnswersComponent implements OnInit {
   }
 
   putAnswer(a: AnswerModel) {
-    const as : AnswerModel = {
+    const as: AnswerModel = {
       _id: a._id,
-      content : a.content,
-      right : a.right,
-      question_id : this.id
+      content: a.content,
+      right: a.right,
+      question_id: this.id
     }
     this.answerService.putAnswer(as).subscribe((data) => {
       if(data){

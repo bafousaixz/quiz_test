@@ -36,6 +36,7 @@ export class UserComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.clear();
     this.userName = "";
     this.router.navigate(['/']);
   }
