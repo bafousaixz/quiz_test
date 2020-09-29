@@ -9,7 +9,9 @@ import { TestService } from 'src/app/middle/services/test.service';
   templateUrl: './list-test.component.html',
   styleUrls: ['./list-test.component.css']
 })
+
 export class ListTestComponent implements OnInit {
+  
   id = '';
   _id: string;
   url: string;
@@ -56,7 +58,7 @@ export class ListTestComponent implements OnInit {
 
   deleteTest(id: string) {
     this.testService.deleteTest(id).subscribe((data) => {
-      if(data){
+      if(data) {
         this.getTests();
       }
     });
@@ -65,7 +67,7 @@ export class ListTestComponent implements OnInit {
 //get name resource
   getResource() {
     this.resourceService.getNameResource().subscribe((data) => {
-      data.find(el => {
+      data.find((el) => {
         el._id === this.id
       })
       this.nameResource = data[0].name;
@@ -83,11 +85,11 @@ export class ListTestComponent implements OnInit {
     inputElement.setSelectionRange(0, 0);
     document.getElementById('coppied').style.opacity = "1";
     setTimeout(() => {
-      this.closePupup();
+      this.closePopup();
     }, 2000);
   }
 
-  closePupup() {
+  closePopup() {
     this.check = false;
   }
 

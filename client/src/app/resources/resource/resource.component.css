@@ -178,3 +178,8 @@ a {
 .custom-shape-divider-top-1598372428 .shape-fill {
     fill: rgba(15, 188, 249, 0.5);
 }
+
+::placeholder {
+    font-size: 12px;
+    font-style: italic;
+}

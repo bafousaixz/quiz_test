@@ -18,17 +18,15 @@
                 <a *ngFor="let r of resource" routerLink="{{r._id}}" class="box">{{r.name}}</a>
                 <a style="font-size: 300%;" (click)="up()" class="box_add"><i class="fas fa-folder-plus"></i></a>
             </div>
-
             <div *ngIf="popup" class="popup">
                 <div class="close-popup">
                     <button (click)="cancel()" class="cancel"><i class="fas fa-times"></i></button>
                 </div>
                 <h1>Add Test Resource</h1>
                 <input [(ngModel)]="name" type="text" name="resource" placeholder="Test Resource"><br>
-                <button (click)="post()" class="save" type="submit">Save</button>
+                <button (click)="postResources()" class="save" type="submit">Save</button>
             </div>
         </div>
     </div>
 </div>
-
 <router-outlet></router-outlet>

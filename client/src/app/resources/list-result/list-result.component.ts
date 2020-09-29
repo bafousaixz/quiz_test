@@ -10,6 +10,7 @@ import { TestResultService } from 'src/app/middle/services/test-result.service';
   templateUrl: './list-result.component.html',
   styleUrls: ['./list-result.component.css']
 })
+
 export class ListResultComponent implements OnInit {
   
   choose: any[];

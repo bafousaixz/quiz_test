@@ -8,6 +8,7 @@ import { TestService } from 'src/app/middle/services/test.service';
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.css']
 })
+
 export class ExamComponent implements OnInit {
   
   id: string;
@@ -46,7 +47,7 @@ export class ExamComponent implements OnInit {
         this.popup = false;
         this.start = true;
       }
-      if(data === null) {
+      if(!data) {
         this.password = '';
         document.getElementById('check-pass').style.opacity = '1';
         setTimeout(() => {
@@ -71,4 +72,5 @@ export class ExamComponent implements OnInit {
   closePupup() {
     this.popup = false;
   }
+  
 }

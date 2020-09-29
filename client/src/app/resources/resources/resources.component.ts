@@ -8,6 +8,7 @@ import { ResourceService } from '../_services/resource.service';
   templateUrl: './resources.component.html',
   styleUrls: ['./resources.component.css']
 })
+
 export class ResourcesComponent implements OnInit {
 
   id: string;
@@ -26,7 +27,7 @@ export class ResourcesComponent implements OnInit {
   ngOnInit(): void {
   }
  
-  get() {
+  getResources() {
     if(this.user_id) {
       this.resourceService.getReource(this.user_id).subscribe((data) => {
         this.resource = data;
@@ -34,7 +35,7 @@ export class ResourcesComponent implements OnInit {
     }
   }
 
-  post() {
+  postResources() {
     let rs: ResourceModel = {
       _id: this.id,
       name: this.name,
@@ -44,7 +45,7 @@ export class ResourcesComponent implements OnInit {
     }
     this.resourceService.postResource(rs).subscribe((data) => {
       if(data) {
-        this.get();
+        this.getResources();
         this.cancel();
       }
     });
@@ -52,7 +53,7 @@ export class ResourcesComponent implements OnInit {
 
   handle(e) {
     this.user_id = e;
-    this.get();
+    this.getResources();
   }
   
   up() {

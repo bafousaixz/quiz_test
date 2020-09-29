@@ -17,7 +17,7 @@ const UserModel = new Schema({
 
     firstName: {
         type: String,
-        required: true
+        required: false
     },
 
     lastName: {

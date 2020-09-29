@@ -10,14 +10,15 @@ import { TestResultService } from 'src/app/middle/services/test-result.service';
   templateUrl: './result.component.html',
   styleUrls: ['../exam/exam.component.css', './result.component.css']
 })
+
 export class ResultComponent implements OnInit {
   
-  check: boolean = false;
   id: string;
   user: string;
   choose: any[];
   test: TestModel;
   result: TestResult;
+  check: boolean = false;
   questions: TestQuestionModel[];
 
   constructor(
@@ -27,11 +28,11 @@ export class ResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.get();
+    this.getResult();
   }
 
 //get result after test
-  get() {
+  getResult() {
     this.testResultService.getdetail(this.id).subscribe((data) => {
       this.result = data;
       this.questions = data.test.questionList;

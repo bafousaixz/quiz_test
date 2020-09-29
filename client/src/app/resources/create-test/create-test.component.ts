@@ -11,11 +11,11 @@ import { TestService } from 'src/app/middle/services/test.service';
   templateUrl: './create-test.component.html',
   styleUrls: ['./create-test.component.css']
 })
+
 export class CreateTestComponent implements OnInit {
   @Input() resource: string; 
   @Output() OutputValue = new EventEmitter();
 
-  test: TestModel;
   id = '';
   _id: string;
   set: number;
@@ -26,6 +26,7 @@ export class CreateTestComponent implements OnInit {
   high: number;
   name: string;
   resourceId = '';
+  test: TestModel;
   min: number = 1;
   max: number = 10;
   options: Options = {
@@ -66,9 +67,9 @@ export class CreateTestComponent implements OnInit {
       high: this.amount - this.max,
       resource_id: this.resourceId
     }
-    if(name !== null && this.amount !== null) {
+    if(this.name && this.amount && this.time) {
       this.testService.postTest(test).subscribe((data) => {
-        if(data !== null) {
+        if(data) {
           this.testService.getTest().subscribe((data) => {
             this.test = data[data.length -1];
             this.router.navigate([this.test._id], { relativeTo: this.route});
@@ -121,4 +122,5 @@ export class CreateTestComponent implements OnInit {
       b.width = "98%";
     }
   } 
+  
 }

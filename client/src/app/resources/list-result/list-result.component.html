@@ -35,16 +35,13 @@
                     </td>
                 </tr>
             </table>
-
         </div>
-
 
         <div *ngIf="popup" class="container-popup">
             <div class="edit-test-question">
                 <div class="header-popup">
                     <button (click)="close()" class="btn-close"><i class="fas fa-times"></i></button>
                 </div>
-
                 <div class="container-start">
                     <div class="content" *ngFor="let tq of questions; index as i" [id]="i" style="margin: 10px; width: 98%;">
                         <label class="number-question"><i class="far fa-dot-circle"></i>  Question {{i + 1}}</label>
@@ -58,14 +55,11 @@
                                         <input *ngIf="answer._id === tq.choose_answer" type="radio" [checked]="true" disabled >
                                         <span class="checkmark check-radio"></span>
                                     </label>
-
-
                                     <label *ngIf="tq.questions.answerList.length > 4" class="container">{{answer.content}} 
                                         <input type="checkbox" [checked]="answer.right" disabled class="cs" >
                                         <input *ngIf="answer._id === tq.choose_answer" type="checkbox" [checked]="true" disabled>
                                         <span class="checkmark"></span>
                                     </label>
-
                                 </div>
                             </div>
                         </div>
@@ -73,6 +67,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

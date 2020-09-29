@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { QuestionModel } from '../_models/question.model';
 import { TestModel } from 'src/app/middle/models/test.model';
@@ -6,12 +7,12 @@ import { TestService } from 'src/app/middle/services/test.service';
 import { TestQuestionModel } from 'src/app/middle/models/test_question.model';
 import { TestQuestionService } from 'src/app/middle/services/test-question.service';
 
-import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-edit-test',
   templateUrl: './edit-test.component.html',
   styleUrls: ['./edit-test.component.css']
 })
+
 export class EditTestComponent implements OnInit {
 
   id: string; 

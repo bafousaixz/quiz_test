@@ -10,7 +10,6 @@
                 <p>{{test.time}} minutes -
                     <span style="font-style: italic;">{{test.amount}} questions</span>
                 </p>
-
                 <div *ngIf="!user">
                     <label for="">Name:</label>
                     <input type="text" [(ngModel)]="name">
@@ -34,7 +33,6 @@
             <p (click)="closePupup()" class="close">-</p>
         </div>
     </div>
-
     <div *ngIf="start">
         <app-start-exam [user]="user" [name]="name"></app-start-exam>
     </div>

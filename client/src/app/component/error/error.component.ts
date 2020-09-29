@@ -1,5 +1,5 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-error',
@@ -9,14 +9,14 @@ import {Location} from '@angular/common';
 export class ErrorComponent implements OnInit {
 
   constructor(
-    private _location: Location,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
   }
 
   goBack(){
-    this._location.back();
+    this.location.back();
   }
 
 }

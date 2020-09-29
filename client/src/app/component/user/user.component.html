@@ -1,7 +1,7 @@
 <div class="user-style">
-    <div style="background: none; border: none;" *ngIf="userName" class="dropdown login">
-        <img style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px;" src="{{avatar}}" />
-        <button style="background: none; border: none; outline: 0; color: #ffffff;">
+    <div *ngIf="userName" class="dropdown login" style="background: none; border: none;">
+        <img src="{{avatar}}" />
+        <button>
           Hello {{name | upfirst}}
         </button>
         <div class="dropdown-content">

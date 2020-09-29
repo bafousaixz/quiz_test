@@ -6,15 +6,18 @@
                 <div class="container-test">
                     <div class="test">
                         <div style="margin: 10px;">
-                            <label>Name: </label>
-                            <input [(ngModel)]="name" class="name-test" type="text" name="test" placeholder="Test name">
-
-                            <label>Time: </label>
-                            <input [(ngModel)]="time" type="text" placeholder="Minute" name="time">
-
-                            <label>Amount: </label>
-                            <input (input)="setNewCeil(amount)" [(ngModel)]="amount" type="number" name="amount">
-
+                            <div>
+                                <label>Name: </label>
+                                <input [(ngModel)]="name" class="name-test" type="text" name="test" placeholder="Test name">
+                            </div>
+                            <div>
+                                <label>Time: </label>
+                                <input [(ngModel)]="time" type="text" placeholder="Minute" name="time">
+                            </div>
+                            <div>
+                                <label>Amount: </label>
+                                <input (input)="setNewCeil(amount)" [(ngModel)]="amount" type="number" name="amount">
+                            </div>
                             <div id="slider">
                                 <div class="a">
                                     <ng5-slider [(value)]="min" [(highValue)]="max" [options]="options"></ng5-slider>

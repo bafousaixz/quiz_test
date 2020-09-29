@@ -15,7 +15,6 @@
                     <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
                 </svg>
             </div>
-
             <div *ngIf="resource" style="margin: 5%; position: relative; font-size: 15px;">
                 <div class="image-resource">
                     <img *ngIf="resource.image && !image" src="{{resource.image}}" class="avatar-resource">
@@ -32,7 +31,7 @@
                     <p>Tests </p>
                 </a>
                 <input (input)="putResource()" type="text" [(ngModel)]="resource.name" class="name-resource">
-                <textarea (input)="putResource()" [(ngModel)]="resource.content"></textarea>
+                <textarea (input)="putResource()" [(ngModel)]="resource.content" placeholder="Content"></textarea>
             </div>
         </div>
         <router-outlet></router-outlet>

@@ -1,7 +1,6 @@
 <app-user (OutputValue)="handle($event)"></app-user>
 <div style="font-family: 'Quicksand', sans-serif; background: #f2f2ff; z-index: 10000;">
-    <div class="top-exam">
-    </div>
+    <div class="top-exam"></div>
 
     <div class="container-exam" style="height: 150px;">
         <div *ngIf="result" class="exam" style="min-height: 130px;">
@@ -32,17 +31,14 @@
                             <input *ngIf="answer._id === tq.choose_answer" type="radio" [checked]="true" disabled  class="choose">
                             <span class="checkmark check-radio"></span>
                         </label>
-
                         <label *ngIf="tq.questions.answerList.length > 4" class="container">{{answer.content}} 
                             <input type="checkbox" [checked]="answer.right" disabled class="cs" >
                             <input *ngIf="answer._id === tq.choose_answer" type="checkbox" [checked]="true" disabled  class="choose">
                             <span class="checkmark"></span>
                         </label>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

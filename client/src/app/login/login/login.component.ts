@@ -8,6 +8,7 @@ import { LoginService } from 'src/app/middle/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   username: string;
@@ -27,12 +28,12 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    let signin : Login = {
+    let signin: Login = {
       username: this.username,
-      password : this.password,
+      password: this.password,
     };
     this.userService.signIn(signin).subscribe((data) => {
-      if(data){
+      if(data) {
         window.localStorage.setItem('token', data['token']);
         this.router.navigate(['/resources']);
       }

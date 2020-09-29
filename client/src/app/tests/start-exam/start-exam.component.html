@@ -20,7 +20,6 @@
                             <input type="radio" (change)="getChoose(answer._id)" [value]="answer?._id" [name]="tq._id">
                             <span class="checkmark check-radio"></span>
                         </label>
-
                         <label *ngIf="tq.questions.answerList.length > 4" class="container">{{answer.content}} 
                             <input type="checkbox" (change)="getChoose(answer._id)">
                             <span class="checkmark"></span>
@@ -31,7 +30,6 @@
         </div>
         <button (click)="onSubmit()" class="btn-submit">Submit</button>
     </div>
-
     <div id="menu-test">
         <div id="countdown">
             <countdown [config]="{ leftTime: test.time*60, format: ' mm:ss ', notify: [  60 ] }" (event)="handleEvent($event)"></countdown>
@@ -42,5 +40,4 @@
             </div>
         </div>
     </div>
-
 </div>

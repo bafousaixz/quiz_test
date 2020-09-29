@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/middle/services/user.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LoginService } from 'src/app/middle/services/login.service';
 
 @Component({
   selector: 'app-user',
@@ -9,21 +9,21 @@ import { LoginService } from 'src/app/middle/services/login.service';
 })
 export class UserComponent implements OnInit {
   @Output() OutputValue = new EventEmitter();
-  userName:string;
   name: string;
   avatar:string;
+  userName:string;
   token = localStorage.getItem("token");
   
   constructor(
     public router: Router,
-    public userService: LoginService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.get();
+    this.getUser();
   }
 
-  get() {
+  getUser() {
     if(this.token) {
       this.userService.getUser().subscribe((data) => {
         this.avatar = data.image;
@@ -39,4 +39,5 @@ export class UserComponent implements OnInit {
     this.userName = "";
     this.router.navigate(['/']);
   }
+
 }

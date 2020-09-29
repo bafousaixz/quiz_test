@@ -1,5 +1,4 @@
 <div class="right-zone" *ngIf="tests">
-
     <app-create-test [resource]="nameResource" (OutputValue)="handle($event)">
     </app-create-test>
 
@@ -25,9 +24,8 @@
     <div *ngIf="check" class="container-popup">
         <div class="popup-share-test">
             <div class="header-popup">
-                <button (click)="closePupup()" class="btn-close"><i class="fas fa-times"></i></button>
+                <button (click)="closePopup()" class="btn-close"><i class="fas fa-times"></i></button>
             </div>
-
             <div class="password">
                 <input class="pass" type="password" [(ngModel)]="password" placeholder="Password">
                 <button class="pass-btn" (click)="putTest()">Set password</button>
@@ -41,5 +39,4 @@
             </div>
         </div>
     </div>
-
 </div>

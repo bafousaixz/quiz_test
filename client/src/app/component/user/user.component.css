@@ -17,6 +17,20 @@
     height: 100px;
 }
 
+.user-style img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.user-style button {
+    background: none;
+    border: none;
+    outline: 0;
+    color: #ffffff;
+}
+
 .login {
     color: white;
     font-size: 13px;

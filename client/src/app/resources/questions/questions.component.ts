@@ -9,6 +9,7 @@ import { QuestionService } from '../_services/question.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css']
 })
+
 export class QuestionsComponent implements OnInit {
 
   id = '';

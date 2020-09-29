@@ -9,6 +9,7 @@ import { ResourceService } from  '../_services/resource.service';
   templateUrl: './resource.component.html',
   styleUrls: ['./resource.component.css']
 })
+
 export class ResourceComponent implements OnInit {
 
   image: string;
@@ -26,7 +27,7 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResource();
-    if(this.router.url !== `/resources/${this.id}/questions`) {
+    if(this.router.url !== `/resources/${this.id}/questions` && this.router.url !== `/resources/${this.id}`) {
       this.check = false;
     }
   }
@@ -49,7 +50,7 @@ export class ResourceComponent implements OnInit {
 
   deleteResource(id: string) {
     this.resourceService.deleteResource(id).subscribe();
-    this.router.navigate(['/test-resources']);
+    this.router.navigate(['/resources']);
   }
 
   //Base64 image

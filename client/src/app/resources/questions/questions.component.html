@@ -5,26 +5,28 @@
                 <h2 id="add" (click)="add()" class="btn-add"><i class="fas fa-plus-circle"></i> Add question</h2>
                 <form (ngSubmit)="postQuestion()" id="center">
                     <h5 style="text-align: center;">Question</h5>
-
-                    <label>Content:</label>
-                    <textarea type="text" name="content" [(ngModel)]="content" class="ct" placeholder="Question content"></textarea>
-
-                    <label>Level:</label>
-                    <div class="toggle">
-                        <ul>
-                            <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
-                            <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
-                            <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
-                        </ul>
+                    <div>
+                        <label>Content:</label>
+                        <textarea type="text" name="content" [(ngModel)]="content" class="ct" placeholder="Question content"></textarea>
                     </div>
-
-                    <label>Image:</label>
-                    <div *ngIf="!img" class="input-image">
-                        <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
-                        <p><i class="fas fa-camera"></i></p>
+                    <div>
+                        <label>Level:</label>
+                        <div class="toggle">
+                            <ul>
+                                <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
+                                <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
+                                <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
+                            </ul>
+                        </div>
                     </div>
-                    <img src="{{img}}" alt="">
-
+                    <div>
+                        <label>Image:</label>
+                        <div *ngIf="!img" class="input-image">
+                            <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
+                            <p><i class="fas fa-camera"></i></p>
+                        </div>
+                        <img src="{{img}}" alt="">
+                    </div>
                     <div style="position: absolute; bottom: 0;">
                         <button class="btn-question1">Save</button>
                         <button (click)="cancel_add()" class="btn-question1 btn-cancer">Cancer</button>
@@ -49,36 +51,37 @@
                         <p class="level">Level: {{q.level}}</p>
                         <img src="{{q.image}}">
                     </div>
-
                     <div *ngIf="id_question === q._id" id="edit">
                         <h5>Question</h5>
                         <hr>
-                        <label>Content:</label>
-                        <textarea type="text" name="content" [(ngModel)]="q.content" class="ct" placeholder="Question content"></textarea>
-
-                        <label>Level:</label>
-                        <div class="toggle">
-                            <ul>
-                                <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
-                                <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
-                                <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
-                            </ul>
+                        <div>
+                            <label>Content:</label>
+                            <textarea type="text" name="content" [(ngModel)]="q.content" class="ct" placeholder="Question content"></textarea>
                         </div>
-
-                        <label>Image:</label>
-                        <div class="image-question">
-                            <img *ngIf="q.image && !image" src="{{q.image}}">
-                            <img *ngIf="image" src="{{image}}">
-                            <h4 *ngIf="!q.image && !image"><i class="fas fa-camera"></i></h4>
-                            <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
+                        <div>
+                            <label>Level:</label>
+                            <div class="toggle">
+                                <ul>
+                                    <li (click)="level1()" [ngClass]="{'select-level': easy == true}"> Easy </li>
+                                    <li (click)="level2()" [ngClass]="{'select-level': medium == true}"> Medium </li>
+                                    <li (click)="level3()" [ngClass]="{'select-level': high == true}"> High </li>
+                                </ul>
+                            </div>
                         </div>
-
+                        <div>
+                            <label>Image:</label>
+                            <div class="image-question">
+                                <img *ngIf="q.image && !image" src="{{q.image}}">
+                                <img *ngIf="image" src="{{image}}">
+                                <h4 *ngIf="!q.image && !image"><i class="fas fa-camera"></i></h4>
+                                <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg" class="input-img">
+                            </div>
+                        </div>
                         <div style="margin-top: 60px;">
                             <h5>Answer</h5>
                             <hr>
                             <app-answers [id]="id_question "></app-answers>
                         </div>
-
                         <div style="display: block; margin-left: 45%; margin-top: 20px;">
                             <button (click)="putQuestion()" class="btn-question">Save</button>
                         </div>

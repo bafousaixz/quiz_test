@@ -8,8 +8,10 @@ import { AnswerService } from 'src/app/middle/services/answer.service';
   templateUrl: './answers.component.html',
   styleUrls: ['./answers.component.css']
 })
+
 export class AnswersComponent implements OnInit {
   @Input() id: string;
+  
   fix: string;
   _id: string;
   content: string;
@@ -60,8 +62,11 @@ export class AnswersComponent implements OnInit {
       right : a.right,
       question_id : this.id
     }
-    this.answerService.putAnswer(as).subscribe();
-    this.fix = '';
+    this.answerService.putAnswer(as).subscribe((data) => {
+      if(data){
+        this.fix = '';
+      }
+    });
   }
 
   deleteAnswer(id: string) {

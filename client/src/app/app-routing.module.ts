@@ -10,7 +10,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'tests/:id',
+    path: 'test/:id',
     loadChildren: () => import('./tests/tests.module').then(m => m.TestsModule)
   },
 

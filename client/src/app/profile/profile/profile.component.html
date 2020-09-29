@@ -8,7 +8,7 @@
                 <div class="change">
                     <input (change)="onUploadChange($event)" type="file" accept=".png, .jpg, .jpeg">
                     <i class="fas fa-camera"></i>
-                    <button *ngIf="image" (click)="onUpload()" type="button">Save image</button>
+                    <button *ngIf="image" (click)="editUser()" type="button">Save image</button>
                 </div>
             </div>
             <h3> {{user.firstName}} {{user.lastName}}</h3>
@@ -19,36 +19,51 @@
             <button [ngClass]="{ 'event1' : profile1 == true}" class="button" (click)="profile()" type="button"><i class="fas fa-id-badge"></i> Profile</button>
             <button [ngClass]="{ 'event1' : profile1 == false}" class="button" (click)="edit()" type="button"><i class="fas fa-user-edit"></i> Edit</button>
             <div class="banner"></div>
-
         </div>
+
         <div class="select">
             <div *ngIf="profile1 == true" class="row" style="margin-left: 100px;">
                 <div>
-                    <h6>User Name: </h6>
-                    <h5>{{user.username}}</h5>
-                    <h6>Full Name: </h6>
-                    <h5>{{user.firstName}} {{user.lastName}}</h5>
-                    <h6>Email: </h6>
-                    <h5>{{user.email}}</h5>
-                    <h6>Tel: </h6>
-                    <h5>{{user.tel}}</h5>
+                    <div>
+                        <h6>User Name: </h6>
+                        <h5>{{user.username}}</h5>
+                    </div>
+                    <div>
+                        <h6>Full Name: </h6>
+                        <h5>{{user.firstName}} {{user.lastName}}</h5>
+                    </div>
+                    <div>
+                        <h6>Email: </h6>
+                        <h5>{{user.email}}</h5>
+                    </div>
+                    <div>
+                        <h6>Tel: </h6>
+                        <h5>{{user.tel}}</h5>
+                    </div>
                 </div>
             </div>
 
             <div *ngIf="profile1 == false">
-                <form class="form1" (ngSubmit)="onUpload()">
-                    <label>First Name: </label>
-                    <input class="form-control" type="text" name="firstname" [(ngModel)]="user.firstName">
-                    <label>Last Name: </label>
-                    <input class="form-control" type="first-name" name="lastname" [(ngModel)]="user.lastName">
-                    <label>Tel: </label>
-                    <input class="form-control" type="text" name="tel" [(ngModel)]="user.tel">
-                    <label>Email: </label>
-                    <input class="form-control" type="text" name="email" [(ngModel)]="user.email">
+                <form class="form1" (ngSubmit)="editUser()">
+                    <div>
+                        <label>First Name: </label>
+                        <input class="form-control" type="text" name="firstname" [(ngModel)]="user.firstName">
+                    </div>
+                    <div>
+                        <label>Last Name: </label>
+                        <input class="form-control" type="first-name" name="lastname" [(ngModel)]="user.lastName">
+                    </div>
+                    <div>
+                        <label>Tel: </label>
+                        <input class="form-control" type="text" name="tel" [(ngModel)]="user.tel">
+                    </div>
+                    <div>
+                        <label>Email: </label>
+                        <input class="form-control" type="text" name="email" [(ngModel)]="user.email">
+                    </div>
                     <button>Save</button>
                 </form>
             </div>
-
             <img src="../../../assets/profile2.svg" alt="no image">
         </div>
     </div>
