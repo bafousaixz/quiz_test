@@ -12,6 +12,16 @@
     width: 450px;
     display: inline-block;
     margin: 0 auto;
+    animation: auth1 1s normal;
+}
+
+@keyframes auth1 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 10;
+    }
 }
 
 .auth img {

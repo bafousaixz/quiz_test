@@ -36,4 +36,14 @@
     margin: 120px auto;
     width: 450px;
     height: 100vh;
+    animation: signup 1s normal;
+}
+
+@keyframes signup {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 10;
+    }
 }
