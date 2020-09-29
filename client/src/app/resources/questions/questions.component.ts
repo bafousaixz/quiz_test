@@ -117,7 +117,7 @@ export class QuestionsComponent implements OnInit {
     }
   } 
 
-  //Handle UI
+//Handle UI
   level1() {
     this.easy = true;
     this.medium = false;

@@ -58,7 +58,7 @@ export class EditTestComponent implements OnInit {
   }
 
   put(qs: QuestionModel) {
-    let questionTest : TestQuestionModel = {
+    let questionTest: TestQuestionModel = {
       _id: this.q._id,
       test_id: this.id,
       questions: qs,

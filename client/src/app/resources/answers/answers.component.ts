@@ -63,7 +63,7 @@ export class AnswersComponent implements OnInit {
       question_id: this.id
     }
     this.answerService.putAnswer(as).subscribe((data) => {
-      if(data){
+      if(data) {
         this.fix = '';
       }
     });

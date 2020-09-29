@@ -47,8 +47,8 @@ export class ListResultComponent implements OnInit {
     this.testResultService.getdetail(id).subscribe((data) => {
       this.questions = data.test.questionList;
       this.choose = data.choose_answer;
-      for(let i = 0; i<this.questions.length; i++) {
-        for(let j = 0; j<this.choose.length; j++) {
+      for(let i = 0; i < this.questions.length; i++) {
+        for(let j = 0; j < this.choose.length; j++) {
           if(i === j) {
             this.questions[i].choose_answer = this.choose[j];
           }
