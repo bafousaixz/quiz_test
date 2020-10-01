@@ -53,12 +53,7 @@ export class StartExamComponent implements OnInit {
     }
     this.testResultService.postResult(result).subscribe((data) => {
       if(data) {
-        this.testResultService.getAllResult().subscribe((data) => {
-          if(data) {
-            this.r = data[data.length - 1];
-            this.router.navigate([`result/${this.r._id}`], { relativeTo: this.route });
-          }
-        })
+        this.router.navigate([`result/${data._id}`], { relativeTo: this.route });
       }
     })
   }

@@ -54,7 +54,7 @@ router.get("/user_test/:id", async(req, res) => {
         if (err) {
             console.log(err);
         } else {
-            const test = result.find((el) => el._id = test_id);
+            const test = result.find((el) => el._id.toString() === test_id.toString());
             res.send({ _id, user_id, answer_right, score, choose_answer, test });
         }
     });

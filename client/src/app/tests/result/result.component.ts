@@ -35,6 +35,7 @@ export class ResultComponent implements OnInit {
   getResult() {
     this.testResultService.getdetail(this.id).subscribe((data) => {
       this.result = data;
+      console.log(this.result)
       this.questions = data.test.questionList;
       this.choose = data.choose_answer;
       for(let i = 0; i < this.questions.length; i++) {

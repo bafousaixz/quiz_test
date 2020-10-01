@@ -201,6 +201,7 @@
 .save {
     border-radius: 5px;
     padding: 10px 10%;
+    background: blueviolet;
     cursor: pointer;
 }
 
